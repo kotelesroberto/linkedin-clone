@@ -1,0 +1,33 @@
+// ==========================================================================
+// BASE
+// ==========================================================================
+
+* {
+  font-family: $font-primary;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+}
+
+html,
+body {
+  color: $black;
+  font-size: 100%;
+  line-height: 1.2;
+  overscroll-behavior: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow: hidden;
+  overflow-y: auto;
+  background: $col-page-bg;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

@@ -1,0 +1,30 @@
+$breakpoints: (
+  "small": "(min-width: 700px)",
+  "medium": "(min-width: 1024px)",
+  "large": "(min-width: 1280px)",
+  "extra-large": "(min-width: 1440px)",
+);
+
+// Small mobile iphone 5 (for example)
+$mobile-small: 320px;
+
+// mobile iphone (for example)
+$mobile-medium: 375px;
+
+// large mobile (for example)
+$mobile-large: 540px;
+
+// Small tablets and large smartphones (landscape view)
+$screen-small: 700px;
+
+// Small tablets (portrait view)
+$screen-medium: 1024px;
+
+// Tablets and small desktops
+$screen-large: 1280px;
+
+$screen-smamed: 980px;
+
+// Large tablets and desktops
+$screen-extralarge: 1440px;
+$screen-tablet-portrait: 768px;

@@ -1,13 +1,15 @@
 import React from "react";
 import "./Login.scss";
 
+import { ButtonSecondary } from "./Buttons";
+
 const LoginForm = () => {
   return (
     <form className="loginForm">
       <fieldset>
         <label htmlFor="loginEmail">Email or phone</label>
         <input
-          classclassName=""
+          className=""
           autocomplete="username"
           id="loginEmail"
           name="loginEmail"
@@ -18,7 +20,7 @@ const LoginForm = () => {
       <fieldset>
         <label htmlFor="loginPassword">Password</label>
         <input
-          classclassName=""
+          className=""
           autocomplete="current-password"
           id="loginPassword"
           name="loginPassword"
@@ -36,10 +38,12 @@ const LoginForm = () => {
         </button>
       </fieldset>
       <fieldset>
-        <a href="#">Forgot password?</a>
+        <a href="/forgot-password" className="link-bold">
+          Forgot password?
+        </a>
       </fieldset>
       <fieldset>
-      <button type="submit" value="Sign in">Sign in</button>
+        <ButtonSecondary>Sign in</ButtonSecondary>
       </fieldset>
     </form>
   );

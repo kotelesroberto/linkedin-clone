@@ -5,6 +5,8 @@ import LoginForm from "./LoginForm";
 import LoginGoogle from "./LoginGoogle";
 import LoginJoin from "./LoginJoin";
 
+import { ButtonJoin, ButtonSignIn } from "./Buttons";
+
 const Login = () => {
   return (
     <Container>
@@ -12,10 +14,10 @@ const Login = () => {
         <a href="/">
           <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
         </a>
-        <div>
-          <Join>Join now</Join>
-          <SignIn>Sign in</SignIn>
-        </div>
+        <NavLoginButtons>
+          <ButtonJoin>Join now</ButtonJoin>
+          <ButtonSignIn>Sign in</ButtonSignIn>
+        </NavLoginButtons>
       </Nav>
       <Section>
         <Hero>
@@ -33,20 +35,16 @@ const Login = () => {
   );
 };
 
-const SignInForm = styled.div`
-  width: 100%;
-  max-width: 40%;
-
-  @media (max-width: 768px) {
-    max-width: 100%;
-  }
-`;
-
 // create the compoments by using styled components and adding styles here
 const Container = styled.div`
   display: block;
   width: 100%;
   padding: 0 16px;
+`;
+
+const NavLoginButtons = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 const Nav = styled.nav`
@@ -59,6 +57,10 @@ const Nav = styled.nav`
   justify-content: space-between;
   flex-wrap: nowrap;
 
+  @media (max-width: 468px) {
+    flex-wrap: wrap;
+  }
+
   & > a {
     &:first-child {
       width: 135px;
@@ -70,46 +72,12 @@ const Nav = styled.nav`
 
     img {
       width: 100%;
+      height: auto;
+
+      @media (max-width: 768px) {
+        width: 84px;
+      }
     }
-  }
-`;
-
-const Join = styled.a`
-  font-size: 16px;
-  padding: 10px 12px;
-  text-decoration: none;
-  color: rgba(0, 0, 0, 0.6);
-  cursor: pointer;
-  margin-right: 12px;
-  border-radius: 24px;
-  transition-duration: 150ms;
-  font-weight: 700;
-
-  &:hover {
-    text-decoration: none;
-    color: rgba(0, 0, 0, 0.9);
-    background-color: rgba(0, 0, 0, 0.08);
-  }
-`;
-
-const SignIn = styled.a`
-  box-shadow: inset 0 0 0 1px #0a66c2;
-  color: #0a66c2;
-  border-radius: 24px;
-  transition-duration: 150ms;
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 1em;
-  padding: 10px 24px;
-  text-align: center;
-  background-color: rgba(0, 0, 0, 0);
-
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(112, 181, 249, 0.15);
-    color: #0a66c2;
-    text-decoration: none;
   }
 `;
 
@@ -142,10 +110,10 @@ const Section = styled.section`
 
     @media (max-width: 768px) {
       width: initial;
-      max-width: 80%;
+      max-width: 60%;
       height: auto;
       top: 230px;
-      margin: 0 auto;
+      margin: 12px auto;
       right: 0;
       transform: none;
       position: initial;
@@ -165,12 +133,20 @@ const Hero = styled.div`
     margin-bottom: 24px;
 
     @media (max-width: 768px) {
-      text-align: center;
-      font-size: 20px;
+      font-size: 32px;
+      font-weight: 400;
+      line-height: 1.2em;
       width: 100%;
-      line-height: 2;
-      margin-bottom: 12px;
     }
+  }
+`;
+
+const SignInForm = styled.div`
+  width: 100%;
+  max-width: 408px;
+
+  @media (max-width: 768px) {
+    max-width: 100%;
   }
 `;
 

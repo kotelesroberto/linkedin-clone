@@ -1,14 +1,9 @@
 import React from "react";
-import "./Login.scss";
+
+import { ButtonPrimary } from "./Buttons";
 
 const LoginJoin = () => {
-  return (
-    <div>
-      <a class="sign-in-form__join-cta" href="/signup">
-        New to LinkedIn? Join now
-      </a>
-    </div>
-  );
+  return <ButtonPrimary>New to LinkedIn? Join now</ButtonPrimary>;
 };
 
 export default LoginJoin;

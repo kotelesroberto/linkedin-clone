@@ -1,10 +1,16 @@
 import React from "react";
+import styled from "styled-components";
 
 const Footer = () => {
   return (
-    <section>
-      <div>
-        <div>
+    <FooterSection>
+      <FooterColumns>
+        <FooterColumn>
+          <a href="/">
+            <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
+          </a>
+        </FooterColumn>
+        <FooterColumn>
           <h3>General</h3>
           <ul>
             <li>
@@ -29,8 +35,8 @@ const Footer = () => {
               <a href="https://developer.linkedin.com">Developers</a>
             </li>
           </ul>
-        </div>
-        <div>
+        </FooterColumn>
+        <FooterColumn>
           <h3>Browse LinkedIn</h3>
           <ul>
             <li>
@@ -55,8 +61,8 @@ const Footer = () => {
               <a href="/hubs/top-companies">Top Companies Hub</a>
             </li>
           </ul>
-        </div>
-        <div>
+        </FooterColumn>
+        <FooterColumn>
           <h3>Business Solutions</h3>
           <ul>
             <li>
@@ -76,8 +82,8 @@ const Footer = () => {
               <a href="https://learning.linkedin.com">Learning</a>
             </li>
           </ul>
-        </div>
-        <div>
+        </FooterColumn>
+        <FooterColumn>
           <h3>Directories</h3>
           <ul>
             <li>
@@ -129,10 +135,66 @@ const Footer = () => {
               <a href="/directory/people-search">People Search</a>
             </li>
           </ul>
-        </div>
-      </div>
-    </section>
+        </FooterColumn>
+      </FooterColumns>
+    </FooterSection>
   );
 };
+
+const FooterSection = styled.section`
+  position: relative;
+
+  &:after {
+    content: "";
+    display: block;
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #f3f2f0;
+    z-index: -1;
+  }
+`;
+
+const FooterColumns = styled.div`
+  width: 100%;
+  max-width: 1128px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding: 22px 0;
+
+  @media (max-width: 768px) {
+    padding: 22px 16px;
+    flex-direction: column;
+  }
+`;
+
+const FooterColumn = styled.div`
+  width: 20%;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-size: 16px;
+    line-height: 1em;
+    margin-bottom: 8px;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  li {
+    a {
+    }
+  }
+`;
 
 export default Footer;

@@ -1,7 +1,9 @@
+import React from "react";
 import styled from "styled-components";
 
-import React from "react";
-import LoginForm from './LoginForm';
+import LoginForm from "./LoginForm";
+import LoginGoogle from "./LoginGoogle";
+import LoginJoin from "./LoginJoin";
 
 const Login = () => {
   return (
@@ -18,16 +20,14 @@ const Login = () => {
       <Section>
         <Hero>
           <h1>Robert's LinkedIn clone built in React</h1>
-          <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
         </Hero>
         <SignInForm>
-          <LoginForm/>
-            
-          <SignInWithGoogle>
-            <img src="/images/google.svg" alt="Sign in with google account" />
-            Continue with Google
-          </SignInWithGoogle>
+          <LoginForm />
+          <LoginGoogle />
+          <LoginJoin />
         </SignInForm>
+
+        <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
       </Section>
     </Container>
   );
@@ -35,42 +35,10 @@ const Login = () => {
 
 const SignInForm = styled.div`
   width: 100%;
-`;
-
-
-const SignInWithGoogle = styled.button`
-  height: min-content;
-  min-height: 48px;
-  border-radius: 24px;
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 24px;
-  padding-right: 24px;
-  text-align: center;
-  font-size: 16px;
-  font-weight: 400;
-  line-height: 1.25;
-  border: 1px solid #d2e3fc;
-  cursor: pointer;
-  vertical-align: middle;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:hover {
-    background: rgba(66,133,244,.04);
-    box-shadow: none;
-    outline: none;
-  }
+  max-width: 40%;
 
   @media (max-width: 768px) {
-    width: 100%;
-  }
-
-  > img {
-    width: 18px;
-    height: 18px;
-    margin-right: 12px;
+    max-width: 100%;
   }
 `;
 
@@ -161,27 +129,8 @@ const Section = styled.section`
   @media (max-width: 768px) {
     min-height: 0px;
   }
-`;
 
-const Hero = styled.div`
-  width: 100%;
-  h1 {
-    padding-bottom: 0;
-    width: 55%;
-    font-size: 56px;
-    color: #b24020;
-    font-weight: 200;
-    line-height: 70px;
-
-    @media (max-width: 768px) {
-      text-align: center;
-      font-size: 20px;
-      width: 100%;
-      line-height: 2;
-    }
-  }
-
-  img {
+  & > img {
     max-width: calc(45% + 150px);
     width: 700px;
     height: auto;
@@ -200,6 +149,27 @@ const Hero = styled.div`
       right: 0;
       transform: none;
       position: initial;
+    }
+  }
+`;
+
+const Hero = styled.div`
+  width: 100%;
+  h1 {
+    padding-bottom: 0;
+    width: 55%;
+    font-size: 56px;
+    color: #b24020;
+    font-weight: 200;
+    line-height: 70px;
+    margin-bottom: 24px;
+
+    @media (max-width: 768px) {
+      text-align: center;
+      font-size: 20px;
+      width: 100%;
+      line-height: 2;
+      margin-bottom: 12px;
     }
   }
 `;

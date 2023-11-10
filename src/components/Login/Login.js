@@ -4,6 +4,7 @@ import styled from "styled-components";
 import LoginForm from "./LoginForm";
 import LoginGoogle from "./LoginGoogle";
 import LoginJoin from "./LoginJoin";
+import Footer from "../Footer/Footer";
 
 import { ButtonJoin, ButtonSignIn } from "./Buttons";
 
@@ -31,6 +32,7 @@ const Login = () => {
 
         <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
       </Section>
+      <Footer />
     </Container>
   );
 };

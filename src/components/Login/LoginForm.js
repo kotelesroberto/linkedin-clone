@@ -4,13 +4,19 @@ import "./Login.scss";
 import { ButtonSecondary } from "./Buttons";
 
 const LoginForm = () => {
+  const showPassword = (e) => {
+    const passwordField = document.getElementById("loginPassword");
+    passwordField.type =
+      passwordField.type === "password" ? "text" : "password";
+  };
+
   return (
     <form className="loginForm">
       <fieldset>
         <label htmlFor="loginEmail">Email or phone</label>
         <input
           className=""
-          autocomplete="username"
+          autoComplete="username"
           id="loginEmail"
           name="loginEmail"
           required=""
@@ -21,11 +27,11 @@ const LoginForm = () => {
         <label htmlFor="loginPassword">Password</label>
         <input
           className=""
-          autocomplete="current-password"
+          autoComplete="current-password"
           id="loginPassword"
           name="loginPassword"
           required=""
-          type="text"
+          type="password"
         ></input>
         <button
           aria-live="assertive"
@@ -33,6 +39,7 @@ const LoginForm = () => {
           className="show-pass js-show-pass"
           aria-label="Show your LinkedIn password"
           type="button"
+          onClick={(e) => showPassword(e)}
         >
           Show
         </button>

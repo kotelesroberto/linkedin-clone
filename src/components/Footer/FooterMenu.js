@@ -1,16 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const Footer = () => {
+const FooterMenu = () => {
   return (
-    <FooterSection>
-      <FooterColumns>
-        <FooterColumn>
+    <FooterMenuSection>
+      <FooterMenuColumns>
+        <FooterMenuColumn>
           <a href="/">
             <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
           </a>
-        </FooterColumn>
-        <FooterColumn>
+        </FooterMenuColumn>
+        <FooterMenuColumn>
           <h3>General</h3>
           <ul>
             <li>
@@ -35,8 +35,8 @@ const Footer = () => {
               <a href="https://developer.linkedin.com">Developers</a>
             </li>
           </ul>
-        </FooterColumn>
-        <FooterColumn>
+        </FooterMenuColumn>
+        <FooterMenuColumn>
           <h3>Browse LinkedIn</h3>
           <ul>
             <li>
@@ -61,8 +61,8 @@ const Footer = () => {
               <a href="/hubs/top-companies">Top Companies Hub</a>
             </li>
           </ul>
-        </FooterColumn>
-        <FooterColumn>
+        </FooterMenuColumn>
+        <FooterMenuColumn>
           <h3>Business Solutions</h3>
           <ul>
             <li>
@@ -82,8 +82,8 @@ const Footer = () => {
               <a href="https://learning.linkedin.com">Learning</a>
             </li>
           </ul>
-        </FooterColumn>
-        <FooterColumn>
+        </FooterMenuColumn>
+        <FooterMenuColumn>
           <h3>Directories</h3>
           <ul>
             <li>
@@ -135,13 +135,13 @@ const Footer = () => {
               <a href="/directory/people-search">People Search</a>
             </li>
           </ul>
-        </FooterColumn>
-      </FooterColumns>
-    </FooterSection>
+        </FooterMenuColumn>
+      </FooterMenuColumns>
+    </FooterMenuSection>
   );
 };
 
-const FooterSection = styled.section`
+const FooterMenuSection = styled.section`
   position: relative;
 
   &:after {
@@ -156,7 +156,7 @@ const FooterSection = styled.section`
   }
 `;
 
-const FooterColumns = styled.div`
+const FooterMenuColumns = styled.div`
   width: 100%;
   max-width: 1128px;
   margin: auto;
@@ -171,7 +171,7 @@ const FooterColumns = styled.div`
   }
 `;
 
-const FooterColumn = styled.div`
+const FooterMenuColumn = styled.div`
   width: 20%;
 
   @media (max-width: 768px) {
@@ -197,4 +197,4 @@ const FooterColumn = styled.div`
   }
 `;
 
-export default Footer;
+export default FooterMenu;

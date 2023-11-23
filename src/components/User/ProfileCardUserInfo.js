@@ -1,19 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 const ProfileCardUserInfo = () => {
+  const profileSet = true;
+
   return (
     <UserCardInfo>
-      <UserCardName>
-        <a href="#">Robert Koteles</a>
-      </UserCardName>
-      <UserCardDescription>
-        Professional Senior Web Developer | Tech leader | Certified Scrum
-        Developer | Musician | Human being (SC Cleared)
-      </UserCardDescription>
+      {!profileSet && (
+        <UserCardIntro>
+          <h3>Welcome there!</h3>
+          Add a photo
+        </UserCardIntro>
+      )}
+
+      {profileSet && (
+        <>
+          <UserCardName>
+            <a href="#">Robert Koteles</a>
+          </UserCardName>
+          <UserCardDescription>
+            Professional Senior Web Developer | Tech leader | Certified Scrum
+            Developer | Musician | Human being (SC Cleared)
+          </UserCardDescription>
+        </>
+      )}
     </UserCardInfo>
   );
 };
+
+const UserCardIntro = styled.div`
+  h3 {
+    font-size: 16px;
+    line-height: 1.5;
+    color: rgba(0, 0, 0, 0.9);
+    font-weight: 700;
+  }
+`;
 
 const UserCardInfo = styled.div`
   text-align: center;

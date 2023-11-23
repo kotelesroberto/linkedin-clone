@@ -14,15 +14,30 @@ const UserPhoto = styled.div`
   height: 72px;
   margin: -38px auto 1.2rem;
   position: relative;
+  background-color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  overflow: hidden;
 
   img {
     width: 100%;
     height: auto;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    z-index: 1;
+    position: relative;
+    z-index: 2;
   }
 
+  &:before {
+    content: "";
+    display: block;
+    background: url("./images/photo.svg") center no-repeat;
+    background-size: 60%;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 1;
+  }
   &:after {
     content: "";
     display: block;
@@ -33,7 +48,7 @@ const UserPhoto = styled.div`
     position: absolute;
     left: 0;
     top: 0;
-    z-index: 2;
+    z-index: 3;
   }
 `;
 

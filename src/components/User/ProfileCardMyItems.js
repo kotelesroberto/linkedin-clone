@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import {
   ListSmall,
-  ListItemSmall,
+  ListItemSmallNoHover,
   ListSmallIcon_Bookmark,
 } from "../Common/Menus";
 
@@ -10,10 +10,10 @@ const ProfileCardMyItems = () => {
   return (
     <Container>
       <ListSmall>
-        <ListItemSmall>
+        <ListItemSmallNoHover>
           <ListSmallIcon_Bookmark></ListSmallIcon_Bookmark>
           My items
-        </ListItemSmall>
+        </ListItemSmallNoHover>
       </ListSmall>
     </Container>
   );

@@ -1,11 +1,13 @@
 import styled from "styled-components";
 import React from "react";
 import ProfileCard from "./ProfileCard";
+import WidgetRecent from "./WidgetRecent";
 
 const LeftCol = (props) => {
   return (
     <Container>
       <ProfileCard />
+      <WidgetRecent />
     </Container>
   );
 };

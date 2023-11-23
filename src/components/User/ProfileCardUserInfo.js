@@ -8,8 +8,8 @@ const ProfileCardUserInfo = () => {
     <UserCardInfo>
       {!profileSet && (
         <UserCardIntro>
-          <h3>Welcome there!</h3>
-          Add a photo
+          <h3>Welcome, there!</h3>
+          <span>Add a photo</span>
         </UserCardIntro>
       )}
 
@@ -34,6 +34,11 @@ const UserCardIntro = styled.div`
     line-height: 1.5;
     color: rgba(0, 0, 0, 0.9);
     font-weight: 700;
+  }
+  span {
+    font-size: 12px;
+    color: #0a66c2;
+    margin-top: 4px;
   }
 `;
 

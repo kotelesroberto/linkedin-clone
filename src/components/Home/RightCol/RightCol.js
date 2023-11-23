@@ -1,8 +1,14 @@
 import styled from "styled-components";
 import React from "react";
+import LatestNews from "./LatestNews";
 
 const RightCol = () => {
-  return <Container>Right Col</Container>;
+  return (
+    <Container>
+      <LatestNews />
+      Right Col
+    </Container>
+  );
 };
 
 const Container = styled.div`

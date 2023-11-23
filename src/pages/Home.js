@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 import React from "react";
 import Header from "../components/Header/Header";
-import Wall from "../components/Home/Wall";
-import LeftCol from "../components/Home/LeftCol";
-import RightCol from "../components/Home/RightCol";
+import Wall from "../components/Home/Wall/Wall";
+import LeftCol from "../components/Home/LeftCol/LeftCol";
+import RightCol from "../components/Home/RightCol/RightCol";
 
 const Home = () => {
   return (

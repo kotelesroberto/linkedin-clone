@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import React from "react";
+import ProfileCard from "./ProfileCard";
 
-const LeftCol = () => {
-  return <Container>Left Col</Container>;
+const LeftCol = (props) => {
+  return <Container>
+    <ProfileCard />
+    Left Col</Container>;
 };
 
 const Container = styled.div`

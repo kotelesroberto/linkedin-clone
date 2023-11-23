@@ -1,7 +1,7 @@
 import React from "react";
 import "./Login.scss";
 
-import { ButtonSecondary } from "./Buttons";
+import { ButtonSecondary } from "../Common/Buttons";
 
 const LoginForm = () => {
   const showPassword = (e) => {

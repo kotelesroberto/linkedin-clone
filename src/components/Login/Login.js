@@ -7,7 +7,7 @@ import LoginJoin from "./LoginJoin";
 import FooterMenu from "../Footer/FooterMenu";
 import FooterInlineMenu from "../Footer/FooterInlineMenu";
 
-import { ButtonJoin, ButtonSignIn } from "./Buttons";
+import { ButtonJoin, ButtonSignIn } from "../Common/Buttons";
 
 const Login = () => {
   return (

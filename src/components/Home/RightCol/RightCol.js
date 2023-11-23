@@ -6,7 +6,6 @@ const RightCol = () => {
   return (
     <Container>
       <LatestNews />
-      Right Col
     </Container>
   );
 };

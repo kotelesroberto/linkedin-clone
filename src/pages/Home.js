@@ -30,7 +30,7 @@ const Section = styled.section`
   margin: 0 auto;
   width: 100%;
   max-width: 1128px;
-  padding: 12px 0;
+  padding: 24px 0;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonWithImage } from "./Buttons";
+import { ButtonWithImage } from "../Common/Buttons";
 
 const LoginGoogle = () => {
   return (

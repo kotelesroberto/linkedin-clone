@@ -3,9 +3,11 @@ import React from "react";
 import ProfileCard from "./ProfileCard";
 
 const LeftCol = (props) => {
-  return <Container>
-    <ProfileCard />
-    Left Col</Container>;
+  return (
+    <Container>
+      <ProfileCard />
+    </Container>
+  );
 };
 
 const Container = styled.div`

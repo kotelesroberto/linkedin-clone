@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ButtonPrimary } from "./Buttons";
+import { ButtonPrimary } from "../Common/Buttons";
 
 const LoginJoin = () => {
   return <ButtonPrimary>New to LinkedIn? Join now</ButtonPrimary>;

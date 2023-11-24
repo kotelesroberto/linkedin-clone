@@ -97,6 +97,10 @@ export const ListSmall = styled(List)`
 
 export const ListSmallHeader = styled(ListHeader)`
   font-size: 12px;
+
+  a {
+    margin-top: 24px;
+  }
 `;
 
 export const ListItemSmall = styled(ListItem)`

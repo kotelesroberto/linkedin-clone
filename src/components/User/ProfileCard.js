@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Card } from "../../Common/Cards";
-import ProfileCardCoverImage from "../../User/ProfileCardCoverImage";
-import ProfileCardUserPhoto from "../../User/ProfileCardUserPhoto";
-import ProfileCardUserInfo from "../../User/ProfileCardUserInfo";
-import ProfileCardImpressions from "../../User/ProfileCardImpressions";
-import ProfileCardMyItems from "../../User/ProfileCardMyItems";
-import ShowMore from "../../Widgets/ShowMore";
+import { Card } from "../Common/Cards";
+import ProfileCardCoverImage from "./ProfileCardCoverImage";
+import ProfileCardUserPhoto from "./ProfileCardUserPhoto";
+import ProfileCardUserInfo from "./ProfileCardUserInfo";
+import ProfileCardImpressions from "./ProfileCardImpressions";
+import ProfileCardMyItems from "./ProfileCardMyItems";
+import ShowMore from "../Widgets/ShowMore";
 
 const ProfileCard = () => {
   const toggleView = () => {};

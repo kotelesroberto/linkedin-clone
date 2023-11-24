@@ -9,7 +9,7 @@ const ShowMore = (props) => {
       className={props.classname}
     >
       <a onClick={props.onclickevent}>
-        Show {props.classname === "closed" ? "less" : "more"}
+        Show {props.classname === "closed" ? "more" : "less"}
       </a>
 
       <img
@@ -64,7 +64,7 @@ const Container = styled.div`
 
   &.closed {
     img {
-      transform: rotate(180deg);
+      transform: rotate(0deg);
     }
   }
 
@@ -72,6 +72,7 @@ const Container = styled.div`
     margin-left: 4px;
     width: 16px;
     height: 16px;
+    transform: rotate(180deg);
   }
 `;
 

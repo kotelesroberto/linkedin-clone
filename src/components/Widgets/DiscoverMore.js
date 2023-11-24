@@ -1,15 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const WidgetDiscoverMore = () => {
+const DiscoverMore = () => {
   return (
-    <DiscoverMore>
+    <Container>
       <a>Discover more</a>
-    </DiscoverMore>
+    </Container>
   );
 };
 
-const DiscoverMore = styled.div`
+const Container = styled.div`
   font-size: 14px;
   font-weight: 700;
   color: rgba(0, 0, 0, 0.6);
@@ -36,4 +36,4 @@ const DiscoverMore = styled.div`
   }
 `;
 
-export default WidgetDiscoverMore;
+export default DiscoverMore;

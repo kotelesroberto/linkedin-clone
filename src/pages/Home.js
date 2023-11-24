@@ -35,6 +35,8 @@ const Section = styled.section`
   flex-direction: row;
   flex-wrap: nowrap;
 
+  padding-bottom: 1000px;
+
   @media (max-width: 1024px) {
     flex-wrap: wrap;
   }

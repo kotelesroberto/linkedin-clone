@@ -14,6 +14,52 @@ import ShowMore from "../../Widgets/ShowMore";
 const LatestNews = () => {
   const [openedStatus, setOpenedStatus] = useState("closed");
 
+  // TODO: fetch from API later, as JSON object
+  const news = [
+    {
+      title: "How leaders can reduce burnout",
+      timestamp: "2h ago",
+      readers: 346,
+      link: "/news/story/demo",
+    },
+    {
+      title: "Startups react to OpenAI tumult",
+      timestamp: "2h ago",
+      readers: 1,
+      link: "/news/story/demo",
+    },
+    {
+      title: "What's new this Black Friday?",
+      timestamp: "2h ago",
+      readers: 1,
+      link: "/news/story/demo",
+    },
+    {
+      title: "Doctor Who boosts Welsh economy",
+      timestamp: "2h ago",
+      readers: 1,
+      link: "/news/story/demo",
+    },
+    {
+      title: "Spike in fake online stores",
+      timestamp: "2h ago",
+      readers: 1,
+      link: "/news/story/demo",
+    },
+    {
+      title: "Workers ready for green economy?",
+      timestamp: "2h ago",
+      readers: 1,
+      link: "/news/story/demo",
+    },
+    {
+      title: "Academic founders get a boost",
+      timestamp: "2h ago",
+      readers: 1,
+      link: "/news/story/demo",
+    },
+  ];
+
   const toggleView = () => {
     setOpenedStatus(openedStatus === "closed" ? "open" : "closed");
     const newsList = document.getElementById("linkedin-news");
@@ -28,59 +74,32 @@ const LatestNews = () => {
     <Card>
       <CardContainer>
         <ListHeader>
-          LinkedIn News
+          {!!news.length ? "LinkedIn News" : "Add to your feed"}
           <ListIcon_Info_After></ListIcon_Info_After>
         </ListHeader>
-        <List id="linkedin-news">
-          <ListItem>
-            <a href="/news/story/demo">
-              <ListItemTitle>How leaders can reduce burnout</ListItemTitle>
-              <ListItemImpressum>2h ago • 346 readers</ListItemImpressum>
-            </a>
-          </ListItem>
-          <ListItem>
-            <a href="/news/story/demo">
-              <ListItemTitle>Startups react to OpenAI tumult</ListItemTitle>
-              <ListItemImpressum>2h ago</ListItemImpressum>
-            </a>
-          </ListItem>
-          <ListItem>
-            <a href="/news/story/demo">
-              <ListItemTitle>What's new this Black Friday?</ListItemTitle>
-              <ListItemImpressum>2h ago</ListItemImpressum>
-            </a>
-          </ListItem>
-          <ListItem>
-            <a href="/news/story/demo">
-              <ListItemTitle>Doctor Who boosts Welsh economy</ListItemTitle>
-              <ListItemImpressum>2h ago</ListItemImpressum>
-            </a>
-          </ListItem>
-          <ListItem className="closed">
-            <a href="/news/story/demo">
-              <ListItemTitle>Spike in fake online stores</ListItemTitle>
-              <ListItemImpressum>2h ago</ListItemImpressum>
-            </a>
-          </ListItem>
-          <ListItem className="closed">
-            <a href="/news/story/demo">
-              <ListItemTitle>Workers ready for green economy?</ListItemTitle>
-              <ListItemImpressum>2h ago</ListItemImpressum>
-            </a>
-          </ListItem>
-          <ListItem className="closed">
-            <a href="/news/story/demo">
-              <ListItemTitle>Academic founders get a boost</ListItemTitle>
-              <ListItemImpressum>2h ago</ListItemImpressum>
-            </a>
-          </ListItem>
-        </List>
-        <ShowMore
-          showon="mobile-desktop"
-          textalign="left"
-          onclickevent={toggleView}
-          classname={openedStatus}
-        />
+
+        {!!news.length && (
+          <>
+            <List id="linkedin-news">
+              {news.map((item, index) => (
+                <ListItem className={index > 4 ? "closed" : ""}>
+                  <a href={item.link}>
+                    <ListItemTitle>{item.title}</ListItemTitle>
+                    <ListItemImpressum>
+                      {item.timestamp} • {item.readers} readers
+                    </ListItemImpressum>
+                  </a>
+                </ListItem>
+              ))}
+            </List>
+            <ShowMore
+              showon="mobile-desktop"
+              textalign="left"
+              onclickevent={toggleView}
+              classname={openedStatus}
+            />
+          </>
+        )}
       </CardContainer>
     </Card>
   );

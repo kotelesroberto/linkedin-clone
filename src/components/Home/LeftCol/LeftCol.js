@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import React from "react";
-import ProfileCard from "./ProfileCard";
+import ProfileCard from "../../User/ProfileCard";
 import WidgetRecent from "./WidgetRecent";
 
 const LeftCol = (props) => {

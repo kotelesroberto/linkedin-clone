@@ -59,7 +59,8 @@ const FooterInlineMenu = (props) => {
 };
 
 const FooterInlineMenuSection = styled.section`
-  position: relative;
+  position: sticky;
+  top: 76px;
 
   &:after {
     content: "";

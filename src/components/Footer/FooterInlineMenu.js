@@ -5,6 +5,50 @@ import * as variables from "../Common/Variables";
 const FooterInlineMenu = (props) => {
   const variation = props.logoVariation ?? "";
 
+  // TODO: fetch from API later, as JSON object
+  const menuItems = [
+    {
+      title: "About",
+      link: "#",
+    },
+    {
+      title: "Accesibility",
+      link: "#",
+    },
+    {
+      title: "User Agreement",
+      link: "#",
+    },
+    {
+      title: "Privacy Policy",
+      link: "#",
+    },
+    {
+      title: "Cookie Policy",
+      link: "#",
+    },
+    {
+      title: "Copyright Policy",
+      link: "#",
+    },
+    {
+      title: "Brand Policy",
+      link: "#",
+    },
+    {
+      title: "Guest Controls",
+      link: "#",
+    },
+    {
+      title: "Community Guidelines",
+      link: "#",
+    },
+    {
+      title: "Language",
+      link: "#",
+    },
+  ];
+
   return (
     <FooterInlineMenuSection>
       <FooterInlineMenuColumns>
@@ -21,36 +65,11 @@ const FooterInlineMenu = (props) => {
               </a>
             </li>
 
-            <li>
-              <a href="#">About</a>
-            </li>
-            <li>
-              <a href="#">Accesibility</a>
-            </li>
-            <li>
-              <a href="#">User Agreement</a>
-            </li>
-            <li>
-              <a href="#">Privacy Policy</a>
-            </li>
-            <li>
-              <a href="#">Cookie Policy</a>
-            </li>
-            <li>
-              <a href="#">Copyright Policy</a>
-            </li>
-            <li>
-              <a href="#">Brand Policy</a>
-            </li>
-            <li>
-              <a href="#">Guest Controls</a>
-            </li>
-            <li>
-              <a href="#">Community Guidelines</a>
-            </li>
-            <li>
-              <a href="#">Language</a>
-            </li>
+            {menuItems.map((item, index) => (
+              <li key={"footer-inline-menu-" + index}>
+                <a href={item.link}>{item.title}</a>
+              </li>
+            ))}
           </ul>
         </FooterInlineMenuColumn>
       </FooterInlineMenuColumns>

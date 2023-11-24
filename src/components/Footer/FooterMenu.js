@@ -3,6 +3,158 @@ import styled from "styled-components";
 import * as variables from "../Common/Variables";
 
 const FooterMenu = () => {
+  // TODO: fetch from API later, as JSON object
+  const menuItemCols = [
+    {
+      category: "General",
+      items: [
+        {
+          title: "Sign Up",
+          link: "/signup",
+        },
+        {
+          title: "Help Center",
+          link: "/help/linkedin?lang=en",
+        },
+        {
+          title: "About",
+          link: "#https://about.linkedin.com",
+        },
+        {
+          title: "Press",
+          link: "https://press.linkedin.com",
+        },
+        {
+          title: "Blog",
+          link: "https://blog.linkedin.com",
+        },
+        {
+          title: "Careers",
+          link: "/company/linkedin/jobs",
+        },
+        {
+          title: "Developers",
+          link: "https://developer.linkedin.com",
+        },
+      ],
+    },
+    {
+      category: "Browse LinkedIn",
+      items: [
+        {
+          title: "Learning",
+          link: "/learning",
+        },
+        {
+          title: "Jobs",
+          link: "/jobs",
+        },
+        {
+          title: "Salary",
+          link: "/salary",
+        },
+        {
+          title: "Mobile",
+          link: "https://mobile.linkedin.com",
+        },
+        {
+          title: "Services",
+          link: "/services",
+        },
+        {
+          title: "Products",
+          link: "/products",
+        },
+        {
+          title: "Top Companies Hub",
+          link: "/hubs/top-companies",
+        },
+      ],
+    },
+    {
+      category: "Business Solutions",
+      items: [
+        {
+          title: "Talent",
+          link: "https://business.linkedin.com/talent-solutions",
+        },
+        {
+          title: "Marketing",
+          link: "https://business.linkedin.com/marketing-solutions",
+        },
+        {
+          title: "Sales",
+          link: "https://business.linkedin.com/sales-solutions",
+        },
+        {
+          title: "Learning",
+          link: "https://learning.linkedin.com",
+        },
+      ],
+    },
+    {
+      category: "Directories",
+      items: [
+        {
+          title: "Members",
+          link: "/directory/people",
+        },
+        {
+          title: "Jobs",
+          link: "/directory/jobs",
+        },
+        {
+          title: "Companies",
+          link: "/directory/companies",
+        },
+        {
+          title: "Featured",
+          link: "/directory/featured",
+        },
+        {
+          title: "Learning",
+          link: "/directory/learning",
+        },
+        {
+          title: "Posts",
+          link: "/directory/posts",
+        },
+        {
+          title: "Articles",
+          link: "/directory/articles",
+        },
+        {
+          title: "Schools",
+          link: "/directory/schools",
+        },
+        {
+          title: "News",
+          link: "/directory/news",
+        },
+        {
+          title: "News Letters",
+          link: "/directory/newsletters",
+        },
+        {
+          title: "Services",
+          link: "/directory/services",
+        },
+        {
+          title: "Products",
+          link: "/directory/products",
+        },
+        {
+          title: "Advice",
+          link: "/directory/advice",
+        },
+        {
+          title: "People Search",
+          link: "/directory/people-search",
+        },
+      ],
+    },
+  ];
+
   return (
     <FooterMenuSection>
       <FooterMenuColumns>
@@ -11,132 +163,19 @@ const FooterMenu = () => {
             <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
           </a>
         </FooterMenuColumn>
-        <FooterMenuColumn>
-          <h3>General</h3>
-          <ul>
-            <li>
-              <a href="/signup">Sign Up</a>
-            </li>
-            <li>
-              <a href="/help/linkedin?lang=en">Help Center</a>
-            </li>
-            <li>
-              <a href="https://about.linkedin.com">About</a>
-            </li>
-            <li>
-              <a href="https://press.linkedin.com">Press</a>
-            </li>
-            <li>
-              <a href="https://blog.linkedin.com">Blog</a>
-            </li>
-            <li>
-              <a href="/company/linkedin/jobs">Careers</a>
-            </li>
-            <li>
-              <a href="https://developer.linkedin.com">Developers</a>
-            </li>
-          </ul>
-        </FooterMenuColumn>
-        <FooterMenuColumn>
-          <h3>Browse LinkedIn</h3>
-          <ul>
-            <li>
-              <a href="/learning">Learning</a>
-            </li>
-            <li>
-              <a href="/jobs">Jobs</a>
-            </li>
-            <li>
-              <a href="/salary">Salary</a>
-            </li>
-            <li>
-              <a href="https://mobile.linkedin.com">Mobile</a>
-            </li>
-            <li>
-              <a href="/services">Services</a>
-            </li>
-            <li>
-              <a href="/products">Products</a>
-            </li>
-            <li>
-              <a href="/hubs/top-companies">Top Companies Hub</a>
-            </li>
-          </ul>
-        </FooterMenuColumn>
-        <FooterMenuColumn>
-          <h3>Business Solutions</h3>
-          <ul>
-            <li>
-              <a href="https://business.linkedin.com/talent-solutions">
-                Talent
-              </a>
-            </li>
-            <li>
-              <a href="https://business.linkedin.com/marketing-solutions">
-                Marketing
-              </a>
-            </li>
-            <li>
-              <a href="https://business.linkedin.com/sales-solutions">Sales</a>
-            </li>
-            <li>
-              <a href="https://learning.linkedin.com">Learning</a>
-            </li>
-          </ul>
-        </FooterMenuColumn>
-        <FooterMenuColumn>
-          <h3>Directories</h3>
-          <ul>
-            <li>
-              <a href="/directory/people">Members</a>
-            </li>
-            <li>
-              <a href="/directory/jobs">Jobs</a>
-            </li>
-            <li>
-              <a href="/directory/companies">Companies</a>
-            </li>
-            <li>
-              <a href="/directory/featured">Featured</a>
-            </li>
-            <li>
-              <a
-                href="/directory/learning"
-                data-tracking-control-name="homepage-basic_directory_learningDirectoryUrl"
-                data-tracking-will-navigate=""
-              >
-                Learning
-              </a>
-            </li>
-            <li>
-              <a href="/directory/posts">Posts</a>
-            </li>
-            <li>
-              <a href="/directory/articles">Articles</a>
-            </li>
-            <li>
-              <a href="/directory/schools">Schools</a>
-            </li>
-            <li>
-              <a href="/directory/news">News</a>
-            </li>
-            <li>
-              <a href="/directory/newsletters">News Letters</a>
-            </li>
-            <li>
-              <a href="/directory/services">Services</a>
-            </li>
-            <li>
-              <a href="/directory/products">Products</a>
-            </li>
-            <li>
-              <a href="/directory/advice">Advice</a>
-            </li>
-            <li>
-              <a href="/directory/people-search">People Search</a>
-            </li>
-          </ul>
-        </FooterMenuColumn>
+
+        {menuItemCols.map((catItem, catIndex) => (
+          <FooterMenuColumn key={"footer-cat-menu-" + catIndex}>
+            <h3>{catItem.category}</h3>
+            <ul>
+              {catItem.items.map((menuItem, menuIndex) => (
+                <li key={"footer-cat-menu-item-" + menuIndex}>
+                  <a href={menuItem.link}>{menuItem.title}</a>
+                </li>
+              ))}
+            </ul>
+          </FooterMenuColumn>
+        ))}
       </FooterMenuColumns>
     </FooterMenuSection>
   );

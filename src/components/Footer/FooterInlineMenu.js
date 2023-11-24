@@ -1,24 +1,26 @@
 import React from "react";
 import styled from "styled-components";
-import * as variables from '../Common/Variables';
+import * as variables from "../Common/Variables";
 
-const FooterInlineMenu = () => {
+const FooterInlineMenu = (props) => {
+  const variation = props.logoVariation ?? "";
+
   return (
     <FooterInlineMenuSection>
       <FooterInlineMenuColumns>
         <FooterInlineMenuColumn>
-          <ul>
+          <ul className={props.extraClass}>
             <li>
               <a href="/">
                 <img
-                  src="/images/footer-logo.svg"
+                  src={`/images/footer-logo${variation}.svg`}
                   alt="Go to LinkedIn homepage"
                 />
+                {props.extraClass && <span>LinkedIn Corporation © 2023</span>}
+                {!props.extraClass && <span>© 2023</span>}
               </a>
             </li>
-            <li>
-              <a href="#">© 2023</a>
-            </li>
+
             <li>
               <a href="#">About</a>
             </li>
@@ -95,16 +97,37 @@ const FooterInlineMenuColumn = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-  }
 
-  li {
-    @media (max-width: 768px) {
-      width: 50%;
+    &.logo-last {
+      justify-content: center;
+      margin-top: -22px;
+
+      li {
+        margin: 0.4rem 0.8rem;
+
+        &:first-child {
+          width: 100%;
+          order: 2;
+        }
+      }
     }
 
-    a {
-      padding: 0 8px;
-      font-size: 12px;
+    li {
+      @media (max-width: 768px) {
+        width: 50%;
+      }
+
+      a {
+        padding: 0 8px;
+        font-size: 12px;
+        display: inline-flex;
+        vertical-align: middle;
+      }
+
+      span {
+        color: rgba(0, 0, 0, 0.9);
+        margin-left: 8px;
+      }
     }
   }
 `;

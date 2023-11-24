@@ -45,8 +45,30 @@ const FeedListItem = (props) => {
         </FeedListItemTop>
         <FeedListItemContent>
           <span>{props.content.content}</span>
-          <img src={props.content.image.url} alt={props.content.image.title} />
+
+          <a href={props.content.url} target="_blank">
+            <img
+              src={props.content.image.url}
+              alt={props.content.image.title}
+            />
+          </a>
         </FeedListItemContent>
+
+        <SocialCounts>
+          <SocialCountItem>
+            <a href="#">
+              <img src="/images/icon-like.svg" alt="" />
+              <img src="/images/icon-clap.svg" alt="" />
+              <span>123</span>
+            </a>
+          </SocialCountItem>
+          <SocialCountItem>
+            <span>
+              <a href="#">920 comments</a>•<a href="#">781 reposts</a>
+            </span>
+          </SocialCountItem>
+        </SocialCounts>
+
         <FeedListItemButtons>
           <button>
             <img src="/images/icon-thumbs-up.svg" alt="" />
@@ -133,6 +155,20 @@ const FeedListItemButtons = styled(IconButtonRow)`
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   margin-top: 12px;
   padding-top: 8px;
+
+  button {
+    img {
+      @media (max-width: 480px) {
+        margin-right: 0;
+      }
+    }
+  }
+
+  span {
+    @media (max-width: 480px) {
+      display: none;
+    }
+  }
 `;
 
 const FeedListItemPhoto = styled(UserAvatarPhoto)``;
@@ -184,6 +220,34 @@ const FeedItemAction = styled.button`
     &.close-icon {
       width: 16px;
     }
+  }
+`;
+
+const SocialCounts = styled.ul`
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 8px 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 1em;
+`;
+
+const SocialCountItem = styled.li`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  a {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 4px;
+  }
+
+  span {
+    margin-left: 4px;
   }
 `;
 

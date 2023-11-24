@@ -17,7 +17,7 @@ const ProfileCardUserInfo = () => {
       {profileSet && (
         <>
           <UserCardName>
-            <a href="#">Robert Koteles</a>
+            <a href="https://www.linkedin.com/in/robertkoteles/">Robert Koteles</a>
           </UserCardName>
           <UserCardDescription>
             Professional Senior Web Developer | Tech leader | Certified Scrum

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import React from "react";
+import DocumentTitle from "react-document-title";
 import Header from "../components/Header/Header";
 import Wall from "../components/Home/Wall/Wall";
 import LeftCol from "../components/Home/LeftCol/LeftCol";
@@ -8,14 +9,16 @@ import RightCol from "../components/Home/RightCol/RightCol";
 
 const Home = () => {
   return (
-    <Container>
-      <Header />
-      <Section>
-        <LeftCol />
-        <Wall />
-        <RightCol />
-      </Section>
-    </Container>
+    <DocumentTitle title="(6) Feed | LinkedIn by Robert Koteles">
+      <Container>
+        <Header />
+        <Section>
+          <LeftCol />
+          <Wall />
+          <RightCol />
+        </Section>
+      </Container>
+    </DocumentTitle>
   );
 };
 

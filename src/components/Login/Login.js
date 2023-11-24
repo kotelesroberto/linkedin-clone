@@ -1,4 +1,5 @@
 import React from "react";
+import DocumentTitle from "react-document-title";
 import styled from "styled-components";
 
 import LoginForm from "./LoginForm";
@@ -11,31 +12,33 @@ import { ButtonJoin, ButtonSignIn } from "../Common/Buttons";
 
 const Login = () => {
   return (
-    <Container>
-      <Nav>
-        <a href="/">
-          <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
-        </a>
-        <NavLoginButtons>
-          <ButtonJoin>Join now</ButtonJoin>
-          <ButtonSignIn>Sign in</ButtonSignIn>
-        </NavLoginButtons>
-      </Nav>
-      <Section>
-        <Hero>
-          <h1>Robert's LinkedIn clone built in React</h1>
-        </Hero>
-        <SignInForm>
-          <LoginForm />
-          <LoginGoogle />
-          <LoginJoin />
-        </SignInForm>
+    <DocumentTitle title="Log in | LinkedIn clone by Robert Koteles">
+      <Container>
+        <Nav>
+          <a href="/">
+            <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
+          </a>
+          <NavLoginButtons>
+            <ButtonJoin>Join now</ButtonJoin>
+            <ButtonSignIn>Sign in</ButtonSignIn>
+          </NavLoginButtons>
+        </Nav>
+        <Section>
+          <Hero>
+            <h1>Robert's LinkedIn clone built in React</h1>
+          </Hero>
+          <SignInForm>
+            <LoginForm />
+            <LoginGoogle />
+            <LoginJoin />
+          </SignInForm>
 
-        <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
-      </Section>
-      <FooterMenu />
-      <FooterInlineMenu />
-    </Container>
+          <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
+        </Section>
+        <FooterMenu />
+        <FooterInlineMenu />
+      </Container>
+    </DocumentTitle>
   );
 };
 

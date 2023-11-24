@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import DocumentTitle from "react-document-title";
 
 import "./App.scss";
 import Login from "./components/Login/Login";
@@ -8,14 +9,14 @@ import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
-    <div className="App">
+    <DocumentTitle title='LinkedIn clone by Robert Koteles'>
       <Router>
         <Routes>
           <Route path="/" element={<Login />} errorElement={<ErrorPage />} />
           <Route path="/home" element={<Home />} errorElement={<ErrorPage />} />
         </Routes>
       </Router>
-    </div>
+    </DocumentTitle>
   );
 }
 

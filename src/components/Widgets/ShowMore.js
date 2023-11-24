@@ -3,8 +3,15 @@ import styled from "styled-components";
 
 const ShowMore = (props) => {
   return (
-    <Container showon={props.showon} textalign={props.textalign}>
-      <a onClick={props.onclickevent}>Show more</a>
+    <Container
+      showon={props.showon}
+      textalign={props.textalign}
+      className={props.classname}
+    >
+      <a onClick={props.onclickevent}>
+        Show {props.classname === "closed" ? "less" : "more"}
+      </a>
+
       <img
         src="/images/down-icon-2.svg"
         alt="Open dropdown"
@@ -52,6 +59,12 @@ const Container = styled.div`
     &:hover {
       text-decoration: none;
       color: inherit;
+    }
+  }
+
+  &.closed {
+    img {
+      transform: rotate(180deg);
     }
   }
 

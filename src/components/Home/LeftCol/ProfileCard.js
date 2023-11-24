@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Card } from "../../Common/Cards";
 import ProfileCardCoverImage from "../../User/ProfileCardCoverImage";
@@ -20,7 +20,7 @@ const ProfileCard = () => {
         <ProfileCardImpressions />
         <ProfileCardMyItems />
       </Card>
-      <ShowMore showon="mobile" onclickevent={toggleView}/>
+      <ShowMore showon="mobile" onclickevent={toggleView} />
     </>
   );
 };

@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-
 import { Card, CardContainer } from "../../Common/Cards";
 import {
   ListHeader,
@@ -13,7 +12,10 @@ import {
 import ShowMore from "../../Widgets/ShowMore";
 
 const LatestNews = () => {
+  const [openedStatus, setOpenedStatus] = useState("closed");
+
   const toggleView = () => {
+    setOpenedStatus(openedStatus === "closed" ? "open" : "closed");
     const newsList = document.getElementById("linkedin-news");
     newsList.querySelectorAll("li").forEach((item, index) => {
       if (index > 4) {
@@ -77,6 +79,7 @@ const LatestNews = () => {
           showon="mobile-desktop"
           textalign="left"
           onclickevent={toggleView}
+          classname={openedStatus}
         />
       </CardContainer>
     </Card>

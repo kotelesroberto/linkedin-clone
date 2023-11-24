@@ -10,9 +10,18 @@ import {
   ListItem,
   ListIcon_Info_After,
 } from "../../Common/Menus";
-import ProfileCardShowMore from "../../Widgets/ProfileCardShowMore";
+import ShowMore from "../../Widgets/ShowMore";
 
 const LatestNews = () => {
+  const toggleView = () => {
+    const newsList = document.getElementById("linkedin-news");
+    newsList.querySelectorAll("li").forEach((item, index) => {
+      if (index > 4) {
+        item.classList.toggle("closed");
+      }
+    });
+  };
+
   return (
     <Card>
       <CardContainer>
@@ -20,51 +29,55 @@ const LatestNews = () => {
           LinkedIn News
           <ListIcon_Info_After></ListIcon_Info_After>
         </ListHeader>
-        <List>
+        <List id="linkedin-news">
           <ListItem>
-            <a href="">
+            <a href="/news/story/demo">
               <ListItemTitle>How leaders can reduce burnout</ListItemTitle>
               <ListItemImpressum>2h ago • 346 readers</ListItemImpressum>
             </a>
           </ListItem>
           <ListItem>
-            <a href="">
+            <a href="/news/story/demo">
               <ListItemTitle>Startups react to OpenAI tumult</ListItemTitle>
               <ListItemImpressum>2h ago</ListItemImpressum>
             </a>
           </ListItem>
           <ListItem>
-            <a href="">
+            <a href="/news/story/demo">
               <ListItemTitle>What's new this Black Friday?</ListItemTitle>
               <ListItemImpressum>2h ago</ListItemImpressum>
             </a>
           </ListItem>
           <ListItem>
-            <a href="">
+            <a href="/news/story/demo">
               <ListItemTitle>Doctor Who boosts Welsh economy</ListItemTitle>
               <ListItemImpressum>2h ago</ListItemImpressum>
             </a>
           </ListItem>
-          <ListItem>
-            <a href="">
+          <ListItem className="closed">
+            <a href="/news/story/demo">
               <ListItemTitle>Spike in fake online stores</ListItemTitle>
               <ListItemImpressum>2h ago</ListItemImpressum>
             </a>
           </ListItem>
-          <ListItem>
-            <a href="">
+          <ListItem className="closed">
+            <a href="/news/story/demo">
               <ListItemTitle>Workers ready for green economy?</ListItemTitle>
               <ListItemImpressum>2h ago</ListItemImpressum>
             </a>
           </ListItem>
-          <ListItem>
-            <a href="">
+          <ListItem className="closed">
+            <a href="/news/story/demo">
               <ListItemTitle>Academic founders get a boost</ListItemTitle>
               <ListItemImpressum>2h ago</ListItemImpressum>
             </a>
           </ListItem>
         </List>
-        <ProfileCardShowMore showOn="mobile-desktop" textAlign="left" />
+        <ShowMore
+          showon="mobile-desktop"
+          textalign="left"
+          onclickevent={toggleView}
+        />
       </CardContainer>
     </Card>
   );

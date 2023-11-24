@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 
-const ProfileCardShowMore = (props) => {
+const ShowMore = (props) => {
   return (
-    <ShowMore showOn={props.showOn} textAlign={props.textAlign}>
-      <a>Show more</a>
+    <Container showon={props.showon} textalign={props.textalign}>
+      <a onClick={props.onclickevent}>Show more</a>
       <img
         src="/images/down-icon-2.svg"
         alt="Open dropdown"
         className="icon-arrow"
       />
-    </ShowMore>
+    </Container>
   );
 };
 
-const ShowMore = styled.div`
+const Container = styled.div`
   text-align: center;
   padding: 4px 8px;
   display: flex;
@@ -28,7 +28,7 @@ const ShowMore = styled.div`
   cursor: pointer;
 
   ${(props) =>
-    props.showOn === "mobile" &&
+    props.showon === "mobile" &&
     `
     display: none;
     
@@ -38,7 +38,7 @@ const ShowMore = styled.div`
     `};
 
   ${(props) =>
-    props.textAlign === "left" &&
+    props.textalign === "left" &&
     `
     justify-content: flex-start;
     padding-left: 30px;
@@ -62,4 +62,4 @@ const ShowMore = styled.div`
   }
 `;
 
-export default ProfileCardShowMore;
+export default ShowMore;

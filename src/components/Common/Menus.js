@@ -31,6 +31,16 @@ export const ListItem = styled.li`
   padding: 0px 12px;
   margin-bottom: 4px;
   position: relative;
+  overflow: hidden;
+  transition: max-height .3s, opacity 0.1s;
+  max-height: 50px;
+  opacity: 1;
+
+  &.closed {
+    max-height: 0;
+    opacity: 0;
+    margin-bottom: 0;
+  }
 
   &:before {
     content: "";

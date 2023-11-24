@@ -6,9 +6,11 @@ import ProfileCardUserPhoto from "../../User/ProfileCardUserPhoto";
 import ProfileCardUserInfo from "../../User/ProfileCardUserInfo";
 import ProfileCardImpressions from "../../User/ProfileCardImpressions";
 import ProfileCardMyItems from "../../User/ProfileCardMyItems";
-import ProfileCardShowMore from "../../Widgets/ProfileCardShowMore";
+import ShowMore from "../../Widgets/ShowMore";
 
 const ProfileCard = () => {
+  const toggleView = () => {};
+
   return (
     <>
       <Card>
@@ -18,7 +20,7 @@ const ProfileCard = () => {
         <ProfileCardImpressions />
         <ProfileCardMyItems />
       </Card>
-      <ProfileCardShowMore showOn="mobile" />
+      <ShowMore showon="mobile" onclickevent={toggleView}/>
     </>
   );
 };

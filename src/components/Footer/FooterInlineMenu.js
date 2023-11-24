@@ -101,9 +101,18 @@ const FooterInlineMenuColumn = styled.div`
     &.logo-last {
       justify-content: center;
       margin-top: -22px;
+      padding: 0 24px;
+
+      @media (max-width: 768px) {
+        padding: 0;
+      }
 
       li {
-        margin: 0.4rem 0.8rem;
+        margin: 0.4rem 0;
+
+        @media (max-width: 768px) {
+          width: auto;
+        }
 
         &:first-child {
           width: 100%;

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import * as variables from "../Common/Variables";
 
 const FooterMenu = () => {
   return (
@@ -151,7 +152,7 @@ const FooterMenuSection = styled.section`
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: #f3f2f0;
+    background-color: ${variables.colors.grey};
     z-index: -1;
   }
 `;

@@ -8,7 +8,9 @@ import {
   ListItemSmall,
   ListSmallIcon_Group,
   ListSmallIcon_Empty,
+  ListSmallIcon_Plus_After,
 } from "../../Common/Menus";
+import WidgetDiscoverMore from "./WidgetDiscoverMore";
 
 const WidgetRecent = () => {
   return (
@@ -44,7 +46,9 @@ const WidgetRecent = () => {
         </ListSmall>
       </CardContainer>
       <CardContainer>
-        <ListSmallHeader>Groups</ListSmallHeader>
+        <ListSmallHeader>
+          <a href="#">Groups</a>
+        </ListSmallHeader>
         <ListSmall>
           <ListItemSmall>
             <a href="">
@@ -79,6 +83,19 @@ const WidgetRecent = () => {
           </ListItemSmall>
         </ListSmall>
       </CardContainer>
+
+      <CardContainer>
+        <ListSmallHeader>
+          <a href="#">Events</a>
+          <ListSmallIcon_Plus_After></ListSmallIcon_Plus_After>
+        </ListSmallHeader>
+      </CardContainer>
+      <CardContainer>
+        <ListSmallHeader>
+          <a href="#">Followed Hashtags</a>
+        </ListSmallHeader>
+      </CardContainer>
+      <WidgetDiscoverMore />
     </Card>
   );
 };

@@ -6,7 +6,7 @@ import ProfileCardUserPhoto from "../../User/ProfileCardUserPhoto";
 import ProfileCardUserInfo from "../../User/ProfileCardUserInfo";
 import ProfileCardImpressions from "../../User/ProfileCardImpressions";
 import ProfileCardMyItems from "../../User/ProfileCardMyItems";
-import ProfileCardShowMore from "../../User/ProfileCardShowMore";
+import ProfileCardShowMore from "../../Widgets/ProfileCardShowMore";
 
 const ProfileCard = () => {
   return (
@@ -18,7 +18,7 @@ const ProfileCard = () => {
         <ProfileCardImpressions />
         <ProfileCardMyItems />
       </Card>
-      <ProfileCardShowMore />
+      <ProfileCardShowMore showOn="mobile" />
     </>
   );
 };

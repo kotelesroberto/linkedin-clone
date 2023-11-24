@@ -1,11 +1,12 @@
 import styled from "styled-components";
+import * as variables from './Variables';
 
 export const Card = styled.div`
-  background-color: #fff;
+  background-color: ${variables.colors.white};
   border-radius: 8px;
-  box-shadow: rgba(140, 140, 140, 0.2) 0px 0px 0px 1px;
+  box-shadow: ${variables.shadows.boxShadow};
   transition-property: box-shadow;
-  padding: 0;
+  padding: 12px 0;
   position: relative;
   overflow: hidden;
   margin-bottom: 8px;
@@ -13,4 +14,5 @@ export const Card = styled.div`
 
 export const CardContainer = styled.div`
   padding: 12px 0;
+  padding: 0;
 `;

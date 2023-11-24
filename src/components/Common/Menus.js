@@ -1,22 +1,27 @@
 import styled from "styled-components";
+import * as variables from "./Variables";
 
-export const ListSmallHeader = styled.h3`
-  font-size: 12px;
+export const ListHeader = styled.h3`
+  font-size: 16px;
   line-height: 1;
   color: rgba(0, 0, 0, 0.9);
   padding: 4px 0;
-  margin-bottom: 12px;
+  margin: 0 0 12px 0;
   padding: 0px 12px;
+  position: relative;
+
+  a {
+    color: ${variables.colors.blue};
+  }
 `;
 
-export const ListSmall = styled.ul`
+export const List = styled.ul`
   margin: 0;
   padding: 0;
-  list-style: none;
   color: rgba(0, 0, 0, 0.9);
 `;
 
-export const ListItemSmall = styled.li`
+export const ListItem = styled.li`
   vertical-align: middle;
   font-size: 12px;
   line-height: 16px;
@@ -24,6 +29,18 @@ export const ListItemSmall = styled.li`
   display: flex;
   flex-direction: row;
   padding: 0px 12px;
+  margin-bottom: 4px;
+  position: relative;
+
+  &:before {
+    content: "";
+    border-radius: 50%;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 10px 12px 2px 0px;
+    border: 3px solid rgba(0, 0, 0, 0.9);
+  }
 
   a {
     white-space: nowrap;
@@ -32,6 +49,7 @@ export const ListItemSmall = styled.li`
     display: flex;
     color: rgba(0, 0, 0, 0.6);
     padding: 4px 0;
+    display: block;
 
     &:hover {
       text-decoration: none;
@@ -44,11 +62,45 @@ export const ListItemSmall = styled.li`
   }
 `;
 
-export const ListItemSmallNoHover = styled(ListItemSmall)`
+export const ListItemTitle = styled.h3`
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 4px;
+`;
+
+export const ListItemImpressum = styled.span`
+  font-weight: 400;
+`;
+
+export const ListItemNoHover = styled(ListItem)`
+  &:before {
+    display: none;
+  }
+
   &:hover {
     background-color: transparent;
   }
 `;
+
+export const ListSmall = styled(List)`
+  list-style: none;
+`;
+
+export const ListSmallHeader = styled(ListHeader)`
+  font-size: 12px;
+`;
+
+export const ListItemSmall = styled(ListItem)`
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 0px;
+  padding-left: 12px;
+
+  &:before {
+    display: none;
+  }
+`;
+
+export const ListItemSmallNoHover = styled(ListItemNoHover)``;
 
 export const ListSmallIcon = styled.span`
   display: inline-flex;
@@ -70,4 +122,17 @@ export const ListSmallIcon_Group = styled(ListSmallIcon)`
 
 export const ListSmallIcon_Empty = styled(ListSmallIcon)`
   background: none;
+`;
+
+export const ListSmallIcon_Plus_After = styled(ListSmallIcon)`
+  background: url("./images/plus-icon.svg") center no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 2px;
+  right: 0;
+  cursor: pointer;
+`;
+
+export const ListIcon_Info_After = styled(ListSmallIcon_Plus_After)`
+  background: url("./images/feed-icon.svg") center no-repeat;
 `;

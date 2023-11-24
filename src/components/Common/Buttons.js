@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as variables from './Variables';
 
 export const ButtonPrimary = styled.button`
   width: 100%;
@@ -88,13 +89,13 @@ export const ButtonJoin = styled.a`
 export const ButtonSignIn = styled(ButtonSecondary)`
   width: auto;
   background-color: rgba(0, 0, 0, 0);
-  color: #0a66c2;
+  color: ${variables.colors.blue};
   border-color: rgb(10, 102, 194);
   margin-bottom: 0;
 
   &:hover {
     background-color: rgba(112, 181, 249, 0.1);
-    color: #0a66c2;
+    color: ${variables.colors.blue};
     text-decoration: none;
   }
 `;

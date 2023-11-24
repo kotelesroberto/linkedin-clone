@@ -20,8 +20,9 @@ const ProfileCardMyItems = () => {
 };
 
 const Container = styled.div`
-  padding: 12px;
+  padding: 12px 0;
   cursor: pointer;
+  margin-bottom: -12px;
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.08);

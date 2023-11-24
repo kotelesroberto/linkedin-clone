@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
+import * as variables from '../Common/Variables';
 
 const ProfileCardUserInfo = () => {
   const profileSet = true;
@@ -37,7 +38,7 @@ const UserCardIntro = styled.div`
   }
   span {
     font-size: 12px;
-    color: #0a66c2;
+    color: ${variables.colors.blue};
     margin-top: 4px;
   }
 `;

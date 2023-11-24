@@ -8,7 +8,6 @@ const Wall = () => {
 const Container = styled.div`
   margin: 0 24px;
   margin-bottom: 24px;
-  /* max-width: 555px; */
   width: 100%;
 
   @media (max-width: 1024px) {

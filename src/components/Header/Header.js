@@ -1,6 +1,6 @@
-import styled from "styled-components";
-
 import React from "react";
+import styled from "styled-components";
+import * as variables from '../Common/Variables';
 
 const Header = () => {
   return (
@@ -93,7 +93,7 @@ const Header = () => {
 };
 
 const Container = styled.div`
-  background-color: #fff;
+  background-color: ${variables.colors.white};
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
   left: 0;
   padding: 0 24px;
@@ -131,7 +131,7 @@ const Search = styled.div`
     input {
       border: none;
       box-shadow: none;
-      background-color: #eef3f8;
+      background-color: ${variables.colors.greyLight};
       border-radius: 2px;
       color: rgba(0, 0, 0, 0.9);
       width: 218px;
@@ -140,7 +140,7 @@ const Search = styled.div`
       line-height: 1.75;
       font-weight: 400;
       font-size: 14px;
-      border-color: #dce6f1;
+      border-color: ${variables.colors.greyBotticelli};
       vertical-align: middle;
       transition: all 0.3s;
 
@@ -274,8 +274,8 @@ const NavListBadge = styled.strong`
   position: absolute;
   top: 2px;
   right: 18px;
-  background-color: #cb112d;
-  color: #fff;
+  background-color: ${variables.colors.red};
+  color: ${variables.colors.white};
   white-space: nowrap;
   height: 1.2rem;
   border-radius: 0.8rem;
@@ -292,7 +292,7 @@ const SignOut = styled.div`
   top: 60px;
   left: auto;
   right: 0;
-  background: white;
+  background: ${variables.colors.white};
   border-radius: 0 0 5px 5px;
   transition-duration: 167ms;
   text-align: left;

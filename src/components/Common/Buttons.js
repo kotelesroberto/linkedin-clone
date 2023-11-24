@@ -111,11 +111,12 @@ export const ButtonSharePost = styled.button`
   font-weight: 700;
   vertical-align: middle;
   display: flex;
+  flex-grow: 1;
   align-items: center;
   justify-content: flex-start;
-  background-color: transparent;
+  background-color: ${variables.colors.white};
   color: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.3s;
   cursor: pointer;
 
@@ -155,6 +156,38 @@ export const ButtonFollow = styled.button`
     content: "";
     display: block;
     background: url("./images/widget-icon.svg") center no-repeat;
+    background-size: 100%;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+`;
+
+export const ButtonNewPost = styled(ButtonSignIn)`
+  min-height: initial;
+  background-color: ${variables.colors.blue};
+  color: ${variables.colors.white};
+  border-color: rgb(10, 102, 194);
+  margin: 0 auto -24px auto;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  box-shadow: rgba(140, 140, 140, 0.2) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
+  z-index: 5;
+  position: relative;
+
+  &:hover {
+    box-shadow: rgba(140, 140, 140, 0.2) 0px 0px 0px 1px,
+      rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
+    background-color: ${variables.colors.darkblue};
+    color: ${variables.colors.white};
+    text-decoration: none;
+  }
+
+  &:before {
+    content: "";
+    display: block;
+    background: url("./images/arrow-up-white.svg") center no-repeat;
     background-size: 100%;
     width: 16px;
     height: 16px;

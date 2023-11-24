@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import * as variables from './Variables';
+import * as variables from "./Variables";
 
 export const ButtonPrimary = styled.button`
   width: 100%;
@@ -99,6 +99,32 @@ export const ButtonSignIn = styled(ButtonSecondary)`
   }
 `;
 
+export const ButtonSharePost = styled.button`
+  min-height: 44px;
+  width: 100%;
+  height: min-content;
+  position: relative;
+  border-radius: 22px;
+  padding: 10px 14px;
+  font-size: 14px;
+  line-height: 1em;
+  font-weight: 700;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 0px 1px inset;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+`;
 
 export const ButtonFollow = styled.button`
   width: auto;
@@ -116,15 +142,14 @@ export const ButtonFollow = styled.button`
   background-color: transparent;
   color: rgba(0, 0, 0, 0.6);
   border: 1px solid rgba(0, 0, 0, 0.6);
-  transition: box-shadow .3s;
+  transition: box-shadow 0.3s;
   cursor: pointer;
-  
+
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 0px 1px inset;
     outline: none;
     background-color: rgba(0, 0, 0, 0.04);
   }
-
 
   &:before {
     content: "";
@@ -135,5 +160,4 @@ export const ButtonFollow = styled.button`
     height: 16px;
     margin-right: 4px;
   }
- 
 `;

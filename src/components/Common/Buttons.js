@@ -18,7 +18,6 @@ export const ButtonPrimary = styled.button`
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
-  font-size: 16px;
 
   &:hover {
     box-shadow: none;
@@ -98,4 +97,43 @@ export const ButtonSignIn = styled(ButtonSecondary)`
     color: ${variables.colors.blue};
     text-decoration: none;
   }
+`;
+
+
+export const ButtonFollow = styled.button`
+  width: auto;
+  height: min-content;
+  position: relative;
+  border-radius: 16px;
+  padding: 6px 16px;
+  font-size: 16px;
+  line-height: 1em;
+  font-weight: 700;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  transition: box-shadow .3s;
+  cursor: pointer;
+  
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 0px 1px inset;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+
+  &:before {
+    content: "";
+    display: block;
+    background: url("./images/widget-icon.svg") center no-repeat;
+    background-size: 100%;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+  }
+ 
 `;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from "react";
 
 const Wall = () => {
-  return <Container>Home Wall</Container>;
+  return <Container>Wall</Container>;
 };
 
 const Container = styled.div`

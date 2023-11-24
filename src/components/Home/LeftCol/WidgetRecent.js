@@ -47,7 +47,7 @@ const WidgetRecent = () => {
           <ListSmallHeader>Recent</ListSmallHeader>
           <ListSmall id="group-recent">
             {groupRecent.map((item, index) => (
-              <ListItemSmall>
+              <ListItemSmall key={ 'widget-recent-' + index }>
                 <a href={item.link}>
                   <ListSmallIcon_Group></ListSmallIcon_Group>
                   {item.title}
@@ -66,7 +66,7 @@ const WidgetRecent = () => {
 
           <ListSmall id="group-recent">
             {groupGroups.map((item, index) => (
-              <ListItemSmall>
+              <ListItemSmall key={ 'widget-group-' + index }>
                 <a href={item.link}>
                   <ListSmallIcon_Group></ListSmallIcon_Group>
                   {item.title}
@@ -88,7 +88,7 @@ const WidgetRecent = () => {
           <a href="#">Followed Hashtags</a>
         </ListSmallHeader>
       </CardContainer>
-      <DiscoverMore />
+      <DiscoverMore title="Discover more" link="#" />
     </Card>
   );
 };

@@ -65,7 +65,7 @@ const Header = () => {
             </NavList>
             <User>
               <a href="">
-                <img src="/images/user.svg" alt="User avatar" />
+                <img src="/images/avatar.svg" alt="User avatar" />
                 <span>
                   Me
                   <img src="/images/down-icon.svg" alt="Open dropdown" className="icon-arrow"/>

@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const ProfileCardImpressions = () => {
+  const [numProfileViewers, setNumProfileViewers] = useState(150);
+  const [numPostImpressions, setNumPostImpressions] = useState(259);
+
   return (
     <Container>
       <CardImpression>
         <CardImpressionRow>
           <CardImpressionCol>Profile viewers</CardImpressionCol>
-          <CardImpressionCol>150</CardImpressionCol>
+          <CardImpressionCol>{numProfileViewers}</CardImpressionCol>
         </CardImpressionRow>
         <CardImpressionRow>
           <CardImpressionCol>Post impressions</CardImpressionCol>
-          <CardImpressionCol>259</CardImpressionCol>
+          <CardImpressionCol>{numPostImpressions}</CardImpressionCol>
         </CardImpressionRow>
       </CardImpression>
     </Container>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Card, CardContainer } from "../../Common/Cards";
+import { Card, CardContainer } from "../Common/Cards";
 import {
   ListHeader,
   List,
@@ -8,8 +8,8 @@ import {
   ListItemImpressum,
   ListItem,
   ListIcon_Info_After,
-} from "../../Common/Menus";
-import ShowMore from "../../Widgets/ShowMore";
+} from "../Common/Menus";
+import ShowMore from "./ShowMore";
 
 const LatestNews = () => {
   const [openedStatus, setOpenedStatus] = useState("closed");
@@ -60,7 +60,9 @@ const LatestNews = () => {
     },
   ];
 
-  const toggleView = () => {
+  const toggleView = (e) => {
+    e.preventDefault();
+
     setOpenedStatus(openedStatus === "closed" ? "open" : "closed");
     const newsList = document.getElementById("linkedin-news");
     newsList.querySelectorAll("li").forEach((item, index) => {
@@ -74,7 +76,7 @@ const LatestNews = () => {
     <Card>
       <CardContainer>
         <ListHeader>
-          {!!news.length ? "LinkedIn News" : "Add to your feed"}
+          LinkedIn News
           <ListIcon_Info_After></ListIcon_Info_After>
         </ListHeader>
 
@@ -82,7 +84,10 @@ const LatestNews = () => {
           <>
             <List id="linkedin-news">
               {news.map((item, index) => (
-                <ListItem className={index > 4 ? "closed" : ""}>
+                <ListItem
+                  className={index > 4 ? "closed" : ""}
+                  key={"widget-latestnews-" + index}
+                >
                   <a href={item.link}>
                     <ListItemTitle>{item.title}</ListItemTitle>
                     <ListItemImpressum>

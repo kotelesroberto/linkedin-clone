@@ -13,6 +13,16 @@ export const ListHeader = styled.h3`
   a {
     color: ${variables.colors.blue};
   }
+
+  span {
+    &.subtitle {
+      display: block;
+      font-size: 14px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 4px 0;
+    }
+  }
 `;
 
 export const List = styled.ul`
@@ -32,7 +42,7 @@ export const ListItem = styled.li`
   margin-bottom: 4px;
   position: relative;
   overflow: hidden;
-  transition: max-height .3s, opacity 0.1s;
+  transition: max-height 0.3s, opacity 0.1s;
   max-height: 50px;
   opacity: 1;
 

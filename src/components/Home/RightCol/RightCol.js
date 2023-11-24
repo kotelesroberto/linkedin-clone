@@ -1,12 +1,14 @@
 import styled from "styled-components";
 import React from "react";
-import LatestNews from "./LatestNews";
+import LatestNews from "../../Widgets/LatestNews";
+import PeopleMayYouKnow from "../../Widgets/PeopleMayYouKnow";
 import FooterInlineMenu from "../../Footer/FooterInlineMenu";
 
 const RightCol = () => {
   return (
     <Container>
       <LatestNews />
+      <PeopleMayYouKnow />
       <FooterInlineMenu extraClass="logo-last" logoVariation="-blue" />
     </Container>
   );

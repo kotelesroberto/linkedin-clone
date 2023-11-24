@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-const DiscoverMore = () => {
+const DiscoverMore = (props) => {
   return (
     <Container>
-      <a>Discover more</a>
+      <a href={props.link}>{props.title}</a>
     </Container>
   );
 };

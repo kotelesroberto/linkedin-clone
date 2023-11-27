@@ -1,5 +1,6 @@
 import React from "react";
 import DocumentTitle from "react-document-title";
+import { connect } from "react-redux";
 import styled from "styled-components";
 
 import LoginForm from "./LoginForm";
@@ -157,4 +158,15 @@ const SignInForm = styled.div`
   }
 `;
 
-export default Login;
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  return {};
+};
+const mapDispatchToProps = (dispatch) => {};
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+// export default Login;

@@ -13,6 +13,10 @@ To initialize the project the following commands should run:
 Important links:
 ### https://styled-components.com/
 ### https://redux.js.org/introduction/getting-started
+### https://www.npmjs.com/package/firebase-tools
+### https://react-redux.js.org/
+### https://redux-toolkit.js.org/
+### https://github.com/reduxjs/redux-thunk (for creating middleware)
 ### https://www.youtube.com/watch?v=xP3cxbDUtrc&t=926s&ab_channel=CleverProgrammer
 
 

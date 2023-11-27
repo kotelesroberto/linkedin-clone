@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "^7.0.3"
+    "node-sass": "^7.0.3",
+    "react-redux": "^8.1.3"
   }
 }

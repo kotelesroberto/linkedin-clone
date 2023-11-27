@@ -52,7 +52,7 @@ const Feed = () => {
         />
       </FeedSortBy>
 
-      <ButtonNewPost id="button-new-post">New posts</ButtonNewPost>
+      <ButtonNewPost id="button-new-post" aria-label="New posts">New posts</ButtonNewPost>
 
       <FeedList>
         {feedItems.map((item, index) => (

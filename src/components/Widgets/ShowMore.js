@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 const ShowMore = (props) => {
@@ -8,7 +8,7 @@ const ShowMore = (props) => {
       textalign={props.textalign}
       className={props.classname}
     >
-      <a onClick={props.onclickevent}>
+      <a href="#" onClick={props.onclickevent} aria-label="Toggle items">
         Show {props.classname === "closed" ? "more" : "less"}
       </a>
 

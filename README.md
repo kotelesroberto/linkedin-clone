@@ -12,9 +12,8 @@ To initialize the project the following commands should run:
 
 Important links:
 ### https://styled-components.com/
+### https://redux.js.org/introduction/getting-started
 ### https://www.youtube.com/watch?v=xP3cxbDUtrc&t=926s&ab_channel=CleverProgrammer
-
-
 
 
 In the project directory, you can run:

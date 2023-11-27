@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Card, CardContainer } from "../Common/Cards";
 import { ListHeader } from "../Common/Menus";
 import DiscoverMore from "../Widgets/DiscoverMore";
@@ -73,18 +72,5 @@ const PeopleMayYouKnow = () => {
     </Card>
   );
 };
-
-const Container = styled.div`
-  padding: 12px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
 
 export default PeopleMayYouKnow;

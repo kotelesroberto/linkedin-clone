@@ -4,7 +4,9 @@ import styled from "styled-components";
 const DiscoverMore = (props) => {
   return (
     <Container>
-      <a href={props.link}>{props.title}</a>
+      <a href={props.link} aria-label={props.title}>
+        {props.title}
+      </a>
     </Container>
   );
 };

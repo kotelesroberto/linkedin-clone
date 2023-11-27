@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import * as variables from '../Common/Variables';
+import * as variables from "../Common/Variables";
 
 const ProfileCardUserInfo = () => {
   const profileSet = true;
@@ -17,7 +17,9 @@ const ProfileCardUserInfo = () => {
       {profileSet && (
         <>
           <UserCardName>
-            <a href="https://www.linkedin.com/in/robertkoteles/">Robert Koteles</a>
+            <a href="https://www.linkedin.com/in/robertkoteles/">
+              Robert Koteles
+            </a>
           </UserCardName>
           <UserCardDescription>
             Professional Senior Web Developer | Tech leader | Certified Scrum

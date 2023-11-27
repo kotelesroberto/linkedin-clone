@@ -13,7 +13,7 @@ const LoginForm = () => {
   return (
     <form className="loginForm">
       <fieldset>
-        <label htmlFor="loginEmail">Email or phone</label>
+        <label htmlFor="loginEmail" aria-label="Email or phone">Email or phone</label>
         <input
           className=""
           autoComplete="username"
@@ -24,7 +24,7 @@ const LoginForm = () => {
         ></input>
       </fieldset>
       <fieldset>
-        <label htmlFor="loginPassword">Password</label>
+        <label htmlFor="loginPassword" aria-label="Password">Password</label>
         <input
           className=""
           autoComplete="current-password"
@@ -45,12 +45,12 @@ const LoginForm = () => {
         </button>
       </fieldset>
       <fieldset>
-        <a href="/forgot-password" className="link-bold">
+        <a href="/forgot-password" className="link-bold" aria-label="Forgot password?">
           Forgot password?
         </a>
       </fieldset>
       <fieldset>
-        <ButtonSecondary>Sign in</ButtonSecondary>
+        <ButtonSecondary aria-label="Sign in">Sign in</ButtonSecondary>
       </fieldset>
     </form>
   );

@@ -134,7 +134,7 @@ export const ListSmallIcon = styled.span`
   flex-shrink: 0;
 `;
 
-export const ListSmallIcon_Bookmark = styled(ListSmallIcon)`
+export const LIST_SMALL_ICON__BOOKMARK = styled(ListSmallIcon)`
   background: url("./images/item-icon.svg") center no-repeat;
   background-size: cover;
 `;
@@ -157,6 +157,6 @@ export const ListSmallIcon_Plus_After = styled(ListSmallIcon)`
   cursor: pointer;
 `;
 
-export const ListIcon_Info_After = styled(ListSmallIcon_Plus_After)`
+export const LISTICON_INFO_AFTER = styled(ListSmallIcon_Plus_After)`
   background: url("./images/feed-icon.svg") center no-repeat;
 `;

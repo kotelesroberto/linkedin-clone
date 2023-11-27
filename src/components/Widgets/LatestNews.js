@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Card, CardContainer } from "../Common/Cards";
 import {
   ListHeader,
@@ -7,7 +6,7 @@ import {
   ListItemTitle,
   ListItemImpressum,
   ListItem,
-  ListIcon_Info_After,
+  LISTICON_INFO_AFTER,
 } from "../Common/Menus";
 import ShowMore from "./ShowMore";
 
@@ -77,7 +76,7 @@ const LatestNews = () => {
       <CardContainer>
         <ListHeader>
           LinkedIn News
-          <ListIcon_Info_After></ListIcon_Info_After>
+          <LISTICON_INFO_AFTER></LISTICON_INFO_AFTER>
         </ListHeader>
 
         {!!news.length && (
@@ -109,18 +108,5 @@ const LatestNews = () => {
     </Card>
   );
 };
-
-const Container = styled.div`
-  padding: 12px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
 
 export default LatestNews;

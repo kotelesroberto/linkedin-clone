@@ -3,7 +3,7 @@ import styled from "styled-components";
 import {
   ListSmall,
   ListItemSmallNoHover,
-  ListSmallIcon_Bookmark,
+  LIST_SMALL_ICON__BOOKMARK,
 } from "../Common/Menus";
 
 const ProfileCardMyItems = () => {
@@ -11,7 +11,7 @@ const ProfileCardMyItems = () => {
     <Container>
       <ListSmall>
         <ListItemSmallNoHover>
-          <ListSmallIcon_Bookmark></ListSmallIcon_Bookmark>
+          <LIST_SMALL_ICON__BOOKMARK></LIST_SMALL_ICON__BOOKMARK>
           My items
         </ListItemSmallNoHover>
       </ListSmall>

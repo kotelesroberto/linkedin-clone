@@ -8,7 +8,7 @@ import {
 import DocumentTitle from "react-document-title";
 
 import "./App.scss";
-import Login from "./components/Login/Login";
+import LoginPage from "./pages/LoginPage";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import DemoPage from "./pages/DemoPage";
@@ -19,7 +19,7 @@ function App() {
     <DocumentTitle title="LinkedIn clone by Robert Koteles">
       <Router>
         <Routes>
-          <Route path="/" element={<Login />} errorElement={<ErrorPage />} />
+          <Route path="/" element={<LoginPage />} errorElement={<ErrorPage />} />
           <Route path="/home" element={<Home />} errorElement={<ErrorPage />} />
           <Route path="/demo" element={<DemoPage />} />
           <Route path="*" element={<Navigate to="/demo" replace />} />

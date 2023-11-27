@@ -3,15 +3,15 @@ import DocumentTitle from "react-document-title";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import LoginForm from "./LoginForm";
-import LoginGoogle from "./LoginGoogle";
-import LoginJoin from "./LoginJoin";
-import FooterMenu from "../Footer/FooterMenu";
-import FooterInlineMenu from "../Footer/FooterInlineMenu";
+import LoginForm from "../components/Login/LoginForm";
+import LoginGoogle from "../components/Login/LoginGoogle";
+import LoginJoin from "../components/Login/LoginJoin";
+import FooterMenu from "../components/Footer/FooterMenu";
+import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 
-import { ButtonJoin, ButtonSignIn } from "../Common/Buttons";
+import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 
-const Login = () => {
+const LoginPage = () => {
   return (
     <DocumentTitle title="Log in | LinkedIn clone by Robert Koteles">
       <Container>
@@ -166,7 +166,5 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {};
 
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
-
-// export default Login;
+// export default LoginPage;
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

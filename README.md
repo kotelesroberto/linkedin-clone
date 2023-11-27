@@ -1,4 +1,16 @@
-# Getting Started with Create React App
+# Twitter clone (React, Firebase, Node JS)
+
+| Tinder                                                                               | React                                                                                   |
+| ------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------- |
+| ![LinkedIn](https://icons.iconarchive.com/icons/danleech/simple/256/linkedin-icon.png) | ![enter image description here](https://files.readme.io/320345b-React_Logo_256x256.png) |
+
+This nice **React / Redux** application is a clone of basic LinkedIn webapp.
+
+## Demo
+
+Click [here](https://linkedin-clone-5e0fa.web.app/) to view the demo webapp.
+
+# About the solution
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -7,6 +19,12 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 To initialize the project the following commands should run:
 
 ### npx create-react-app linkedin-clone
+### npm install
+### firebase login 
+### firebase init (only once at the beginning of development)
+### npm run build
+### firebase deploy
+
 ### To begin the development, run `npm start` or `yarn start`.
 ### To create a production bundle, use `npm run build` or `yarn build`.
 

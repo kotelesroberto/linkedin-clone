@@ -1,9 +1,17 @@
-import firebase from "firebase";
+/**
+ * Firebase latest in November 2023
+ * All APIs are different from the previous version, all APIs are iported from specific Firebase packages
+ *
+ * Available SDKs for Firebase products
+ * https://firebase.google.com/docs/web/setup#available-libraries
+ */
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { initializeApp } from "firebase/app";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getStorage } from "firebase/storage";
+import { getFirestore } from "firebase/firestore";
 
-// Your web app's Firebase configuration
+// Web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDIUq_PQnZp_bu2ptavdTjTrJh3cgRmy4c",
   authDomain: "linkedin-clone-5e0fa.firebaseapp.com",
@@ -14,18 +22,18 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase app
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+const firebaseApp = initializeApp(firebaseConfig);
 
-// initialize the database (Cloud Firestore))
-const db = firebaseApp.firestore();
-
-// initialize the authentication ()
-const auth = firebaseApp.auth();
+// Initialize Firebase Authentication and get a reference to the service
+const auth = getAuth(firebaseApp);
 
 // initialize the Google auth provider for using google account as login method
-const provider = new firebase.GoogleAuthProvider();
+const providerGoogle = new GoogleAuthProvider();
 
-// initialize the storage for assets such as images
-const storage = firebase.storage();
+// Initialize Cloud Storage and get a reference to the service for assets such as images
+const storage = getStorage(firebaseApp);
 
-export { db, auth, provider, storage };
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(firebaseApp);
+
+export { db, storage, auth, providerGoogle };

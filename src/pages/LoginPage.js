@@ -8,10 +8,11 @@ import LoginGoogle from "../components/Login/LoginGoogle";
 import LoginJoin from "../components/Login/LoginJoin";
 import FooterMenu from "../components/Footer/FooterMenu";
 import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
-
 import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 
-const LoginPage = () => {
+import { signInGoogleAPI } from "../redux/actions";
+
+const LoginPage = (props) => {
   return (
     <DocumentTitle title="Log in | LinkedIn clone by Robert Koteles">
       <Container>
@@ -30,7 +31,7 @@ const LoginPage = () => {
           </Hero>
           <SignInForm>
             <LoginForm />
-            <LoginGoogle />
+            <LoginGoogle parentProps={props} />
             <LoginJoin />
           </SignInForm>
 
@@ -164,7 +165,9 @@ const SignInForm = styled.div`
 const mapStateToProps = (state) => {
   return {};
 };
-const mapDispatchToProps = (dispatch) => {};
+const mapDispatchToProps = (dispatch) => ({
+  signIn: dispatch(signInGoogleAPI),
+});
 
 // export default LoginPage;
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

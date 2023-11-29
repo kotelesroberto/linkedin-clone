@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import * as variables from '../Common/Variables';
+import * as variables from "../Common/Variables";
+import { connect } from "react-redux";
 
-const Header = () => {
+const Header = (props) => {
   return (
     <Container>
       <Content>
@@ -65,10 +66,18 @@ const Header = () => {
             </NavList>
             <User>
               <a href="">
-                <img src="/images/avatar.svg" alt="User avatar" />
+                {props.user && props.user.photoURL ? (
+                  <img src={props.user.photoURL} alt={props.user.displayName} />
+                ) : (
+                  <img src="/images/avatar.svg" alt="User avatar" />
+                  )}
                 <span>
                   Me
-                  <img src="/images/down-icon.svg" alt="Open dropdown" className="icon-arrow"/>
+                  <img
+                    src="/images/down-icon.svg"
+                    alt="Open dropdown"
+                    className="icon-arrow"
+                  />
                 </span>
               </a>
 
@@ -81,7 +90,11 @@ const Header = () => {
                 <img src="/images/nav-work.svg" alt="" />
                 <span>
                   Business
-                  <img src="/images/down-icon.svg" alt="" className="icon-arrow"/>
+                  <img
+                    src="/images/down-icon.svg"
+                    alt=""
+                    className="icon-arrow"
+                  />
                 </span>
               </a>
             </ForBusiness>
@@ -230,7 +243,7 @@ const NavList = styled.li`
       opacity: 0.6;
       width: 24px;
       height: auto;
-      
+
       &.icon-arrow {
         width: 16px;
       }
@@ -354,4 +367,18 @@ const ForBusiness = styled(User)`
   border-left: 1px solid rgba(0, 0, 0, 0.08);
 `;
 
-export default Header;
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    user: state.userState.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

@@ -5,14 +5,15 @@ import { UserAvatarPhoto } from "../../Common/User";
 import { Card, CardContainer } from "../../Common/Cards";
 import { ButtonSharePost } from "../../Common/Buttons";
 import { IconButtonRow } from "../../Common/Icons";
+import { connect } from "react-redux";
 
-const ShareBox = () => {
+const ShareBox = (props) => {
   return (
     <ShareBoxContainer>
       <CardContainer>
         <ShareBoxTop>
           <UserAvatarPhoto>
-            <img src="./upload/userphoto.jpg" alt="" />
+            <img src={props.user.photoURL} alt={props.user.displayName} />
           </UserAvatarPhoto>
           <ButtonSharePost>Start a post</ButtonSharePost>
         </ShareBoxTop>
@@ -57,4 +58,18 @@ const ShareBoxTop = styled.div`
 
 const ShareBoxButtons = styled(IconButtonRow)``;
 
-export default ShareBox;
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    user: state.userState.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ShareBox);

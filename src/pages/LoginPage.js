@@ -10,36 +10,41 @@ import FooterMenu from "../components/Footer/FooterMenu";
 import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 
-import { signInGoogleAPI } from "../redux/actions";
+import { signInAPI } from "../redux/actions/actions";
+import { Navigate } from "react-router-dom";
 
 const LoginPage = (props) => {
+  console.log("props", props);
   return (
     <DocumentTitle title="Log in | LinkedIn clone by Robert Koteles">
-      <Container>
-        <Nav>
-          <a href="/">
-            <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
-          </a>
-          <NavLoginButtons>
-            <ButtonJoin>Join now</ButtonJoin>
-            <ButtonSignIn>Sign in</ButtonSignIn>
-          </NavLoginButtons>
-        </Nav>
-        <Section>
-          <Hero>
-            <h1>Robert's LinkedIn clone built in React</h1>
-          </Hero>
-          <SignInForm>
-            <LoginForm />
-            <LoginGoogle parentProps={props} />
-            <LoginJoin />
-          </SignInForm>
+      <>
+        {props.user && <Navigate to="/home" replace />}
+        <Container>
+          <Nav>
+            <a href="/">
+              <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
+            </a>
+            <NavLoginButtons>
+              <ButtonJoin>Join now</ButtonJoin>
+              <ButtonSignIn>Sign in</ButtonSignIn>
+            </NavLoginButtons>
+          </Nav>
+          <Section>
+            <Hero>
+              <h1>Robert's LinkedIn clone built in React</h1>
+            </Hero>
+            <SignInForm>
+              <LoginForm />
+              <LoginGoogle parentProps={props} />
+              <LoginJoin />
+            </SignInForm>
 
-          <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
-        </Section>
-        <FooterMenu />
-        <FooterInlineMenu />
-      </Container>
+            <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
+          </Section>
+          <FooterMenu />
+          <FooterInlineMenu />
+        </Container>
+      </>
     </DocumentTitle>
   );
 };
@@ -163,11 +168,19 @@ const SignInForm = styled.div`
 
 // any time the store is updated, mapStateToProps will be called. Expected to return an object
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    user: state.userState.user,
+  };
 };
-const mapDispatchToProps = (dispatch) => ({
-  signIn: dispatch(signInGoogleAPI),
-});
+
+// () = ({ ... }) is equal to () => { return ({ ... })}
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signIn: () => {
+      dispatch(signInAPI());
+    },
+  };
+};
 
 // export default LoginPage;
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

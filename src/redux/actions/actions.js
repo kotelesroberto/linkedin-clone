@@ -3,6 +3,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 /* Login by Google Authentication  */
@@ -57,5 +58,25 @@ export const getUserAuth = () => {
         // User is signed out
       }
     });
+  };
+};
+
+// Firebase Sign Out
+export const signOutAPI = () => {
+  console.log('signOutAPI was called');
+  return (dispatch) => {
+    signOut(auth)
+      .then(() => {
+        // Sign-out successful
+        console.log('Sign-out successful');
+        dispatch({
+          type: "userState/setUser",
+          user: null,
+        });
+      })
+      .catch((error) => {
+        // An error happened.
+        console.error(error.message);
+      });
   };
 };

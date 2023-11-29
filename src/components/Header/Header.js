@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import * as variables from "../Common/Variables";
 import { connect } from "react-redux";
+import { signOutAPI } from "../../redux/actions/actions";
 
 const Header = (props) => {
   return (
@@ -70,7 +71,7 @@ const Header = (props) => {
                   <img src={props.user.photoURL} alt={props.user.displayName} />
                 ) : (
                   <img src="/images/avatar.svg" alt="User avatar" />
-                  )}
+                )}
                 <span>
                   Me
                   <img
@@ -81,8 +82,10 @@ const Header = (props) => {
                 </span>
               </a>
 
-              <SignOut>
-                <a href="#">Sign out</a>
+              <SignOut >
+                <a href="#" onClick={props.signOut}>
+                  Sign out
+                </a>
               </SignOut>
             </User>
             <ForBusiness>
@@ -378,7 +381,12 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    signOut: (e) => {
+      e.preventDefault();
+      dispatch(signOutAPI());
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

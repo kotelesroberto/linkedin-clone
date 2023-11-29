@@ -19,7 +19,7 @@ const ProfileCardUserInfo = (props) => {
         <>
           <UserCardName>
             <a href="https://www.linkedin.com/in/robertkoteles/">
-              {props.user.displayName}
+              {props.user && props.user.displayName ? props.user.displayName : 'Me'}
             </a>
           </UserCardName>
           <UserCardDescription>

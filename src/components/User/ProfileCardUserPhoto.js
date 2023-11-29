@@ -5,7 +5,11 @@ import { connect } from "react-redux";
 const ProfileCardUserPhoto = (props) => {
   return (
     <UserPhoto status="opentowork">
-      <img src={props.user.photoURL} alt={props.user.displayName} />
+      {props.user && props.user.photoURL ? (
+        <img src={props.user.photoURL} alt={props.user.displayName} />
+      ) : (
+        <img src="/images/avatar.svg" alt="User avatar" />
+      )}
     </UserPhoto>
   );
 };

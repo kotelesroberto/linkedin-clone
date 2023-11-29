@@ -13,7 +13,11 @@ const ShareBox = (props) => {
       <CardContainer>
         <ShareBoxTop>
           <UserAvatarPhoto>
-            <img src={props.user.photoURL} alt={props.user.displayName} />
+            {props.user && props.user.photoURL ? (
+              <img src={props.user.photoURL} alt={props.user.displayName} />
+            ) : (
+              <img src="/images/avatar.svg" alt="User avatar" />
+            )}
           </UserAvatarPhoto>
           <ButtonSharePost>Start a post</ButtonSharePost>
         </ShareBoxTop>

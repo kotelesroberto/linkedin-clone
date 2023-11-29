@@ -1,9 +1,10 @@
-
 import React from "react";
 import DocumentTitle from "react-document-title";
-import { connect } from "react-redux";
 
 import styled from "styled-components";
+import { connect } from "react-redux";
+
+import { Navigate } from "react-router-dom";
 
 import Header from "../components/Header/Header";
 import Wall from "../components/Home/Wall/Wall";
@@ -12,15 +13,18 @@ import RightCol from "../components/Home/RightCol/RightCol";
 
 const Home = (props) => {
   return (
-    <DocumentTitle title={ "(6) Feed | LinkedIn by "+ props.user.displayName}>
-      <Container>
-        <Header />
-        <Section>
-          <LeftCol />
-          <Wall />
-          <RightCol />
-        </Section>
-      </Container>
+    <DocumentTitle title={"(6) Feed | LinkedIn by Robert Koteles"}>
+      <>
+        {!props.user && <Navigate to="/" replace />}
+        <Container>
+          <Header />
+          <Section>
+            <LeftCol />
+            <Wall />
+            <RightCol />
+          </Section>
+        </Container>
+      </>
     </DocumentTitle>
   );
 };
@@ -52,8 +56,6 @@ const Section = styled.section`
   }
 `;
 
-
-
 /*=====  React-redux related functions  ======*/
 
 // any time the store is updated, mapStateToProps will be called. Expected to return an object
@@ -63,5 +65,8 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+  return {};
+};
 
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

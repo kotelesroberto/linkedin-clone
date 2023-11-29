@@ -1,5 +1,9 @@
 import { auth, providerGoogle } from "../../firebase/firebase";
-import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 /* Login by Google Authentication  */
 // https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#signinwithpopup
@@ -13,22 +17,15 @@ export const ___signInAPI = () => {
   };
 };
 
+// Firebase Google Sign In
 export const signInAPI = () => {
   return (dispatch) => {
     signInWithPopup(auth, providerGoogle)
       .then((result) => {
         console.log(result);
-
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        // const credential = GoogleAuthProvider.credentialFromResult(result);
-        // const token = credential.accessToken;
-
-        // The signed-in user info.
-        const user = result.user;
-
         dispatch({
           type: "userState/setUser",
-          user: result,
+          user: result.user,
         });
       })
       .catch((error) => {
@@ -40,5 +37,25 @@ export const signInAPI = () => {
         // The AuthCredential type that was used.
         const credential = GoogleAuthProvider.credentialFromError(error);
       });
+  };
+};
+
+// Firebase checks the user login status
+export const getUserAuth = () => {
+  return (dispatch) => {
+    onAuthStateChanged(auth, (user) => {
+      // user is already logged in
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        // const uid = user.uid;
+        dispatch({
+          type: "userState/setUser",
+          user: user,
+        });
+      } else {
+        // User is signed out
+      }
+    });
   };
 };

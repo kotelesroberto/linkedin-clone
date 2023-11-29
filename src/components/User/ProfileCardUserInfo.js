@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import * as variables from "../Common/Variables";
+import { connect } from "react-redux";
 
-const ProfileCardUserInfo = () => {
+const ProfileCardUserInfo = (props) => {
   const profileSet = true;
 
   return (
@@ -18,7 +19,7 @@ const ProfileCardUserInfo = () => {
         <>
           <UserCardName>
             <a href="https://www.linkedin.com/in/robertkoteles/">
-              Robert Koteles
+              {props.user.displayName}
             </a>
           </UserCardName>
           <UserCardDescription>
@@ -64,4 +65,14 @@ const UserCardDescription = styled.span`
   margin-top: 4px;
 `;
 
-export default ProfileCardUserInfo;
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    user: state.userState.user,
+  };
+};
+
+export default connect(mapStateToProps)(ProfileCardUserInfo);

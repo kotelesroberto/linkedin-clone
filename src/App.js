@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -12,14 +12,23 @@ import LoginPage from "./pages/LoginPage";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import DemoPage from "./pages/DemoPage";
+import { getUserAuth } from "./redux/actions/actions";
+import { connect } from "react-redux";
 
+function App(props) {
+  useEffect(() => {
+    props.getUserAuth();
+  }, []);
 
-function App() {
   return (
     <DocumentTitle title="LinkedIn clone by Robert Koteles">
       <Router>
         <Routes>
-          <Route path="/" element={<LoginPage />} errorElement={<ErrorPage />} />
+          <Route
+            path="/"
+            element={<LoginPage />}
+            errorElement={<ErrorPage />}
+          />
           <Route path="/home" element={<Home />} errorElement={<ErrorPage />} />
           <Route path="/demo" element={<DemoPage />} />
           <Route path="*" element={<Navigate to="/demo" replace />} />
@@ -29,4 +38,16 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getUserAuth: () => {
+      dispatch(getUserAuth());
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,15 +1,18 @@
-import styled from "styled-components";
 
 import React from "react";
 import DocumentTitle from "react-document-title";
+import { connect } from "react-redux";
+
+import styled from "styled-components";
+
 import Header from "../components/Header/Header";
 import Wall from "../components/Home/Wall/Wall";
 import LeftCol from "../components/Home/LeftCol/LeftCol";
 import RightCol from "../components/Home/RightCol/RightCol";
 
-const Home = () => {
+const Home = (props) => {
   return (
-    <DocumentTitle title="(6) Feed | LinkedIn by Robert Koteles">
+    <DocumentTitle title={ "(6) Feed | LinkedIn by "+ props.user.displayName}>
       <Container>
         <Header />
         <Section>
@@ -49,4 +52,16 @@ const Section = styled.section`
   }
 `;
 
-export default Home;
+
+
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+export default connect(mapStateToProps)(Home);
+

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DocumentTitle from "react-document-title";
 
 import styled from "styled-components";
@@ -15,8 +15,9 @@ import PostModal from "../components/Home/Wall/PostModal";
 const Home = (props) => {
   const [showModal, setShowModal] = useState(false);
 
-  const handleClick = (e) => {
+  const handleModalClick = (e) => {
     e.preventDefault();
+    console.log("call: handleModalClick");
     if (e.target !== e.currentTarget) return;
 
     switch (showModal) {
@@ -32,6 +33,15 @@ const Home = (props) => {
     }
   };
 
+  useEffect(() => {
+    // user can close opened modal from keyboard (accessibility)
+    document.addEventListener("keydown", (e) => {
+      if (showModal && e.key === "Escape") {
+        setShowModal(false);
+      }
+    });
+  }, []);
+
   return (
     <DocumentTitle title={"(6) Feed | LinkedIn by Robert Koteles"}>
       <>
@@ -40,11 +50,14 @@ const Home = (props) => {
           <Header />
           <Section>
             <LeftCol />
-            <Wall handleClick={handleClick} />
+            <Wall handleModalClick={handleModalClick} />
             <RightCol />
           </Section>
 
-          <PostModal showModal={showModal} handleClick={handleClick} />
+          <PostModal
+            showModal={showModal}
+            handleModalClick={handleModalClick}
+          />
         </Container>
       </>
     </DocumentTitle>

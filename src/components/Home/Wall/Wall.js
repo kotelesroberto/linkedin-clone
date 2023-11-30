@@ -7,7 +7,7 @@ import Feed from "./Feed";
 const Wall = (props) => {
   return (
     <Container>
-      <ShareBox handleClick={props.handleClick} />
+      <ShareBox handleModalClick={props.handleModalClick} />
       <Feed />
     </Container>
   );

@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 import * as variables from "../../Common/Variables";
 import { ButtonActionContainer, ButtonAction } from "../../Common/Icons";
 import { Card } from "../../Common/Cards";
 import { ButtonSecondary } from "../../Common/Buttons";
+
+import DropZone from "./DropZone";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
@@ -11,7 +13,7 @@ const PostModal = (props) => {
   const closeModal = (e) => {
     e.preventDefault();
     setEditorText("");
-    props.handleClick(e);
+    props.handleModalClick(e);
   };
 
   return (
@@ -32,10 +34,7 @@ const PostModal = (props) => {
               </ClosePopupActions>
             </Header>
             <UploadArea>
-              <img src="./images/uploadAssetBg.svg" alt="" />
-              <h2>Select files to begin</h2>
-              <p>Share images or a single video in your post.</p>
-              <ButtonSecondary>Upload from computer</ButtonSecondary>
+              <DropZone />
             </UploadArea>
             <Footer>
               <ButtonRow>
@@ -63,8 +62,7 @@ const Content = styled(Card)`
   width: 90%;
   max-width: 1128px;
   background-color: #fff;
-  min-height: 50%;
-  max-height: 90%;
+  min-height: 90%;
   overflow: initial;
   position: absolute;
   left: 50%;

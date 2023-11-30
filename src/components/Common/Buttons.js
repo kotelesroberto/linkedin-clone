@@ -163,6 +163,14 @@ export const ButtonFollow = styled.button`
   }
 `;
 
+export const ButtonEmoji = styled(ButtonFollow)`
+  &:before {
+    background: url("./images/emoji.svg") center no-repeat;
+    background-size: 100%;
+    margin-right: 0px;
+  }
+`;
+
 export const ButtonNewPost = styled(ButtonSignIn)`
   min-height: initial;
   background-color: ${variables.colors.blue};

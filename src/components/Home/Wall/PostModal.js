@@ -9,12 +9,17 @@ import DropZone from "./DropZone";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const closeModal = (e) => {
     e.preventDefault();
     setEditorText("");
     props.handleModalClick(e);
   };
+
+  // we have these data to post:
+  console.log(editorText);
+  console.log(uploadedFiles);
 
   return (
     <>
@@ -34,7 +39,13 @@ const PostModal = (props) => {
               </ClosePopupActions>
             </Header>
             <UploadArea>
-              <DropZone />
+              <DropZone
+                closeModal={closeModal}
+                editorText={editorText}
+                setEditorText={setEditorText}
+                uploadedFiles={uploadedFiles}
+                setUploadedFiles={setUploadedFiles}
+              />
             </UploadArea>
             <Footer>
               <ButtonRow>

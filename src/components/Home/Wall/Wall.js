@@ -4,10 +4,10 @@ import React from "react";
 import ShareBox from "./ShareBox";
 import Feed from "./Feed";
 
-const Wall = () => {
+const Wall = (props) => {
   return (
     <Container>
-      <ShareBox />
+      <ShareBox handleClick={props.handleClick} />
       <Feed />
     </Container>
   );

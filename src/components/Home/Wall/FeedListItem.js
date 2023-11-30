@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Card, CardContainer } from "../../Common/Cards";
 import { UserAvatarPhoto } from "../../Common/User";
-import { IconButtonRow, IconPeople } from "../../Common/Icons";
-import * as variables from "../../Common/Variables";
+import { IconButtonRow, IconPeople, ButtonActionContainer, ButtonAction } from "../../Common/Icons";
+
 
 const FeedListItem = (props) => {
   return (
@@ -190,38 +190,9 @@ const FeedListItemDate = styled.span`
   font-size: 12px;
 `;
 
-const FeedItemActions = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  margin-left: auto;
-`;
+const FeedItemActions = styled(ButtonActionContainer)``;
 
-const FeedItemAction = styled.button`
-  cursor: pointer;
-  box-shadow: none;
-  outline: none;
-  border: none;
-  width: 32px;
-  height: 32px;
-  border-radius: 16px;
-  padding: 0;
-  background-color: ${variables.colors.white};
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-  }
-
-  img {
-    width: 20px;
-    height: auto;
-
-    &.close-icon {
-      width: 16px;
-    }
-  }
-`;
+const FeedItemAction = styled(ButtonAction)``;
 
 const SocialCounts = styled.ul`
   display: flex;

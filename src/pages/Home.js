@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DocumentTitle from "react-document-title";
 
 import styled from "styled-components";
@@ -10,8 +10,28 @@ import Header from "../components/Header/Header";
 import Wall from "../components/Home/Wall/Wall";
 import LeftCol from "../components/Home/LeftCol/LeftCol";
 import RightCol from "../components/Home/RightCol/RightCol";
+import PostModal from "../components/Home/Wall/PostModal";
 
 const Home = (props) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if (e.target !== e.currentTarget) return;
+
+    switch (showModal) {
+      case true:
+        setShowModal(false);
+        break;
+      case false:
+        setShowModal(true);
+        break;
+      default:
+        setShowModal(false);
+        break;
+    }
+  };
+
   return (
     <DocumentTitle title={"(6) Feed | LinkedIn by Robert Koteles"}>
       <>
@@ -20,9 +40,11 @@ const Home = (props) => {
           <Header />
           <Section>
             <LeftCol />
-            <Wall />
+            <Wall handleClick={handleClick} />
             <RightCol />
           </Section>
+
+          <PostModal showModal={showModal} handleClick={handleClick} />
         </Container>
       </>
     </DocumentTitle>

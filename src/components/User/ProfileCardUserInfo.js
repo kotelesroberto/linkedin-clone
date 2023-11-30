@@ -4,22 +4,22 @@ import * as variables from "../Common/Variables";
 import { connect } from "react-redux";
 
 const ProfileCardUserInfo = (props) => {
-  const profileSet = true;
-
   return (
     <UserCardInfo>
-      {!profileSet && (
+      {!props.user && (
         <UserCardIntro>
           <h3>Welcome, there!</h3>
           <span>Add a photo</span>
         </UserCardIntro>
       )}
 
-      {profileSet && (
+      {props.user && (
         <>
           <UserCardName>
             <a href="https://www.linkedin.com/in/robertkoteles/">
-              {props.user && props.user.displayName ? props.user.displayName : 'Me'}
+              {props.user && props.user.displayName
+                ? props.user.displayName
+                : "Me"}
             </a>
           </UserCardName>
           <UserCardDescription>

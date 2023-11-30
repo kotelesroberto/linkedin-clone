@@ -22,7 +22,7 @@ const ShareBox = (props) => {
           <ButtonSharePost>Start a post</ButtonSharePost>
         </ShareBoxTop>
         <ShareBoxButtons>
-          <button>
+          <button onClick={props.handleClick}>
             <img src="/images/photo-icon.svg" alt="" />
             <span>Photo</span>
           </button>
@@ -60,7 +60,11 @@ const ShareBoxTop = styled.div`
   }
 `;
 
-const ShareBoxButtons = styled(IconButtonRow)``;
+const ShareBoxButtons = styled(IconButtonRow)`
+  span {
+    pointer-events: none;
+  }
+`;
 
 /*=====  React-redux related functions  ======*/
 

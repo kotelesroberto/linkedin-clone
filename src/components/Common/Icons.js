@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import * as variables from "./Variables";
 
 export const IconPeople = styled.span``;
 
@@ -32,6 +33,40 @@ export const IconButtonRow = styled.div`
       width: 24px;
       height: 24px;
       margin-right: 8px;
+    }
+  }
+`;
+
+export const ButtonActionContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  margin-left: auto;
+`;
+
+export const ButtonAction = styled.button`
+  cursor: pointer;
+  box-shadow: none;
+  outline: none;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  padding: 0;
+  background-color: ${variables.colors.white};
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  img {
+    width: 20px;
+    height: auto;
+
+    &.close-icon {
+      width: 16px;
     }
   }
 `;

@@ -17,9 +17,19 @@ const PostModal = (props) => {
     props.handleModalClick(e);
   };
 
-  // we have these data to post:
-  console.log(editorText);
-  console.log(uploadedFiles);
+  const clickPost = (e) => {
+    // post data to server
+    // TODO
+    console.log(editorText);
+    console.log(uploadedFiles);
+
+    // erase data from state
+    setEditorText("");
+    setUploadedFiles([]);
+
+    // close modal
+    closeModal(e);
+  };
 
   return (
     <>
@@ -49,7 +59,11 @@ const PostModal = (props) => {
             </UploadArea>
             <Footer>
               <ButtonRow>
-                <ButtonSecondary>Next</ButtonSecondary>
+                {!!uploadedFiles.length ? (
+                  <ButtonSecondary onClick={clickPost}>Post</ButtonSecondary>
+                ) : (
+                  <ButtonSecondary>Next</ButtonSecondary>
+                )}
               </ButtonRow>
             </Footer>
           </Content>

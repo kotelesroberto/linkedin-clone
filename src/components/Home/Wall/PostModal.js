@@ -6,15 +6,19 @@ import { ButtonPrimary, ButtonSecondary } from "../../Common/Buttons";
 import { IconButtonRow } from "../../Common/Icons";
 import PostModalHeader from "./PostModalHeader";
 import AddEventForm from "./AddEventForm";
+import UploadInProgress from "./UploadInProgress";
 
 import DropZone from "./DropZone";
+import UploadFile from "../../../utils/uploadFile";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
   const [eventForm, setEventForm] = useState([]);
   const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [uploadedImagesOnServer, setUploadedImagesOnServer] = useState([]);
 
   const showModal = props.showModal;
+  const setShowModal = props.setShowModal;
   const handleModalClick = props.handleModalClick;
 
   const [previousShowModal, setPreviousShowModal] = useState("");
@@ -41,6 +45,7 @@ const PostModal = (props) => {
     // erase data from state
     setEditorText("");
     setUploadedFiles([]);
+    setUploadedImagesOnServer([]);
   };
 
   const clickPost = (e) => {
@@ -51,10 +56,25 @@ const PostModal = (props) => {
     console.log(editorText);
     console.log(uploadedFiles);
 
-    erasePostData(e);
+    setShowModal("is-posting");
 
-    // close modal
-    closeModal(e);
+    // Upload files
+    // upload images first and after the content
+    uploadedFiles.map((item) => {
+      UploadFile({
+        folder: "images/posts",
+        imageAsFile: item,
+        setUrl: (resp) => {
+          let temp = uploadedImagesOnServer.push({ imgUrl: resp });
+          setUploadedImagesOnServer(temp);
+
+          if (uploadedImagesOnServer.length === uploadedFiles.length) {
+            // close modal
+            closeModal(e);
+          }
+        },
+      });
+    });
   };
 
   const clickPostEvent = (e) => {
@@ -82,7 +102,7 @@ const PostModal = (props) => {
               handleModalClick={handleModalClick}
             />
             <UploadArea>
-              {showModal !== "addEvent" && (
+              {["addPost", "addMedia"].includes(showModal) && (
                 <>
                   <DropZone
                     showModal={showModal}
@@ -119,6 +139,7 @@ const PostModal = (props) => {
               )}
 
               {showModal === "addEvent" && <AddEventForm />}
+              {showModal === "is-posting" && <UploadInProgress />}
             </UploadArea>
 
             <Footer>
@@ -126,7 +147,7 @@ const PostModal = (props) => {
                 {previousShowModal && (
                   <ButtonPrimary onClick={gotoBack}>Back</ButtonPrimary>
                 )}
-                {showModal !== "addEvent" &&
+                {["addPost", "addMedia"].includes(showModal) &&
                   (!!uploadedFiles.length ? (
                     <ButtonSecondary onClick={clickPost}>Post</ButtonSecondary>
                   ) : (
@@ -180,6 +201,10 @@ const Content = styled(Card)`
 
   &.addpost,
   &.addevent {
+    max-width: 744px;
+    min-height: 40%;
+  }
+  &.is-posting {
     max-width: 744px;
     min-height: 40%;
   }

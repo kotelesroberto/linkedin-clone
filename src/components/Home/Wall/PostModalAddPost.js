@@ -12,6 +12,7 @@ const PostModalAddPost = (props) => {
   const uploadedFiles = props.uploadedFiles;
   const editorText = props.editorText;
   const setEditorText = props.setEditorText;
+  const error = props.error;
 
   /*=============================================
   =            Textarea handlers            =
@@ -34,7 +35,8 @@ const PostModalAddPost = (props) => {
 
   // make url srings anchored in the content
   const doUrlify = (text) => {
-    return text.preg_replace(urlRegex, function (url) {
+    console.log("call: doUrlify");
+    return text.replace(urlRegex, function (url) {
       return '<a href="' + url + '">' + url + "</a>";
     });
   };
@@ -90,17 +92,19 @@ const PostModalAddPost = (props) => {
         value={editorText}
       ></textarea>
 
-
       <ThumbContainer>
-      {/* Render a YouTube video player */
-       externalMediaUrl && <ReactPlayer url={externalMediaUrl} />
-      }
+        {
+          /* Render a YouTube video player */
+          externalMediaUrl && <ReactPlayer url={externalMediaUrl} />
+        }
         {uploadedFiles.map((file) => (
           <ThumbWrapper key={file.path}>
             <ThumbImage file={file} />
           </ThumbWrapper>
         ))}
       </ThumbContainer>
+
+      {error && <Error>{error}</Error>}
 
       <Pickercontainer>
         <ButtonEmoji onClick={clickEmojiTrigger} />
@@ -208,6 +212,10 @@ const Pickercontainer = styled.div`
 const EmojiContainer = styled.div`
   position: absolute;
   bottom: 40px;
+`;
+
+const Error = styled.div`
+  color: red;
 `;
 
 export default PostModalAddPost;

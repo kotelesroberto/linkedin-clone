@@ -13,8 +13,8 @@ import RightCol from "../components/Home/RightCol/RightCol";
 import PostModal from "../components/Home/Wall/PostModal";
 
 const Home = (props) => {
-  // 'addPost', 'addMedia', 'addEvent', 'addArticle'
-  const [showModal, setShowModal] = useState("addEvent");
+  // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
+  const [showModal, setShowModal] = useState("is-posting");
 
   const handleModalClick = (e, newModalState = "") => {
     e.preventDefault();
@@ -46,6 +46,7 @@ const Home = (props) => {
 
           <PostModal
             showModal={showModal}
+            setShowModal={setShowModal}
             handleModalClick={handleModalClick}
           />
           { showModal }

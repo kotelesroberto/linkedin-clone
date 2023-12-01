@@ -10,7 +10,7 @@ const PostModalHeader = (props) => {
   const handleModalClick = props.handleModalClick;
 
   const headerToShow = useCallback((showModal) => {
-    // 'addPost', 'addMedia', 'addEvent', 'addArticle'
+    // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
     switch (showModal) {
       case "addPost":
         return <ProfileCardWide handleModalClick={handleModalClick} />;
@@ -23,6 +23,9 @@ const PostModalHeader = (props) => {
         break;
       case "setPostVisibility":
         return <h2>Post settings</h2>;
+        break;
+      case "is-posting":
+        return <h2>Posting</h2>;
         break;
 
       default:

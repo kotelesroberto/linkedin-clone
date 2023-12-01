@@ -16,8 +16,10 @@ const DropZone = (props) => {
   const [error, setError] = useState("");
 
   const onDrop = useCallback((acceptedFiles) => {
+    console.log("call: onDrop");
     // Do something with the files
     console.log(acceptedFiles);
+    // setError("");
     setUploadedFiles([]);
 
     setUploadedFiles(
@@ -30,10 +32,9 @@ const DropZone = (props) => {
   }, []);
 
   const fileSizeValidator = useCallback((file) => {
-    setError("");
-
+    console.log('call: fileSizeValidator');
     if (file.size > 5000000) {
-      setError("Too big file, please select smaller one!");
+      setError("One of the files was bigger than 5MB, please select smaller one!");
       return {
         code: "size-too-large",
         message: `Too big file!`,
@@ -88,11 +89,13 @@ const DropZone = (props) => {
         </Container>
       )}
 
-      {((showModal === "addMedia" && uploadedFiles.length) || (showModal === 'addPost')) && (
+      {((showModal === "addMedia" && uploadedFiles.length) ||
+        showModal === "addPost") && (
         <PostModalAddPost
           uploadedFiles={uploadedFiles}
           editorText={editorText}
           setEditorText={setEditorText}
+          error={error}
         />
       )}
     </>

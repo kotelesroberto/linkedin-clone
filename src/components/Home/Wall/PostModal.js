@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import * as variables from "../../Common/Variables";
 import { Card } from "../../Common/Cards";
-import { ButtonSecondary } from "../../Common/Buttons";
+import { ButtonPrimary, ButtonSecondary } from "../../Common/Buttons";
 import { IconButtonRow } from "../../Common/Icons";
 import PostModalHeader from "./PostModalHeader";
 
@@ -15,6 +15,13 @@ const PostModal = (props) => {
   const showModal = props.showModal;
   const handleModalClick = props.handleModalClick;
 
+  const [previousShowModal, setPreviousShowModal] = useState("");
+
+  const changeShowModal = (e, newModalState = "") => {
+    setPreviousShowModal(showModal);
+    handleModalClick(e, newModalState);
+  };
+
   const closeModal = (e) => {
     e.preventDefault();
     setEditorText("");
@@ -22,7 +29,16 @@ const PostModal = (props) => {
     handleModalClick(e);
   };
 
+  const gotoBack = (e) => {
+    e.preventDefault();
+    handleModalClick(e, previousShowModal);
+    setPreviousShowModal("");
+    setUploadedFiles([]);
+  };
+
   const clickPost = (e) => {
+    e.preventDefault();
+
     // post data to server
     // TODO
     console.log(editorText);
@@ -58,15 +74,11 @@ const PostModal = (props) => {
 
               {showModal === "addPost" && (
                 <PostModalIconButtonRow>
-                  <button
-                    onClick={(e) => props.handleModalClick(e, "addMedia")}
-                  >
+                  <button onClick={(e) => changeShowModal(e, "addMedia")}>
                     <img src="/images/photo-icon.svg" alt="Add media" />
                     <span>Add media</span>
                   </button>
-                  <button
-                    onClick={(e) => props.handleModalClick(e, "addEvent")}
-                  >
+                  <button onClick={(e) => changeShowModal(e, "addEvent")}>
                     <img src="/images/calendar-icon.svg" alt="Crate an event" />
                     <span>Crate an event</span>
                   </button>
@@ -83,6 +95,9 @@ const PostModal = (props) => {
 
             <Footer>
               <ButtonRow>
+                {previousShowModal && (
+                  <ButtonPrimary onClick={gotoBack}>Back</ButtonPrimary>
+                )}
                 {!!uploadedFiles.length ? (
                   <ButtonSecondary onClick={clickPost}>Post</ButtonSecondary>
                 ) : (
@@ -112,6 +127,7 @@ const Content = styled(Card)`
   max-width: 1128px;
   background-color: #fff;
   min-height: 90%;
+  max-height: 100vh;
   overflow: initial;
   position: absolute;
   left: 50%;
@@ -120,6 +136,7 @@ const Content = styled(Card)`
   display: flex;
   flex-direction: column;
   padding: 0;
+  overflow: auto;
 
   &.addpost {
     max-width: 744px;
@@ -161,9 +178,11 @@ const ButtonRow = styled.div`
   align-items: center;
   padding: 16px 24px;
 
+  ${ButtonPrimary},
   ${ButtonSecondary} {
     width: auto;
     margin-bottom: 0;
+    margin-left: 6px;
 
     &[disabled] {
       opacity: 0.4;

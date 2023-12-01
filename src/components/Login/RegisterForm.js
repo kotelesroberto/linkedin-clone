@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.scss";
 import styled from "styled-components";
 
 import { ButtonSecondary } from "../Common/Buttons";
 
-
 const RegisterForm = () => {
-  
+  const [signupEmail, setSignupEmail] = useState("");
+  const [signupPass, setSignupPass] = useState("");
 
   const showPassword = (e) => {
     const passwordField = document.getElementById("loginPassword");
     passwordField.type =
       passwordField.type === "password" ? "text" : "password";
+  };
+
+  const doSubmitRegistration = (e) => {
+    e.preventDefault();
+    console.log(signupEmail + ' ' + signupPass);
   };
 
   return (
@@ -27,6 +32,8 @@ const RegisterForm = () => {
           name="loginEmail"
           required=""
           type="text"
+          value={signupEmail}
+          onChange={(e) => setSignupEmail(e.target.value)}
         ></input>
       </Fieldset>
       <Fieldset>
@@ -40,6 +47,8 @@ const RegisterForm = () => {
           name="loginPassword"
           required=""
           type="password"
+          value={signupPass}
+          onChange={(e) => setSignupPass(e.target.value)}
         ></input>
         <button
           aria-live="assertive"
@@ -76,7 +85,12 @@ const RegisterForm = () => {
         </p>
       </Fieldset>
       <Fieldset>
-        <ButtonSecondary aria-label="Agree & Join">
+        <ButtonSecondary
+          aria-label="Agree & Join"
+          onClick={(e) => {
+            doSubmitRegistration(e);
+          }}
+        >
           Agree & Join
         </ButtonSecondary>
       </Fieldset>

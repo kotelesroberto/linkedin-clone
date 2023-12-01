@@ -1,19 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Login.scss";
 
 import { ButtonSecondary } from "../Common/Buttons";
 
 const LoginForm = () => {
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPass, setLoginPass] = useState("");
+
   const showPassword = (e) => {
     const passwordField = document.getElementById("loginPassword");
     passwordField.type =
       passwordField.type === "password" ? "text" : "password";
   };
 
+  const doSubmitLogin = (e) => {
+    e.preventDefault();
+    console.log(loginEmail + " " + loginPass);
+  };
+
   return (
     <form className="loginForm">
       <fieldset>
-        <label htmlFor="loginEmail" aria-label="Email or phone">Email or phone</label>
+        <label htmlFor="loginEmail" aria-label="Email or phone">
+          Email or phone
+        </label>
         <input
           className=""
           autoComplete="username"
@@ -21,10 +31,14 @@ const LoginForm = () => {
           name="loginEmail"
           required=""
           type="text"
+          value={loginEmail}
+          onChange={(e) => setLoginEmail(e.target.value)}
         ></input>
       </fieldset>
       <fieldset>
-        <label htmlFor="loginPassword" aria-label="Password">Password</label>
+        <label htmlFor="loginPassword" aria-label="Password">
+          Password
+        </label>
         <input
           className=""
           autoComplete="current-password"
@@ -32,6 +46,8 @@ const LoginForm = () => {
           name="loginPassword"
           required=""
           type="password"
+          value={loginPass}
+          onChange={(e) => setLoginPass(e.target.value)}
         ></input>
         <button
           aria-live="assertive"
@@ -45,12 +61,18 @@ const LoginForm = () => {
         </button>
       </fieldset>
       <fieldset>
-        <a href="/forgot-password" className="link-bold" aria-label="Forgot password?">
+        <a
+          href="/forgot-password"
+          className="link-bold"
+          aria-label="Forgot password?"
+        >
           Forgot password?
         </a>
       </fieldset>
       <fieldset>
-        <ButtonSecondary aria-label="Sign in">Sign in</ButtonSecondary>
+        <ButtonSecondary aria-label="Sign in" onClick={(e) => doSubmitLogin(e)}>
+          Sign in
+        </ButtonSecondary>
       </fieldset>
     </form>
   );

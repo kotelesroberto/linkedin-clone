@@ -6,22 +6,62 @@ import { ButtonSecondary, ButtonEmoji } from "../../Common/Buttons";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
 
+import ReactPlayer from "react-player";
+
 const PostModalAddPost = (props) => {
   const uploadedFiles = props.uploadedFiles;
   const editorText = props.editorText;
   const setEditorText = props.setEditorText;
 
+  /*=============================================
+  =            Textarea handlers            =
+  =============================================*/
+
   const textareaPlaceholder = "What do you want to talk about?";
 
   /* Add textarea Insert emoji */
   const [charPosition, setCharPosition] = useState(0);
-  const [emojiPanel, setEmojiPanel] = useState(false);
+  const [externalMediaUrl, setExternalMediaUrl] = useState("");
 
   const onchangeTextarea = () => {
     const comment = document.getElementById("postMessage");
     setCharPosition(comment.selectionStart);
     setEditorText(comment.value);
+    getFirstYoutubeLink(editorText);
   };
+
+  const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+  // make url srings anchored in the content
+  const doUrlify = (text) => {
+    return text.preg_replace(urlRegex, function (url) {
+      return '<a href="' + url + '">' + url + "</a>";
+    });
+  };
+
+  // get extracted url addresses from content
+  const getFirstMediaLink = (text) => {
+    const matches = text.match(urlRegex);
+    return matches;
+  };
+
+  // get youtube video extracted from content
+  const getFirstYoutubeLink = (text) => {
+    const urlRegex =
+      /https?:\/\/(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/gi;
+    const matches = text.match(urlRegex);
+    if (matches) {
+      setExternalMediaUrl(matches[0]);
+    } else {
+      setExternalMediaUrl("");
+    }
+    return matches;
+  };
+
+  /*=============================================
+  =            Emoji            =
+  =============================================*/
+  const [emojiPanel, setEmojiPanel] = useState(false);
 
   const onEmojiSelect = (e) => {
     setEditorText(
@@ -42,7 +82,7 @@ const PostModalAddPost = (props) => {
         name=""
         id="postMessage"
         cols="30"
-        rows="10"
+        rows="4"
         aria-placeholder={textareaPlaceholder}
         placeholder={textareaPlaceholder}
         onChange={onchangeTextarea}
@@ -50,7 +90,11 @@ const PostModalAddPost = (props) => {
         value={editorText}
       ></textarea>
 
+
       <ThumbContainer>
+      {/* Render a YouTube video player */
+       externalMediaUrl && <ReactPlayer url={externalMediaUrl} />
+      }
         {uploadedFiles.map((file) => (
           <ThumbWrapper key={file.path}>
             <ThumbImage file={file} />
@@ -87,6 +131,7 @@ const ContainerAside = styled.div`
     max-height: 400px;
     background-color: transparent;
     resize: none;
+    height: auto;
   }
 `;
 
@@ -119,9 +164,19 @@ const ThumbContainer = styled.ul`
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: flex-start;
+  margin-bottom: 6px;
+  overflow-x: auto;
+  width: 100%;
 
   @media (max-width: 768px) {
     flex-wrap: wrap;
+  }
+
+  & > div {
+    /* width: auto !important;
+    height: auto !important; */
+    max-height: 300px;
+    flex-shrink: 0;
   }
 `;
 
@@ -133,7 +188,7 @@ const ThumbWrapper = styled.li`
 
   img {
     &.thumbImage {
-      width: 100%;
+      width: auto;
       max-height: 300px;
       height: auto;
 

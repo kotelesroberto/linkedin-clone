@@ -44,6 +44,7 @@ const Container = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: center;
+  cursor: pointer;
 
   &:hover {
     box-shadow: ${variables.shadows.boxShadow};

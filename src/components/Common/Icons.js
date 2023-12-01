@@ -9,6 +9,11 @@ export const IconButtonRow = styled.div`
   flex-wrap: wrap;
   justify-content: space-around;
 
+  span,
+  img {
+    pointer-events: none;
+  }
+
   button {
     outline: none;
     border: none;

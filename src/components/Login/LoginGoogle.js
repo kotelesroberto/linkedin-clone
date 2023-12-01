@@ -1,14 +1,11 @@
 import React from "react";
 import { ButtonWithImage } from "../Common/Buttons";
 
-// import { signInAPI } from "../../redux/actions";
-
 const LoginGoogle = (props) => {
-  
-  const signIn = () => props.parentProps.signIn();
+  const signInGoogle = () => props.parentProps.signInGoogle();
 
   return (
-    <ButtonWithImage onClick={signIn}>
+    <ButtonWithImage onClick={signInGoogle}>
       <img src="/images/google.svg" alt="Sign in with google account" />
       Continue with Google
     </ButtonWithImage>

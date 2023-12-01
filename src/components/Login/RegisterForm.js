@@ -3,10 +3,15 @@ import "./Login.scss";
 import styled from "styled-components";
 
 import { ButtonSecondary } from "../Common/Buttons";
+import * as variables from "../Common/Variables";
 
-const RegisterForm = () => {
+const RegisterForm = (props) => {
   const [signupEmail, setSignupEmail] = useState("");
   const [signupPass, setSignupPass] = useState("");
+  const [error, setError] = useState("");
+
+  const registerByEmailAndPass = (email, pass, callback) =>
+    props.parentProps.registerByEmailAndPass(email, pass, callback);
 
   const showPassword = (e) => {
     const passwordField = document.getElementById("loginPassword");
@@ -16,7 +21,11 @@ const RegisterForm = () => {
 
   const doSubmitRegistration = (e) => {
     e.preventDefault();
-    console.log(signupEmail + ' ' + signupPass);
+    setError("");
+
+    registerByEmailAndPass(signupEmail, signupPass, (text) => {
+      setError(text);
+    });
   };
 
   return (
@@ -61,6 +70,11 @@ const RegisterForm = () => {
           Show
         </button>
       </Fieldset>
+      {error && (
+        <Fieldset>
+          <p className="error">{error}</p>
+        </Fieldset>
+      )}
       <Fieldset>
         <p>
           By clicking Agree &amp; Join, you agree to the LinkedIn
@@ -101,6 +115,10 @@ const RegisterForm = () => {
 const Fieldset = styled.fieldset`
   p {
     font-size: 12px;
+
+    &.error {
+      color: ${variables.colors.red};
+    }
   }
   a {
     display: inline-block;

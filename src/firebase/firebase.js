@@ -7,8 +7,8 @@
  */
 
 import { initializeApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { getStorage } from "firebase/storage";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { getStorage, ref } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 
 // Web app's Firebase configuration
@@ -32,8 +32,10 @@ const providerGoogle = new GoogleAuthProvider();
 
 // Initialize Cloud Storage and get a reference to the service for assets such as images
 const storage = getStorage(firebaseApp);
+// Create a storage reference from our storage service
+const storageRef = ref(storage);
 
 // Initialize Cloud Firestore and get a reference to the service
 const db = getFirestore(firebaseApp);
 
-export { db, storage, auth, providerGoogle };
+export { db, storage, storageRef, auth, providerGoogle };

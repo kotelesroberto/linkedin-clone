@@ -1,15 +1,61 @@
 import { auth, providerGoogle } from "../../firebase/firebase";
 import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
   signOut,
 } from "firebase/auth";
 
+/* Register by email and password */
+export const registerByEmailAndPassAPI = (email, pass, callback) => {
+  return (dispatch) => {
+    createUserWithEmailAndPassword(auth, email, pass)
+      .then((UserCredential) => {
+        const user = UserCredential.user;
+        dispatch({
+          type: "userState/setUser",
+          user: user,
+        });
+        return;
+      })
+      .catch((error) => {
+        console.log(error.message);
+
+        if (typeof callback === "function") {
+          callback.call(this, error.message);
+        }
+      });
+  };
+};
+
+/* Login by email and password */
+export const signInEmailAndPassAPI = (email, pass, callback = null) => {
+  return (dispatch) => {
+    signInWithEmailAndPassword(auth, email, pass)
+      .then((UserCredential) => {
+        const user = UserCredential.user;
+        dispatch({
+          type: "userState/setUser",
+          user: user,
+        });
+        return;
+      })
+      .catch((error) => {
+        console.log(error.message);
+
+        if (typeof callback === "function") {
+          callback.call(this, error.message);
+        }
+      });
+  };
+};
+
 /* Login by Google Authentication  */
 // https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#signinwithpopup
 // Firebase Google Sign In
-export const signInAPI = () => {
+export const signInGoogleAPI = () => {
   return (dispatch) => {
     signInWithPopup(auth, providerGoogle)
       .then((result) => {
@@ -20,7 +66,7 @@ export const signInAPI = () => {
         });
       })
       .catch((error) => {
-        console.log("signInAPI error", error);
+        console.log("signInGoogleAPI error", error);
         const errorCode = error.code;
         const errorMessage = error.message;
         // The email of the user's account used.

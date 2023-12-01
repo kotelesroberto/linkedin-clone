@@ -10,7 +10,10 @@ import FooterMenu from "../components/Footer/FooterMenu";
 import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 
-import { signInAPI } from "../redux/actions/actions";
+import {
+  signInGoogleAPI,
+  signInEmailAndPassAPI,
+} from "../redux/actions/actions";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const LoginPage = (props) => {
@@ -41,7 +44,7 @@ const LoginPage = (props) => {
               <h1>Robert's LinkedIn clone built in React</h1>
             </Hero>
             <SignInForm>
-              <LoginForm />
+              <LoginForm parentProps={props} />
               <LoginGoogle parentProps={props} />
               <LoginJoin gotoSignUpPage={gotoSignUpPage} />
             </SignInForm>
@@ -183,8 +186,11 @@ const mapStateToProps = (state) => {
 // () = ({ ... }) is equal to () => { return ({ ... })}
 const mapDispatchToProps = (dispatch) => {
   return {
-    signIn: () => {
-      dispatch(signInAPI());
+    signInGoogle: () => {
+      dispatch(signInGoogleAPI());
+    },
+    signInEmailAndPassAPI: (email, pass, callback) => {
+      dispatch(signInEmailAndPassAPI(email, pass, callback));
     },
   };
 };

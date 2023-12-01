@@ -1,11 +1,17 @@
 import React, { useState } from "react";
 import "./Login.scss";
+import styled from "styled-components";
 
+import * as variables from "../Common/Variables";
 import { ButtonSecondary } from "../Common/Buttons";
 
-const LoginForm = () => {
-  const [loginEmail, setLoginEmail] = useState("");
-  const [loginPass, setLoginPass] = useState("");
+const LoginForm = (props) => {
+  const [loginEmail, setLoginEmail] = useState("test@gmail.com");
+  const [loginPass, setLoginPass] = useState("Test2023");
+  const [error, setError] = useState("");
+
+  const signInEmailAndPassAPI = (email, pass, callback) =>
+    props.parentProps.signInEmailAndPassAPI(email, pass, callback);
 
   const showPassword = (e) => {
     const passwordField = document.getElementById("loginPassword");
@@ -16,11 +22,15 @@ const LoginForm = () => {
   const doSubmitLogin = (e) => {
     e.preventDefault();
     console.log(loginEmail + " " + loginPass);
+
+    signInEmailAndPassAPI(loginEmail, loginPass, (text) => {
+      setError(text);
+    });
   };
 
   return (
     <form className="loginForm">
-      <fieldset>
+      <Fieldset>
         <label htmlFor="loginEmail" aria-label="Email or phone">
           Email or phone
         </label>
@@ -34,8 +44,8 @@ const LoginForm = () => {
           value={loginEmail}
           onChange={(e) => setLoginEmail(e.target.value)}
         ></input>
-      </fieldset>
-      <fieldset>
+      </Fieldset>
+      <Fieldset>
         <label htmlFor="loginPassword" aria-label="Password">
           Password
         </label>
@@ -59,8 +69,15 @@ const LoginForm = () => {
         >
           Show
         </button>
-      </fieldset>
-      <fieldset>
+      </Fieldset>
+
+      {error && (
+        <Fieldset>
+          <p className="error">{error}</p>
+        </Fieldset>
+      )}
+
+      <Fieldset>
         <a
           href="/forgot-password"
           className="link-bold"
@@ -68,14 +85,25 @@ const LoginForm = () => {
         >
           Forgot password?
         </a>
-      </fieldset>
-      <fieldset>
+      </Fieldset>
+
+      <Fieldset>
         <ButtonSecondary aria-label="Sign in" onClick={(e) => doSubmitLogin(e)}>
           Sign in
         </ButtonSecondary>
-      </fieldset>
+      </Fieldset>
     </form>
   );
 };
+
+const Fieldset = styled.fieldset`
+  p {
+    font-size: 12px;
+
+    &.error {
+      color: ${variables.colors.red};
+    }
+  }
+`;
 
 export default LoginForm;

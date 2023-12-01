@@ -9,11 +9,11 @@ import AlreadyRegistered from "../components/Login/AlreadyRegistered";
 import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 
-import { signInAPI } from "../redux/actions/actions";
+import { registerByEmailAndPassAPI } from "../redux/actions/actions";
+
 import { Navigate, useNavigate } from "react-router-dom";
 
 import { Card } from "../components/Common/Cards";
-
 
 const SignUpPage = (props) => {
   const navigate = useNavigate();
@@ -38,7 +38,7 @@ const SignUpPage = (props) => {
               <h1>Make the most of your professional life</h1>
             </Hero>
             <SignInForm>
-              <RegisterForm />
+              <RegisterForm parentProps={props} />
               <LoginGoogle parentProps={props} />
               <AlreadyRegistered
                 parentProps={props}
@@ -162,8 +162,8 @@ const mapStateToProps = (state) => {
 // () = ({ ... }) is equal to () => { return ({ ... })}
 const mapDispatchToProps = (dispatch) => {
   return {
-    signIn: () => {
-      dispatch(signInAPI());
+    registerByEmailAndPass: (email, pass, callback) => {
+      dispatch(registerByEmailAndPassAPI(email, pass, callback));
     },
   };
 };

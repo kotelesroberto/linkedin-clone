@@ -14,6 +14,7 @@ const PostModal = (props) => {
   const closeModal = (e) => {
     e.preventDefault();
     setEditorText("");
+    setUploadedFiles([]);
     props.handleModalClick(e);
   };
 
@@ -62,7 +63,9 @@ const PostModal = (props) => {
                 {!!uploadedFiles.length ? (
                   <ButtonSecondary onClick={clickPost}>Post</ButtonSecondary>
                 ) : (
-                  <ButtonSecondary>Next</ButtonSecondary>
+                  <ButtonSecondary isDisabled={!!uploadedFiles.length}>
+                    Next
+                  </ButtonSecondary>
                 )}
               </ButtonRow>
             </Footer>
@@ -162,6 +165,7 @@ const ButtonRow = styled.div`
   ${ButtonSecondary} {
     width: auto;
     margin-bottom: 0;
+    opacity: ${(props) => (props.isDisabled ? 0.8 : 1)};
   }
 `;
 

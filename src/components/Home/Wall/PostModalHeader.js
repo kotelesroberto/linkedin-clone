@@ -31,28 +31,6 @@ const PostModalHeader = (props) => {
     }
   }, []);
 
-  const ___headerToShow = (showModal) => {
-    // 'addPost', 'addMedia', 'addEvent', 'addArticle'
-    switch (showModal) {
-      case "addPost":
-        return <ProfileCardWide handleModalClick={handleModalClick} />;
-        break;
-      case "addMedia":
-        return <h2>Editor</h2>;
-        break;
-      case "addEvent":
-        return <h2>Create an event</h2>;
-        break;
-      case "setPostVisibility":
-        return <h2>Post settings</h2>;
-        break;
-
-      default:
-        return "";
-        break;
-    }
-  };
-
   return (
     <Header>
       <div>{headerToShow(showModal)}</div>

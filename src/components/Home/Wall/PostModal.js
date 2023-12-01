@@ -5,11 +5,13 @@ import { Card } from "../../Common/Cards";
 import { ButtonPrimary, ButtonSecondary } from "../../Common/Buttons";
 import { IconButtonRow } from "../../Common/Icons";
 import PostModalHeader from "./PostModalHeader";
+import AddEventForm from "./AddEventForm";
 
 import DropZone from "./DropZone";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
+  const [eventForm, setEventForm] = useState([]);
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
   const showModal = props.showModal;
@@ -24,8 +26,7 @@ const PostModal = (props) => {
 
   const closeModal = (e) => {
     e.preventDefault();
-    setEditorText("");
-    setUploadedFiles([]);
+    erasePostData(e);
     handleModalClick(e);
   };
 
@@ -33,6 +34,12 @@ const PostModal = (props) => {
     e.preventDefault();
     handleModalClick(e, previousShowModal);
     setPreviousShowModal("");
+    setUploadedFiles([]);
+  };
+
+  const erasePostData = (e) => {
+    // erase data from state
+    setEditorText("");
     setUploadedFiles([]);
   };
 
@@ -44,12 +51,24 @@ const PostModal = (props) => {
     console.log(editorText);
     console.log(uploadedFiles);
 
-    // erase data from state
-    setEditorText("");
-    setUploadedFiles([]);
+    erasePostData(e);
 
     // close modal
     closeModal(e);
+  };
+
+  const clickPostEvent = (e) => {
+    e.preventDefault();
+
+    // post data to server
+    // TODO
+    console.log(editorText);
+    console.log(uploadedFiles);
+
+    erasePostData(e);
+
+    // close modal
+    // closeModal(e);
   };
 
   return (
@@ -63,34 +82,43 @@ const PostModal = (props) => {
               handleModalClick={handleModalClick}
             />
             <UploadArea>
-              <DropZone
-                showModal={showModal}
-                closeModal={closeModal}
-                editorText={editorText}
-                setEditorText={setEditorText}
-                uploadedFiles={uploadedFiles}
-                setUploadedFiles={setUploadedFiles}
-              />
+              {showModal !== "addEvent" && (
+                <>
+                  <DropZone
+                    showModal={showModal}
+                    closeModal={closeModal}
+                    editorText={editorText}
+                    setEditorText={setEditorText}
+                    uploadedFiles={uploadedFiles}
+                    setUploadedFiles={setUploadedFiles}
+                  />
 
-              {showModal === "addPost" && (
-                <PostModalIconButtonRow>
-                  <button onClick={(e) => changeShowModal(e, "addMedia")}>
-                    <img src="/images/photo-icon.svg" alt="Add media" />
-                    <span>Add media</span>
-                  </button>
-                  <button onClick={(e) => changeShowModal(e, "addEvent")}>
-                    <img src="/images/calendar-icon.svg" alt="Crate an event" />
-                    <span>Crate an event</span>
-                  </button>
-                  <button>
-                    <img
-                      src="/images/starburst-icon.svg"
-                      alt="Celebrate an occassion"
-                    />
-                    <span>Celebrate an occassion</span>
-                  </button>
-                </PostModalIconButtonRow>
+                  {showModal === "addPost" && (
+                    <PostModalIconButtonRow>
+                      <button onClick={(e) => changeShowModal(e, "addMedia")}>
+                        <img src="/images/photo-icon.svg" alt="Add media" />
+                        <span>Add media</span>
+                      </button>
+                      <button onClick={(e) => changeShowModal(e, "addEvent")}>
+                        <img
+                          src="/images/calendar-icon.svg"
+                          alt="Crate an event"
+                        />
+                        <span>Crate an event</span>
+                      </button>
+                      <button>
+                        <img
+                          src="/images/starburst-icon.svg"
+                          alt="Celebrate an occassion"
+                        />
+                        <span>Celebrate an occassion</span>
+                      </button>
+                    </PostModalIconButtonRow>
+                  )}
+                </>
               )}
+
+              {showModal === "addEvent" && <AddEventForm />}
             </UploadArea>
 
             <Footer>
@@ -98,10 +126,22 @@ const PostModal = (props) => {
                 {previousShowModal && (
                   <ButtonPrimary onClick={gotoBack}>Back</ButtonPrimary>
                 )}
-                {!!uploadedFiles.length ? (
-                  <ButtonSecondary onClick={clickPost}>Post</ButtonSecondary>
-                ) : (
-                  <ButtonSecondary disabled={!editorText}>Next</ButtonSecondary>
+                {showModal !== "addEvent" &&
+                  (!!uploadedFiles.length ? (
+                    <ButtonSecondary onClick={clickPost}>Post</ButtonSecondary>
+                  ) : (
+                    <ButtonSecondary disabled={!editorText} onClick={clickPost}>
+                      Next
+                    </ButtonSecondary>
+                  ))}
+
+                {showModal === "addEvent" && (
+                  <ButtonSecondary
+                    disabled={!eventForm.length}
+                    onClick={clickPostEvent}
+                  >
+                    Next
+                  </ButtonSecondary>
                 )}
               </ButtonRow>
             </Footer>
@@ -138,7 +178,8 @@ const Content = styled(Card)`
   padding: 0;
   overflow: auto;
 
-  &.addpost {
+  &.addpost,
+  &.addevent {
     max-width: 744px;
     min-height: 40%;
   }

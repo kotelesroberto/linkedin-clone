@@ -14,7 +14,7 @@ import PostModal from "../components/Home/Wall/PostModal";
 
 const Home = (props) => {
   // 'addPost', 'addMedia', 'addEvent', 'addArticle'
-  const [showModal, setShowModal] = useState("addPost");
+  const [showModal, setShowModal] = useState("addEvent");
 
   const handleModalClick = (e, newModalState = "") => {
     e.preventDefault();

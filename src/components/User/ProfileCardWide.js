@@ -94,7 +94,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setPostVisibility: (e) => {
       e.preventDefault();
-      dispatch(setPostVisibilityAPI(e, "it has been changed!"));
+      dispatch(setPostVisibilityAPI(e, "Friends"));
     },
   };
 };

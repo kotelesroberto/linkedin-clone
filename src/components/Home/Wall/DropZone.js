@@ -11,6 +11,8 @@ const DropZone = (props) => {
   const uploadedFiles = props.uploadedFiles;
   const setUploadedFiles = props.setUploadedFiles;
 
+  const [error, setError] = useState("");
+
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
     console.log(acceptedFiles);
@@ -25,9 +27,23 @@ const DropZone = (props) => {
     );
   }, []);
 
+  const fileSizeValidator = useCallback((file) => {
+    setError("");
+    
+    if (file.size > 5000000) {
+      setError("Too big file, please select smaller one!");
+      return {
+        code: "size-too-large",
+        message: `Too big file!`,
+      };
+    }
+
+    return null;
+  }, []);
+
   const onError = useCallback((error) => {
     // Do something with the files
-    console.error(error);
+    setError(error.message);
     alert(error.message);
     setUploadedFiles([]);
     props.closeModal(new Event("click"));
@@ -39,11 +55,16 @@ const DropZone = (props) => {
     autoFocus: true,
     accept: {
       "image/*": [],
+      "video/mov": [".mov"],
+      "video/avi": [".avi"],
+      "video/mpeg": [".mpeg"],
+      "video/mpg": [".mpg"],
     },
     maxFiles: 3,
     maxSize: 5000000, // 5 MB
     multiple: true,
     autoFocus: true,
+    validator: fileSizeValidator,
   });
 
   return (
@@ -60,6 +81,8 @@ const DropZone = (props) => {
           )}
           <p>Share images or a single video in your post.</p>
           <ButtonSecondary>Upload from computer</ButtonSecondary>
+
+          {error && <Error>{error}</Error>}
         </Container>
       )}
 
@@ -81,6 +104,10 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   flex-grow: 1;
+`;
+
+const Error = styled.div`
+  color: red;
 `;
 
 export default DropZone;

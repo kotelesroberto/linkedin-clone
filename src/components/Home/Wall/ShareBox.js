@@ -24,11 +24,7 @@ const ShareBox = (props) => {
         <ShareBoxButtons>
           <button onClick={props.handleModalClick}>
             <img src="/images/photo-icon.svg" alt="" />
-            <span>Photo</span>
-          </button>
-          <button>
-            <img src="/images/photo-icon.svg" alt="" />
-            <span>Video</span>
+            <span>Media</span>
           </button>
           <button>
             <img src="/images/calendar-icon.svg" alt="" />
@@ -61,6 +57,7 @@ const ShareBoxTop = styled.div`
 `;
 
 const ShareBoxButtons = styled(IconButtonRow)`
+margin-bottom: -10px;
   span,
   img {
     pointer-events: none;

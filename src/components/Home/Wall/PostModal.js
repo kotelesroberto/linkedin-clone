@@ -56,23 +56,29 @@ const PostModal = (props) => {
                 setUploadedFiles={setUploadedFiles}
               />
 
-              <PostModalIconButtonRow>
-                <button onClick={(e) => props.handleModalClick(e, "addMedia")}>
-                  <img src="/images/photo-icon.svg" alt="Add media" />
-                  <span>Add media</span>
-                </button>
-                <button onClick={(e) => props.handleModalClick(e, "addEvent")}>
-                  <img src="/images/calendar-icon.svg" alt="Crate an event" />
-                  <span>Crate an event</span>
-                </button>
-                <button>
-                  <img
-                    src="/images/article-icon.svg"
-                    alt="Celebrate an occassion"
-                  />
-                  <span>Celebrate an occassion</span>
-                </button>
-              </PostModalIconButtonRow>
+              {showModal === "addPost" && (
+                <PostModalIconButtonRow>
+                  <button
+                    onClick={(e) => props.handleModalClick(e, "addMedia")}
+                  >
+                    <img src="/images/photo-icon.svg" alt="Add media" />
+                    <span>Add media</span>
+                  </button>
+                  <button
+                    onClick={(e) => props.handleModalClick(e, "addEvent")}
+                  >
+                    <img src="/images/calendar-icon.svg" alt="Crate an event" />
+                    <span>Crate an event</span>
+                  </button>
+                  <button>
+                    <img
+                      src="/images/article-icon.svg"
+                      alt="Celebrate an occassion"
+                    />
+                    <span>Celebrate an occassion</span>
+                  </button>
+                </PostModalIconButtonRow>
+              )}
             </UploadArea>
 
             <Footer>

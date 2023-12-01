@@ -3,23 +3,19 @@ import DocumentTitle from "react-document-title";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import LoginForm from "../components/Login/LoginForm";
+import RegisterForm from "../components/Login/RegisterForm";
 import LoginGoogle from "../components/Login/LoginGoogle";
-import LoginJoin from "../components/Login/LoginJoin";
-import FooterMenu from "../components/Footer/FooterMenu";
+import AlreadyRegistered from "../components/Login/AlreadyRegistered";
 import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 
 import { signInAPI } from "../redux/actions/actions";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
-const LoginPage = (props) => {
-  const navigate = useNavigate();
-  const gotoSignUpPage = (e) => {
-    e.preventDefault();
-    navigate("/signup");
-  };
+import { Card } from "../components/Common/Cards";
 
+const SignUpPage = (props) => {
+  console.log("props", props);
   return (
     <DocumentTitle title="Log in | LinkedIn clone by Robert Koteles">
       <>
@@ -29,26 +25,17 @@ const LoginPage = (props) => {
             <a href="/">
               <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
             </a>
-            <NavLoginButtons>
-              <ButtonJoin onClick={(e) => gotoSignUpPage(e)}>
-                Join now
-              </ButtonJoin>
-              <ButtonSignIn>Sign in</ButtonSignIn>
-            </NavLoginButtons>
           </Nav>
           <Section>
             <Hero>
-              <h1>Robert's LinkedIn clone built in React</h1>
+              <h1>Make the most of your professional life</h1>
             </Hero>
             <SignInForm>
-              <LoginForm />
+              <RegisterForm />
               <LoginGoogle parentProps={props} />
-              <LoginJoin gotoSignUpPage={gotoSignUpPage} />
+              <AlreadyRegistered parentProps={props} />
             </SignInForm>
-
-            <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
           </Section>
-          <FooterMenu />
           <FooterInlineMenu />
         </Container>
       </>
@@ -107,8 +94,8 @@ const Section = styled.section`
   max-width: 1128px;
   position: relative;
   display: flex;
-  align-content: start;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   min-height: 700px;
   padding: 40px 0 140px 0;
@@ -118,40 +105,20 @@ const Section = styled.section`
   @media (max-width: 768px) {
     min-height: 0px;
   }
-
-  & > img {
-    max-width: calc(45% + 150px);
-    width: 700px;
-    height: auto;
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: -150px;
-    transform: translateY(-50%);
-
-    @media (max-width: 768px) {
-      width: initial;
-      max-width: 60%;
-      height: auto;
-      top: 230px;
-      margin: 12px auto;
-      right: 0;
-      transform: none;
-      position: initial;
-    }
-  }
 `;
 
 const Hero = styled.div`
   width: 100%;
   h1 {
     padding-bottom: 0;
-    width: 55%;
-    font-size: 56px;
+    width: 100%;
+    font-size: 32px;
     color: #b24020;
-    font-weight: 200;
+    font-weight: 400;
     line-height: 70px;
     margin-bottom: 24px;
+    color: rgba(0, 0, 0, 0.9);
+    text-align: center;
 
     @media (max-width: 768px) {
       font-size: 32px;
@@ -162,9 +129,11 @@ const Hero = styled.div`
   }
 `;
 
-const SignInForm = styled.div`
+const SignInForm = styled(Card)`
   width: 100%;
   max-width: 408px;
+  margin: 0 auto;
+  padding: 24px;
 
   @media (max-width: 768px) {
     max-width: 100%;
@@ -189,5 +158,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-// export default LoginPage;
-export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(SignUpPage);

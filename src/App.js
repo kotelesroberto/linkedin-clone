@@ -9,6 +9,7 @@ import DocumentTitle from "react-document-title";
 
 import "./App.scss";
 import LoginPage from "./pages/LoginPage";
+import SignUpPage from "./pages/SignUpPage";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import DemoPage from "./pages/DemoPage";
@@ -27,6 +28,11 @@ function App(props) {
           <Route
             path="/"
             element={<LoginPage />}
+            errorElement={<ErrorPage />}
+          />
+          <Route
+            path="/signup"
+            element={<SignUpPage />}
             errorElement={<ErrorPage />}
           />
           <Route path="/home" element={<Home />} errorElement={<ErrorPage />} />

@@ -72,7 +72,7 @@ const PostModal = (props) => {
                   </button>
                   <button>
                     <img
-                      src="/images/article-icon.svg"
+                      src="/images/starburst-icon.svg"
                       alt="Celebrate an occassion"
                     />
                     <span>Celebrate an occassion</span>
@@ -190,6 +190,9 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
     position: relative;
 
     &:hover {
+      box-shadow: rgba(140, 140, 140, 0.2) 0px 0px 0px 1px,
+        rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
+
       span {
         display: block;
       }

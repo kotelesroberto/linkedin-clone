@@ -13,31 +13,21 @@ import RightCol from "../components/Home/RightCol/RightCol";
 import PostModal from "../components/Home/Wall/PostModal";
 
 const Home = (props) => {
-  const [showModal, setShowModal] = useState(false);
+  // 'addPost', 'addMedia', 'addEvent', 'addArticle'
+  const [showModal, setShowModal] = useState("addPost");
 
-  const handleModalClick = (e) => {
+  const handleModalClick = (e, newModalState = "") => {
     e.preventDefault();
-    console.log("call: handleModalClick");
-    if (e.target !== e.currentTarget) return;
-
-    switch (showModal) {
-      case true:
-        setShowModal(false);
-        break;
-      case false:
-        setShowModal(true);
-        break;
-      default:
-        setShowModal(false);
-        break;
-    }
+    console.log("call: handleModalClick", newModalState);
+    // if (e.target !== e.currentTarget) return;
+    setShowModal(newModalState);
   };
 
   useEffect(() => {
     // user can close opened modal from keyboard (accessibility)
     document.addEventListener("keydown", (e) => {
       if (showModal && e.key === "Escape") {
-        setShowModal(false);
+        setShowModal("");
       }
     });
   }, []);
@@ -58,6 +48,7 @@ const Home = (props) => {
             showModal={showModal}
             handleModalClick={handleModalClick}
           />
+          { showModal }
         </Container>
       </>
     </DocumentTitle>

@@ -12,6 +12,8 @@ export const shadows = {
     'boxShadow': 'rgba(140, 140, 140, 0.2) 0px 0px 0px 1px'
 }
 
+export const borderRadius = '8px';
+
 /*
 EXAMPLE:
 import * as variables from '../Common/Variables';

@@ -8,11 +8,13 @@ import userReducer, {
   deleteUser,
   setUser,
 } from "../reducers/userReducer";
+import postSettingReducer from "../reducers/postSettingsReducer";
 import logger from "redux-logger";
 
 const store = configureStore({
   reducer: {
     userState: userReducer,
+    postSettingState: postSettingReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

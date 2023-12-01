@@ -8,16 +8,6 @@ import {
 
 /* Login by Google Authentication  */
 // https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#signinwithpopup
-export const ___signInAPI = () => {
-  console.log("calling signInAPI");
-  return (dispatch) => {
-    dispatch({
-      type: "userState/setUser",
-      user: { email: "abcd@aaa.com" },
-    });
-  };
-};
-
 // Firebase Google Sign In
 export const signInAPI = () => {
   return (dispatch) => {
@@ -63,12 +53,12 @@ export const getUserAuth = () => {
 
 // Firebase Sign Out
 export const signOutAPI = () => {
-  console.log('signOutAPI was called');
+  console.log("signOutAPI was called");
   return (dispatch) => {
     signOut(auth)
       .then(() => {
         // Sign-out successful
-        console.log('Sign-out successful');
+        console.log("Sign-out successful");
         dispatch({
           type: "userState/setUser",
           user: null,
@@ -78,5 +68,17 @@ export const signOutAPI = () => {
         // An error happened.
         console.error(error.message);
       });
+  };
+};
+
+// Set posts visibility
+export const setPostVisibilityAPI = (e, newVisibility) => {
+  return (dispatch) => {
+    dispatch({
+      type: "postSettingState/setPostVisibility",
+      postSetting: {
+        visibiity: newVisibility,
+      },
+    });
   };
 };

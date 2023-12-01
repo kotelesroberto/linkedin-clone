@@ -19,14 +19,14 @@ const ShareBox = (props) => {
               <img src="/images/avatar.svg" alt="User avatar" />
             )}
           </UserAvatarPhoto>
-          <ButtonSharePost>Start a post</ButtonSharePost>
+          <ButtonSharePost onClick={(e) => props.handleModalClick(e, 'addPost')}>Start a post</ButtonSharePost>
         </ShareBoxTop>
         <ShareBoxButtons>
-          <button onClick={props.handleModalClick}>
+          <button onClick={(e) => props.handleModalClick(e, 'addMedia')}>
             <img src="/images/photo-icon.svg" alt="" />
             <span>Media</span>
           </button>
-          <button>
+          <button onClick={(e) => props.handleModalClick(e, 'addEvent')}>
             <img src="/images/calendar-icon.svg" alt="" />
             <span>Event</span>
           </button>

@@ -1,9 +1,9 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import * as variables from "../../Common/Variables";
-import { ButtonActionContainer, ButtonAction } from "../../Common/Icons";
 import { Card } from "../../Common/Cards";
 import { ButtonSecondary } from "../../Common/Buttons";
+import PostModalHeader from "./PostModalHeader";
 
 import DropZone from "./DropZone";
 
@@ -11,11 +11,14 @@ const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
   const [uploadedFiles, setUploadedFiles] = useState([]);
 
+  const showModal = props.showModal;
+  const handleModalClick = props.handleModalClick;
+
   const closeModal = (e) => {
     e.preventDefault();
     setEditorText("");
     setUploadedFiles([]);
-    props.handleModalClick(e);
+    handleModalClick(e);
   };
 
   const clickPost = (e) => {
@@ -34,23 +37,17 @@ const PostModal = (props) => {
 
   return (
     <>
-      {props.showModal && (
-        <Container>
-          <Content>
-            <Header>
-              <h2>Editor</h2>
-              <ClosePopupActions>
-                <ClosePopupAction onClick={(e) => closeModal(e)}>
-                  <img
-                    src="/images/icon-close.svg"
-                    alt="Hide post"
-                    className="close-icon"
-                  />
-                </ClosePopupAction>
-              </ClosePopupActions>
-            </Header>
+      {!!showModal && (
+        <Container >
+          <Content className={showModal.toLowerCase()}>
+            <PostModalHeader
+              showModal={showModal}
+              closeModal={closeModal}
+              handleModalClick={handleModalClick}
+            />
             <UploadArea>
               <DropZone
+                showModal={showModal}
                 closeModal={closeModal}
                 editorText={editorText}
                 setEditorText={setEditorText}
@@ -58,12 +55,13 @@ const PostModal = (props) => {
                 setUploadedFiles={setUploadedFiles}
               />
             </UploadArea>
+
             <Footer>
               <ButtonRow>
                 {!!uploadedFiles.length ? (
                   <ButtonSecondary onClick={clickPost}>Post</ButtonSecondary>
                 ) : (
-                  <ButtonSecondary isDisabled={!!uploadedFiles.length}>
+                  <ButtonSecondary isdisabled={uploadedFiles.length}>
                     Next
                   </ButtonSecondary>
                 )}
@@ -100,25 +98,16 @@ const Content = styled(Card)`
   flex-direction: column;
   padding: 0;
 
+  &.addpost {
+    max-width: 744px;
+    min-height: 40%;
+  }
+
   @media (max-width: 1024px) {
     max-width: 552px;
   }
 `;
 
-const Header = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 24px;
-  border-bottom: 1px solid rgba(140, 140, 140, 0.2);
-
-  h2 {
-    font-size: 20px;
-    color: rgba(0, 0, 0, 0.9);
-  }
-`;
 const UploadArea = styled.div`
   background-color: #f8fafd;
   height: 100%;
@@ -138,19 +127,6 @@ const UploadArea = styled.div`
   }
 `;
 
-const ClosePopupActions = styled(ButtonActionContainer)`
-  /* pointer-events: none; */
-`;
-
-const ClosePopupAction = styled(ButtonAction)`
-  img {
-    &.close-icon {
-      width: 20px;
-      pointer-events: none;
-    }
-  }
-`;
-
 const Footer = styled.div`
   background-color: ${variables.colors.white};
   border-top: 1px solid rgba(140, 140, 140, 0.2);
@@ -165,7 +141,7 @@ const ButtonRow = styled.div`
   ${ButtonSecondary} {
     width: auto;
     margin-bottom: 0;
-    opacity: ${(props) => (props.isDisabled ? 0.8 : 1)};
+    opacity: ${(props) => (props.isdisabled ? 0.8 : 1)};
   }
 `;
 

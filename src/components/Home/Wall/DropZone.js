@@ -10,6 +10,8 @@ const DropZone = (props) => {
   const setEditorText = props.setEditorText;
   const uploadedFiles = props.uploadedFiles;
   const setUploadedFiles = props.setUploadedFiles;
+  const showModal = props.showModal;
+  const closeModal = props.closeModal;
 
   const [error, setError] = useState("");
 
@@ -29,7 +31,7 @@ const DropZone = (props) => {
 
   const fileSizeValidator = useCallback((file) => {
     setError("");
-    
+
     if (file.size > 5000000) {
       setError("Too big file, please select smaller one!");
       return {
@@ -46,7 +48,7 @@ const DropZone = (props) => {
     setError(error.message);
     alert(error.message);
     setUploadedFiles([]);
-    props.closeModal(new Event("click"));
+    closeModal(new Event("click"));
   }, []);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
@@ -71,7 +73,7 @@ const DropZone = (props) => {
     <>
       <input {...getInputProps()} />
 
-      {!uploadedFiles.length && (
+      {showModal === "addMedia" && !uploadedFiles.length && (
         <Container {...getRootProps()}>
           <img src="./images/uploadAssetBg.svg" alt="" />
           {isDragActive ? (
@@ -86,7 +88,7 @@ const DropZone = (props) => {
         </Container>
       )}
 
-      {!!uploadedFiles.length && (
+      {((showModal === "addMedia" && uploadedFiles.length) || (showModal === 'addPost')) && (
         <PostModalAddPost
           uploadedFiles={uploadedFiles}
           editorText={editorText}

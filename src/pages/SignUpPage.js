@@ -10,12 +10,19 @@ import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 
 import { signInAPI } from "../redux/actions/actions";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { Card } from "../components/Common/Cards";
 
+
 const SignUpPage = (props) => {
-  console.log("props", props);
+  const navigate = useNavigate();
+
+  const gotoLoginPage = (e) => {
+    e.preventDefault();
+    navigate("/");
+  };
+
   return (
     <DocumentTitle title="Log in | LinkedIn clone by Robert Koteles">
       <>
@@ -33,7 +40,10 @@ const SignUpPage = (props) => {
             <SignInForm>
               <RegisterForm />
               <LoginGoogle parentProps={props} />
-              <AlreadyRegistered parentProps={props} />
+              <AlreadyRegistered
+                parentProps={props}
+                gotoLoginPage={gotoLoginPage}
+              />
             </SignInForm>
           </Section>
           <FooterInlineMenu />

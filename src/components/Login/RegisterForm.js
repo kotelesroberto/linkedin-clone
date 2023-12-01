@@ -4,7 +4,10 @@ import styled from "styled-components";
 
 import { ButtonSecondary } from "../Common/Buttons";
 
+
 const RegisterForm = () => {
+  
+
   const showPassword = (e) => {
     const passwordField = document.getElementById("loginPassword");
     passwordField.type =

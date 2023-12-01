@@ -1,11 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-const AlreadyRegistered = () => {
+const AlreadyRegistered = (props) => {
+  const gotoLoginPage = props.gotoLoginPage;
+
   return (
     <Container>
       <p>
-        Already on LinkedIn? <a href="#">Sign in</a>
+        Already on LinkedIn?{" "}
+        <a href="#" onClick={gotoLoginPage}>
+          Sign in
+        </a>
       </p>
     </Container>
   );

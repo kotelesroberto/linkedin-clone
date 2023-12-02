@@ -7,9 +7,14 @@
  */
 
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { getStorage, ref } from "firebase/storage";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 // Web app's Firebase configuration
 const firebaseConfig = {

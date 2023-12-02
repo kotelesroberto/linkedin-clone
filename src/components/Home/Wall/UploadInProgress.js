@@ -1,12 +1,12 @@
 import React from "react";
-import './UploadInProgress.scss';
+import "./UploadInProgress.scss";
 
 const UploadInProgress = () => {
   return (
-      <div class="container">
-          Posting is in progress...
-      <div class="line">
-        <div class="inner"></div>
+    <div className="container">
+      Posting is in progress...
+      <div className="line">
+        <div className="inner"></div>
       </div>
     </div>
   );

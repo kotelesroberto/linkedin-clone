@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 import * as variables from "../../Common/Variables";
 import { Card } from "../../Common/Cards";
 import { ButtonPrimary, ButtonSecondary } from "../../Common/Buttons";
@@ -10,6 +11,7 @@ import UploadInProgress from "./UploadInProgress";
 
 import DropZone from "./DropZone";
 import UploadFile from "../../../utils/uploadFile";
+import { doPostContent } from "../../../redux/actions/actions";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
@@ -58,23 +60,48 @@ const PostModal = (props) => {
 
     setShowModal("is-posting");
 
-    // Upload files
-    // upload images first and after the content
-    uploadedFiles.map((item) => {
-      UploadFile({
-        folder: "images/posts",
-        imageAsFile: item,
-        setUrl: (resp) => {
-          let temp = uploadedImagesOnServer.push({ imgUrl: resp });
-          setUploadedImagesOnServer(temp);
+    const firebaseCollection = "posts";
+    const data = {
+      displayName: props.user.displayName,
+      username: props.user.email,
+      verified: props.user.emailVerified,
+      timestamp: Date.now() / 1000,
+      text: editorText,
+      // image: imageAsUrl.imgUrl,
+      // imageAlt: "",
+      avatar: props.user.photoURL,
+      comments: "",
+      numComments: Math.floor(Math.random() * 1000) + 1,
+      reposts: Math.floor(Math.random() * 1000) + 1,
+      likes: Math.floor(Math.random() * 1000) + 1,
+    };
 
-          if (uploadedImagesOnServer.length === uploadedFiles.length) {
-            // close modal
-            closeModal(e);
-          }
-        },
+    if (uploadedFiles.length) {
+      // Upload files
+      // upload images first and after the content
+      uploadedFiles.map((item) => {
+        UploadFile({
+          folder: "images/posts",
+          imageAsFile: item,
+          setUrl: (resp) => {
+            let temp = uploadedImagesOnServer.push({ imgUrl: resp });
+            setUploadedImagesOnServer(temp);
+
+            if (uploadedImagesOnServer.length === uploadedFiles.length) {
+              doPostContent(firebaseCollection, data, () => {
+                // close modal
+                closeModal(e);
+              });
+            }
+          },
+        });
       });
-    });
+    } else {
+      doPostContent(firebaseCollection, data, () => {
+        // close modal
+        closeModal(e);
+      });
+    }
   };
 
   const clickPostEvent = (e) => {
@@ -305,4 +332,21 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
   }
 `;
 
-export default PostModal;
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    doPostContent: (collectionName, data, callback) => {
+      dispatch(doPostContent(collectionName, data, callback));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostModal);

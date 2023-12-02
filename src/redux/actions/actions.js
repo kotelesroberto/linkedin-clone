@@ -1,4 +1,5 @@
-import { auth, providerGoogle } from "../../firebase/firebase";
+import { db, auth, providerGoogle } from "../../firebase/firebase";
+import { collection, addDoc } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -115,6 +116,22 @@ export const signOutAPI = () => {
         console.error(error.message);
       });
   };
+};
+
+// Firebase save content into Firestore 'database'
+export const doPostContent = async (collectionName, contentObj, callback) => {
+  // save into Firebase database
+  try {
+    const docRef = await addDoc(collection(db, collectionName), contentObj);
+    console.log("Document written with ID: ", docRef.id);
+
+    // run callback
+    if (typeof callback === "function") {
+      callback.call(this);
+    }
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
 };
 
 // Set posts visibility

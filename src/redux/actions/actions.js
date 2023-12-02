@@ -119,7 +119,7 @@ export const signOutAPI = () => {
 };
 
 // Firebase save content into Firestore 'database'
-export const doPostContent = async (collectionName, contentObj, callback) => {
+export const doPostContentIntoFirebase = async (collectionName, contentObj, callback) => {
   // save into Firebase database
   try {
     const docRef = await addDoc(collection(db, collectionName), contentObj);
@@ -127,12 +127,13 @@ export const doPostContent = async (collectionName, contentObj, callback) => {
 
     // run callback
     if (typeof callback === "function") {
-      callback.call(this);
+      callback.call(this, docRef);
     }
   } catch (e) {
     console.error("Error adding document: ", e);
   }
 };
+
 
 // Set posts visibility
 export const setPostVisibilityAPI = (e, newVisibility) => {

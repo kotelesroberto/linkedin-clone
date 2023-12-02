@@ -11,7 +11,7 @@ import UploadInProgress from "./UploadInProgress";
 
 import DropZone from "./DropZone";
 import UploadFile from "../../../utils/uploadFile";
-import { doPostContent } from "../../../redux/actions/actions";
+import { doPostContentIntoFirebase } from "../../../redux/actions/actions";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
@@ -53,6 +53,8 @@ const PostModal = (props) => {
   const clickPost = (e) => {
     e.preventDefault();
 
+    let postRef = "";
+
     // post data to server
     // TODO
     console.log(editorText);
@@ -60,7 +62,6 @@ const PostModal = (props) => {
 
     setShowModal("is-posting");
 
-    const firebaseCollection = "posts";
     const data = {
       displayName: props.user.displayName,
       username: props.user.email,
@@ -76,8 +77,13 @@ const PostModal = (props) => {
       likes: Math.floor(Math.random() * 1000) + 1,
     };
 
+    // save post content into Firestore
+    doPostContentIntoFirebase("posts", data, (response) => {
+      postRef = response;
+    });
+
+    // Upload files and save into Firestore
     if (uploadedFiles.length) {
-      // Upload files
       // upload images first and after the content
       uploadedFiles.map((item) => {
         UploadFile({
@@ -87,20 +93,25 @@ const PostModal = (props) => {
             let temp = uploadedImagesOnServer.push({ imgUrl: resp });
             setUploadedImagesOnServer(temp);
 
+            doPostContentIntoFirebase(
+              "post-images",
+              {
+                postRef: postRef,
+                imgUrl: resp,
+              },
+              () => {}
+            );
+
             if (uploadedImagesOnServer.length === uploadedFiles.length) {
-              doPostContent(firebaseCollection, data, () => {
-                // close modal
-                closeModal(e);
-              });
+              // close modal
+              closeModal(e);
             }
           },
         });
       });
     } else {
-      doPostContent(firebaseCollection, data, () => {
-        // close modal
-        closeModal(e);
-      });
+      // close modal
+      closeModal(e);
     }
   };
 
@@ -343,8 +354,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    doPostContent: (collectionName, data, callback) => {
-      dispatch(doPostContent(collectionName, data, callback));
+    doPostContentIntoFirebase: (collectionName, data, callback) => {
+      dispatch(doPostContentIntoFirebase(collectionName, data, callback));
     },
   };
 };

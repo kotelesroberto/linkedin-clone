@@ -146,3 +146,21 @@ export const setPostVisibilityAPI = (e, newVisibility) => {
     });
   };
 };
+
+/*
+// user object:
+{
+  uid: '',
+  bio: '',
+  birthday: '',
+  displayName: '',
+  email: '',
+  location: '',
+  photoURL: '',
+  teaserImage: '',
+  username: '',
+  emailVerified: '',
+  phoneNumber: '',
+}
+
+*/

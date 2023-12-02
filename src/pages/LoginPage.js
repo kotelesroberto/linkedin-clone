@@ -41,7 +41,7 @@ const LoginPage = (props) => {
           </Nav>
           <Section>
             <Hero>
-              <h1>Robert's LinkedIn clone built in React</h1>
+              <h1>Robert's LinkedIn clone built in React. Portfolio item!</h1>
             </Hero>
             <SignInForm>
               <LoginForm parentProps={props} />

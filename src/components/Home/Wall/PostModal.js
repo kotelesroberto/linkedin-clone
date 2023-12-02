@@ -48,6 +48,7 @@ const PostModal = (props) => {
     setEditorText("");
     setUploadedFiles([]);
     setUploadedImagesOnServer([]);
+    setPreviousShowModal("");
   };
 
   const clickPost = (e) => {
@@ -105,6 +106,7 @@ const PostModal = (props) => {
             if (uploadedImagesOnServer.length === uploadedFiles.length) {
               // close modal
               closeModal(e);
+              erasePostData();
             }
           },
         });
@@ -112,6 +114,7 @@ const PostModal = (props) => {
     } else {
       // close modal
       closeModal(e);
+      erasePostData();
     }
   };
 
@@ -124,9 +127,6 @@ const PostModal = (props) => {
     console.log(uploadedFiles);
 
     erasePostData(e);
-
-    // close modal
-    // closeModal(e);
   };
 
   return (

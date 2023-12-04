@@ -15,9 +15,10 @@ import PostModal from "../components/Home/Wall/PostModal";
 const Home = (props) => {
   // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
   const [showModal, setShowModal] = useState("");
-
+  
   const handleModalClick = (e, newModalState = "") => {
     e.preventDefault();
+
     console.log("call: handleModalClick", newModalState);
     // if (e.target !== e.currentTarget) return;
     setShowModal(newModalState);
@@ -36,21 +37,23 @@ const Home = (props) => {
     <DocumentTitle title={"(6) Feed | LinkedIn by Robert Koteles"}>
       <>
         {!props.user && <Navigate to="/" replace />}
-        <Container>
-          <Header />
-          <Section>
-            <LeftCol />
-            <Wall handleModalClick={handleModalClick} />
-            <RightCol />
-          </Section>
+        {props.user && (
+          <Container>
+            <Header />
+            <Section>
+              <LeftCol />
+              <Wall handleModalClick={handleModalClick} />
+              <RightCol />
+            </Section>
 
-          <PostModal
-            showModal={showModal}
-            setShowModal={setShowModal}
-            handleModalClick={handleModalClick}
-          />
-          { showModal }
-        </Container>
+            <PostModal
+              showModal={showModal}
+              setShowModal={setShowModal}
+              handleModalClick={handleModalClick}
+            />
+            {showModal}
+          </Container>
+        )}
       </>
     </DocumentTitle>
   );

@@ -5,6 +5,12 @@ import { db, auth, storage } from "../firebase/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { getFileExtension, getFileName, safeFileName } from "./filename";
 
+/*=============================================
+=            Firebase storage: upload and download actions            =
+=============================================*/
+
+/* Upload file */
+
 const UploadFile = async ({ folder = "images", imageAsFile, setUrl }) => {
   console.log("start of upload");
 
@@ -41,7 +47,7 @@ const UploadFile = async ({ folder = "images", imageAsFile, setUrl }) => {
       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
       //takes a snap shot of the process as it is happening
       console.log(`Upload of ${newFileName} is " + ${progress} + "% done`);
-        
+
       switch (snapshot.state) {
         case "paused":
           console.log("Upload is paused");
@@ -65,5 +71,7 @@ const UploadFile = async ({ folder = "images", imageAsFile, setUrl }) => {
     }
   );
 };
+
+/*=====  End of Firebase storage: upload and download actions  ======*/
 
 export default UploadFile;

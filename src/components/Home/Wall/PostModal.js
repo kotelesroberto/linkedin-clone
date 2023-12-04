@@ -64,6 +64,7 @@ const PostModal = (props) => {
     setShowModal("is-posting");
 
     const data = {
+      uid: props.user.uid,
       displayName: props.user.displayName,
       username: props.user.email,
       verified: props.user.emailVerified,
@@ -80,7 +81,7 @@ const PostModal = (props) => {
 
     // save post content into Firestore
     doPostContentIntoFirebase("posts", data, (response) => {
-      postRef = response;
+      postRef = response.id;
     });
 
     // Upload files and save into Firestore

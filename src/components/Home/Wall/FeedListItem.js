@@ -1,11 +1,19 @@
 import React from "react";
+import Moment from "react-moment";
 import styled from "styled-components";
 import { Card, CardContainer } from "../../Common/Cards";
 import { UserAvatarPhoto } from "../../Common/User";
-import { IconButtonRow, IconPeople, ButtonActionContainer, ButtonAction } from "../../Common/Icons";
-
+import {
+  IconButtonRow,
+  IconPeople,
+  ButtonActionContainer,
+  ButtonAction,
+} from "../../Common/Icons";
+import FeedListItemImage from "./FeedListItemImage";
 
 const FeedListItem = (props) => {
+  console.log("props.content.images", props.content.images);
+
   return (
     <FeedListItemCard>
       <FeedListItemContainer>
@@ -22,7 +30,7 @@ const FeedListItem = (props) => {
               {props.content.user.description}
             </FeedListItemSublabel>
             <FeedListItemDate>
-              {props.content.timestamp} • <IconPeople />
+              <Moment fromNow>{new Date(props.content.timestamp)}</Moment> • <IconPeople />
             </FeedListItemDate>
           </FeedListItemInfo>
 
@@ -46,12 +54,16 @@ const FeedListItem = (props) => {
         <FeedListItemContent>
           <span>{props.content.content}</span>
 
-          <a href={props.content.url} target="_blank">
-            <img
-              src={props.content.image.url}
-              alt={props.content.image.title}
-            />
-          </a>
+          {props.content.images.length && (
+            <FeedListItemImages>
+              {props.content.images.map((item, index) => (
+                <FeedListItemImage
+                  image={item}
+                  key={`post-${props.parentkey}-image-${index}`}
+                />
+              ))}
+            </FeedListItemImages>
+          )}
         </FeedListItemContent>
 
         <SocialCounts>
@@ -59,12 +71,13 @@ const FeedListItem = (props) => {
             <a href="#">
               <img src="/images/icon-like.svg" alt="" />
               <img src="/images/icon-clap.svg" alt="" />
-              <span>123</span>
+              <span>{props.content.interactions.likes}</span>
             </a>
           </SocialCountItem>
           <SocialCountItem>
             <span>
-              <a href="#">920 comments</a>•<a href="#">781 reposts</a>
+              <a href="#">{props.content.interactions.numComments} comments</a>•
+              <a href="#">{props.content.interactions.reposts} reposts</a>
             </span>
           </SocialCountItem>
         </SocialCounts>
@@ -142,11 +155,29 @@ const FeedListItemContent = styled.div`
     display: block;
     margin-bottom: 4px;
   }
+`;
+
+const FeedListItemImages = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+
+  a {
+    margin-left: 5px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
   img {
     display: block;
-    width: 100%;
-    height: auto;
-    flex-grow: 0;
+    object-fit: fill;
+    width: auto;
+    max-width: 100%;
+    height: 100%;
   }
 `;
 

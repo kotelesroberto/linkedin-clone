@@ -5,6 +5,9 @@ import ShareBox from "./ShareBox";
 import Feed from "./Feed";
 
 const Wall = (props) => {
+
+  console.log('COMPONENT: WALL');
+
   return (
     <Container>
       <ShareBox handleModalClick={props.handleModalClick} />

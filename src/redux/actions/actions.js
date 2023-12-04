@@ -9,6 +9,15 @@ import {
   signOut,
 } from "firebase/auth";
 
+
+
+
+
+/*=============================================
+=            FIREBASE RELATED ACTIONS         =
+=============================================*/
+
+
 /* Register by email and password */
 export const registerByEmailAndPassAPI = (email, pass, callback) => {
   return (dispatch) => {
@@ -133,6 +142,16 @@ export const doPostContentIntoFirebase = async (collectionName, contentObj, call
     console.error("Error adding document: ", e);
   }
 };
+
+// Get asset's downloadable URL from Firebase reference
+
+
+/*=====  End of FIREBASE RELATED ACTIONS  ======*/
+
+
+
+
+
 
 
 // Set posts visibility

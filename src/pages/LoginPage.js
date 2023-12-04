@@ -27,33 +27,38 @@ const LoginPage = (props) => {
     <DocumentTitle title="Log in | LinkedIn clone by Robert Koteles">
       <>
         {props.user && <Navigate to="/home" replace />}
-        <Container>
-          <Nav>
-            <a href="/">
-              <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
-            </a>
-            <NavLoginButtons>
-              <ButtonJoin onClick={(e) => gotoSignUpPage(e)}>
-                Join now
-              </ButtonJoin>
-              <ButtonSignIn>Sign in</ButtonSignIn>
-            </NavLoginButtons>
-          </Nav>
-          <Section>
-            <Hero>
-              <h1>Robert's LinkedIn clone built in React. Portfolio item!</h1>
-            </Hero>
-            <SignInForm>
-              <LoginForm parentProps={props} />
-              <LoginGoogle parentProps={props} />
-              <LoginJoin gotoSignUpPage={gotoSignUpPage} />
-            </SignInForm>
+        {!props.user && (
+          <Container>
+            <Nav>
+              <a href="/">
+                <img
+                  src="/images/login-logo.svg"
+                  alt="Go to LinkedIn homepage"
+                />
+              </a>
+              <NavLoginButtons>
+                <ButtonJoin onClick={(e) => gotoSignUpPage(e)}>
+                  Join now
+                </ButtonJoin>
+                <ButtonSignIn>Sign in</ButtonSignIn>
+              </NavLoginButtons>
+            </Nav>
+            <Section>
+              <Hero>
+                <h1>Robert's LinkedIn clone built in React. Portfolio item!</h1>
+              </Hero>
+              <SignInForm>
+                <LoginForm parentProps={props} />
+                <LoginGoogle parentProps={props} />
+                <LoginJoin gotoSignUpPage={gotoSignUpPage} />
+              </SignInForm>
 
-            <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
-          </Section>
-          <FooterMenu />
-          <FooterInlineMenu />
-        </Container>
+              <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
+            </Section>
+            <FooterMenu />
+            <FooterInlineMenu />
+          </Container>
+        )}
       </>
     </DocumentTitle>
   );

@@ -1,43 +1,98 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styled from "styled-components";
 import { ButtonNewPost } from "../../Common/Buttons";
 import FeedListItem from "./FeedListItem";
 
+// firebase related
+import {
+  collection,
+  query,
+  where,
+  getDocs,
+  doc,
+  onSnapshot,
+} from "firebase/firestore";
+import { db, auth, storage } from "../../../firebase/firebase";
+
 const Feed = () => {
-  const feedItems = [
-    {
-      user: {
-        avatar: "./images/avatar.svg",
-        name: "B.B. King",
-        description: "King of the blues, legendary musician",
-        url: "/in/demo",
-      },
-      timestamp: "2d",
-      content:
-        "B.B. King is a legendary blues and guitar icon who has left an indelible mark on the music industry. To honor his legacy, the B.B. King Life Legacy Initiative has launched several new partnerships, retail products, and brand concepts. This is a big deal, and even Billboard.com has picked up the article and written their own version.",
-      url: "http://www.google.co.uk",
-      image: {
-        url: "/upload/bbking.jpg",
-        title: "This is the King",
-      },
-    },
-    {
-      user: {
-        avatar: "./images/avatar.svg",
-        name: "Jimi Hendrix",
-        description: "The man who established modern music",
-        url: "/in/demo",
-      },
-      timestamp: "4d",
-      content:
-        "Widely recognized as one of the most creative and influential musicians of the 20th century, Jimi Hendrix pioneered the explosive possibilities of the electric guitar. Hendrix’s innovative style of combining fuzz, feedback and controlled distortion created a new musical form. Because he was unable to read or write music, it is nothing short of remarkable that Jimi Hendrix’s meteoric rise in the music took place in just four short years. His musical language continues to influence a host of modern musicians, from George Clinton to Miles Davis, and Steve Vai to Jonny Lang.",
-      url: "http://www.google.co.uk",
-      image: {
-        url: "/upload/hendrix.jpg",
-        title: "This is also the King",
-      },
-    },
-  ];
+  const [feedItems, setFeedItems] = useState([]);
+
+  useEffect(() => {
+    const unsubscribe = getPosts();
+
+    return () => {
+      // cleanup
+      unsubscribe(); // this function is given back by onSnapshot
+    };
+  }, []);
+
+  /* get posts */
+  const getPosts = () => {
+    const q = query(collection(db, "posts"), where("uid", "!=", ""));
+    const unsubscribe = onSnapshot(q, (querySnapshot) => {
+      // console.log(querySnapshot.size);
+
+      querySnapshot.forEach((doc) => {
+        // get this post item
+        const docData = doc.data();
+        getRelatedImages(doc.id);
+
+        const newFeedItem = {
+          user: {
+            avatar: docData.avatar,
+            name: docData.displayName,
+            description: "aaa",
+            url: "",
+          },
+          timestamp: docData.timestamp,
+          content: docData.text,
+          url: "http://www.google.co.uk",
+          images: [],
+          interactions: {
+            likes: docData.likes,
+            numComments: docData.numComments,
+            reposts: docData.reposts,
+          },
+        };
+
+        // get the images belong to this post item
+        let imgArray = [];
+
+        getRelatedImages(doc.id).then((images) => {
+          images.map((item) => {
+            imgArray.push({
+              url: item,
+              title: "",
+            });
+          });
+
+          newFeedItem.images = imgArray;
+
+          setFeedItems((feedItems) => [...feedItems, newFeedItem]);
+        });
+      });
+    });
+
+    return unsubscribe;
+  };
+
+  /* get images */
+  const getRelatedImages = async (postID) => {
+    let images = [];
+
+    const q = query(
+      collection(db, "post-images"),
+      where("postRef", "==", postID)
+    );
+
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach((doc) => {
+      // doc.id
+      images.push(doc.data().imgUrl);
+    });
+
+    return images;
+  };
 
   return (
     <>
@@ -52,11 +107,17 @@ const Feed = () => {
         />
       </FeedSortBy>
 
-      <ButtonNewPost id="button-new-post" aria-label="New posts">New posts</ButtonNewPost>
+      <ButtonNewPost id="button-new-post" aria-label="New posts">
+        New posts
+      </ButtonNewPost>
 
       <FeedList>
         {feedItems.map((item, index) => (
-          <FeedListItem key={"feed-list-item-" + index} content={item} />
+          <FeedListItem
+            key={"feed-list-item-" + index}
+            parentkey={"feed-list-item-" + index}
+            content={item}
+          />
         ))}
       </FeedList>
     </>

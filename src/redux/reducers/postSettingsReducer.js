@@ -22,8 +22,15 @@ const postSetting = createSlice({
         },
       };
     },
+    setImageUploadSuccess: (state, action) => {
+      console.log("postSettingState/setImageUploadSuccess");
+      return {
+        ...state,
+        isNewPostImageUploadDone: action.isNewPostImageUploadDone,
+      };
+    },
   },
 });
 
-export const { setPostVisibility } = postSetting.actions;
+export const { setPostVisibility, setImageUploadSuccess } = postSetting.actions;
 export default postSetting.reducer;

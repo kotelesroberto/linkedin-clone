@@ -1,7 +1,11 @@
 import React, { useEffect, useRef, useState, useMemo } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
+
 import { ButtonNewPost } from "../../Common/Buttons";
 import FeedListItem from "./FeedListItem";
+
+import { isImagesUploadDone } from "../../../redux/actions/actions";
 
 // firebase related
 import {
@@ -15,7 +19,7 @@ import {
 } from "firebase/firestore";
 import { db, auth, storage } from "../../../firebase/firebase";
 
-const Feed = () => {
+const Feed = (props) => {
   const [feedItems, setFeedItems] = useState([]);
 
   useEffect(() => {
@@ -26,6 +30,10 @@ const Feed = () => {
       unsubscribe(); // this function is given back by onSnapshot
     };
   }, []);
+
+  useEffect(() => {
+    getNewPostData();
+  }, [props.isNewPostImageUploadDone]);
 
   /* get posts */
   const getPosts = () => {
@@ -46,23 +54,7 @@ const Feed = () => {
 
         // only add the snapshotted data if it's not in the state yet
 
-        const existingItem = feedItems.filter(
-          (arrItem) => arrItem.id === doc.id
-        );
-
-        console.log(doc.id);
-        console.log({ existingItem });
-
-        // if it's exist, jsut check images (as image upload is asyncrnous and after create a POST it takes time to got results)
-        if (existingItem.length) {
-          console.log("ITEM IS EXIST");
-
-          console.log(JSON.stringify(docData.images));
-          console.log(JSON.stringify(existingItem.images));
-        }
-
-        // if (!feedItems.some((arrItem) => arrItem.id === doc.id)) {
-        if (!existingItem.length) {
+        if (!feedItems.some((arrItem) => arrItem.id === doc.id)) {
           newFeedItem = {
             id: doc.id,
             user: {
@@ -82,9 +74,7 @@ const Feed = () => {
             },
           };
 
-          console.log("called: getRelatedImages");
           getRelatedImages(doc.id).then((images) => {
-            console.log("called: getRelatedImages INSIDE");
             images.map((item) => {
               imgArray.push({
                 url: item,
@@ -125,6 +115,46 @@ const Feed = () => {
     return images;
   };
 
+  /* get newly added post data */
+  const getNewPostData = () => {
+    // in case of having a new post from the <ShareBox> component, upliading image is async process -> after getting the Redux notification we need to get the new post item with the belonging images
+    if (props.isNewPostImageUploadDone) {
+      // add image infomration to the new post that is already in the component state, thanks to the onSnapshot API
+
+      const existingItem = feedItems.filter(
+        (arrItem) => arrItem.id === props.isNewPostImageUploadDone
+      );
+      if (existingItem.length) {
+        let imgArray = [];
+
+        getRelatedImages(props.isNewPostImageUploadDone).then((images) => {
+          images.map((item) => {
+            imgArray.push({
+              url: item,
+              title: "",
+            });
+          });
+
+          // add the new image information to the belonging post item in the component's state
+          const newState = feedItems;
+          console.log({ newState });
+
+          newState.map((item) => {
+            // newFeedItem.images = imgArray;
+            if (item.id === props.isNewPostImageUploadDone) {
+              item.images = imgArray;
+            }
+          });
+
+          setFeedItems((previousState) => [...newState]);
+
+          // erase reference to the new post from Redux store
+          props.setImagesUploadDone("");
+        });
+      }
+    }
+  };
+
   return (
     <>
       <FeedSortBy>
@@ -141,6 +171,10 @@ const Feed = () => {
       <ButtonNewPost id="button-new-post" aria-label="New posts">
         New posts
       </ButtonNewPost>
+
+      {props.isNewPostImageUploadDone && (
+        <p>{props.isNewPostImageUploadDone}</p>
+      )}
 
       <FeedList>
         {feedItems.map((item, index) => (
@@ -182,4 +216,21 @@ const FeedSortBy = styled.div`
 
 const FeedList = styled.div``;
 
-export default Feed;
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  return {
+    isNewPostImageUploadDone: state.postSettingState.isNewPostImageUploadDone,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setImagesUploadDone: (postRef) => {
+      dispatch(isImagesUploadDone(postRef));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Feed);

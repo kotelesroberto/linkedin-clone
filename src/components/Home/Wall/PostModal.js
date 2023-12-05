@@ -14,6 +14,7 @@ import { UploadFile, SaveContentIntoFirebase } from "../../../utils/uploadFile";
 import {
   setShowModalAPI,
   setPreviousShowModalAPI,
+  isImagesUploadDone,
 } from "../../../redux/actions/actions";
 
 const PostModal = (props) => {
@@ -26,6 +27,7 @@ const PostModal = (props) => {
   const previousShowModal = props.previousShowModal;
   const setShowModal = props.setShowModal;
   const setPreviousShowModal = props.setPreviousShowModal;
+  const setImagesUploadDone = props.setImagesUploadDone;
 
   console.log("PostModal showModal", showModal);
 
@@ -112,6 +114,9 @@ const PostModal = (props) => {
             );
 
             if (uploadedImagesOnServer.length === uploadedFiles.length) {
+              // TODO: notify Redux store that all images are done
+              setImagesUploadDone(postRef);
+
               // close modal
               closeModal(e);
               erasePostData();
@@ -363,6 +368,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     setPreviousShowModal: (prevPopupState) => {
       dispatch(setPreviousShowModalAPI(prevPopupState));
+    },
+    setImagesUploadDone: (postRef) => {
+      dispatch(isImagesUploadDone(postRef));
     },
   };
 };

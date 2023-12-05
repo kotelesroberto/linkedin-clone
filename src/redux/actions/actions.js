@@ -8,14 +8,9 @@ import {
   signOut,
 } from "firebase/auth";
 
-
-
-
-
 /*=============================================
 =            FIREBASE RELATED ACTIONS         =
 =============================================*/
-
 
 /* Register by email and password */
 export const actionRegisterByEmailAndPassAPI = (email, pass, callback) => {
@@ -126,14 +121,7 @@ export const actionSignOutAPI = () => {
   };
 };
 
-
 /*=====  End of FIREBASE RELATED ACTIONS  ======*/
-
-
-
-
-
-
 
 // Set posts visibility
 export const setPostVisibilityAPI = (e, newVisibility) => {
@@ -147,11 +135,10 @@ export const setPostVisibilityAPI = (e, newVisibility) => {
   };
 };
 
-
 // Set popup modal visibility
 // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
 export const setShowModalAPI = (newState) => {
-  console.log('setShowModalAPI newState', newState);
+  console.log("setShowModalAPI newState", newState);
   return (dispatch) => {
     dispatch({
       type: "popupModalState/setShowModal",
@@ -172,6 +159,15 @@ export const setPreviousShowModalAPI = (newState) => {
   };
 };
 
+// Posting new post needs a trigger event that tells Feed component havng new post with images to load
+export const isImagesUploadDone = (postRef) => {
+  return (dispatch) => {
+    dispatch({
+      type: "postSettingState/setImageUploadSuccess",
+      isNewPostImageUploadDone: postRef,
+    });
+  };
+};
 
 /*
 // user object:

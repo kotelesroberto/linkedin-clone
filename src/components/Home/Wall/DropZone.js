@@ -16,9 +16,7 @@ const DropZone = (props) => {
   const [error, setError] = useState("");
 
   const onDrop = useCallback((acceptedFiles) => {
-    console.log("call: onDrop");
     // Do something with the files
-    console.log(acceptedFiles);
     // setError("");
     setUploadedFiles([]);
 
@@ -32,7 +30,6 @@ const DropZone = (props) => {
   }, []);
 
   const fileSizeValidator = useCallback((file) => {
-    console.log('call: fileSizeValidator');
     if (file.size > 5000000) {
       setError("One of the files was bigger than 5MB, please select smaller one!");
       return {

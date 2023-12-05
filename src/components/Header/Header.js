@@ -374,7 +374,6 @@ const ForBusiness = styled(User)`
 
 // any time the store is updated, mapStateToProps will be called. Expected to return an object
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     user: state.userState.user,
   };

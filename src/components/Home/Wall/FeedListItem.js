@@ -12,8 +12,7 @@ import {
 import FeedListItemImage from "./FeedListItemImage";
 
 const FeedListItem = (props) => {
-  console.log("props.content.images", props.content.images);
-
+  
   return (
     <FeedListItemCard>
       <FeedListItemContainer>
@@ -30,7 +29,8 @@ const FeedListItem = (props) => {
               {props.content.user.description}
             </FeedListItemSublabel>
             <FeedListItemDate>
-              <Moment fromNow>{new Date(props.content.timestamp)}</Moment> • <IconPeople />
+              <Moment fromNow>{new Date(props.content.timestamp)}</Moment> •{" "}
+              <IconPeople />
             </FeedListItemDate>
           </FeedListItemInfo>
 
@@ -54,7 +54,7 @@ const FeedListItem = (props) => {
         <FeedListItemContent>
           <span>{props.content.content}</span>
 
-          {props.content.images.length && (
+          {!!props.content.images.length && (
             <FeedListItemImages>
               {props.content.images.map((item, index) => (
                 <FeedListItemImage

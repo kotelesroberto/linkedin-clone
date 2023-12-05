@@ -21,7 +21,6 @@ const LoginForm = (props) => {
 
   const doSubmitLogin = (e) => {
     e.preventDefault();
-    console.log(loginEmail + " " + loginPass);
 
     signInEmailAndPassAPI(loginEmail, loginPass, (text) => {
       setError(text);

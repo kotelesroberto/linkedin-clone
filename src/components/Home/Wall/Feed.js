@@ -15,12 +15,19 @@ import {
 import { db, auth, storage } from "../../../firebase/firebase";
 
 const Feed = () => {
+
   const [feedItems, setFeedItems] = useState([]);
 
+  console.log('Feed useEffect 1');
+
+  
   useEffect(() => {
     const unsubscribe = getPosts();
 
+    console.log('Feed useEffect 2');
+
     return () => {
+      console.log('unsubscribe');
       // cleanup
       unsubscribe(); // this function is given back by onSnapshot
     };
@@ -32,44 +39,52 @@ const Feed = () => {
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       // console.log(querySnapshot.size);
 
+      console.log("feedItems", feedItems);
+
       querySnapshot.forEach((doc) => {
         // get this post item
         const docData = doc.data();
-        getRelatedImages(doc.id);
-
-        const newFeedItem = {
-          user: {
-            avatar: docData.avatar,
-            name: docData.displayName,
-            description: "aaa",
-            url: "",
-          },
-          timestamp: docData.timestamp,
-          content: docData.text,
-          url: "http://www.google.co.uk",
-          images: [],
-          interactions: {
-            likes: docData.likes,
-            numComments: docData.numComments,
-            reposts: docData.reposts,
-          },
-        };
-
-        // get the images belong to this post item
+        let newFeedItem = {};
         let imgArray = [];
 
-        getRelatedImages(doc.id).then((images) => {
-          images.map((item) => {
-            imgArray.push({
-              url: item,
-              title: "",
+        // only add the snapshotted data if it's not in the state yet
+        if (!feedItems.some((arrItem) => arrItem.id === doc.id)) {
+          console.log("doc.id", doc.id);
+          getRelatedImages(doc.id);
+
+          newFeedItem = {
+            id: doc.id,
+            user: {
+              avatar: docData.avatar,
+              name: docData.displayName,
+              description: "",
+              url: "",
+            },
+            timestamp: docData.timestamp,
+            content: docData.text,
+            url: "http://www.google.co.uk",
+            images: [],
+            interactions: {
+              likes: docData.likes,
+              numComments: docData.numComments,
+              reposts: docData.reposts,
+            },
+          };
+
+          getRelatedImages(doc.id).then((images) => {
+            images.map((item) => {
+              imgArray.push({
+                url: item,
+                title: "",
+              });
             });
+
+            // get the images belong to this post item
+            newFeedItem.images = imgArray;
+
+            setFeedItems((feedItems) => [...feedItems, newFeedItem]);
           });
-
-          newFeedItem.images = imgArray;
-
-          setFeedItems((feedItems) => [...feedItems, newFeedItem]);
-        });
+        }
       });
     });
 

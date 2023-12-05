@@ -57,9 +57,6 @@ const PostModal = (props) => {
     let postRef = "";
 
     // post data to server
-    // TODO
-    console.log(editorText);
-    console.log(uploadedFiles);
 
     setShowModal("is-posting");
 
@@ -123,9 +120,7 @@ const PostModal = (props) => {
     e.preventDefault();
 
     // post data to server
-    // TODO
-    console.log(editorText);
-    console.log(uploadedFiles);
+    // TODO: add function to save event
 
     erasePostData(e);
   };

@@ -18,13 +18,13 @@ const Feed = () => {
 
   const [feedItems, setFeedItems] = useState([]);
 
-  console.log('Feed useEffect 1');
+  console.log('COMPONENT: FEED');
 
-  
+
   useEffect(() => {
     const unsubscribe = getPosts();
 
-    console.log('Feed useEffect 2');
+    console.log('Feed useEffect');
 
     return () => {
       console.log('unsubscribe');

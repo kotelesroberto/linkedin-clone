@@ -13,6 +13,9 @@ import RightCol from "../components/Home/RightCol/RightCol";
 import PostModal from "../components/Home/Wall/PostModal";
 
 const Home = (props) => {
+
+  console.log('COMPONENT: HOME');
+
   // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
   const [showModal, setShowModal] = useState("");
   

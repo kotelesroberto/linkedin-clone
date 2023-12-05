@@ -32,6 +32,7 @@ const PostModal = (props) => {
   console.log("PostModal showModal", showModal);
 
   const changeShowModal = (e, newModalState = "") => {
+    console.log("c changeShowModal");
     setPreviousShowModal(showModal);
     setShowModal(newModalState);
   };
@@ -354,10 +355,11 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
 
 // any time the store is updated, mapStateToProps will be called. Expected to return an object
 const mapStateToProps = (state) => {
+  console.log({ state });
   return {
     user: state.userState.user,
     showModal: state.popupModalState.popupModal.showModal,
-    previousShowModal: state.popupModalState.previousShowModal,
+    previousShowModal: state.popupModalState.popupModal.previousShowModal,
   };
 };
 
@@ -367,6 +369,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setShowModalAPI(newPopupState));
     },
     setPreviousShowModal: (prevPopupState) => {
+      console.log("d setPreviousShowModal", prevPopupState);
       dispatch(setPreviousShowModalAPI(prevPopupState));
     },
     setImagesUploadDone: (postRef) => {

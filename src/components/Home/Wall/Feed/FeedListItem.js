@@ -1,18 +1,33 @@
-import React from "react";
+/**
+ * Component
+ * Feed
+ * CFeed list item
+ * 2023, Robert Koteles
+ */
+
+import React, { useEffect } from "react";
 import Moment from "react-moment";
 import styled from "styled-components";
-import { Card, CardContainer } from "../../Common/Cards";
-import { UserAvatarPhoto } from "../../Common/User";
+import { Card, CardContainer } from "../../../Common/Cards";
+import { UserAvatarPhoto } from "../../../Common/User";
+import { SocialCounts, SocialCountItem } from "../../../Common/FeedItems";
 import {
   IconButtonRow,
   IconPeople,
   ButtonActionContainer,
   ButtonAction,
-} from "../../Common/Icons";
+} from "../../../Common/Icons";
 import FeedListItemImage from "./FeedListItemImage";
 import FeedListItemVideo from "./FeedListItemVideo";
+import FeedListItemComments from "./FeedListItemComments";
 
 const FeedListItem = (props) => {
+  useEffect(() => {
+    // Start the pooled timer which runs every 60 seconds
+    // (60000 milliseconds) by default.
+    Moment.startPooledTimer();
+  }, []);
+
   return (
     <FeedListItemCard>
       <FeedListItemContainer>
@@ -54,7 +69,7 @@ const FeedListItem = (props) => {
         <FeedListItemContent>
           <span>{props.content.content}</span>
 
-          <FeedListItemVideo content={ props.content.content } />
+          <FeedListItemVideo content={props.content.content} />
           {!!props.content.images.length && (
             <FeedListItemImages>
               {props.content.images.map((item, index) => (
@@ -101,6 +116,7 @@ const FeedListItem = (props) => {
             <span>Send</span>
           </button>
         </FeedListItemButtons>
+        <FeedListItemComments />
       </FeedListItemContainer>
     </FeedListItemCard>
   );
@@ -225,33 +241,5 @@ const FeedListItemDate = styled.span`
 const FeedItemActions = styled(ButtonActionContainer)``;
 
 const FeedItemAction = styled(ButtonAction)``;
-
-const SocialCounts = styled.ul`
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  margin: 8px 0;
-  padding: 0;
-  color: rgba(0, 0, 0, 0.6);
-  font-size: 12px;
-  line-height: 1em;
-`;
-
-const SocialCountItem = styled.li`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  a {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    margin: 0 4px;
-  }
-
-  span {
-    margin-left: 4px;
-  }
-`;
 
 export default FeedListItem;

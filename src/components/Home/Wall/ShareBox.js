@@ -2,9 +2,8 @@ import styled from "styled-components";
 import React from "react";
 
 import { UserAvatarPhoto } from "../../Common/User";
-import { Card, CardContainer } from "../../Common/Cards";
 import { ButtonSharePost } from "../../Common/Buttons";
-import { IconButtonRow } from "../../Common/Icons";
+import { ShareBoxContainer, ShareBoxWrapper, ShareBoxTop, ShareBoxButtons } from "../../Common/ShareBox";
 import { connect } from "react-redux";
 
 import {
@@ -18,7 +17,7 @@ const ShareBox = (props) => {
 
   return (
     <ShareBoxContainer>
-      <CardContainer>
+      <ShareBoxWrapper>
         <ShareBoxTop>
           <UserAvatarPhoto>
             {props.user && props.user.photoURL ? (
@@ -45,34 +44,13 @@ const ShareBox = (props) => {
             <span>Write article</span>
           </button>
         </ShareBoxButtons>
-      </CardContainer>
+      </ShareBoxWrapper>
     </ShareBoxContainer>
   );
 };
 
-const ShareBoxContainer = styled(Card)`
-  display: flex;
-  flex-direction: column;
-  color: rgba(0, 0, 0, 0.6);
-  padding: 12px;
-`;
 
-const ShareBoxTop = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
 
-  button {
-  }
-`;
-
-const ShareBoxButtons = styled(IconButtonRow)`
-  margin-bottom: -10px;
-  span,
-  img {
-    pointer-events: none;
-  }
-`;
 
 /*=====  React-redux related functions  ======*/
 

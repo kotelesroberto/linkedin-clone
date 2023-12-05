@@ -2,7 +2,7 @@ import styled from "styled-components";
 import React from "react";
 
 import ShareBox from "./ShareBox";
-import Feed from "./Feed";
+import Feed from "./Feed/Feed";
 
 const Wall = (props) => {
   return (

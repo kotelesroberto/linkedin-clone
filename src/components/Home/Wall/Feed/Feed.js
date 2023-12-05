@@ -1,11 +1,18 @@
+/**
+ * Component
+ * Feed
+ * Feed container
+ * 2023, Robert Koteles
+ */
+
 import React, { useEffect, useRef, useState, useMemo } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { ButtonNewPost } from "../../Common/Buttons";
+import { ButtonNewPost } from "../../../Common/Buttons";
 import FeedListItem from "./FeedListItem";
 
-import { isImagesUploadDone } from "../../../redux/actions/actions";
+import { isImagesUploadDone } from "../../../../redux/actions/actions";
 
 // firebase related
 import {
@@ -17,7 +24,7 @@ import {
   doc,
   onSnapshot,
 } from "firebase/firestore";
-import { db, auth, storage } from "../../../firebase/firebase";
+import { db, auth, storage } from "../../../../firebase/firebase";
 
 const Feed = (props) => {
   const [feedItems, setFeedItems] = useState([]);

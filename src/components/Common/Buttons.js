@@ -202,3 +202,16 @@ export const ButtonNewPost = styled(ButtonSignIn)`
     margin-right: 4px;
   }
 `;
+
+export const SocialCountButton = styled.button`
+  font-size: 12px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: transparent;
+  padding: 4px;
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+`;

@@ -1,3 +1,10 @@
+/**
+ * Component
+ * Feed
+ * Image(s) of the feed item
+ * 2023, Robert Koteles
+ */
+
 import React from "react";
 
 const FeedListItemImage = (props) => {

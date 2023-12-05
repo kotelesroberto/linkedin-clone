@@ -9,12 +9,14 @@ import userReducer, {
   setUser,
 } from "../reducers/userReducer";
 import postSettingReducer from "../reducers/postSettingsReducer";
+import popupModalReducer from "../reducers/popupModalReducer";
 import logger from "redux-logger";
 
 const store = configureStore({
   reducer: {
     userState: userReducer,
     postSettingState: postSettingReducer,
+    popupModalState: popupModalReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

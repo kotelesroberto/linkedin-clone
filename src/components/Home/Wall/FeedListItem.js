@@ -12,7 +12,6 @@ import {
 import FeedListItemImage from "./FeedListItemImage";
 
 const FeedListItem = (props) => {
-  
   return (
     <FeedListItemCard>
       <FeedListItemContainer>

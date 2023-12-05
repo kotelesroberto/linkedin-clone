@@ -1,5 +1,4 @@
 import { db, auth, providerGoogle } from "../../firebase/firebase";
-import { collection, addDoc } from "firebase/firestore";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -19,7 +18,7 @@ import {
 
 
 /* Register by email and password */
-export const registerByEmailAndPassAPI = (email, pass, callback) => {
+export const actionRegisterByEmailAndPassAPI = (email, pass, callback) => {
   return (dispatch) => {
     createUserWithEmailAndPassword(auth, email, pass)
       .then((UserCredential) => {
@@ -41,7 +40,7 @@ export const registerByEmailAndPassAPI = (email, pass, callback) => {
 };
 
 /* Login by email and password */
-export const signInEmailAndPassAPI = (email, pass, callback = null) => {
+export const actionSignInEmailAndPassAPI = (email, pass, callback = null) => {
   return (dispatch) => {
     signInWithEmailAndPassword(auth, email, pass)
       .then((UserCredential) => {
@@ -65,7 +64,7 @@ export const signInEmailAndPassAPI = (email, pass, callback = null) => {
 /* Login by Google Authentication  */
 // https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#signinwithpopup
 // Firebase Google Sign In
-export const signInGoogleAPI = () => {
+export const actionSignInGoogleAPI = () => {
   return (dispatch) => {
     signInWithPopup(auth, providerGoogle)
       .then((result) => {
@@ -76,7 +75,7 @@ export const signInGoogleAPI = () => {
         });
       })
       .catch((error) => {
-        console.log("signInGoogleAPI error", error);
+        console.log("actionSignInGoogleAPI error", error);
         const errorCode = error.code;
         const errorMessage = error.message;
         // The email of the user's account used.
@@ -88,7 +87,7 @@ export const signInGoogleAPI = () => {
 };
 
 // Firebase checks the user login status
-export const getUserAuth = () => {
+export const actionGetUserAuth = () => {
   return (dispatch) => {
     onAuthStateChanged(auth, (user) => {
       // user is already logged in
@@ -108,8 +107,8 @@ export const getUserAuth = () => {
 };
 
 // Firebase Sign Out
-export const signOutAPI = () => {
-  console.log("signOutAPI was called");
+export const actionSignOutAPI = () => {
+  console.log("actionSignOutAPI was called");
   return (dispatch) => {
     signOut(auth)
       .then(() => {
@@ -126,24 +125,6 @@ export const signOutAPI = () => {
       });
   };
 };
-
-// Firebase save content into Firestore 'database'
-export const doPostContentIntoFirebase = async (collectionName, contentObj, callback) => {
-  // save into Firebase database
-  try {
-    const docRef = await addDoc(collection(db, collectionName), contentObj);
-    console.log("Document written with ID: ", docRef.id);
-
-    // run callback
-    if (typeof callback === "function") {
-      callback.call(this, docRef);
-    }
-  } catch (e) {
-    console.error("Error adding document: ", e);
-  }
-};
-
-// Get asset's downloadable URL from Firebase reference
 
 
 /*=====  End of FIREBASE RELATED ACTIONS  ======*/
@@ -165,6 +146,32 @@ export const setPostVisibilityAPI = (e, newVisibility) => {
     });
   };
 };
+
+
+// Set popup modal visibility
+// 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
+export const setShowModalAPI = (newState) => {
+  console.log('setShowModalAPI newState', newState);
+  return (dispatch) => {
+    dispatch({
+      type: "popupModalState/setShowModal",
+      popupModal: {
+        showModal: newState,
+      },
+    });
+  };
+};
+export const setPreviousShowModalAPI = (newState) => {
+  return (dispatch) => {
+    dispatch({
+      type: "popupModalState/setPreviousShowModal",
+      popupModal: {
+        previousShowModal: newState,
+      },
+    });
+  };
+};
+
 
 /*
 // user object:

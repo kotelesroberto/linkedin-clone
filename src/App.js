@@ -13,7 +13,7 @@ import SignUpPage from "./pages/SignUpPage";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import DemoPage from "./pages/DemoPage";
-import { getUserAuth } from "./redux/actions/actions";
+import { actionGetUserAuth } from "./redux/actions/actions";
 import { connect } from "react-redux";
 
 function App(props) {
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getUserAuth: () => {
-      dispatch(getUserAuth());
+      dispatch(actionGetUserAuth());
     },
   };
 };

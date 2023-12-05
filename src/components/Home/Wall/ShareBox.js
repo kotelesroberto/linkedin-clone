@@ -7,7 +7,15 @@ import { ButtonSharePost } from "../../Common/Buttons";
 import { IconButtonRow } from "../../Common/Icons";
 import { connect } from "react-redux";
 
+import {
+  setShowModalAPI,
+  setPreviousShowModalAPI,
+} from "../../../redux/actions/actions";
+
 const ShareBox = (props) => {
+  const showModal = props.showModal;
+  const setShowModal = props.setShowModal;
+
   return (
     <ShareBoxContainer>
       <CardContainer>
@@ -19,14 +27,16 @@ const ShareBox = (props) => {
               <img src="/images/avatar.svg" alt="User avatar" />
             )}
           </UserAvatarPhoto>
-          <ButtonSharePost onClick={(e) => props.handleModalClick(e, 'addPost')}>Start a post</ButtonSharePost>
+          <ButtonSharePost onClick={(e) => setShowModal("addPost")}>
+            Start a post
+          </ButtonSharePost>
         </ShareBoxTop>
         <ShareBoxButtons>
-          <button onClick={(e) => props.handleModalClick(e, 'addMedia')}>
+          <button onClick={(e) => setShowModal("addMedia")}>
             <img src="/images/photo-icon.svg" alt="" />
             <span>Media</span>
           </button>
-          <button onClick={(e) => props.handleModalClick(e, 'addEvent')}>
+          <button onClick={(e) => setShowModal("addEvent")}>
             <img src="/images/calendar-icon.svg" alt="" />
             <span>Event</span>
           </button>
@@ -57,7 +67,7 @@ const ShareBoxTop = styled.div`
 `;
 
 const ShareBoxButtons = styled(IconButtonRow)`
-margin-bottom: -10px;
+  margin-bottom: -10px;
   span,
   img {
     pointer-events: none;
@@ -70,11 +80,20 @@ margin-bottom: -10px;
 const mapStateToProps = (state) => {
   return {
     user: state.userState.user,
+    showModal: state.popupModalState.popupModal.showModal,
+    previousShowModal: state.popupModalState.previousShowModal,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    setShowModal: (newPopupState) => {
+      dispatch(setShowModalAPI(newPopupState));
+    },
+    setPreviousShowModal: (prevPopupState) => {
+      dispatch(setPreviousShowModalAPI(prevPopupState));
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShareBox);

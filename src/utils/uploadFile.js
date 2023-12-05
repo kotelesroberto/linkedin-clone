@@ -2,16 +2,17 @@ import React, { useState } from "react";
 
 // firebase
 import { db, auth, storage } from "../firebase/firebase";
+import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { getFileExtension, getFileName, safeFileName } from "./filename";
 
 /*=============================================
-=            Firebase storage: upload and download actions            =
+= Firebase storage: upload and download actions
 =============================================*/
 
 /* Upload file */
 
-const UploadFile = async ({ folder = "images", imageAsFile, setUrl }) => {
+export const UploadFile = async ({ folder = "images", imageAsFile, setUrl }) => {
   console.log("start of upload");
 
   // error handling
@@ -72,6 +73,23 @@ const UploadFile = async ({ folder = "images", imageAsFile, setUrl }) => {
   );
 };
 
+// Firebase save content into Firestore 'database'
+export const SaveContentIntoFirebase = async (collectionName, contentObj, callback) => {
+  // return (dispatch) => { }
+
+  // save into Firebase database
+  try {
+    const docRef = await addDoc(collection(db, collectionName), contentObj);
+    console.log("Document written with ID: ", docRef.id);
+
+    // run callback
+    if (typeof callback === "function") {
+      callback.call(this, docRef);
+    }
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+};
 /*=====  End of Firebase storage: upload and download actions  ======*/
 
-export default UploadFile;
+

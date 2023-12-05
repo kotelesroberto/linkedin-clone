@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useMemo } from "react";
 import styled from "styled-components";
 import { ButtonNewPost } from "../../Common/Buttons";
 import FeedListItem from "./FeedListItem";
@@ -8,6 +8,7 @@ import {
   collection,
   query,
   where,
+  orderBy,
   getDocs,
   doc,
   onSnapshot,
@@ -15,19 +16,12 @@ import {
 import { db, auth, storage } from "../../../firebase/firebase";
 
 const Feed = () => {
-
   const [feedItems, setFeedItems] = useState([]);
-
-  console.log('COMPONENT: FEED');
-
 
   useEffect(() => {
     const unsubscribe = getPosts();
 
-    console.log('Feed useEffect');
-
     return () => {
-      console.log('unsubscribe');
       // cleanup
       unsubscribe(); // this function is given back by onSnapshot
     };
@@ -35,11 +29,14 @@ const Feed = () => {
 
   /* get posts */
   const getPosts = () => {
-    const q = query(collection(db, "posts"), where("uid", "!=", ""));
+    const q = query(
+      collection(db, "posts"),
+      where("uid", "in", ["ooKsVd0qRLhlyrQz30ADAd8OQ7Z2"]),
+      orderBy("timestamp", "asc")
+    );
+
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       // console.log(querySnapshot.size);
-
-      console.log("feedItems", feedItems);
 
       querySnapshot.forEach((doc) => {
         // get this post item
@@ -48,10 +45,24 @@ const Feed = () => {
         let imgArray = [];
 
         // only add the snapshotted data if it's not in the state yet
-        if (!feedItems.some((arrItem) => arrItem.id === doc.id)) {
-          console.log("doc.id", doc.id);
-          getRelatedImages(doc.id);
 
+        const existingItem = feedItems.filter(
+          (arrItem) => arrItem.id === doc.id
+        );
+
+        console.log(doc.id);
+        console.log({ existingItem });
+
+        // if it's exist, jsut check images (as image upload is asyncrnous and after create a POST it takes time to got results)
+        if (existingItem.length) {
+          console.log("ITEM IS EXIST");
+
+          console.log(JSON.stringify(docData.images));
+          console.log(JSON.stringify(existingItem.images));
+        }
+
+        // if (!feedItems.some((arrItem) => arrItem.id === doc.id)) {
+        if (!existingItem.length) {
           newFeedItem = {
             id: doc.id,
             user: {
@@ -71,7 +82,9 @@ const Feed = () => {
             },
           };
 
+          console.log("called: getRelatedImages");
           getRelatedImages(doc.id).then((images) => {
+            console.log("called: getRelatedImages INSIDE");
             images.map((item) => {
               imgArray.push({
                 url: item,
@@ -82,7 +95,10 @@ const Feed = () => {
             // get the images belong to this post item
             newFeedItem.images = imgArray;
 
-            setFeedItems((feedItems) => [...feedItems, newFeedItem]);
+            // add the new content to the component's state
+            const newState = feedItems;
+            newState.unshift(newFeedItem); // add element as first
+            setFeedItems((previousState) => [...newState]);
           });
         }
       });
@@ -129,7 +145,7 @@ const Feed = () => {
       <FeedList>
         {feedItems.map((item, index) => (
           <FeedListItem
-            key={"feed-list-item-" + index}
+            key={"feed-list-item-" + item.id}
             parentkey={"feed-list-item-" + index}
             content={item}
           />

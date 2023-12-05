@@ -10,8 +10,8 @@ const LoginForm = (props) => {
   const [loginPass, setLoginPass] = useState("Test2023");
   const [error, setError] = useState("");
 
-  const signInEmailAndPassAPI = (email, pass, callback) =>
-    props.parentProps.signInEmailAndPassAPI(email, pass, callback);
+  const actionSignInEmailAndPassAPI = (email, pass, callback) =>
+    props.parentProps.actionSignInEmailAndPassAPI(email, pass, callback);
 
   const showPassword = (e) => {
     const passwordField = document.getElementById("loginPassword");
@@ -22,7 +22,7 @@ const LoginForm = (props) => {
   const doSubmitLogin = (e) => {
     e.preventDefault();
 
-    signInEmailAndPassAPI(loginEmail, loginPass, (text) => {
+    actionSignInEmailAndPassAPI(loginEmail, loginPass, (text) => {
       setError(text);
     });
   };

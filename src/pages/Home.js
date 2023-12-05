@@ -12,20 +12,11 @@ import LeftCol from "../components/Home/LeftCol/LeftCol";
 import RightCol from "../components/Home/RightCol/RightCol";
 import PostModal from "../components/Home/Wall/PostModal";
 
+import { setShowModalAPI } from "../redux/actions/actions";
+
 const Home = (props) => {
-
-  console.log('COMPONENT: HOME');
-
-  // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
-  const [showModal, setShowModal] = useState("");
-  
-  const handleModalClick = (e, newModalState = "") => {
-    e.preventDefault();
-
-    console.log("call: handleModalClick", newModalState);
-    // if (e.target !== e.currentTarget) return;
-    setShowModal(newModalState);
-  };
+  const showModal = props.showModal;
+  const setShowModal = props.setShowModal;
 
   useEffect(() => {
     // user can close opened modal from keyboard (accessibility)
@@ -45,16 +36,10 @@ const Home = (props) => {
             <Header />
             <Section>
               <LeftCol />
-              <Wall handleModalClick={handleModalClick} />
+              <Wall />
               <RightCol />
             </Section>
-
-            <PostModal
-              showModal={showModal}
-              setShowModal={setShowModal}
-              handleModalClick={handleModalClick}
-            />
-            {showModal}
+            <PostModal />
           </Container>
         )}
       </>
@@ -95,11 +80,16 @@ const Section = styled.section`
 const mapStateToProps = (state) => {
   return {
     user: state.userState.user,
+    showModal: state.popupModalState.popupModal.showModal,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    setShowModal: (newPopupState) => {
+      dispatch(setShowModalAPI(newPopupState));
+    },
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

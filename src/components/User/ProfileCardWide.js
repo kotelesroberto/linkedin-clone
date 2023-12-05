@@ -8,7 +8,6 @@ import { setPostVisibilityAPI } from "../../redux/actions/actions";
 const ProfileCardWide = (props) => {
   const clickContainer = (e) => {
     props.setPostVisibility(e);
-    // props.handleModalClick(e, "setPostVisibility");
   };
 
   return (

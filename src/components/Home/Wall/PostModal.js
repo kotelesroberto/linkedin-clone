@@ -10,8 +10,11 @@ import AddEventForm from "./AddEventForm";
 import UploadInProgress from "./UploadInProgress";
 
 import DropZone from "./DropZone";
-import UploadFile from "../../../utils/uploadFile";
-import { doPostContentIntoFirebase } from "../../../redux/actions/actions";
+import { UploadFile, SaveContentIntoFirebase } from "../../../utils/uploadFile";
+import {
+  setShowModalAPI,
+  setPreviousShowModalAPI,
+} from "../../../redux/actions/actions";
 
 const PostModal = (props) => {
   const [editorText, setEditorText] = useState("");
@@ -20,25 +23,27 @@ const PostModal = (props) => {
   const [uploadedImagesOnServer, setUploadedImagesOnServer] = useState([]);
 
   const showModal = props.showModal;
+  const previousShowModal = props.previousShowModal;
   const setShowModal = props.setShowModal;
-  const handleModalClick = props.handleModalClick;
+  const setPreviousShowModal = props.setPreviousShowModal;
 
-  const [previousShowModal, setPreviousShowModal] = useState("");
+  console.log("PostModal showModal", showModal);
 
   const changeShowModal = (e, newModalState = "") => {
     setPreviousShowModal(showModal);
-    handleModalClick(e, newModalState);
+    setShowModal(newModalState);
   };
 
   const closeModal = (e) => {
     e.preventDefault();
     erasePostData(e);
-    handleModalClick(e);
+    setShowModal("");
   };
 
   const gotoBack = (e) => {
     e.preventDefault();
-    handleModalClick(e, previousShowModal);
+    setShowModal(previousShowModal);
+
     setPreviousShowModal("");
     setUploadedFiles([]);
   };
@@ -57,7 +62,6 @@ const PostModal = (props) => {
     let postRef = "";
 
     // post data to server
-
     setShowModal("is-posting");
 
     const data = {
@@ -65,7 +69,7 @@ const PostModal = (props) => {
       displayName: props.user.displayName,
       username: props.user.email,
       verified: props.user.emailVerified,
-      timestamp: Date.now() / 1000,
+      timestamp: Date.now(),
       text: editorText,
       // image: imageAsUrl.imgUrl,
       // imageAlt: "",
@@ -77,7 +81,7 @@ const PostModal = (props) => {
     };
 
     // save post content into Firestore
-    doPostContentIntoFirebase("posts", data, (response) => {
+    SaveContentIntoFirebase("posts", data, (response) => {
       postRef = response.id;
     });
 
@@ -89,16 +93,22 @@ const PostModal = (props) => {
           folder: "images/posts",
           imageAsFile: item,
           setUrl: (resp) => {
+            // add image to component state
             let temp = uploadedImagesOnServer.push({ imgUrl: resp });
             setUploadedImagesOnServer(temp);
+            // const newState = uploadedImagesOnServer;
+            // newState.push({ imgUrl: resp }); // add element as first
+            // setUploadedImagesOnServer((previousState) => [...newState]);
 
-            doPostContentIntoFirebase(
+            SaveContentIntoFirebase(
               "post-images",
               {
                 postRef: postRef,
                 imgUrl: resp,
               },
-              () => {}
+              () => {
+                console.log("Image upload is DONE");
+              }
             );
 
             if (uploadedImagesOnServer.length === uploadedFiles.length) {
@@ -130,11 +140,7 @@ const PostModal = (props) => {
       {!!showModal && (
         <Container>
           <Content className={showModal.toLowerCase()}>
-            <PostModalHeader
-              showModal={showModal}
-              closeModal={closeModal}
-              handleModalClick={handleModalClick}
-            />
+            <PostModalHeader showModal={showModal} closeModal={closeModal} />
             <UploadArea>
               {["addPost", "addMedia"].includes(showModal) && (
                 <>
@@ -345,13 +351,18 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
 const mapStateToProps = (state) => {
   return {
     user: state.userState.user,
+    showModal: state.popupModalState.popupModal.showModal,
+    previousShowModal: state.popupModalState.previousShowModal,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    doPostContentIntoFirebase: (collectionName, data, callback) => {
-      dispatch(doPostContentIntoFirebase(collectionName, data, callback));
+    setShowModal: (newPopupState) => {
+      dispatch(setShowModalAPI(newPopupState));
+    },
+    setPreviousShowModal: (prevPopupState) => {
+      dispatch(setPreviousShowModalAPI(prevPopupState));
     },
   };
 };

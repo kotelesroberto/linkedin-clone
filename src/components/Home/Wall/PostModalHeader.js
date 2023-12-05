@@ -1,19 +1,24 @@
 import React, { useCallback } from "react";
+import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { ButtonActionContainer, ButtonAction } from "../../Common/Icons";
 import ProfileCardWide from "../../User/ProfileCardWide";
 
+import {
+  setShowModalAPI,
+  setPreviousShowModalAPI,
+} from "../../../redux/actions/actions";
+
 const PostModalHeader = (props) => {
   const showModal = props.showModal;
   const closeModal = props.closeModal;
-  const handleModalClick = props.handleModalClick;
 
   const headerToShow = useCallback((showModal) => {
     // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
     switch (showModal) {
       case "addPost":
-        return <ProfileCardWide handleModalClick={handleModalClick} />;
+        return <ProfileCardWide />;
         break;
       case "addMedia":
         return <h2>Editor</h2>;
@@ -78,4 +83,26 @@ const ClosePopupAction = styled(ButtonAction)`
   }
 `;
 
-export default PostModalHeader;
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+    showModal: state.popupModalState.popupModal.showModal,
+    previousShowModal: state.popupModalState.previousShowModal,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setShowModal: (newPopupState) => {
+      dispatch(setShowModalAPI(newPopupState));
+    },
+    setPreviousShowModal: (prevPopupState) => {
+      dispatch(setPreviousShowModalAPI(prevPopupState));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostModalHeader);

@@ -35,7 +35,6 @@ const PostModalAddPost = (props) => {
 
   // make url srings anchored in the content
   const doUrlify = (text) => {
-    console.log("call: doUrlify");
     return text.replace(urlRegex, function (url) {
       return '<a href="' + url + '">' + url + "</a>";
     });
@@ -90,6 +89,7 @@ const PostModalAddPost = (props) => {
         onChange={onchangeTextarea}
         onClick={onchangeTextarea}
         value={editorText}
+        autoFocus={ true }
       ></textarea>
 
       <ThumbContainer>
@@ -212,6 +212,7 @@ const Pickercontainer = styled.div`
 const EmojiContainer = styled.div`
   position: absolute;
   bottom: 40px;
+  z-index: 50;
 `;
 
 const Error = styled.div`

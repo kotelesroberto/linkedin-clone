@@ -9,7 +9,7 @@ import AlreadyRegistered from "../components/Login/AlreadyRegistered";
 import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 
-import { registerByEmailAndPassAPI } from "../redux/actions/actions";
+import { actionRegisterByEmailAndPassAPI } from "../redux/actions/actions";
 
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -163,7 +163,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     registerByEmailAndPass: (email, pass, callback) => {
-      dispatch(registerByEmailAndPassAPI(email, pass, callback));
+      dispatch(actionRegisterByEmailAndPassAPI(email, pass, callback));
     },
   };
 };

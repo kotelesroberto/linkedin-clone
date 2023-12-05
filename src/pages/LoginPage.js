@@ -11,8 +11,8 @@ import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 
 import {
-  signInGoogleAPI,
-  signInEmailAndPassAPI,
+  actionSignInGoogleAPI,
+  actionSignInEmailAndPassAPI,
 } from "../redux/actions/actions";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -192,10 +192,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     signInGoogle: () => {
-      dispatch(signInGoogleAPI());
+      dispatch(actionSignInGoogleAPI());
     },
-    signInEmailAndPassAPI: (email, pass, callback) => {
-      dispatch(signInEmailAndPassAPI(email, pass, callback));
+    actionSignInEmailAndPassAPI: (email, pass, callback) => {
+      dispatch(actionSignInEmailAndPassAPI(email, pass, callback));
     },
   };
 };

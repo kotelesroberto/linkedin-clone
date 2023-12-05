@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import * as variables from "../Common/Variables";
 import { connect } from "react-redux";
-import { signOutAPI } from "../../redux/actions/actions";
+import { actionSignOutAPI } from "../../redux/actions/actions";
 
 const Header = (props) => {
   return (
@@ -383,7 +383,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     signOut: (e) => {
       e.preventDefault();
-      dispatch(signOutAPI());
+      dispatch(actionSignOutAPI());
     },
   };
 };

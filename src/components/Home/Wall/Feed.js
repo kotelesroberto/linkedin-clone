@@ -121,10 +121,11 @@ const Feed = (props) => {
     if (props.isNewPostImageUploadDone) {
       // add image infomration to the new post that is already in the component state, thanks to the onSnapshot API
 
-      const existingItem = feedItems.filter(
-        (arrItem) => arrItem.id === props.isNewPostImageUploadDone
-      );
-      if (existingItem.length) {
+      if (
+        feedItems.some(
+          (arrItem) => arrItem.id === props.isNewPostImageUploadDone
+        )
+      ) {
         let imgArray = [];
 
         getRelatedImages(props.isNewPostImageUploadDone).then((images) => {
@@ -137,8 +138,6 @@ const Feed = (props) => {
 
           // add the new image information to the belonging post item in the component's state
           const newState = feedItems;
-          console.log({ newState });
-
           newState.map((item) => {
             // newFeedItem.images = imgArray;
             if (item.id === props.isNewPostImageUploadDone) {

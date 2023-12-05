@@ -5,8 +5,8 @@ import { ButtonSecondary, ButtonEmoji } from "../../Common/Buttons";
 
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-
 import ReactPlayer from "react-player";
+import { getFirstYoutubeLink } from "../../../utils/getVideoLink";
 
 const PostModalAddPost = (props) => {
   const uploadedFiles = props.uploadedFiles;
@@ -28,7 +28,7 @@ const PostModalAddPost = (props) => {
     const comment = document.getElementById("postMessage");
     setCharPosition(comment.selectionStart);
     setEditorText(comment.value);
-    getFirstYoutubeLink(editorText);
+    getFirstYoutubeLink(editorText, (result) => setExternalMediaUrl(result));
   };
 
   const urlRegex = /(https?:\/\/[^\s]+)/g;
@@ -43,19 +43,6 @@ const PostModalAddPost = (props) => {
   // get extracted url addresses from content
   const getFirstMediaLink = (text) => {
     const matches = text.match(urlRegex);
-    return matches;
-  };
-
-  // get youtube video extracted from content
-  const getFirstYoutubeLink = (text) => {
-    const urlRegex =
-      /https?:\/\/(?:[0-9A-Z-]+\.)?(?:youtu\.be\/|youtube(?:-nocookie)?\.com\S*?[^\w\s-])([\w-]{11})(?=[^\w-]|$)(?![?=&+%\w.-]*(?:['"][^<>]*>|<\/a>))[?=&+%\w.-]*/gi;
-    const matches = text.match(urlRegex);
-    if (matches) {
-      setExternalMediaUrl(matches[0]);
-    } else {
-      setExternalMediaUrl("");
-    }
     return matches;
   };
 
@@ -89,7 +76,7 @@ const PostModalAddPost = (props) => {
         onChange={onchangeTextarea}
         onClick={onchangeTextarea}
         value={editorText}
-        autoFocus={ true }
+        autoFocus={true}
       ></textarea>
 
       <ThumbContainer>

@@ -10,6 +10,7 @@ import {
   ButtonAction,
 } from "../../Common/Icons";
 import FeedListItemImage from "./FeedListItemImage";
+import FeedListItemVideo from "./FeedListItemVideo";
 
 const FeedListItem = (props) => {
   return (
@@ -53,6 +54,7 @@ const FeedListItem = (props) => {
         <FeedListItemContent>
           <span>{props.content.content}</span>
 
+          <FeedListItemVideo content={ props.content.content } />
           {!!props.content.images.length && (
             <FeedListItemImages>
               {props.content.images.map((item, index) => (

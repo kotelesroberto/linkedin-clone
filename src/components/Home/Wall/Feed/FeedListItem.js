@@ -37,6 +37,7 @@ const FeedListItem = (props) => {
 
   const [isPostLiked, setIsPostLiked] = useState(false);
   const [likes, setLikes] = useState([]);
+  const [showComments, setShowComments] = useState(false);
   const [countComments, setCountComments] = useState(0);
 
   const countLikes = likes.length;
@@ -72,6 +73,11 @@ const FeedListItem = (props) => {
       setIsPostLiked(newisPostLiked);
       e.target.removeAttribute("disabled");
     });
+  };
+
+  const showCommentsPanel = (e) => {
+    e.preventDefault();
+    setShowComments(!showComments);
   };
 
   return (
@@ -153,7 +159,7 @@ const FeedListItem = (props) => {
             )}
             <span>Like</span>
           </button>
-          <button>
+          <button onClick={(e) => showCommentsPanel(e)}>
             <img src="/images/icon-comment.svg" alt="" />
             <span>Comment</span>
           </button>
@@ -166,11 +172,14 @@ const FeedListItem = (props) => {
             <span>Send</span>
           </button>
         </FeedListItemButtons>
-        <FeedListItemComments
-          postid={props.content.id}
-          numcomments={countComments}
-          setcountcomments={setCountComments}
-        />
+
+        {showComments && (
+          <FeedListItemComments
+            postid={props.content.id}
+            numcomments={countComments}
+            setcountcomments={setCountComments}
+          />
+        )}
       </FeedListItemContainer>
     </FeedListItemCard>
   );

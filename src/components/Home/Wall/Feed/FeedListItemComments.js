@@ -90,7 +90,7 @@ const FeedListItemComments = (props) => {
       timestamp: Date.now(),
       text: commentText,
       comments: "",
-      likes: Math.floor(Math.random() * 1000) + 1,
+      likes: 0,
     };
 
     // save post content into Firestore

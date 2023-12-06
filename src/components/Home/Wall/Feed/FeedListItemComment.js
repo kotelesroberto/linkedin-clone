@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Moment from "react-moment";
+import * as variables from "../../../Common/Variables";
 
 import { SocialCountButton } from "../../../Common/Buttons";
 import { SocialCounts, SocialCountItem } from "../../../Common/FeedItems";
@@ -9,6 +10,32 @@ import { UserAvatarPhoto } from "../../../Common/User";
 
 const FeedListItemComment = (props) => {
   const item = props.item;
+  const doLike = props.dolike;
+
+  const [likes, setLikes] = useState([]);
+  const [isPostLiked, setIsPostLiked] = useState(false);
+  const countLikes = likes.length;
+
+  useEffect(() => {
+    setLikes(item.likes);
+    setIsPostLiked(item.likes.indexOf(props.user.uid) !== -1);
+  }, []);
+
+  const clickLike = (e) => {
+    doLike(
+      e,
+      {
+        collection: "post-comments",
+        documentID: item.id,
+        user: props.user,
+        likes: likes,
+      },
+      (response) => {
+        setLikes((oldLikes) => response.likes);
+        setIsPostLiked(response.isPostLiked);
+      }
+    );
+  };
 
   return (
     <Comment>
@@ -30,11 +57,19 @@ const FeedListItemComment = (props) => {
           <p>{item.text}</p>
           <CommentSocialContainer>
             <CommentSocialItem>
-              <CommentSocialItemButton>Like</CommentSocialItemButton>
-              <a href="#">
-                <img src="/images/icon-like.svg" alt="" />
-                <span>{item.likes}</span>
-              </a>
+              <CommentSocialItemButton
+                className={isPostLiked ? "liked" : ""}
+                onClick={(e) => clickLike(e)}
+              >
+                Like
+              </CommentSocialItemButton>
+
+              {!!countLikes && (
+                <a href="#">
+                  <img src="/images/icon-like.svg" alt="" />
+                  <span>{countLikes}</span>
+                </a>
+              )}
             </CommentSocialItem>
             <CommentSocialItem>
               <CommentSocialItemButton>Reply</CommentSocialItemButton>
@@ -103,7 +138,12 @@ const CommentSocialItem = styled(SocialCountItem)`
     }
   }
 `;
-const CommentSocialItemButton = styled(SocialCountButton)``;
+const CommentSocialItemButton = styled(SocialCountButton)`
+  &.liked {
+    font-weight: 700;
+    color: ${variables.colors.blue};
+  }
+`;
 
 /*=====  React-redux related functions  ======*/
 

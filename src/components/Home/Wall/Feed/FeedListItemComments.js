@@ -35,6 +35,9 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db, auth, storage } from "../../../../firebase/firebase";
+import { doLike } from "../../../../utils/manageLikes";
+
+
 const FeedListItemComments = (props) => {
   console.log({ props });
   const [commentText, setCommentText] = useState("");
@@ -90,7 +93,7 @@ const FeedListItemComments = (props) => {
       timestamp: Date.now(),
       text: commentText,
       comments: "",
-      likes: 0,
+      likes: [],
     };
 
     // save post content into Firestore
@@ -128,7 +131,6 @@ const FeedListItemComments = (props) => {
         // get this post item
         const docData = doc.data();
         let newFeedItem = {};
-        let imgArray = [];
 
         // only add the snapshotted data if it's not in the state yet
         if (!comments.some((arrItem) => arrItem.id === doc.id)) {
@@ -188,6 +190,7 @@ const FeedListItemComments = (props) => {
               <FeedListItemComment
                 item={item}
                 key={`comment-${originalPostID}-${index}`}
+                dolike={ doLike }
               />
             ))}
         </Comments>

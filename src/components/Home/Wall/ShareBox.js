@@ -3,17 +3,30 @@ import React from "react";
 
 import { UserAvatarPhoto } from "../../Common/User";
 import { ButtonSharePost } from "../../Common/Buttons";
-import { ShareBoxContainer, ShareBoxWrapper, ShareBoxTop, ShareBoxButtons } from "../../Common/ShareBox";
+import {
+  ShareBoxContainer,
+  ShareBoxWrapper,
+  ShareBoxTop,
+  ShareBoxButtons,
+} from "../../Common/ShareBox";
 import { connect } from "react-redux";
 
 import {
   setShowModalAPI,
   setPreviousShowModalAPI,
 } from "../../../redux/actions/actions";
+import { useNavigate } from "react-router-dom";
 
 const ShareBox = (props) => {
   const showModal = props.showModal;
   const setShowModal = props.setShowModal;
+
+  const navigate = useNavigate();
+
+  const doWriteArticle = (e) => {
+    e.preventDefault();
+    navigate("/demo");
+  };
 
   return (
     <ShareBoxContainer>
@@ -39,7 +52,7 @@ const ShareBox = (props) => {
             <img src="/images/calendar-icon.svg" alt="" />
             <span>Event</span>
           </button>
-          <button>
+          <button onClick={(e) => doWriteArticle(e)}>
             <img src="/images/article-icon.svg" alt="" />
             <span>Write article</span>
           </button>
@@ -48,9 +61,6 @@ const ShareBox = (props) => {
     </ShareBoxContainer>
   );
 };
-
-
-
 
 /*=====  React-redux related functions  ======*/
 

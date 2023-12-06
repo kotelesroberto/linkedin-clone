@@ -18,10 +18,12 @@ import {
   ButtonActionContainer,
   ButtonAction,
 } from "../../../Common/Icons";
-import { ModifyContentInFirebase } from "../../../../utils/uploadFile";
+
 import FeedListItemImage from "./FeedListItemImage";
 import FeedListItemVideo from "./FeedListItemVideo";
 import FeedListItemComments from "./FeedListItemComments";
+import { doLike } from "../../../../utils/manageLikes";
+
 import { useNavigate } from "react-router-dom";
 
 const FeedListItem = (props) => {
@@ -45,50 +47,33 @@ const FeedListItem = (props) => {
 
   const navigate = useNavigate();
 
-  const doLike = (e) => {
-    e.preventDefault();
-    e.target.setAttribute("disabled", "disabled");
-
-    let newisPostLiked = true;
-    // set the change in Friebase
-    const documentID = props.content.id;
-    let data;
-    const index = likes.indexOf(props.user.uid);
-
-    if (index !== -1) {
-      // the logged in user already liked this post
-      likes.splice(index, 1);
-      data = {
-        likes: likes,
-      };
-
-      newisPostLiked = false;
-    } else {
-      // the logged in user never liked this post
-      data = {
-        likes: [...likes, props.user.uid],
-      };
-    }
-
-    // save post content into Firestore
-    ModifyContentInFirebase("posts", documentID, data, (response) => {
-      setLikes((oldLikes) => data.likes);
-      setIsPostLiked(newisPostLiked);
-      e.target.removeAttribute("disabled");
-    });
-  };
-
   const showCommentsPanel = (e) => {
     e.preventDefault();
     setShowComments(!showComments);
   };
 
-  const doReshare = (e) => {
+  const clickReshare = (e) => {
     e.preventDefault();
     navigate("/demo");
   };
-  const doSend = (e) => {
-    doReshare(e);
+  const clickSend = (e) => {
+    clickReshare(e);
+  };
+
+  const clickLike = (e) => {
+    doLike(
+      e,
+      {
+        collection: "posts",
+        documentID: props.content.id,
+        user: props.user,
+        likes: likes,
+      },
+      (response) => {
+        setLikes((oldLikes) => response.likes);
+        setIsPostLiked(response.isPostLiked);
+      }
+    );
   };
 
   return (
@@ -159,7 +144,7 @@ const FeedListItem = (props) => {
                 {countComments} comments
               </a>
               •
-              <a href="#" onClick={(e) => doReshare(e)}>
+              <a href="#" onClick={(e) => clickReshare(e)}>
                 {props.content.interactions.reposts} reposts
               </a>
             </span>
@@ -167,7 +152,7 @@ const FeedListItem = (props) => {
         </SocialCounts>
 
         <FeedListItemButtons>
-          <button onClick={(e) => doLike(e)}>
+          <button onClick={(e) => clickLike(e)}>
             {isPostLiked ? (
               <img src="/images/icon-thumbs-up-fill.svg" alt="" />
             ) : (
@@ -179,11 +164,11 @@ const FeedListItem = (props) => {
             <img src="/images/icon-comment.svg" alt="" />
             <span>Comment</span>
           </button>
-          <button onClick={(e) => doReshare(e)}>
+          <button onClick={(e) => clickReshare(e)}>
             <img src="/images/icon-repost.svg" alt="" />
             <span>Repost</span>
           </button>
-          <button onClick={(e) => doSend(e)}>
+          <button onClick={(e) => clickSend(e)}>
             <img src="/images/icon-send.svg" alt="" />
             <span>Send</span>
           </button>

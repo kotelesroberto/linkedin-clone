@@ -22,6 +22,7 @@ import { ModifyContentInFirebase } from "../../../../utils/uploadFile";
 import FeedListItemImage from "./FeedListItemImage";
 import FeedListItemVideo from "./FeedListItemVideo";
 import FeedListItemComments from "./FeedListItemComments";
+import { useNavigate } from "react-router-dom";
 
 const FeedListItem = (props) => {
   useEffect(() => {
@@ -41,6 +42,8 @@ const FeedListItem = (props) => {
   const [countComments, setCountComments] = useState(0);
 
   const countLikes = likes.length;
+
+  const navigate = useNavigate();
 
   const doLike = (e) => {
     e.preventDefault();
@@ -78,6 +81,14 @@ const FeedListItem = (props) => {
   const showCommentsPanel = (e) => {
     e.preventDefault();
     setShowComments(!showComments);
+  };
+
+  const doReshare = (e) => {
+    e.preventDefault();
+    navigate("/demo");
+  };
+  const doSend = (e) => {
+    doReshare(e);
   };
 
   return (
@@ -144,8 +155,13 @@ const FeedListItem = (props) => {
           </SocialCountItem>
           <SocialCountItem>
             <span>
-              <a href="#">{countComments} comments</a>•
-              <a href="#">{props.content.interactions.reposts} reposts</a>
+              <a href="#" onClick={(e) => showCommentsPanel(e)}>
+                {countComments} comments
+              </a>
+              •
+              <a href="#" onClick={(e) => doReshare(e)}>
+                {props.content.interactions.reposts} reposts
+              </a>
             </span>
           </SocialCountItem>
         </SocialCounts>
@@ -163,11 +179,11 @@ const FeedListItem = (props) => {
             <img src="/images/icon-comment.svg" alt="" />
             <span>Comment</span>
           </button>
-          <button>
+          <button onClick={(e) => doReshare(e)}>
             <img src="/images/icon-repost.svg" alt="" />
             <span>Repost</span>
           </button>
-          <button>
+          <button onClick={(e) => doSend(e)}>
             <img src="/images/icon-send.svg" alt="" />
             <span>Send</span>
           </button>

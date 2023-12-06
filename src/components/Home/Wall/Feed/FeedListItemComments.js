@@ -19,7 +19,10 @@ import {
 import { UserAvatarPhoto } from "../../../Common/User";
 import { ButtonSharePost, ButtonSecondary } from "../../../Common/Buttons";
 import FeedListItemComment from "./FeedListItemComment";
-import { SaveContentIntoFirebase } from "../../../../utils/uploadFile";
+import {
+  SaveContentIntoFirebase,
+  ModifyContentInFirebase,
+} from "../../../../utils/uploadFile";
 
 // firebase related
 import {
@@ -32,11 +35,11 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 import { db, auth, storage } from "../../../../firebase/firebase";
-
 const FeedListItemComments = (props) => {
+  console.log({ props });
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
-  const [countcomments, setCountcomments] = useState(0);
+  const [countcomments, setCountcomments] = useState(props.countcomments);
   const originalPostID = props.postid;
   const textareaID = `add-comment-${originalPostID}`;
 
@@ -54,31 +57,6 @@ const FeedListItemComments = (props) => {
       unsubscribe(); // this function is given back by onSnapshot
     };
   }, []);
-
-  const __commentItems = [
-    {
-      postid: "123",
-      uid: "1234242",
-      avatar:
-        "https://lh3.googleusercontent.com/a/ACg8ocJ2KSQFsnfPBvksN94_5BEWBXwXOeTuX1IcAXp1auhH=s96-c",
-      displayName: "Author name 1",
-      userlink: "https://www.google.com",
-      timestamp: 1701788568696,
-      text: "Generate Lorem Ipsum placeholder text. Select the number of characters, words, sentences or paragraphs, and hit generate!",
-      likes: Math.floor(Math.random() * 1000) + 1,
-    },
-    {
-      postid: "1234",
-      uid: "1234242",
-      avatar:
-        "https://lh3.googleusercontent.com/a/ACg8ocJ2KSQFsnfPBvksN94_5BEWBXwXOeTuX1IcAXp1auhH=s96-c",
-      displayName: "Author name",
-      userlink: "https://www.google.com",
-      timestamp: Date.now(),
-      text: "Generate Lorem Ipsum placeholder text. Select the number of characters, words, sentences or paragraphs, and hit generate!",
-      likes: Math.floor(Math.random() * 1000) + 1,
-    },
-  ];
 
   // Updates the height of a <textarea> when the value changes.
   const useAutosizeTextArea = () => {
@@ -119,6 +97,18 @@ const FeedListItemComments = (props) => {
     SaveContentIntoFirebase("post-comments", data, (response) => {
       commentRef = response.id;
     });
+
+    const newCountComments = props.numcomments + 1;
+    // increase the count of comments of the original post and save into Firestore
+    ModifyContentInFirebase(
+      "posts",
+      originalPostID,
+      { numComments: newCountComments },
+      () => {
+        props.setcountcomments(newCountComments);
+        setCountcomments(newCountComments);
+      }
+    );
 
     setCommentText("");
   };

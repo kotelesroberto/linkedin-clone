@@ -5,7 +5,8 @@
  * 2023, Robert Koteles
  */
 
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import Moment from "react-moment";
 import styled from "styled-components";
 import { Card, CardContainer } from "../../../Common/Cards";
@@ -17,6 +18,7 @@ import {
   ButtonActionContainer,
   ButtonAction,
 } from "../../../Common/Icons";
+import { ModifyContentInFirebase } from "../../../../utils/uploadFile";
 import FeedListItemImage from "./FeedListItemImage";
 import FeedListItemVideo from "./FeedListItemVideo";
 import FeedListItemComments from "./FeedListItemComments";
@@ -26,7 +28,51 @@ const FeedListItem = (props) => {
     // Start the pooled timer which runs every 60 seconds
     // (60000 milliseconds) by default.
     Moment.startPooledTimer();
+    setLikes(props.content.interactions.likes);
+    setIsPostLiked(
+      props.content.interactions.likes.indexOf(props.user.uid) !== -1
+    );
+    setCountComments(props.content.interactions.numComments);
   }, []);
+
+  const [isPostLiked, setIsPostLiked] = useState(false);
+  const [likes, setLikes] = useState([]);
+  const [countComments, setCountComments] = useState(0);
+
+  const countLikes = likes.length;
+
+  const doLike = (e) => {
+    e.preventDefault();
+    e.target.setAttribute("disabled", "disabled");
+
+    let newisPostLiked = true;
+    // set the change in Friebase
+    const documentID = props.content.id;
+    let data;
+    const index = likes.indexOf(props.user.uid);
+
+    if (index !== -1) {
+      // the logged in user already liked this post
+      likes.splice(index, 1);
+      data = {
+        likes: likes,
+      };
+
+      newisPostLiked = false;
+    } else {
+      // the logged in user never liked this post
+      data = {
+        likes: [...likes, props.user.uid],
+      };
+    }
+
+    // save post content into Firestore
+    ModifyContentInFirebase("posts", documentID, data, (response) => {
+      setLikes((oldLikes) => data.likes);
+      setIsPostLiked(newisPostLiked);
+      e.target.removeAttribute("disabled");
+    });
+  };
 
   return (
     <FeedListItemCard>
@@ -87,20 +133,24 @@ const FeedListItem = (props) => {
             <a href="#">
               <img src="/images/icon-like.svg" alt="" />
               <img src="/images/icon-clap.svg" alt="" />
-              <span>{props.content.interactions.likes}</span>
+              <span>{countLikes}</span>
             </a>
           </SocialCountItem>
           <SocialCountItem>
             <span>
-              <a href="#">{props.content.interactions.numComments} comments</a>•
+              <a href="#">{countComments} comments</a>•
               <a href="#">{props.content.interactions.reposts} reposts</a>
             </span>
           </SocialCountItem>
         </SocialCounts>
 
         <FeedListItemButtons>
-          <button>
-            <img src="/images/icon-thumbs-up.svg" alt="" />
+          <button onClick={(e) => doLike(e)}>
+            {isPostLiked ? (
+              <img src="/images/icon-thumbs-up-fill.svg" alt="" />
+            ) : (
+              <img src="/images/icon-thumbs-up.svg" alt="" />
+            )}
             <span>Like</span>
           </button>
           <button>
@@ -116,7 +166,11 @@ const FeedListItem = (props) => {
             <span>Send</span>
           </button>
         </FeedListItemButtons>
-        <FeedListItemComments postid={ props.content.id } />
+        <FeedListItemComments
+          postid={props.content.id}
+          numcomments={countComments}
+          setcountcomments={setCountComments}
+        />
       </FeedListItemContainer>
     </FeedListItemCard>
   );
@@ -242,4 +296,13 @@ const FeedItemActions = styled(ButtonActionContainer)``;
 
 const FeedItemAction = styled(ButtonAction)``;
 
-export default FeedListItem;
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+export default connect(mapStateToProps)(FeedListItem);

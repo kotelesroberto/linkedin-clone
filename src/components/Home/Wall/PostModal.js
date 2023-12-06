@@ -78,9 +78,9 @@ const PostModal = (props) => {
       // imageAlt: "",
       avatar: props.user.photoURL,
       comments: "",
-      numComments: Math.floor(Math.random() * 1000) + 1,
+      numComments: 0,
       reposts: Math.floor(Math.random() * 1000) + 1,
-      likes: Math.floor(Math.random() * 1000) + 1,
+      likes: [],
     };
 
     // save post content into Firestore

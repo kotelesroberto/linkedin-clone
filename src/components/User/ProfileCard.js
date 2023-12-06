@@ -14,16 +14,18 @@ const ProfileCard = (props) => {
 
   return (
     <>
-      ( !isEditMode && (
-      <Card>
-        <ProfileCardCoverImage />
-        <ProfileCardUserPhoto />
-        <ProfileCardUserInfo />
-        <ProfileCardImpressions />
-        <ProfileCardMyItems />
-      </Card>
-      <ShowMore showon="mobile" onclickevent={toggleView} />
-      ))
+      {!isEditMode && (
+        <>
+          <Card>
+            <ProfileCardCoverImage />
+            <ProfileCardUserPhoto />
+            <ProfileCardUserInfo />
+            <ProfileCardImpressions />
+            <ProfileCardMyItems />
+          </Card>
+          <ShowMore showon="mobile" onclickevent={toggleView} />
+        </>
+      )}
     </>
   );
 };

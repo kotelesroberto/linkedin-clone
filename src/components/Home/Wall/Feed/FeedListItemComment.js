@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Moment from "react-moment";
+import { useNavigate } from "react-router-dom";
 import * as variables from "../../../Common/Variables";
 
 import { SocialCountButton } from "../../../Common/Buttons";
@@ -15,6 +16,8 @@ const FeedListItemComment = (props) => {
   const [likes, setLikes] = useState([]);
   const [isPostLiked, setIsPostLiked] = useState(false);
   const countLikes = likes.length;
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setLikes(item.likes);
@@ -35,6 +38,11 @@ const FeedListItemComment = (props) => {
         setIsPostLiked(response.isPostLiked);
       }
     );
+  };
+
+  const clickReply = (e) => {
+    e.preventDefault();
+    navigate("/demo");
   };
 
   return (
@@ -72,7 +80,9 @@ const FeedListItemComment = (props) => {
               )}
             </CommentSocialItem>
             <CommentSocialItem>
-              <CommentSocialItemButton>Reply</CommentSocialItemButton>
+              <CommentSocialItemButton onClick={(e) => clickReply(e)}>
+                Reply
+              </CommentSocialItemButton>
             </CommentSocialItem>
           </CommentSocialContainer>
         </CommentContent>

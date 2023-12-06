@@ -88,7 +88,9 @@ const WidgetRecent = () => {
           <a href="#">Followed Hashtags</a>
         </ListSmallHeader>
       </CardContainer>
-      <DiscoverMore title="Discover more" link="#" />
+      <DiscoverMore
+        title={["Discover more", "Hide"]}
+        link="#" />
     </Card>
   );
 };

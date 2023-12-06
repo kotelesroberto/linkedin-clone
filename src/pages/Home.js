@@ -12,7 +12,7 @@ import LeftCol from "../components/Home/LeftCol/LeftCol";
 import RightCol from "../components/Home/RightCol/RightCol";
 import PostModal from "../components/Home/Wall/PostModal";
 
-import { setShowModalAPI, setCurrentURL } from "../redux/actions/actions";
+import { setShowModalAPI, setCurrentURLAPI } from "../redux/actions/actions";
 
 const Home = (props) => {
   const showModal = props.showModal;
@@ -32,7 +32,7 @@ const Home = (props) => {
     if (!props.user) {
       const windowLocation = window.location.pathname;
       props.setCurrentURL(windowLocation);
-      // navigate("/");
+      navigate(props.loadedURL);
     }
   }, [props.user]);
 
@@ -98,7 +98,7 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(setShowModalAPI(newPopupState));
     },
     setCurrentURL: (url) => {
-      dispatch(setCurrentURL(url));
+      dispatch(setCurrentURLAPI(url));
     },
   };
 };

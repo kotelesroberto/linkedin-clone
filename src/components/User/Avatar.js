@@ -11,7 +11,7 @@ import { ButtonFollow } from "../Common/Buttons";
 
 const Avatar = (props) => {
   return (
-    <UserAvatarBox>
+    <UserAvatarBox className={props.classname ? props.classname : ""}>
       <UserAvatarPhoto>
         <img src={props.user.avatar} alt={props.user.name} />
       </UserAvatarPhoto>

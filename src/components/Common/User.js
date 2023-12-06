@@ -11,8 +11,18 @@ export const UserAvatarBox = styled.div`
   color: rgba(0, 0, 0, 0.9);
   border-bottom: 1px solid rgba(140, 140, 140, 0.2);
   padding: 12px 0;
+  overflow: hidden;
+  opacity: 1;
+  transition: max-height 0.3s, opacity 0.1s, padding 0.1s;
 
   &:last-child {
+    border-bottom: none;
+  }
+
+  &.closed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
     border-bottom: none;
   }
 `;

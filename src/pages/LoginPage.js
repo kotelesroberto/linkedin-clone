@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import DocumentTitle from "react-document-title";
 import { connect } from "react-redux";
 import styled from "styled-components";
@@ -13,6 +13,7 @@ import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 import {
   actionSignInGoogleAPI,
   actionSignInEmailAndPassAPI,
+  setCurrentURLAPI
 } from "../redux/actions/actions";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -22,6 +23,13 @@ const LoginPage = (props) => {
     e.preventDefault();
     navigate("/signup");
   };
+
+
+  useEffect(() => {
+    if (props.user) {
+      navigate(props.loadedURL);
+    }
+  }, [props.user]);
 
   return (
     <DocumentTitle title="Log in | LinkedIn clone by Robert Koteles">
@@ -197,6 +205,9 @@ const mapDispatchToProps = (dispatch) => {
     },
     actionSignInEmailAndPassAPI: (email, pass, callback) => {
       dispatch(actionSignInEmailAndPassAPI(email, pass, callback));
+    },
+    setCurrentURL: (url) => {
+      dispatch(setCurrentURLAPI(url));
     },
   };
 };

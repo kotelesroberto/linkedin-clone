@@ -28,6 +28,7 @@ import { db, auth, storage } from "../../../../firebase/firebase";
 
 const Feed = (props) => {
   const [feedItems, setFeedItems] = useState([]);
+  const [hasNewPosts, setHasNewPosts] = useState(false);
 
   useEffect(() => {
     const unsubscribe = getPosts();
@@ -46,7 +47,7 @@ const Feed = (props) => {
   const getPosts = () => {
     const q = query(
       collection(db, "posts"),
-      where("uid", "in", ["ooKsVd0qRLhlyrQz30ADAd8OQ7Z2"]),
+      // where("uid", "in", ["ooKsVd0qRLhlyrQz30ADAd8OQ7Z2"]),
       orderBy("timestamp", "asc")
     );
 
@@ -174,9 +175,11 @@ const Feed = (props) => {
         />
       </FeedSortBy>
 
-      <ButtonNewPost id="button-new-post" aria-label="New posts">
-        New posts
-      </ButtonNewPost>
+      {hasNewPosts && (
+        <ButtonNewPost id="button-new-post" aria-label="New posts">
+          New posts
+        </ButtonNewPost>
+      )}
 
       {props.isNewPostImageUploadDone && (
         <p>{props.isNewPostImageUploadDone}</p>

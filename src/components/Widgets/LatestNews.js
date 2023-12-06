@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { Card, CardContainer } from "../Common/Cards";
 import {
   ListHeader,
@@ -12,6 +12,8 @@ import ShowMore from "./ShowMore";
 
 const LatestNews = () => {
   const [openedStatus, setOpenedStatus] = useState("closed");
+  const maxItemsToShow = 4;
+  const thisListRef = useRef();
 
   // TODO: fetch from API later, as JSON object
   const news = [
@@ -63,9 +65,8 @@ const LatestNews = () => {
     e.preventDefault();
 
     setOpenedStatus(openedStatus === "closed" ? "open" : "closed");
-    const newsList = document.getElementById("linkedin-news");
-    newsList.querySelectorAll("li").forEach((item, index) => {
-      if (index > 4) {
+    thisListRef.current.querySelectorAll("li").forEach((item, index) => {
+      if (index > maxItemsToShow) {
         item.classList.toggle("closed");
       }
     });
@@ -81,10 +82,10 @@ const LatestNews = () => {
 
         {!!news.length && (
           <>
-            <List id="linkedin-news">
+            <List ref={thisListRef}>
               {news.map((item, index) => (
                 <ListItem
-                  className={index > 4 ? "closed" : ""}
+                  className={index >= maxItemsToShow ? "closed" : ""}
                   key={"widget-latestnews-" + index}
                 >
                   <a href={item.link}>

@@ -1,3 +1,9 @@
+/**
+ *
+ * Component: Login by Google Authentication
+ * 2023, Robert Koteles
+ */
+
 import React from "react";
 import { ButtonWithImage } from "../Common/Buttons";
 

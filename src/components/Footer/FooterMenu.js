@@ -1,3 +1,9 @@
+/**
+ *
+ * Component: Mani Footer Menu
+ * 2023, Robert Koteles
+ */
+
 import React from "react";
 import styled from "styled-components";
 import * as variables from "../Common/Variables";

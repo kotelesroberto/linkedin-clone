@@ -1,3 +1,9 @@
+/**
+ *
+ * Widget: Recent Groups
+ * 2023, Robert Koteles
+ */
+
 import React from "react";
 import styled from "styled-components";
 
@@ -47,7 +53,7 @@ const WidgetRecent = () => {
           <ListSmallHeader>Recent</ListSmallHeader>
           <ListSmall id="group-recent">
             {groupRecent.map((item, index) => (
-              <ListItemSmall key={ 'widget-recent-' + index }>
+              <ListItemSmall key={"widget-recent-" + index}>
                 <a href={item.link}>
                   <ListSmallIcon_Group></ListSmallIcon_Group>
                   {item.title}
@@ -66,7 +72,7 @@ const WidgetRecent = () => {
 
           <ListSmall id="group-recent">
             {groupGroups.map((item, index) => (
-              <ListItemSmall key={ 'widget-group-' + index }>
+              <ListItemSmall key={"widget-group-" + index}>
                 <a href={item.link}>
                   <ListSmallIcon_Group></ListSmallIcon_Group>
                   {item.title}
@@ -88,7 +94,10 @@ const WidgetRecent = () => {
           <a href="#">Followed Hashtags</a>
         </ListSmallHeader>
       </CardContainer>
-      <DiscoverMore title="Discover more" link="#" />
+      <DiscoverMore
+        title={["Discover more", "Hide"]}
+        link="#"
+      />
     </Card>
   );
 };

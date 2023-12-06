@@ -1,3 +1,9 @@
+/**
+ *
+ * Component: Home page's left column
+ * 2023, Robert Koteles
+ */
+
 import styled from "styled-components";
 import React from "react";
 import ProfileCard from "../../User/ProfileCard";

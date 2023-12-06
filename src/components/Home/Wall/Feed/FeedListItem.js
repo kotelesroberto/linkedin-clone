@@ -9,6 +9,8 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import Moment from "react-moment";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+
 import { Card, CardContainer } from "../../../Common/Cards";
 import { UserAvatarPhoto } from "../../../Common/User";
 import { SocialCounts, SocialCountItem } from "../../../Common/FeedItems";
@@ -24,7 +26,7 @@ import FeedListItemVideo from "./FeedListItemVideo";
 import FeedListItemComments from "./FeedListItemComments";
 import { doLike } from "../../../../utils/manageLikes";
 
-import { useNavigate } from "react-router-dom";
+
 
 const FeedListItem = (props) => {
   useEffect(() => {

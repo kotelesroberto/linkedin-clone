@@ -7,11 +7,14 @@ import ProfileCardImpressions from "./ProfileCardImpressions";
 import ProfileCardMyItems from "./ProfileCardMyItems";
 import ShowMore from "../Widgets/ShowMore";
 
-const ProfileCard = () => {
+const ProfileCard = (props) => {
   const toggleView = () => {};
+
+  const isEditMode = props.isEditMode ? props.isEditMode : false;
 
   return (
     <>
+      ( !isEditMode && (
       <Card>
         <ProfileCardCoverImage />
         <ProfileCardUserPhoto />
@@ -20,6 +23,7 @@ const ProfileCard = () => {
         <ProfileCardMyItems />
       </Card>
       <ShowMore showon="mobile" onclickevent={toggleView} />
+      ))
     </>
   );
 };

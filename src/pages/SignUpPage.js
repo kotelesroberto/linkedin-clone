@@ -7,9 +7,11 @@ import RegisterForm from "../components/Login/RegisterForm";
 import LoginGoogle from "../components/Login/LoginGoogle";
 import AlreadyRegistered from "../components/Login/AlreadyRegistered";
 import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
-import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 
-import { actionRegisterByEmailAndPassAPI } from "../redux/actions/actions";
+import {
+  actionRegisterByEmailAndPassAPI,
+  actionSignInGoogleAPI,
+} from "../redux/actions/actions";
 
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -164,6 +166,9 @@ const mapDispatchToProps = (dispatch) => {
   return {
     registerByEmailAndPass: (email, pass, callback) => {
       dispatch(actionRegisterByEmailAndPassAPI(email, pass, callback));
+    },
+    signInGoogle: () => {
+      dispatch(actionSignInGoogleAPI());
     },
   };
 };

@@ -11,7 +11,7 @@ import {
 /*=============================================
 =            Navigation            =
 =============================================*/
-export const setCurrentURL = (url) => {
+export const setCurrentURLAPI = (url) => {
   return (dispatch) => {
     dispatch({
       type: "pageNavigationState/setCurrentURL",
@@ -56,6 +56,10 @@ export const actionSignInEmailAndPassAPI = (email, pass, callback = null) => {
           type: "userState/setUser",
           user: user,
         });
+        dispatch({
+          type: "pageNavigationState/setCurrentURL",
+          loadedURL: "/home",
+        });
         return;
       })
       .catch((error) => {
@@ -79,6 +83,10 @@ export const actionSignInGoogleAPI = () => {
         dispatch({
           type: "userState/setUser",
           user: result.user,
+        });
+        dispatch({
+          type: "pageNavigationState/setCurrentURL",
+          loadedURL: "/home",
         });
       })
       .catch((error) => {
@@ -124,6 +132,11 @@ export const actionSignOutAPI = () => {
         dispatch({
           type: "userState/setUser",
           user: null,
+        });
+
+        dispatch({
+          type: "pageNavigationState/setCurrentURL",
+          loadedURL: "/",
         });
       })
       .catch((error) => {

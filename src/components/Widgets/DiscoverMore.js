@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 const DiscoverMore = (props) => {
+  const [firsTitle, setFirsTitle] = useState(true);
+
+  const onClick = (e) => {
+    props.onclick(e);
+    setFirsTitle(!firsTitle);
+  };
+
   return (
     <Container>
-      <a href={props.link} aria-label={props.title}>
-        {props.title}
+      <a href={props.link} aria-label={props.title} onClick={(e) => onClick(e)}>
+        {props.title[firsTitle ? 0 : 1]}
       </a>
     </Container>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import * as variables from "../Common/Variables";
 
 const ProfileCardImpressions = () => {
   const [numProfileViewers, setNumProfileViewers] = useState(150);
@@ -48,7 +49,7 @@ const CardImpressionRow = styled.div`
 `;
 
 const CardImpressionCol = styled.div`
-  color: rgba(0, 0, 0, 0.6);
+  color: ${variables.colors.greyBold};
 
   &:nth-child(2) {
     color: rgb(10, 102, 194);

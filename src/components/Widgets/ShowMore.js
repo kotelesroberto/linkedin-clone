@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import * as variables from "../Common/Variables";
 
 const ShowMore = (props) => {
   return (
@@ -30,7 +31,7 @@ const Container = styled.div`
   align-items: center;
   font-size: 14px;
   font-weight: 700;
-  color: rgba(0, 0, 0, 0.6);
+  color: ${variables.colors.greyBold};
   margin-top: 8px;
   cursor: pointer;
 

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as variables from "./Variables";
 
 export const SocialCounts = styled.ul`
   display: flex;
@@ -6,7 +7,7 @@ export const SocialCounts = styled.ul`
   list-style: none;
   margin: 8px 0;
   padding: 0;
-  color: rgba(0, 0, 0, 0.6);
+  color: ${variables.colors.greyBold};
   font-size: 12px;
   line-height: 1em;
 `;

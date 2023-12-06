@@ -2,10 +2,15 @@ import React from "react";
 import styled from "styled-components";
 import * as variables from "../Common/Variables";
 import { connect } from "react-redux";
+import ProfileCardEducation from "./ProfileCardEducation";
+import ProfileCardLocation from "./ProfileCardLocation";
 
 const ProfileCardUserInfo = (props) => {
+  const isEditMode = props.iseditmode ? props.iseditmode : false;
+  const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
+
   return (
-    <UserCardInfo>
+    <UserCardInfo className={isProfilePage ? "profile" : ""}>
       {!props.user && (
         <UserCardIntro>
           <h3>Welcome, there!</h3>
@@ -15,17 +20,27 @@ const ProfileCardUserInfo = (props) => {
 
       {props.user && (
         <>
-          <UserCardName>
+          <UserCardName className={isProfilePage ? "profile" : ""}>
             <a href="https://www.linkedin.com/in/robertkoteles/">
               {props.user && props.user.displayName
                 ? props.user.displayName
                 : "Me"}
             </a>
           </UserCardName>
-          <UserCardDescription>
-            Professional Senior Web Developer | Tech leader | Certified Scrum
-            Developer | Musician | Human being (SC Cleared)
+          <UserCardDescription className={isProfilePage ? "profile" : ""}>
+            <span>
+              Professional Senior Web Developer | Tech leader | Certified Scrum
+              Developer | Musician | Human being (SC Cleared)
+            </span>
+            {isProfilePage && <ProfileCardEducation />}
           </UserCardDescription>
+
+          {isProfilePage && (
+            <ProfileCardLocation />
+          )}
+          {isProfilePage && (
+            <UserCardConnections>391 connections</UserCardConnections>
+          )}
         </>
       )}
     </UserCardInfo>
@@ -51,18 +66,56 @@ const UserCardInfo = styled.div`
   border-bottom: 1px solid rgba(140, 140, 140, 0.2);
   padding: 0 12px;
   padding-bottom: 16px;
+
+  &.profile {
+    padding: 0px 24px;
+    border: none;
+    text-align: left;
+  }
 `;
 
 const UserCardName = styled.h3`
   font-size: 16px;
+
+  &.profile {
+    font-size: 24px;
+  }
 `;
 
 const UserCardDescription = styled.span`
-  color: rgba(0, 0, 0, 0.6);
+  color: ${variables.colors.greyBold};
   font-size: 12px;
   line-height: 16px;
   display: block;
   margin-top: 4px;
+
+  &.profile {
+    color: rgba(0, 0, 0, 0.9);
+    font-size: 16px;
+    line-height: 1.3;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-around;
+
+    span {
+      width: 70%;
+      margin-right: 20px;
+
+      @media (max-width: 580px) {
+        width: 100%;
+      }
+    }
+  }
+`;
+
+
+const UserCardConnections = styled.div`
+  color: ${variables.colors.blue};
+  font-weight: 700;
+  font-size: 14px;
+  margin-top: 8px;
 `;
 
 /*=====  React-redux related functions  ======*/

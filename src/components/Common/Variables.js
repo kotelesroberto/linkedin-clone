@@ -4,9 +4,12 @@ export const colors = {
     'blue': '#0a66c2',
     'grey': '#f3f2f0',
     'greyLight': '#eef3f8',
+    'greyBold': 'rgba(0, 0, 0, 0.6)',
     'greyBotticelli': '#dce6f1',
     'red': '#cb112d',
 };
+
+
 
 export const shadows = {
     'boxShadow': 'rgba(140, 140, 140, 0.2) 0px 0px 0px 1px'

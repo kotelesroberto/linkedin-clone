@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { IconButtonRow } from "./Icons";
 import { Card, CardContainer } from "./Cards";
+import * as variables from "./Variables";
 
 export const ShareBoxContainer = styled(Card)`
   display: flex;
   flex-direction: column;
-  color: rgba(0, 0, 0, 0.6);
+  color: ${variables.colors.greyBold};
   padding: 12px;
 `;
 

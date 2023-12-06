@@ -13,6 +13,7 @@ import { ButtonNewPost } from "../../../Common/Buttons";
 import FeedListItem from "./FeedListItem";
 
 import { isImagesUploadDone } from "../../../../redux/actions/actions";
+import * as variables from "../../../Common/Variables";
 
 // firebase related
 import {
@@ -214,7 +215,7 @@ const FeedSortBy = styled.div`
   }
 
   span {
-    color: rgba(0, 0, 0, 0.6);
+    color: ${variables.colors.greyBold};
     margin-right: 4px;
     &:nth-child(3) {
       color: rgba(0, 0, 0, 0.9);

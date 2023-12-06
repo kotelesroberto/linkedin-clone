@@ -259,7 +259,7 @@ const NavList = styled.li`
     }
 
     span {
-      color: rgba(0, 0, 0, 0.6);
+      color: ${variables.colors.greyBold};
 
       @media (max-width: 768px) {
         display: none;

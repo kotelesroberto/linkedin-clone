@@ -2,7 +2,7 @@ import styled from "styled-components";
 import * as variables from "./Variables";
 
 export const ButtonPrimary = styled.button`
-  width: 100%;
+  width: auto;
   height: min-content;
   min-height: 48px;
   border-radius: 24px;
@@ -34,10 +34,33 @@ export const ButtonSecondary = styled(ButtonPrimary)`
   background-color: rgb(10, 102, 194);
   border-color: rgb(10, 102, 194);
   color: #fff;
+  white-space: nowrap;
 
   &:hover {
     background-color: rgb(0, 65, 130);
     border-color: rgb(0, 65, 130);
+  }
+`;
+
+export const ButtonTertiary = styled(ButtonPrimary)`
+  width: auto;
+  background-color: ${variables.colors.white};
+  border-color: ${variables.colors.blue};
+  color: ${variables.colors.blue};
+
+  white-space: nowrap;
+
+  &:hover {
+  }
+`;
+
+export const ButtonFourth = styled(ButtonPrimary)`
+  width: auto;
+  background-color: ${variables.colors.white};
+  color: ${variables.colors.greyBold};
+  white-space: nowrap;
+
+  &:hover {
   }
 `;
 
@@ -115,7 +138,7 @@ export const ButtonSharePost = styled.button`
   align-items: center;
   justify-content: flex-start;
   background-color: ${variables.colors.white};
-  color: rgba(0, 0, 0, 0.6);
+  color: ${variables.colors.greyBold};
   border: 1px solid rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.3s;
   cursor: pointer;
@@ -141,8 +164,8 @@ export const ButtonFollow = styled.button`
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(0, 0, 0, 0.6);
+  color: ${variables.colors.greyBold};
+  border: 1px solid ${variables.colors.greyBold};
   transition: box-shadow 0.3s;
   cursor: pointer;
 
@@ -166,6 +189,13 @@ export const ButtonFollow = styled.button`
 export const ButtonEmoji = styled(ButtonFollow)`
   &:before {
     background: url("./images/emoji.svg") center no-repeat;
+    background-size: 100%;
+    margin-right: 0px;
+  }
+`;
+export const EditButton = styled(ButtonFollow)`
+  &:before {
+    background: url("./images/edit-icon.svg") center no-repeat;
     background-size: 100%;
     margin-right: 0px;
   }

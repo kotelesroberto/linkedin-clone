@@ -57,10 +57,10 @@ const PostModalAddPost = (props) => {
         e.native +
         editorText.substring(charPosition)
     );
-    clickEmojiTrigger();
+    clickEmojiTrigger(e);
   };
 
-  const clickEmojiTrigger = () => {
+  const clickEmojiTrigger = (e) => {
     setEmojiPanel(!emojiPanel);
   };
 
@@ -94,7 +94,7 @@ const PostModalAddPost = (props) => {
       {error && <Error>{error}</Error>}
 
       <Pickercontainer>
-        <ButtonEmoji onClick={clickEmojiTrigger} />
+        <ButtonEmoji onClick={(e) => clickEmojiTrigger(e)} />
         {emojiPanel && (
           <EmojiContainer>
             <Picker data={data} onEmojiSelect={onEmojiSelect} />

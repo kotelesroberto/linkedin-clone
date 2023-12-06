@@ -11,7 +11,7 @@ const LoginGoogle = (props) => {
   const signInGoogle = () => props.parentProps.signInGoogle();
 
   return (
-    <ButtonWithImage onClick={signInGoogle}>
+    <ButtonWithImage onClick={signInGoogle} style={{ width: "100%" }}>
       <img src="/images/google.svg" alt="Sign in with google account" />
       Continue with Google
     </ButtonWithImage>

@@ -17,7 +17,7 @@ import {
   ShareBoxTop,
 } from "../../../Common/ShareBox";
 import { UserAvatarPhoto } from "../../../Common/User";
-import { ButtonSharePost, ButtonSecondary } from "../../../Common/Buttons";
+import { ButtonSecondary } from "../../../Common/Buttons";
 import FeedListItemComment from "./FeedListItemComment";
 import {
   SaveContentIntoFirebase,
@@ -234,7 +234,7 @@ const CommentInput = styled.textarea`
   font-weight: 700;
   vertical-align: middle;
   background-color: ${variables.colors.white};
-  color: rgba(0, 0, 0, 0.6);
+  color: ${variables.colors.greyBold};
   border: 1px solid rgba(0, 0, 0, 0.15);
   transition: box-shadow 0.3s;
   cursor: pointer;

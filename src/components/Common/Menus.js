@@ -19,7 +19,7 @@ export const ListHeader = styled.h3`
       display: block;
       font-size: 14px;
       font-weight: 400;
-      color: rgba(0, 0, 0, 0.6);
+      color: ${variables.colors.greyBold};
       margin: 4px 0;
     }
   }
@@ -67,7 +67,7 @@ export const ListItem = styled.li`
     overflow: hidden;
     text-overflow: ellipsis;
     display: flex;
-    color: rgba(0, 0, 0, 0.6);
+    color: ${variables.colors.greyBold};
     padding: 4px 0;
     display: block;
 

@@ -66,6 +66,13 @@ export const UserPhoto = styled(UserAvatarPhoto)`
   height: 72px;
   margin: -38px auto 1.2rem;
 
+  &.big {
+    width: 152px;
+    height: 152px;
+    margin-left: 2.4rem;
+    cursor: pointer;
+  }
+
   &:after {
     ${(props) =>
       props.status &&

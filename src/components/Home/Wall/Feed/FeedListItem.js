@@ -25,6 +25,7 @@ import FeedListItemImage from "./FeedListItemImage";
 import FeedListItemVideo from "./FeedListItemVideo";
 import FeedListItemComments from "./FeedListItemComments";
 import { doLike } from "../../../../utils/manageLikes";
+import * as variables from "../../../Common/Variables";
 
 
 
@@ -204,7 +205,7 @@ const FeedSortBy = styled.div`
   }
 
   span {
-    color: rgba(0, 0, 0, 0.6);
+    color: ${variables.colors.greyBold};
     margin-right: 4px;
     &:nth-child(3) {
       color: rgba(0, 0, 0, 0.9);
@@ -216,7 +217,7 @@ const FeedSortBy = styled.div`
 const FeedListItemCard = styled(Card)`
   display: flex;
   flex-direction: column;
-  color: rgba(0, 0, 0, 0.6);
+  color: ${variables.colors.greyBold};
   padding: 12px;
 `;
 

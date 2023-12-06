@@ -11,7 +11,7 @@ import ProfileCard from "../../User/ProfileCard";
 const LeftCol = (props) => {
   return (
     <Container>
-      <ProfileCard />
+      <ProfileCard iseditmode={true} isprofilepage={true} />
     </Container>
   );
 };

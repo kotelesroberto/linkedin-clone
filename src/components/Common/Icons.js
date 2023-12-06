@@ -25,7 +25,7 @@ export const IconButtonRow = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: rgba(0, 0, 0, 0.6);
+    color: ${variables.colors.greyBold};
     font-size: 14px;
     font-weight: 700;
 

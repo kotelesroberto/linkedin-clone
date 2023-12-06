@@ -21,7 +21,7 @@ const ProfileCardUserInfo = (props) => {
       {props.user && (
         <>
           <UserCardName className={isProfilePage ? "profile" : ""}>
-            <a href="https://www.linkedin.com/in/robertkoteles/">
+            <a href={isEditMode ? "/edit-profile" : "/show-profile"}>
               {props.user && props.user.displayName
                 ? props.user.displayName
                 : "Me"}
@@ -35,9 +35,7 @@ const ProfileCardUserInfo = (props) => {
             {isProfilePage && <ProfileCardEducation />}
           </UserCardDescription>
 
-          {isProfilePage && (
-            <ProfileCardLocation />
-          )}
+          {isProfilePage && <ProfileCardLocation />}
           {isProfilePage && (
             <UserCardConnections>391 connections</UserCardConnections>
           )}
@@ -109,7 +107,6 @@ const UserCardDescription = styled.span`
     }
   }
 `;
-
 
 const UserCardConnections = styled.div`
   color: ${variables.colors.blue};

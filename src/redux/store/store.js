@@ -10,6 +10,7 @@ import userReducer, {
 } from "../reducers/userReducer";
 import postSettingReducer from "../reducers/postSettingsReducer";
 import popupModalReducer from "../reducers/popupModalReducer";
+import pageNavigationReducer from "../reducers/pageNavigationReducer";
 import logger from "redux-logger";
 
 const store = configureStore({
@@ -17,6 +18,7 @@ const store = configureStore({
     userState: userReducer,
     postSettingState: postSettingReducer,
     popupModalState: popupModalReducer,
+    pageNavigationState: pageNavigationReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

@@ -1,23 +1,24 @@
+
+
+
+
 import React, { useEffect, useState } from "react";
 import DocumentTitle from "react-document-title";
 
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import Header from "../components/Header/Header";
-import Wall from "../components/Home/Wall/Wall";
-import LeftCol from "../components/Home/LeftCol/LeftCol";
-import RightCol from "../components/Home/RightCol/RightCol";
-import PostModal from "../components/Home/Wall/PostModal";
+import LeftCol from "../components/Profile/LeftCol/LeftCol";
+import RightCol from "../components/Profile/RightCol/RightCol";
 
-import { setShowModalAPI, setCurrentURL } from "../redux/actions/actions";
+import { setShowModalAPI } from "../redux/actions/actions";
 
-const Home = (props) => {
+const ProfilePage = (props) => {
   const showModal = props.showModal;
   const setShowModal = props.setShowModal;
-  const navigate = useNavigate();
 
   useEffect(() => {
     // user can close opened modal from keyboard (accessibility)
@@ -28,14 +29,6 @@ const Home = (props) => {
     });
   }, []);
 
-  useEffect(() => {
-    if (!props.user) {
-      const windowLocation = window.location.pathname;
-      props.setCurrentURL(windowLocation);
-      // navigate("/");
-    }
-  }, [props.user]);
-
   return (
     <DocumentTitle title={"(6) Feed | LinkedIn by Robert Koteles"}>
       <>
@@ -45,10 +38,8 @@ const Home = (props) => {
             <Header />
             <Section>
               <LeftCol />
-              <Wall />
               <RightCol />
             </Section>
-            <PostModal />
           </Container>
         )}
       </>
@@ -88,7 +79,6 @@ const mapStateToProps = (state) => {
   return {
     user: state.userState.user,
     showModal: state.popupModalState.popupModal.showModal,
-    loadedURL: state.pageNavigationState.loadedURL
   };
 };
 
@@ -97,10 +87,7 @@ const mapDispatchToProps = (dispatch) => {
     setShowModal: (newPopupState) => {
       dispatch(setShowModalAPI(newPopupState));
     },
-    setCurrentURL: (url) => {
-      dispatch(setCurrentURL(url));
-    },
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

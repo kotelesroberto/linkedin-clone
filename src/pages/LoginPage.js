@@ -185,6 +185,7 @@ const SignInForm = styled.div`
 const mapStateToProps = (state) => {
   return {
     user: state.userState.user,
+    loadedURL: state.pageNavigationState.loadedURL,
   };
 };
 

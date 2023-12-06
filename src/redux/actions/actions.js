@@ -9,6 +9,18 @@ import {
 } from "firebase/auth";
 
 /*=============================================
+=            Navigation            =
+=============================================*/
+export const setCurrentURL = (url) => {
+  return (dispatch) => {
+    dispatch({
+      type: "pageNavigationState/setCurrentURL",
+      loadedURL: url,
+    });
+  };
+};
+
+/*=============================================
 =            FIREBASE RELATED ACTIONS         =
 =============================================*/
 

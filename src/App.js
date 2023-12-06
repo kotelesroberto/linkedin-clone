@@ -13,6 +13,7 @@ import SignUpPage from "./pages/SignUpPage";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import DemoPage from "./pages/DemoPage";
+import ProfilePage from "./pages/ProfilePage";
 import { actionGetUserAuth } from "./redux/actions/actions";
 import { connect } from "react-redux";
 
@@ -37,6 +38,7 @@ function App(props) {
           />
           <Route path="/home" element={<Home />} errorElement={<ErrorPage />} />
           <Route path="/demo" element={<DemoPage />} />
+          <Route path="/edit-profile" element={<ProfilePage />} />
           <Route path="*" element={<Navigate to="/demo" replace />} />
         </Routes>
       </Router>

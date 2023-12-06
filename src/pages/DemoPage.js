@@ -18,8 +18,15 @@ const DemoPage = () => {
           <Section>
             <ContentContainer>
               <img src="./images/howto.svg" alt="Something went wrong" />
-              <h2>If you want to see more features, feel free to <span>hire</span> me.</h2>
-              <p>Well, this is a demo webapp, a personal project of mine, that has been built just for fun.</p>
+              <h2>Hi, it's Robert Koteles, Senior Web Developer here.</h2>
+              <h3>
+                If you want to see more features, feel free to <span>hire</span>{" "}
+                me.
+              </h3>
+              <p>
+                Well, this is my recent demo webapp, a personal project of mine, that
+                has been built just for fun.
+              </p>
               <ButtonSecondary
                 onClick={() => {
                   window.location =
@@ -52,7 +59,10 @@ const ContentContainer = styled.div`
   flex-grow: 1;
 
   h2 {
+    margin-bottom: 12px;
+  }
 
+  h3 {
     span {
       font-size: 1.6em;
       text-transform: uppercase;

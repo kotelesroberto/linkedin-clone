@@ -54,6 +54,7 @@ const CommentContainer = styled.div`
 `;
 
 const CommentContent = styled.div`
+  width: 100%;
   background-color: #f2f2f2;
   padding: 12px;
   font-size: 14px;

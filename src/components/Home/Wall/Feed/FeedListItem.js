@@ -116,7 +116,7 @@ const FeedListItem = (props) => {
             <span>Send</span>
           </button>
         </FeedListItemButtons>
-        <FeedListItemComments />
+        <FeedListItemComments postid={ props.content.id } />
       </FeedListItemContainer>
     </FeedListItemCard>
   );

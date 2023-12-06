@@ -115,7 +115,7 @@ const PostModal = (props) => {
             );
 
             if (uploadedImagesOnServer.length === uploadedFiles.length) {
-              // TODO: notify Redux store that all images are done
+              // notify Redux store that all images are done
               setImagesUploadDone(postRef);
 
               // close modal

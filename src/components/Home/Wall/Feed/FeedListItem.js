@@ -208,7 +208,7 @@ const FeedSortBy = styled.div`
     color: ${variables.colors.greyBold};
     margin-right: 4px;
     &:nth-child(3) {
-      color: rgba(0, 0, 0, 0.9);
+      color: ${variables.colors.greyBolder};
       font-weight: 700;
     }
   }
@@ -232,7 +232,7 @@ const FeedListItemTop = styled.div`
 `;
 
 const FeedListItemContent = styled.div`
-  color: rgba(0, 0, 0, 0.9);
+  color: ${variables.colors.greyBolder};
   font-size: 14px;
 
   span {

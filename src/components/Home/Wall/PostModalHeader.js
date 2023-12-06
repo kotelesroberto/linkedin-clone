@@ -1,6 +1,7 @@
 import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import * as variables from "../../Common/Variables";
 
 import { ButtonActionContainer, ButtonAction } from "../../Common/Icons";
 import ProfileCardWide from "../../User/ProfileCardWide";
@@ -66,7 +67,7 @@ const Header = styled.div`
 
   h2 {
     font-size: 20px;
-    color: rgba(0, 0, 0, 0.9);
+    color: ${variables.colors.greyBolder};
   }
 `;
 

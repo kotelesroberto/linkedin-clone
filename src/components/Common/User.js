@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import * as variables from "./Variables";
 
 export const UserAvatarList = styled.div`
   padding: 0 12px;
@@ -8,7 +9,7 @@ export const UserAvatarBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  color: rgba(0, 0, 0, 0.9);
+  color: ${variables.colors.greyBolder};
   border-bottom: 1px solid rgba(140, 140, 140, 0.2);
   padding: 12px 0;
   overflow: hidden;
@@ -96,6 +97,6 @@ export const UserName = styled.h4``;
 export const UserPosition = styled.span`
   display: block;
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.9);
+  color: ${variables.colors.greyBolder};
   margin-bottom: 8px;
 `;

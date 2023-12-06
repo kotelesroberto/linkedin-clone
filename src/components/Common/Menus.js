@@ -4,7 +4,7 @@ import * as variables from "./Variables";
 export const ListHeader = styled.h3`
   font-size: 16px;
   line-height: 1;
-  color: rgba(0, 0, 0, 0.9);
+  color: ${variables.colors.greyBolder};
   padding: 4px 0;
   margin: 0 0 12px 0;
   padding: 0px 12px;
@@ -28,7 +28,7 @@ export const ListHeader = styled.h3`
 export const List = styled.ul`
   margin: 0;
   padding: 0;
-  color: rgba(0, 0, 0, 0.9);
+  color: ${variables.colors.greyBolder};
 `;
 
 export const ListItem = styled.li`
@@ -59,7 +59,7 @@ export const ListItem = styled.li`
     width: 6px;
     height: 6px;
     margin: 10px 12px 2px 0px;
-    border: 3px solid rgba(0, 0, 0, 0.9);
+    border: 3px solid ${variables.colors.greyBolder};
   }
 
   a {
@@ -73,7 +73,7 @@ export const ListItem = styled.li`
 
     &:hover {
       text-decoration: none;
-      color: rgba(0, 0, 0, 0.9);
+      color: ${variables.colors.greyBolder};
     }
   }
 
@@ -83,7 +83,7 @@ export const ListItem = styled.li`
 `;
 
 export const ListItemTitle = styled.h3`
-  color: rgba(0, 0, 0, 0.9);
+  color: ${variables.colors.greyBolder};
   margin-bottom: 4px;
 `;
 

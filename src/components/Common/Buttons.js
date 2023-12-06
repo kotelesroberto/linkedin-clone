@@ -103,7 +103,7 @@ export const ButtonJoin = styled.a`
 
   &:hover {
     text-decoration: none;
-    color: rgba(0, 0, 0, 0.9);
+    color: ${variables.colors.greyBolder};
     background-color: rgba(0, 0, 0, 0.04);
   }
 `;

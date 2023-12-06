@@ -103,7 +103,7 @@ const CommentContent = styled.div`
   background-color: #f2f2f2;
   padding: 12px;
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.9);
+  color: ${variables.colors.greyBolder};
   margin-bottom: 40px;
   position: relative;
 

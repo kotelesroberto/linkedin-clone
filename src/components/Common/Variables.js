@@ -5,6 +5,7 @@ export const colors = {
     'grey': '#f3f2f0',
     'greyLight': '#eef3f8',
     'greyBold': 'rgba(0, 0, 0, 0.6)',
+    'greyBolder': 'rgba(0, 0, 0, 0.9)',
     'greyBotticelli': '#dce6f1',
     'red': '#cb112d',
 };

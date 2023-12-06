@@ -155,7 +155,7 @@ const Search = styled.div`
       box-shadow: none;
       background-color: ${variables.colors.greyLight};
       border-radius: 2px;
-      color: rgba(0, 0, 0, 0.9);
+      color: ${variables.colors.greyBolder};
       width: 218px;
       height: 34px;
       padding: 0 8px 0 40px;
@@ -221,7 +221,7 @@ const NavList = styled.li`
 
   &.active {
     &:after {
-      border-bottom: 2px solid rgba(0, 0, 0, 0.9);
+      border-bottom: 2px solid ${variables.colors.greyBolder};
       content: "";
       bottom: 0;
       left: 0;
@@ -278,7 +278,7 @@ const NavList = styled.li`
         opacity: 1;
       }
       span {
-        color: rgba(0, 0, 0, 0.9);
+        color: ${variables.colors.greyBolder};
       }
     }
   }

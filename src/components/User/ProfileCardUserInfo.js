@@ -51,7 +51,7 @@ const UserCardIntro = styled.div`
   h3 {
     font-size: 16px;
     line-height: 1.5;
-    color: rgba(0, 0, 0, 0.9);
+    color: ${variables.colors.greyBolder};
     font-weight: 700;
   }
   span {
@@ -90,7 +90,7 @@ const UserCardDescription = styled.span`
   margin-top: 4px;
 
   &.profile {
-    color: rgba(0, 0, 0, 0.9);
+    color: ${variables.colors.greyBolder};
     font-size: 16px;
     line-height: 1.3;
     display: flex;

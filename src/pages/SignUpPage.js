@@ -2,6 +2,7 @@ import React from "react";
 import DocumentTitle from "react-document-title";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import * as variables from "../components/Common/Variables";
 
 import RegisterForm from "../components/Login/RegisterForm";
 import LoginGoogle from "../components/Login/LoginGoogle";
@@ -129,7 +130,7 @@ const Hero = styled.div`
     font-weight: 400;
     line-height: 70px;
     margin-bottom: 24px;
-    color: rgba(0, 0, 0, 0.9);
+    color: ${variables.colors.greyBolder};
     text-align: center;
 
     @media (max-width: 768px) {

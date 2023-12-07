@@ -8,7 +8,7 @@ This nice **React / Redux** application is a clone of basic LinkedIn webapp.
 
 ## Demo
 
-Click [here](https://linkedin-clone-5e0fa.web.app/) to view the demo webapp.
+Click [here](https://linkedin-clone-app-2516d.web.app) to view the demo webapp.
 
 # About the solution
 

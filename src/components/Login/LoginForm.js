@@ -31,7 +31,7 @@ const LoginForm = (props) => {
     <form
       action="/"
       method="get"
-      autocomplete="on"
+      autoComplete="on"
       target="_self"
       className="loginForm"
     >
@@ -41,7 +41,7 @@ const LoginForm = (props) => {
         </label>
         <input
           className=""
-          autocomplete="section-login login username"
+          autoComplete="section-login login username"
           id="loginEmail"
           name="loginEmail"
           required=""
@@ -56,7 +56,7 @@ const LoginForm = (props) => {
         </label>
         <input
           className=""
-          autocomplete="section-login login current-password"
+          autoComplete="section-login login current-password"
           id="loginPassword"
           name="loginPassword"
           required=""

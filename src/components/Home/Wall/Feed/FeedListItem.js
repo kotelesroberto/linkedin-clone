@@ -27,8 +27,6 @@ import FeedListItemComments from "./FeedListItemComments";
 import { doLike } from "../../../../utils/manageLikes";
 import * as variables from "../../../Common/Variables";
 
-
-
 const FeedListItem = (props) => {
   useEffect(() => {
     // Start the pooled timer which runs every 60 seconds

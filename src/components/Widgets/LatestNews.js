@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
+import Moment from "react-moment";
 import { Card, CardContainer } from "../Common/Cards";
 import {
   ListHeader,
@@ -15,47 +16,53 @@ const LatestNews = () => {
   const maxItemsToShow = 4;
   const thisListRef = useRef();
 
+  useEffect(() => {
+    // Start the pooled timer which runs every 60 seconds
+    // (60000 milliseconds) by default.
+    Moment.startPooledTimer();
+  }, []);
+
   // TODO: fetch from API later, as JSON object
   const news = [
     {
       title: "How leaders can reduce burnout",
-      timestamp: "2h ago",
+      timestamp: 1701610132621,
       readers: 346,
       link: "/news/story/demo",
     },
     {
       title: "Startups react to OpenAI tumult",
-      timestamp: "2h ago",
+      timestamp: 1701672333821,
       readers: 1,
       link: "/news/story/demo",
     },
     {
       title: "What's new this Black Friday?",
-      timestamp: "2h ago",
+      timestamp: 1701930862631,
       readers: 1,
       link: "/news/story/demo",
     },
     {
       title: "Doctor Who boosts Welsh economy",
-      timestamp: "2h ago",
+      timestamp: 1701910862631,
       readers: 1,
       link: "/news/story/demo",
     },
     {
       title: "Spike in fake online stores",
-      timestamp: "2h ago",
+      timestamp: 1701930862631,
       readers: 1,
       link: "/news/story/demo",
     },
     {
       title: "Workers ready for green economy?",
-      timestamp: "2h ago",
+      timestamp: 1701930862631,
       readers: 1,
       link: "/news/story/demo",
     },
     {
       title: "Academic founders get a boost",
-      timestamp: "2h ago",
+      timestamp: 1701930862631,
       readers: 1,
       link: "/news/story/demo",
     },
@@ -91,7 +98,8 @@ const LatestNews = () => {
                   <a href={item.link}>
                     <ListItemTitle>{item.title}</ListItemTitle>
                     <ListItemImpressum>
-                      {item.timestamp} • {item.readers} readers
+                      <Moment fromNow>{new Date(item.timestamp)}</Moment> •{" "}
+                      {item.readers} readers
                     </ListItemImpressum>
                   </a>
                 </ListItem>

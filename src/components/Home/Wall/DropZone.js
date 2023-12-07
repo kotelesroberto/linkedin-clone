@@ -31,7 +31,9 @@ const DropZone = (props) => {
 
   const fileSizeValidator = useCallback((file) => {
     if (file.size > 5000000) {
-      setError("One of the files was bigger than 5MB, please select smaller one!");
+      setError(
+        "One of the files was bigger than 5MB, please select smaller one!"
+      );
       return {
         code: "size-too-large",
         message: `Too big file!`,
@@ -49,7 +51,14 @@ const DropZone = (props) => {
     closeModal(new Event("click"));
   }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+    isDragReject,
+  } = useDropzone({
+    noDragEventsBubbling: false,
     onDrop: onDrop,
     onError: onError,
     autoFocus: true,
@@ -72,13 +81,18 @@ const DropZone = (props) => {
       <input {...getInputProps()} />
 
       {showModal === "addMedia" && !uploadedFiles.length && (
-        <Container {...getRootProps()}>
+        <Container {...getRootProps({ className: "dropzone" })}>
           <img src="./images/uploadAssetBg.svg" alt="" />
           {isDragActive ? (
             <h2>Select files to begin or drag files here</h2>
           ) : (
             <h2>Select files to begin</h2>
           )}
+
+          {isDragReject && (
+            <h3>You try to drag a file that gonna be rejected</h3>
+          )}
+
           <p>Share images or a single video in your post.</p>
           <ButtonSecondary>Upload from computer</ButtonSecondary>
 

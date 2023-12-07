@@ -62,7 +62,7 @@ const ProfileCardSkills = (props) => {
       }),
     },
     {
-      title: "JavaScrpt",
+      title: "JavaScript",
       content: createAssociated({
         name: "15 experiences across Google and 3 other companies",
         icon: "/upload/logo-google.svg",

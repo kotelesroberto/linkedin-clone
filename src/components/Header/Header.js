@@ -11,6 +11,40 @@ import { connect } from "react-redux";
 import { actionSignOutAPI } from "../../redux/actions/actions";
 
 const Header = (props) => {
+  const menuItems = [
+    {
+      image: "/images/nav-home.svg",
+      title: "Home",
+      url: "/home",
+      notification: "0",
+    },
+    {
+      image: "/images/nav-network.svg",
+      title: "My Network",
+      url: "#",
+      notification: "0",
+    },
+    {
+      image: "/images/nav-jobs.svg",
+      title: "Jobs",
+      url: "#",
+      notification: "0",
+    },
+    {
+      image: "/images/nav-messaging.svg",
+      title: "Messaging",
+      url: "#",
+      notification: "0",
+    },
+    {
+      image: "/images/nav-notifications.svg",
+      title: "Notifications",
+      url: "#",
+      notification: "6",
+    },
+  ];
+  const currentWindowLocationPath = window.location.pathname;
+
   return (
     <Container>
       <Content>
@@ -36,41 +70,23 @@ const Header = (props) => {
               </a>
             </NavListSearch>
 
-            <NavList className="active">
-              <a href="#">
-                <img src="/images/nav-home.svg" alt="" />
-                <span>Home</span>
-              </a>
-            </NavList>
+            {!!menuItems.length &&
+              menuItems.map((item, index) => (
+                <NavList
+                  className={
+                    item.url == currentWindowLocationPath ? "active" : ""
+                  }
+                >
+                  <a href={item.url}>
+                    <img src={item.image} alt={item.title} />
+                    <span>{item.title}</span>
+                    {item.notification > 0 && (
+                      <NavListBadge>{item.notification}</NavListBadge>
+                    )}
+                  </a>
+                </NavList>
+              ))}
 
-            <NavList>
-              <a>
-                <img src="/images/nav-network.svg" alt="" />
-                <span>My Network</span>
-              </a>
-            </NavList>
-
-            <NavList>
-              <a>
-                <img src="/images/nav-jobs.svg" alt="" />
-                <span>Jobs</span>
-              </a>
-            </NavList>
-
-            <NavList>
-              <a>
-                <img src="/images/nav-messaging.svg" alt="" />
-                <span>Messaging</span>
-              </a>
-            </NavList>
-
-            <NavList>
-              <a>
-                <img src="/images/nav-notifications.svg" alt="" />
-                <span>Notifications</span>
-                <NavListBadge>6</NavListBadge>
-              </a>
-            </NavList>
             <User>
               <a href="">
                 {props.user && props.user.photoURL ? (
@@ -88,7 +104,7 @@ const Header = (props) => {
                 </span>
               </a>
 
-              <SignOut >
+              <SignOut>
                 <a href="#" onClick={props.signOut}>
                   Sign out
                 </a>

@@ -8,7 +8,7 @@ This nice **React / Redux** application is a clone of basic LinkedIn webapp.
 
 ## Demo
 
-Click [here](https://linkedin-clone-app-2516d.web.app) to view the demo webapp. Don't worry if Firebase shows it's a dangerous site, it's not! I am still working on to eliminate this message, probably this is a Google Chrome security block. But I can declare that the app doesn't gather sensitive information, it's a simple portofilo item on my own.
+Click [here](https://linkedin-clone-app-2516d.web.app) to view the demo webapp. Don't worry if Firebase shows it's a dangerous site, it's not! I am still working on to eliminate this message, probably this is a Google Chrome security block. But I can declare that the app doesn't gather sensitive information, it's a simple portfolio item on my own.
 
 # About the solution
 

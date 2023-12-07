@@ -1,6 +1,15 @@
+/**
+ *
+ * Component: Impression
+ * @desc This component is for showing the user's impressions
+ * @author Robert Koteles
+ * @version 1.0.0
+ */
+
+
 import React, { useState } from "react";
 import styled from "styled-components";
-import * as variables from "../Common/Variables";
+import * as variables from "../../Common/Variables";
 
 const ProfileCardImpressions = () => {
   const [numProfileViewers, setNumProfileViewers] = useState(150);

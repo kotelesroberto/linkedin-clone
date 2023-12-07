@@ -61,7 +61,7 @@ const FooterInlineMenu = (props) => {
         <FooterInlineMenuColumn>
           <ul className={props.extraClass}>
             <li>
-              <a href="/">
+              <a href="#">
                 <img
                   src={`/images/footer-logo${variation}.svg`}
                   alt="Go to LinkedIn homepage"

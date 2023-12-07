@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const ProfileCardEducation = () => {
+const ProfileCardEducationBox = () => {
   // TODO: read it from Firebase as an API JSON object
   const edication = {
     title: "University of Debrecen Official",
@@ -45,4 +45,4 @@ const Container = styled.div`
   }
 `;
 
-export default ProfileCardEducation;
+export default ProfileCardEducationBox;

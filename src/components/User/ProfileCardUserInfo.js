@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import * as variables from "../Common/Variables";
 import { connect } from "react-redux";
-import ProfileCardEducation from "./ProfileCardEducation";
+import ProfileCardEducationBox from "./ProfileCardEducationBox";
 import ProfileCardLocation from "./ProfileCardLocation";
 
 const ProfileCardUserInfo = (props) => {
@@ -32,7 +32,7 @@ const ProfileCardUserInfo = (props) => {
               Professional Senior Web Developer | Tech leader | Certified Scrum
               Developer | Musician | Human being (SC Cleared)
             </span>
-            {isProfilePage && <ProfileCardEducation />}
+            {isProfilePage && <ProfileCardEducationBox />}
           </UserCardDescription>
 
           {isProfilePage && <ProfileCardLocation />}

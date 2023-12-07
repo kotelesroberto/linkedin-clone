@@ -13,7 +13,7 @@ import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
 import {
   actionSignInGoogleAPI,
   actionSignInEmailAndPassAPI,
-  setCurrentURLAPI
+  setCurrentURLAPI,
 } from "../redux/actions/actions";
 import { Navigate, useNavigate } from "react-router-dom";
 
@@ -24,10 +24,9 @@ const LoginPage = (props) => {
     navigate("/signup");
   };
 
-
   useEffect(() => {
     if (props.user) {
-      navigate(props.loadedURL);
+      navigate(props.loadedURL === "/" ? "/home" : props.loadedURL);
     }
   }, [props.user]);
 

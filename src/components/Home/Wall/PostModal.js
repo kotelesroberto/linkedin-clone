@@ -243,7 +243,7 @@ const Content = styled(Card)`
   display: flex;
   flex-direction: column;
   padding: 0;
-  overflow: auto;
+  overflow: visible;
 
   &.addpost,
   &.addevent {

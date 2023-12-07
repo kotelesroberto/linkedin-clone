@@ -18,12 +18,12 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 // Web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDIUq_PQnZp_bu2ptavdTjTrJh3cgRmy4c",
-  authDomain: "linkedin-clone-5e0fa.firebaseapp.com",
-  projectId: "linkedin-clone-5e0fa",
-  storageBucket: "linkedin-clone-5e0fa.appspot.com",
-  messagingSenderId: "564959315860",
-  appId: "1:564959315860:web:0a7598ed9d64415526b181",
+  apiKey: "AIzaSyBpuxzB6KThzkxblAoT7CwhA8jEG6v0O00",
+  authDomain: "linkedin-clone-app-2516d.firebaseapp.com",
+  projectId: "linkedin-clone-app-2516d",
+  storageBucket: "linkedin-clone-app-2516d.appspot.com",
+  messagingSenderId: "346995379019",
+  appId: "1:346995379019:web:bb1f557c74cae9d0b036ce"
 };
 
 // Initialize Firebase app

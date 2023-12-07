@@ -7,7 +7,7 @@ import { ButtonSecondary } from "../Common/Buttons";
 
 const LoginForm = (props) => {
   const [loginEmail, setLoginEmail] = useState("test@gmail.com");
-  const [loginPass, setLoginPass] = useState("Test2023");
+  const [loginPass, setLoginPass] = useState("rfz6PNNnzX7BczfV7pE4jp3m");
   const [error, setError] = useState("");
 
   const actionSignInEmailAndPassAPI = (email, pass, callback) =>
@@ -28,14 +28,20 @@ const LoginForm = (props) => {
   };
 
   return (
-    <form className="loginForm">
+    <form
+      action="/"
+      method="get"
+      autocomplete="on"
+      target="_self"
+      className="loginForm"
+    >
       <Fieldset>
         <label htmlFor="loginEmail" aria-label="Email or phone">
           Email or phone
         </label>
         <input
           className=""
-          autoComplete="username"
+          autocomplete="section-login login username"
           id="loginEmail"
           name="loginEmail"
           required=""
@@ -50,7 +56,7 @@ const LoginForm = (props) => {
         </label>
         <input
           className=""
-          autoComplete="current-password"
+          autocomplete="section-login login current-password"
           id="loginPassword"
           name="loginPassword"
           required=""
@@ -59,6 +65,7 @@ const LoginForm = (props) => {
           onChange={(e) => setLoginPass(e.target.value)}
         ></input>
         <button
+          id="login-submit"
           aria-live="assertive"
           data-id="sign-in-form__password-visibility-toggle"
           className="show-pass js-show-pass"

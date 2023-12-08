@@ -112,12 +112,21 @@ export const actionGetUserAuth = () => {
         // const uid = user.uid;
         dispatch({
           type: "userState/setUser",
-          user: user,
+          user: {
+            ...user,
+            checkedByAuth: true,
+          },
         });
 
         console.log("auth.currentUser.uid", auth.currentUser.uid);
       } else {
         // User is signed out
+        dispatch({
+          type: "userState/setUser",
+          user: {
+            checkedByAuth: true,
+          },
+        });
       }
     });
   };

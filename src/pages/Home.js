@@ -17,7 +17,6 @@ import { actionSetShowModal, setCurrentURLAPI } from "../redux/actions/actions";
 const Home = (props) => {
   const showModal = props.showModal;
   const setShowModal = props.setShowModal;
-  const navigate = useNavigate();
 
   useEffect(() => {
     // user can close opened modal from keyboard (accessibility)
@@ -28,13 +27,18 @@ const Home = (props) => {
     });
   }, []);
 
+  // at page load we need to check if user is were logged in. If not, navigate to the Login page
+  const navigate = useNavigate();
   useEffect(() => {
-    if (!props.user) {
-      const windowLocation = window.location.pathname;
-      props.setCurrentURL(windowLocation);
-      navigate(props.loadedURL);
+    console.log("props.userprops.user", props.user);
+    if (props.user && props.user.checkedByAuth) {
+      if (!props.user.email) {
+        const windowLocation = window.location.pathname;
+        props.setCurrentURL(windowLocation);
+        navigate("/");
+      }
     }
-  }, [props.user]);
+  }, [props.user && props.user.checkedByAuth]);
 
   return (
     <DocumentTitle title={"(6) Feed | LinkedX by Robert Koteles"}>
@@ -88,7 +92,7 @@ const mapStateToProps = (state) => {
   return {
     user: state.userState.user,
     showModal: state.popupModalState.popupModal.showModal,
-    loadedURL: state.pageNavigationState.loadedURL
+    loadedURL: state.pageNavigationState.loadedURL,
   };
 };
 

@@ -48,7 +48,7 @@ const Feed = (props) => {
   const getPosts = () => {
     const q = query(
       collection(db, "posts"),
-      // where("uid", "in", ["ooKsVd0qRLhlyrQz30ADAd8OQ7Z2"]),
+      // where("uid", "in", [props.user.id]),
       orderBy("timestamp", "asc")
     );
 
@@ -231,6 +231,7 @@ const FeedList = styled.div``;
 // any time the store is updated, mapStateToProps will be called. Expected to return an object
 const mapStateToProps = (state) => {
   return {
+    user: state.userState.user,
     isNewPostImageUploadDone: state.postSettingState.isNewPostImageUploadDone,
   };
 };

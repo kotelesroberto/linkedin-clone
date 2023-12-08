@@ -28,14 +28,12 @@ function App(props) {
 
   // get extra data for the user when the 'user' object is changing in the REDUX store
   useEffect(() => {
-    if (props.user) {
+    if (props.user && props.user.email) {
       doReadUserEntry({ email: props.user.email }).then((result) => {
-        console.log('result.length', result.length);
         if (result.length) {
           // we have additional data for this user in our Firestore database
           props.setUserDataIntoStore(result[0]);
         } else {
-          console.log('call: CreateUserEntry');
           // need to create a new entry for this user (usually after Sign up by email/password OR Sign in by google account for the very first time)
           CreateUserEntry(props.user);
         }

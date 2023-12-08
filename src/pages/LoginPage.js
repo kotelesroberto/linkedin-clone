@@ -25,7 +25,8 @@ const LoginPage = (props) => {
   };
 
   useEffect(() => {
-    if (props.user) {
+    console.log("props.loadedURL ", props.loadedURL);
+    if (props.user && props.user.email) {
       navigate(props.loadedURL === "/" ? "/home" : props.loadedURL);
     }
   }, [props.user]);
@@ -33,8 +34,7 @@ const LoginPage = (props) => {
   return (
     <DocumentTitle title="Log in | LinkedX clone by Robert Koteles">
       <>
-        {props.user && <Navigate to="/home" replace />}
-        {!props.user && (
+        {(!props.user || (props.user && !props.user.email)) && (
           <Container>
             <Nav>
               <a href="/">
@@ -52,7 +52,10 @@ const LoginPage = (props) => {
             </Nav>
             <Section>
               <Hero>
-                <h1>This is LinkedX: <br />Robert's clone in React.</h1>
+                <h1>
+                  This is LinkedX: <br />
+                  Robert's clone in React.
+                </h1>
               </Hero>
               <SignInForm>
                 <LoginForm parentProps={props} />

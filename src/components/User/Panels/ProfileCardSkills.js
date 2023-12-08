@@ -15,6 +15,7 @@ import styled from "styled-components";
 
 const ProfileCardSkills = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
+  const profileUid = props.profileuid;
 
   const navigate = useNavigate();
 

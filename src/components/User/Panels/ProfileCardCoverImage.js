@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import { EditButton } from "../Common/Buttons";
+import { EditButton } from "../../Common/Buttons";
 
 const ProfileCardCoverImage = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
+  const profileUid = props.profileuid;
 
   const onClickEdit = (e) => {
     e.preventDefault();
@@ -13,7 +14,11 @@ const ProfileCardCoverImage = (props) => {
 
   return (
     <CoverImage className={isProfilePage ? "big" : ""}>
-      <img src="./upload/usercover.jpg" alt="Cover image" />
+      {props.user && props.user.teaserImage ? (
+        <img src={props.user.teaserImage} alt="Cover image" />
+      ) : (
+        <img src="/images/card-bg.svg" alt="Cover image" />
+      )}
       {isEditMode && <LocalEditButton onClick={(e) => onClickEdit(e)} />}
     </CoverImage>
   );
@@ -21,11 +26,13 @@ const ProfileCardCoverImage = (props) => {
 
 const CoverImage = styled.div`
   height: 52px;
-  margin: -12px -12px 0px;
+  margin: -12px 0 0px;
   background: url("images/card-bg.svg") center no-repeat;
   background-size: cover;
   overflow: hidden;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
 
   &.big {
     height: 200px;

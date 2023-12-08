@@ -1,7 +1,20 @@
 import styled from "styled-components";
 import * as variables from "./Variables";
 
-export const IconPeople = styled.span``;
+export const IconGlobe = styled.span`
+  position: relative;
+
+  &:before {
+    content: "";
+    display: inline-block;
+    background: url("/images/globe-icon.svg") center no-repeat;
+    background-size: 100%;
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+`;
 
 export const IconButtonRow = styled.div`
   display: flex;

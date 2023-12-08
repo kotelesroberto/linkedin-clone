@@ -1,13 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import * as variables from "../Common/Variables";
+import * as variables from "../../Common/Variables";
 import { connect } from "react-redux";
-import ProfileCardEducationBox from "./ProfileCardEducationBox";
-import ProfileCardLocation from "./ProfileCardLocation";
+import ProfileCardEducationBox from "../ProfileCardEducationBox";
+import ProfileCardLocation from "../ProfileCardLocation";
 
 const ProfileCardUserInfo = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
+  const profileUid = props.profileuid;
 
   return (
     <UserCardInfo className={isProfilePage ? "profile" : ""}>
@@ -21,7 +22,7 @@ const ProfileCardUserInfo = (props) => {
       {props.user && (
         <>
           <UserCardName className={isProfilePage ? "profile" : ""}>
-            <a href={isEditMode ? "/edit-profile" : "/show-profile"}>
+            <a href={`in/${props.user.shorturl}`}>
               {props.user && props.user.displayName
                 ? props.user.displayName
                 : "Me"}

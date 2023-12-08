@@ -81,7 +81,7 @@ export const UserPhoto = styled(UserAvatarPhoto)`
       `
         content: "";
         display: block;
-        background: url("./upload/opentowork.png") center no-repeat;
+        background: url("/upload/opentowork.png") center no-repeat;
         background-size: 100%;
         width: 100%;
         height: 100%;

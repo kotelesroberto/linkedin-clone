@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+
 import { Card } from "../Common/Cards";
 
-import ProfileCardCoverImage from "./ProfileCardCoverImage";
-import ProfileCardUserPhoto from "./ProfileCardUserPhoto";
-import ProfileCardUserInfo from "./ProfileCardUserInfo";
+import ProfileCardCoverImage from "./Panels/ProfileCardCoverImage";
+import ProfileCardUserPhoto from "./Panels/ProfileCardUserPhoto";
+import ProfileCardUserInfo from "./Panels/ProfileCardUserInfo";
 import ProfileCardImpressions from "./Panels/ProfileCardImpressions";
 import ProfileCardButtons from "./ProfileCardButtons";
 import ProfileCardMyItems from "./ProfileCardMyItems";
-
 import ProfileCardResources from "./Panels/ProfileCardResources";
 import ProfileCardAbout from "./Panels/ProfileCardAbout";
 import ProfileCardFeatured from "./Panels/ProfileCardFeatured";
@@ -25,15 +26,53 @@ import ShowMore from "../Widgets/ShowMore";
 import styled from "styled-components";
 import { EditButton } from "../Common/Buttons";
 
+import { ReadContentFromFirebase } from "../../utils/firebaseFunctions";
+
+// firebase related
+import { db, auth } from "../../firebase/firebase";
+import {
+  collection,
+  query,
+  where,
+  orderBy,
+  getDocs,
+  doc,
+  onSnapshot,
+} from "firebase/firestore";
+
 const ProfileCard = (props) => {
   const toggleView = () => {};
+
+  useEffect(() => {
+    getUserProfile();
+  }, [props.user]);
 
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
 
+  // uid, that belongs to this profile page
+  const profileUid = "T067ItzdeWa24XaSugBfYfy0JIo1";
+
   const onClickEdit = (e) => {
     e.preventDefault();
     console.log("onClickEdit");
+  };
+
+  /**
+   * Get all information that we need for displaying this user profile page
+   * @param {String} puid - Profile User ID
+   * @return {Object} All information of this profile page, as an object
+   */
+  const getUserProfile = (puid = "") => {
+    let profilePageData = {};
+    console.log("call: getUserProfile");
+
+    // let options = {
+    //   where: ["uid", "==", "PEsbNiszl8eqNeTM1HgP9Om9LYv1"],
+    // };
+    // ReadContentFromFirebase("users", options);
+
+    return profilePageData;
   };
 
   return (
@@ -42,14 +81,17 @@ const ProfileCard = (props) => {
         <ProfileCardCoverImage
           iseditmode={isEditMode}
           isprofilepage={isProfilePage}
+          profileuid={profileUid}
         />
         <ProfileCardUserPhoto
           iseditmode={isEditMode}
           isprofilepage={isProfilePage}
+          profileuid={profileUid}
         />
         <ProfileCardUserInfo
           iseditmode={isEditMode}
           isprofilepage={isProfilePage}
+          profileuid={profileUid}
         />
 
         {isProfilePage && isEditMode && (
@@ -61,18 +103,51 @@ const ProfileCard = (props) => {
         {!isProfilePage && <ProfileCardMyItems />}
       </ProfileCardContainer>
 
-      {isProfilePage && isEditMode && <ProfileCardResources iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardAbout iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardFeatured iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardActivity iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardExperience iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardEducation iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardCertifications iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardSkills iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardRecommendations iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardAwards iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardLanguages iseditmode={isEditMode} />}
-      {isProfilePage && <ProfileCardInterests iseditmode={isEditMode} />}
+      {isProfilePage && isEditMode && (
+        <ProfileCardResources iseditmode={isEditMode} profileuid={profileUid} />
+      )}
+      {isProfilePage && (
+        <ProfileCardAbout iseditmode={isEditMode} profileuid={profileUid} />
+      )}
+      {isProfilePage && (
+        <ProfileCardFeatured iseditmode={isEditMode} profileuid={profileUid} />
+      )}
+      {isProfilePage && (
+        <ProfileCardActivity iseditmode={isEditMode} profileuid={profileUid} />
+      )}
+      {isProfilePage && (
+        <ProfileCardExperience
+          iseditmode={isEditMode}
+          profileuid={profileUid}
+        />
+      )}
+      {isProfilePage && (
+        <ProfileCardEducation iseditmode={isEditMode} profileuid={profileUid} />
+      )}
+      {isProfilePage && (
+        <ProfileCardCertifications
+          iseditmode={isEditMode}
+          profileuid={profileUid}
+        />
+      )}
+      {isProfilePage && (
+        <ProfileCardSkills iseditmode={isEditMode} profileuid={profileUid} />
+      )}
+      {isProfilePage && (
+        <ProfileCardRecommendations
+          iseditmode={isEditMode}
+          profileuid={profileUid}
+        />
+      )}
+      {isProfilePage && (
+        <ProfileCardAwards iseditmode={isEditMode} profileuid={profileUid} />
+      )}
+      {isProfilePage && (
+        <ProfileCardLanguages iseditmode={isEditMode} profileuid={profileUid} />
+      )}
+      {isProfilePage && (
+        <ProfileCardInterests iseditmode={isEditMode} profileuid={profileUid} />
+      )}
 
       {!isEditMode && <ShowMore showon="mobile" onclickevent={toggleView} />}
     </>
@@ -98,4 +173,13 @@ const LocalEditButton = styled(EditButton)`
   }
 `;
 
-export default ProfileCard;
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+  };
+};
+
+export default connect(mapStateToProps)(ProfileCard);

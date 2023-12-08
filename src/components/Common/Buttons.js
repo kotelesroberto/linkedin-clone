@@ -178,7 +178,7 @@ export const ButtonFollow = styled.button`
   &:before {
     content: "";
     display: block;
-    background: url("./images/widget-icon.svg") center no-repeat;
+    background: url("/images/widget-icon.svg") center no-repeat;
     background-size: 100%;
     width: 16px;
     height: 16px;
@@ -188,14 +188,14 @@ export const ButtonFollow = styled.button`
 
 export const ButtonEmoji = styled(ButtonFollow)`
   &:before {
-    background: url("./images/emoji.svg") center no-repeat;
+    background: url("/images/emoji.svg") center no-repeat;
     background-size: 100%;
     margin-right: 0px;
   }
 `;
 export const EditButton = styled(ButtonFollow)`
   &:before {
-    background: url("./images/edit-icon.svg") center no-repeat;
+    background: url("/images/edit-icon.svg") center no-repeat;
     background-size: 100%;
     margin-right: 0px;
   }
@@ -225,7 +225,7 @@ export const ButtonNewPost = styled(ButtonSignIn)`
   &:before {
     content: "";
     display: block;
-    background: url("./images/arrow-up-white.svg") center no-repeat;
+    background: url("/images/arrow-up-white.svg") center no-repeat;
     background-size: 100%;
     width: 16px;
     height: 16px;

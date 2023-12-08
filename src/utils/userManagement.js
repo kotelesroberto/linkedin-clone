@@ -15,6 +15,8 @@ import {
   ReadContentFromFirebase,
 } from "./firebaseFunctions";
 
+import { safeFileName } from "./filename";
+
 /**
  *
  * Create new user document in the 'users' collection
@@ -42,6 +44,7 @@ export const CreateUserEntry = (data) => {
     username: data.email ? data.email : "",
     emailVerified: data.emailVerified ? data.emailVerified : false,
     phoneNumber: "",
+    shorturl: safeFileName(15),
   };
 
   return SaveContentIntoFirebase("users", newUser).then((result) => {

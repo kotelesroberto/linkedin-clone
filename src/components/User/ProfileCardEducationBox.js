@@ -6,7 +6,7 @@ const ProfileCardEducationBox = () => {
   const edication = {
     title: "University of Debrecen Official",
     image: {
-      src: "./upload/university_of_debrecen.jpg",
+      src: "/upload/university_of_debrecen.jpg",
     },
   };
 

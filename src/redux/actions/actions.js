@@ -48,6 +48,7 @@ export const actionRegisterByEmailAndPassAPI = (email, pass, callback) => {
 
 /* Login by email and password */
 export const actionSignInEmailAndPassAPI = (email, pass, callback = null) => {
+  console.log("call : actionSignInEmailAndPassAPI");
   return (dispatch) => {
     signInWithEmailAndPassword(auth, email, pass)
       .then((UserCredential) => {
@@ -76,6 +77,7 @@ export const actionSignInEmailAndPassAPI = (email, pass, callback = null) => {
 // https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#signinwithpopup
 // Firebase Google Sign In
 export const actionSignInGoogleAPI = () => {
+  console.log("call : actionSignInGoogleAPI");
   return (dispatch) => {
     signInWithPopup(auth, providerGoogle)
       .then((result) => {
@@ -214,21 +216,3 @@ export const actionSetUserDataIntoStore = (userData) => {
     });
   };
 };
-
-/*
-// user object:
-{
-  uid: '',
-  bio: '',
-  birthday: '',
-  displayName: '',
-  email: '',
-  location: '',
-  photoURL: '',
-  teaserImage: '',
-  username: '',
-  emailVerified: '',
-  phoneNumber: '',
-}
-
-*/

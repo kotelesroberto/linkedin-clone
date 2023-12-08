@@ -12,7 +12,7 @@ import WidgetRecent from "./WidgetRecent";
 const LeftCol = (props) => {
   return (
     <Container>
-      <ProfileCard />
+      <ProfileCard iseditmode={false} isprofilepage={false}  />
       <WidgetRecent />
     </Container>
   );

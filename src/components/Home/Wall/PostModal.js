@@ -10,7 +10,10 @@ import AddEventForm from "./AddEventForm";
 import UploadInProgress from "./UploadInProgress";
 
 import DropZone from "./DropZone";
-import { UploadFile, SaveContentIntoFirebase } from "../../../utils/firebaseFunctions";
+import {
+  UploadFile,
+  SaveContentIntoFirebase,
+} from "../../../utils/firebaseFunctions";
 import {
   actionSetShowModal,
   actionSetPreviousShowModal,
@@ -108,20 +111,21 @@ const PostModal = (props) => {
               {
                 postRef: postRef,
                 imgUrl: resp,
+                timestamp: Date.now(),
               },
               () => {
                 console.log("Image upload is DONE");
+
+                if (uploadedImagesOnServer.length === uploadedFiles.length) {
+                  // notify Redux store that all images are done
+                  setImagesUploadDone(postRef);
+
+                  // close modal
+                  closeModal(e);
+                  erasePostData();
+                }
               }
             );
-
-            if (uploadedImagesOnServer.length === uploadedFiles.length) {
-              // notify Redux store that all images are done
-              setImagesUploadDone(postRef);
-
-              // close modal
-              closeModal(e);
-              erasePostData();
-            }
           },
         });
       });

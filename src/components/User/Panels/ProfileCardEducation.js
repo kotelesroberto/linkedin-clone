@@ -13,6 +13,7 @@ import ContentListItems from "./ContentListItems";
 
 const ProfileCardEducation = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
+  const profileUid = props.profileuid;
 
   const navigate = useNavigate();
 

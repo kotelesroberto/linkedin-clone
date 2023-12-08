@@ -16,7 +16,7 @@ import { UserAvatarPhoto } from "../../../Common/User";
 import { SocialCounts, SocialCountItem } from "../../../Common/FeedItems";
 import {
   IconButtonRow,
-  IconPeople,
+  IconGlobe,
   ButtonActionContainer,
   ButtonAction,
 } from "../../../Common/Icons";
@@ -28,6 +28,8 @@ import { doLike } from "../../../../utils/manageLikes";
 import * as variables from "../../../Common/Variables";
 
 const FeedListItem = (props) => {
+  const parentKey = props.parentkey;
+
   useEffect(() => {
     // Start the pooled timer which runs every 60 seconds
     // (60000 milliseconds) by default.
@@ -88,13 +90,15 @@ const FeedListItem = (props) => {
             />
           </FeedListItemPhoto>
           <FeedListItemInfo>
-            <FeedListItemName>{props.content.user.name}</FeedListItemName>
+            <FeedListItemName href={`/in/${props.content.user.uid}`}>
+              {props.content.user.name}
+            </FeedListItemName>
             <FeedListItemSublabel aria-hidden="true">
               {props.content.user.description}
             </FeedListItemSublabel>
             <FeedListItemDate>
               <Moment fromNow>{new Date(props.content.timestamp)}</Moment> •{" "}
-              <IconPeople />
+              <IconGlobe />
             </FeedListItemDate>
           </FeedListItemInfo>
 
@@ -117,14 +121,15 @@ const FeedListItem = (props) => {
         </FeedListItemTop>
         <FeedListItemContent>
           <span>{props.content.content}</span>
-
           <FeedListItemVideo content={props.content.content} />
           {!!props.content.images.length && (
-            <FeedListItemImages>
+            <FeedListItemImages
+              key={`feed-list-item-${props.content.parentKey}-images`}
+            >
               {props.content.images.map((item, index) => (
                 <FeedListItemImage
                   image={item}
-                  key={`post-${props.parentkey}-image-${index}`}
+                  key={`feed-list-item-${props.content.parentKey}-image-${index}`}
                 />
               ))}
             </FeedListItemImages>
@@ -288,10 +293,13 @@ const FeedListItemPhoto = styled(UserAvatarPhoto)``;
 
 const FeedListItemInfo = styled.div``;
 
-const FeedListItemName = styled.span`
+const FeedListItemName = styled.a`
   display: block;
   font-size: 14px;
   font-weight: 700;
+  margin: 0;
+  padding: 0;
+  color: ${variables.colors.greyBolder};
 `;
 
 const FeedListItemSublabel = styled.span`

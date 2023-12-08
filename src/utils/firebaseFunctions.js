@@ -20,6 +20,8 @@ import { getFileExtension, getFileName, safeFileName } from "./filename";
 = Firebase storage: upload and download actions
 =============================================*/
 
+const storageRef = ref(storage, `/images`);
+
 /* Upload file */
 
 export const UploadFile = async ({
@@ -98,7 +100,7 @@ export const UploadFile = async ({
  * ------
  * let data = {
  *     postid: 1234,
- *     uid: hjbkl;,
+ *     uid: 123456;,
  *     avatar: '/path/image.jpg',
  *     displayName: 'John Doe,
  *     userlink: "",
@@ -126,9 +128,9 @@ export const SaveContentIntoFirebase = async (
     console.log("Document written with ID: ", docRef.id);
 
     // run callback
-    // if (typeof callback === "function") {
-    //   callback.call(this, docRef);
-    // }
+    if (typeof callback === "function") {
+      callback.call(this, docRef);
+    }
 
     return docRef.id;
   } catch (e) {

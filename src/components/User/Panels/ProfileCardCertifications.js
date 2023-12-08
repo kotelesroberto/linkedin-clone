@@ -15,6 +15,7 @@ import { ButtonFourth } from "../../Common/Buttons";
 
 const ProfileCardCertifications = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
+  const profileUid = props.profileuid;
 
   const navigate = useNavigate();
 

@@ -29,7 +29,7 @@ const SignUpPage = (props) => {
   return (
     <DocumentTitle title="Log in | LinkedX clone by Robert Koteles">
       <>
-        {props.user && <Navigate to="/home" replace />}
+        {props.user && props.user.email && <Navigate to="/home" replace />}
         <Container>
           <Nav>
             <a href="/">

@@ -1,10 +1,11 @@
 import React from "react";
-import { UserPhoto } from "../Common/User";
+import { UserPhoto } from "../../Common/User";
 import { connect } from "react-redux";
 
 const ProfileCardUserPhoto = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
+  const profileUid = props.profileuid;
 
   const onClickEdit = (e) => {
     e.preventDefault();

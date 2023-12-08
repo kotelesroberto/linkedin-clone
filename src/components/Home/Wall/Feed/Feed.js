@@ -22,13 +22,14 @@ import {
   where,
   orderBy,
   getDocs,
-  doc,
   onSnapshot,
 } from "firebase/firestore";
-import { db, auth, storage } from "../../../../firebase/firebase";
+import { db } from "../../../../firebase/firebase";
 
 const Feed = (props) => {
+  // all posts
   const [feedItems, setFeedItems] = useState([]);
+  // TODO: future development, flag if new post is awaiting in the queue to show (in this DEMO it's immediate effect)
   const [hasNewPosts, setHasNewPosts] = useState(false);
 
   useEffect(() => {
@@ -36,19 +37,21 @@ const Feed = (props) => {
 
     return () => {
       // cleanup
-      unsubscribe(); // this function is given back by onSnapshot
+      if (typeof unsubscribe === "function") {
+        unsubscribe(); // this function is given back by onSnapshot
+      }
     };
-  }, []);
+  }, [props.user && props.user.email]);
 
   useEffect(() => {
-    getNewPostData();
+    getNewPostData(props.isNewPostImageUploadDone);
   }, [props.isNewPostImageUploadDone]);
 
   /* get posts */
-  const getPosts = () => {
+  const getPosts = async () => {
     const q = query(
       collection(db, "posts"),
-      // where("uid", "in", [props.user.id]),
+      // where("uid", "in", [props.user.uid]),
       orderBy("timestamp", "asc")
     );
 
@@ -69,6 +72,7 @@ const Feed = (props) => {
             user: {
               avatar: docData.avatar,
               name: docData.displayName,
+              uid: docData.uid,
               description: "",
               url: "",
             },
@@ -125,19 +129,19 @@ const Feed = (props) => {
   };
 
   /* get newly added post data */
-  const getNewPostData = () => {
+  const getNewPostData = async (newPostReference) => {
+    console.log("call: new getNewPostData", newPostReference);
     // in case of having a new post from the <ShareBox> component, upliading image is async process -> after getting the Redux notification we need to get the new post item with the belonging images
-    if (props.isNewPostImageUploadDone) {
+    if (newPostReference) {
+      // console.log("step 1");
       // add image infomration to the new post that is already in the component state, thanks to the onSnapshot API
 
-      if (
-        feedItems.some(
-          (arrItem) => arrItem.id === props.isNewPostImageUploadDone
-        )
-      ) {
+      if (feedItems.some((arrItem) => arrItem.id === newPostReference)) {
         let imgArray = [];
+        // console.log("step 1 MORE", newPostReference);
 
-        getRelatedImages(props.isNewPostImageUploadDone).then((images) => {
+        return getRelatedImages(newPostReference).then((images) => {
+          console.log("getRelatedImages images", images);
           images.map((item) => {
             imgArray.push({
               url: item,
@@ -146,15 +150,23 @@ const Feed = (props) => {
           });
 
           // add the new image information to the belonging post item in the component's state
-          const newState = feedItems;
+          const newState = [...feedItems];
+          console.log("newState", newState);
+
           newState.map((item) => {
-            // newFeedItem.images = imgArray;
-            if (item.id === props.isNewPostImageUploadDone) {
+            if (item.id === newPostReference) {
               item.images = imgArray;
+              item.isNewPost = true;
+              console.log("foundthis", item.id);
             }
           });
 
-          setFeedItems((previousState) => [...newState]);
+          setTimeout(() => {
+            setFeedItems((oldState) => {
+              console.log("UPDATING NOW");
+              return [...newState];
+            });
+          }, 2000);
 
           // erase reference to the new post from Redux store
           props.setImagesUploadDone("");
@@ -186,13 +198,26 @@ const Feed = (props) => {
         <p>{props.isNewPostImageUploadDone}</p>
       )}
 
-      <FeedList>
+      <FeedList key="feed-list">
         {feedItems.map((item, index) => (
           <FeedListItem
-            key={"feed-list-item-" + item.id}
-            parentkey={"feed-list-item-" + index}
-            content={item}
+            content={{...item}}
+            key={`feed-list-item-${item.id}-index`}
+            parentkey={`feed-list-item-${item.id}-index`}
+            className={`feed-list-item-${item.id}-index`}
           />
+
+          // <p
+          //   content={item}
+          //   key={`feed-list-item-${item.id}-index`}
+          //   parentkey={`feed-list-item-${item.id}-index`}
+          //   className={`feed-list-item-${item.id}-index`}
+          // >
+          //   {item.id}
+          //   {!!item.images.length && (
+          //     <img style={{ width: "200px" }} src={item.images[0].url} />
+          //   )}
+          // </p>
         ))}
       </FeedList>
     </>

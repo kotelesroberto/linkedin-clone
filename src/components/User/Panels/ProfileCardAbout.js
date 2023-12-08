@@ -11,6 +11,7 @@ import ProfileCardBox from "./ProfileCardBox";
 
 const ProfileCardAbout = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
+  const profileUid = props.profileuid;
 
   const content = `
     <p>

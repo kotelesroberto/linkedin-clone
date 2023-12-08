@@ -59,6 +59,7 @@ function App(props) {
           <Route path="/demo" element={<DemoPage />} />
           <Route path="/edit-profile" element={<ProfilePage />} />
           <Route path="/show-profile" element={<ProfilePage />} />
+          <Route path="/in/*" element={<ProfilePage />} />
           <Route path="*" element={<Navigate to="/demo" replace />} />
         </Routes>
       </Router>

@@ -63,7 +63,7 @@ const RegisterForm = (props) => {
           aria-live="assertive"
           data-id="sign-in-form__password-visibility-toggle"
           className="show-pass js-show-pass"
-          aria-label="Show your LinkedIn password"
+          aria-label="Show your LinkedX password"
           type="button"
           onClick={(e) => showPassword(e)}
         >
@@ -77,7 +77,7 @@ const RegisterForm = (props) => {
       )}
       <Fieldset>
         <p>
-          By clicking Agree &amp; Join, you agree to the LinkedIn
+          By clicking Agree &amp; Join, you agree to the LinkedX
           <a
             href="https://www.linkedin.com/legal/user-agreement?trk=registration-frontend_join-form-user-agreement"
             target="_blank"

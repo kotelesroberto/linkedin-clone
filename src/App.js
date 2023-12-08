@@ -23,7 +23,7 @@ function App(props) {
   }, []);
 
   return (
-    <DocumentTitle title="LinkedIn clone by Robert Koteles">
+    <DocumentTitle title="LinkedX clone by Robert Koteles">
       <Router>
         <Routes>
           <Route

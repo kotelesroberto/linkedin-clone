@@ -7,7 +7,7 @@ const AlreadyRegistered = (props) => {
   return (
     <Container>
       <p>
-        Already on LinkedIn?{" "}
+        Already on LinkedX?{" "}
         <a href="#" onClick={gotoLoginPage}>
           Sign in
         </a>

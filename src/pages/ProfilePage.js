@@ -30,7 +30,7 @@ const ProfilePage = (props) => {
   }, []);
 
   return (
-    <DocumentTitle title={"(6) Feed | LinkedIn by Robert Koteles"}>
+    <DocumentTitle title={"(6) Feed | LinkedX by Robert Koteles"}>
       <>
         {/* {!props.user && <Navigate to="/" replace />} */}
         {props.user && (

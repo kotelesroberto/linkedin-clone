@@ -83,7 +83,7 @@ const LatestNews = () => {
     <Card>
       <CardContainer>
         <ListHeader>
-          LinkedIn News
+          LinkedX News
           <LISTICON_INFO_AFTER></LISTICON_INFO_AFTER>
         </ListHeader>
 

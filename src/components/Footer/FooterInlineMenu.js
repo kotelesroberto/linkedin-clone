@@ -64,9 +64,9 @@ const FooterInlineMenu = (props) => {
               <a href="#">
                 <img
                   src={`/images/footer-logo${variation}.svg`}
-                  alt="Go to LinkedIn homepage"
+                  alt="Go to LinkedX homepage"
                 />
-                {props.extraClass && <span>LinkedIn Corporation © 2023</span>}
+                {props.extraClass && <span>LinkedX Corporation © 2023</span>}
                 {!props.extraClass && <span>© 2023</span>}
               </a>
             </li>
@@ -157,6 +157,10 @@ const FooterInlineMenuColumn = styled.div`
         font-size: 12px;
         display: inline-flex;
         vertical-align: middle;
+      }
+
+      img {
+        align-self: center;
       }
 
       span {

@@ -6,6 +6,12 @@ import { connect } from "react-redux";
 import { setPostVisibilityAPI } from "../../redux/actions/actions";
 
 const ProfileCardWide = (props) => {
+  const displayName = props.user
+    ? props.user.displayName
+      ? props.user.displayName
+      : "Me"
+    : "Me";
+
   const clickContainer = (e) => {
     props.setPostVisibility(e);
   };
@@ -20,7 +26,7 @@ const ProfileCardWide = (props) => {
         )}
       </UserPhoto>
       <RightCol>
-        <h2>{props.user && props.user.displayName}</h2>
+        <h2>{displayName}</h2>
         <span>Post to {props.postSetting.visibiity}</span>
         <RightColIcon>
           <img

@@ -69,7 +69,7 @@ const LoginForm = (props) => {
           aria-live="assertive"
           data-id="sign-in-form__password-visibility-toggle"
           className="show-pass js-show-pass"
-          aria-label="Show your LinkedIn password"
+          aria-label="Show your LinkedX password"
           type="button"
           onClick={(e) => showPassword(e)}
         >

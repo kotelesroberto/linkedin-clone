@@ -5,6 +5,7 @@
  */
 
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 import { Card, CardContainer } from "../../Common/Cards";
@@ -19,6 +20,13 @@ import {
 import DiscoverMore from "../../Widgets/DiscoverMore";
 
 const WidgetRecent = () => {
+  const navigate = useNavigate();
+
+  const doDemo = (e) => {
+    e.preventDefault();
+    navigate("/demo");
+  };
+
   // TODO: fetch from API later, as JSON object
   const groupRecent = [
     {
@@ -97,6 +105,7 @@ const WidgetRecent = () => {
       <DiscoverMore
         title={["Discover more", "Hide"]}
         link="#"
+        onclick={(e) => doDemo(e)}
       />
     </Card>
   );

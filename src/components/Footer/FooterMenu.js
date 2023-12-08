@@ -45,7 +45,7 @@ const FooterMenu = () => {
       ],
     },
     {
-      category: "Browse LinkedIn",
+      category: "Browse LinkedX",
       items: [
         {
           title: "Learning",
@@ -166,7 +166,7 @@ const FooterMenu = () => {
       <FooterMenuColumns>
         <FooterMenuColumn>
           <a href="/">
-            <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
+            <img src="/images/login-logo.svg" alt="Go to LinkedX homepage" />
           </a>
         </FooterMenuColumn>
 

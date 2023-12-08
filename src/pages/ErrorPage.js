@@ -7,12 +7,12 @@ import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 
 const ErrorPage = () => {
   return (
-    <DocumentTitle title="Error | LinkedIn clone by Robert Koteles">
+    <DocumentTitle title="Error | LinkedX clone by Robert Koteles">
       <>
         <Container>
           <Nav>
             <a href="/">
-              <img src="/images/login-logo.svg" alt="Go to LinkedIn homepage" />
+              <img src="/images/login-logo.svg" alt="Go to LinkedX homepage" />
             </a>
           </Nav>
           <Section>

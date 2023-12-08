@@ -31,7 +31,7 @@ const LoginPage = (props) => {
   }, [props.user]);
 
   return (
-    <DocumentTitle title="Log in | LinkedIn clone by Robert Koteles">
+    <DocumentTitle title="Log in | LinkedX clone by Robert Koteles">
       <>
         {props.user && <Navigate to="/home" replace />}
         {!props.user && (
@@ -40,7 +40,7 @@ const LoginPage = (props) => {
               <a href="/">
                 <img
                   src="/images/login-logo.svg"
-                  alt="Go to LinkedIn homepage"
+                  alt="Go to LinkedX homepage"
                 />
               </a>
               <NavLoginButtons>
@@ -52,7 +52,7 @@ const LoginPage = (props) => {
             </Nav>
             <Section>
               <Hero>
-                <h1>Robert's LinkedIn clone built in React. Portfolio item!</h1>
+                <h1>This is LinkedX: <br />Robert's clone in React.</h1>
               </Hero>
               <SignInForm>
                 <LoginForm parentProps={props} />
@@ -60,7 +60,7 @@ const LoginPage = (props) => {
                 <LoginJoin gotoSignUpPage={gotoSignUpPage} />
               </SignInForm>
 
-              <img src="./images/login-hero.svg" alt="Login to LinkedIn" />
+              <img src="./images/login-hero.svg" alt="Login to LinkedX" />
             </Section>
             <FooterMenu />
             <FooterInlineMenu />

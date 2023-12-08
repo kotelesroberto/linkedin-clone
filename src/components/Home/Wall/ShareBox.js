@@ -12,8 +12,8 @@ import {
 import { connect } from "react-redux";
 
 import {
-  setShowModalAPI,
-  setPreviousShowModalAPI,
+  actionSetShowModal,
+  actionSetPreviousShowModal,
 } from "../../../redux/actions/actions";
 import { useNavigate } from "react-router-dom";
 
@@ -76,10 +76,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setShowModal: (newPopupState) => {
-      dispatch(setShowModalAPI(newPopupState));
+      dispatch(actionSetShowModal(newPopupState));
     },
     setPreviousShowModal: (prevPopupState) => {
-      dispatch(setPreviousShowModalAPI(prevPopupState));
+      dispatch(actionSetPreviousShowModal(prevPopupState));
     },
   };
 };

@@ -39,7 +39,7 @@ const CoverImage = styled.div`
 `;
 
 const LocalEditButton = styled(EditButton)`
-  z-index: 100;
+  z-index: 10;
   position: absolute;
   top: 12px;
   right: 12px;

@@ -7,8 +7,8 @@ import { ButtonActionContainer, ButtonAction } from "../../Common/Icons";
 import ProfileCardWide from "../../User/ProfileCardWide";
 
 import {
-  setShowModalAPI,
-  setPreviousShowModalAPI,
+  actionSetShowModal,
+  actionSetPreviousShowModal,
 } from "../../../redux/actions/actions";
 
 const PostModalHeader = (props) => {
@@ -98,10 +98,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setShowModal: (newPopupState) => {
-      dispatch(setShowModalAPI(newPopupState));
+      dispatch(actionSetShowModal(newPopupState));
     },
     setPreviousShowModal: (prevPopupState) => {
-      dispatch(setPreviousShowModalAPI(prevPopupState));
+      dispatch(actionSetPreviousShowModal(prevPopupState));
     },
   };
 };

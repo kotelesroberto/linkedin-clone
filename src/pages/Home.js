@@ -12,7 +12,7 @@ import LeftCol from "../components/Home/LeftCol/LeftCol";
 import RightCol from "../components/Home/RightCol/RightCol";
 import PostModal from "../components/Home/Wall/PostModal";
 
-import { setShowModalAPI, setCurrentURLAPI } from "../redux/actions/actions";
+import { actionSetShowModal, setCurrentURLAPI } from "../redux/actions/actions";
 
 const Home = (props) => {
   const showModal = props.showModal;
@@ -95,7 +95,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setShowModal: (newPopupState) => {
-      dispatch(setShowModalAPI(newPopupState));
+      dispatch(actionSetShowModal(newPopupState));
     },
     setCurrentURL: (url) => {
       dispatch(setCurrentURLAPI(url));

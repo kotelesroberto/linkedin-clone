@@ -76,6 +76,7 @@ const Header = (props) => {
                   className={
                     item.url == currentWindowLocationPath ? "active" : ""
                   }
+                  key={`header-menu-item-${index}`}
                 >
                   <a href={item.url}>
                     <img src={item.image} alt={item.title} />
@@ -341,6 +342,7 @@ const SignOut = styled.div`
   max-height: calc(100vh - 64px);
   padding: 0;
   display: none;
+  z-index: 10000;
 
   &:before {
     content: "";

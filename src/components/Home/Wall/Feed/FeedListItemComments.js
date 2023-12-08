@@ -22,7 +22,7 @@ import FeedListItemComment from "./FeedListItemComment";
 import {
   SaveContentIntoFirebase,
   ModifyContentInFirebase,
-} from "../../../../utils/uploadFile";
+} from "../../../../utils/firebaseFunctions";
 
 // firebase related
 import {

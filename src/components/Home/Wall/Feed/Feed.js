@@ -12,7 +12,7 @@ import styled from "styled-components";
 import { ButtonNewPost } from "../../../Common/Buttons";
 import FeedListItem from "./FeedListItem";
 
-import { isImagesUploadDone } from "../../../../redux/actions/actions";
+import { actionIsImagesUploadDone } from "../../../../redux/actions/actions";
 import * as variables from "../../../Common/Variables";
 
 // firebase related
@@ -238,7 +238,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setImagesUploadDone: (postRef) => {
-      dispatch(isImagesUploadDone(postRef));
+      dispatch(actionIsImagesUploadDone(postRef));
     },
   };
 };

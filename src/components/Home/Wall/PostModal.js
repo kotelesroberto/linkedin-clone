@@ -10,11 +10,11 @@ import AddEventForm from "./AddEventForm";
 import UploadInProgress from "./UploadInProgress";
 
 import DropZone from "./DropZone";
-import { UploadFile, SaveContentIntoFirebase } from "../../../utils/uploadFile";
+import { UploadFile, SaveContentIntoFirebase } from "../../../utils/firebaseFunctions";
 import {
-  setShowModalAPI,
-  setPreviousShowModalAPI,
-  isImagesUploadDone,
+  actionSetShowModal,
+  actionSetPreviousShowModal,
+  actionIsImagesUploadDone,
 } from "../../../redux/actions/actions";
 
 const PostModal = (props) => {
@@ -366,14 +366,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setShowModal: (newPopupState) => {
-      dispatch(setShowModalAPI(newPopupState));
+      dispatch(actionSetShowModal(newPopupState));
     },
     setPreviousShowModal: (prevPopupState) => {
       console.log("d setPreviousShowModal", prevPopupState);
-      dispatch(setPreviousShowModalAPI(prevPopupState));
+      dispatch(actionSetPreviousShowModal(prevPopupState));
     },
     setImagesUploadDone: (postRef) => {
-      dispatch(isImagesUploadDone(postRef));
+      dispatch(actionIsImagesUploadDone(postRef));
     },
   };
 };

@@ -114,6 +114,8 @@ export const actionGetUserAuth = () => {
           type: "userState/setUser",
           user: user,
         });
+
+        console.log("auth.currentUser.uid", auth.currentUser.uid);
       } else {
         // User is signed out
       }
@@ -162,8 +164,8 @@ export const setPostVisibilityAPI = (e, newVisibility) => {
 
 // Set popup modal visibility
 // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
-export const setShowModalAPI = (newState) => {
-  console.log("setShowModalAPI newState", newState);
+export const actionSetShowModal = (newState) => {
+  console.log("actionSetShowModal newState", newState);
   return (dispatch) => {
     dispatch({
       type: "popupModalState/setShowModal",
@@ -173,7 +175,7 @@ export const setShowModalAPI = (newState) => {
     });
   };
 };
-export const setPreviousShowModalAPI = (newState) => {
+export const actionSetPreviousShowModal = (newState) => {
   return (dispatch) => {
     dispatch({
       type: "popupModalState/setPreviousShowModal",
@@ -185,11 +187,21 @@ export const setPreviousShowModalAPI = (newState) => {
 };
 
 // Posting new post needs a trigger event that tells Feed component havng new post with images to load
-export const isImagesUploadDone = (postRef) => {
+export const actionIsImagesUploadDone = (postRef) => {
   return (dispatch) => {
     dispatch({
       type: "postSettingState/setImageUploadSuccess",
       isNewPostImageUploadDone: postRef,
+    });
+  };
+};
+
+// Set posts visibility
+export const actionSetUserDataIntoStore = (userData) => {
+  return (dispatch) => {
+    dispatch({
+      type: "userState/setUser",
+      user: userData,
     });
   };
 };

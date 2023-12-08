@@ -1,4 +1,4 @@
-import { ModifyContentInFirebase } from "./uploadFile";
+import { ModifyContentInFirebase } from "./firebaseFunctions";
 
 /**
  *

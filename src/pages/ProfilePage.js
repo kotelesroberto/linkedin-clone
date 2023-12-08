@@ -14,7 +14,7 @@ import Header from "../components/Header/Header";
 import LeftCol from "../components/Profile/LeftCol/LeftCol";
 import RightCol from "../components/Profile/RightCol/RightCol";
 
-import { setShowModalAPI } from "../redux/actions/actions";
+import { actionSetShowModal } from "../redux/actions/actions";
 
 const ProfilePage = (props) => {
   const showModal = props.showModal;
@@ -85,7 +85,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setShowModal: (newPopupState) => {
-      dispatch(setShowModalAPI(newPopupState));
+      dispatch(actionSetShowModal(newPopupState));
     },
   };
 };

@@ -4,7 +4,7 @@ import DocumentTitle from "react-document-title";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import Header from "../components/Header/Header";
 import Wall from "../components/Home/Wall/Wall";

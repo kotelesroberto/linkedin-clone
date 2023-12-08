@@ -24,7 +24,6 @@ import {
  * Usage
  * ------
  * const user = {
- *   uid: "123",
  *   email: "koteles.roberto@gmail.com",
  * };
  *
@@ -32,18 +31,17 @@ import {
  */
 export const CreateUserEntry = (data) => {
   let newUser = {
-    uid: "",
+    uid: data.uid ? data.uid : "",
     about: "",
     birthday: "",
-    displayName: "",
-    email: "",
+    displayName: data.displayName ? data.displayName : "",
+    email: data.email ? data.email : "",
     location: "",
-    photoURL: "",
+    photoURL: data.photoURL ? data.photoURL : "",
     teaserImage: "",
-    username: data.email,
-    emailVerified: false,
+    username: data.email ? data.email : "",
+    emailVerified: data.emailVerified ? data.emailVerified : false,
     phoneNumber: "",
-    ...data,
   };
 
   return SaveContentIntoFirebase("users", newUser).then((result) => {

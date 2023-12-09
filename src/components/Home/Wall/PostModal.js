@@ -33,6 +33,7 @@ const PostModal = (props) => {
   const setImagesUploadDone = props.setImagesUploadDone;
 
   console.log("PostModal showModal", showModal);
+  console.log("PostModal showModal props.user", props.user);
 
   const changeShowModal = (e, newModalState = "") => {
     console.log("c changeShowModal");

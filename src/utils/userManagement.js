@@ -44,7 +44,7 @@ export const CreateUserEntry = (data) => {
     username: data.email ? data.email : "",
     emailVerified: data.emailVerified ? data.emailVerified : false,
     phoneNumber: "",
-    shorturl: safeFileName(15),
+    shorturl: data.uid ? data.uid : "",
   };
 
   return SaveContentIntoFirebase("users", newUser).then((result) => {

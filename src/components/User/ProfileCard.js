@@ -43,15 +43,16 @@ import {
 const ProfileCard = (props) => {
   const toggleView = () => {};
 
+  // get user id of this profile. This is an uid, that belongs to this profile page
+  const profileUid = window.location.pathname.replace("/in/", "");
+
+  let isEditMode =
+    props.user && props.user.uid === profileUid ? props.iseditmode : false;
+  const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
+
   useEffect(() => {
     getUserProfile();
   }, [props.user]);
-
-  const isEditMode = props.iseditmode ? props.iseditmode : false;
-  const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
-
-  // uid, that belongs to this profile page
-  const profileUid = "T067ItzdeWa24XaSugBfYfy0JIo1";
 
   const onClickEdit = (e) => {
     e.preventDefault();

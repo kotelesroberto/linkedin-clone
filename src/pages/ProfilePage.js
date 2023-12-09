@@ -19,7 +19,6 @@ const ProfilePage = (props) => {
   // at page load we need to check if user is were logged in. If not, navigate to the Login page
   const navigate = useNavigate();
   useEffect(() => {
-    console.log('props.userprops.user', props.user);
     if (props.user && props.user.checkedByAuth) {
       if (!props.user.email) {
         const windowLocation = window.location.pathname;

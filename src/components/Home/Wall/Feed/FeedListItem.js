@@ -90,7 +90,7 @@ const FeedListItem = (props) => {
             />
           </FeedListItemPhoto>
           <FeedListItemInfo>
-            <FeedListItemName href={`/in/${props.content.user.uid}`}>
+            <FeedListItemName href={`./in/${props.content.user.uid}`}>
               {props.content.user.name}
             </FeedListItemName>
             <FeedListItemSublabel aria-hidden="true">

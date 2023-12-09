@@ -34,7 +34,7 @@ const Feed = (props) => {
 
   useEffect(() => {
     const unsubscribe = getPosts();
-
+    console.log({feedItems});
     return () => {
       // cleanup
       if (typeof unsubscribe === "function") {

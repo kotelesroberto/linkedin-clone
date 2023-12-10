@@ -63,7 +63,7 @@ const LoginPage = (props) => {
                 <LoginJoin gotoSignUpPage={gotoSignUpPage} />
               </SignInForm>
 
-              <img src="./images/login-hero.svg" alt="Login to RuleX" />
+              <img src="./images/login-hero.svg" alt="Login to RuleX." title="Copyright 2023 MANYPIXELS PTE LTD" />
             </Section>
             <FooterMenu />
             <FooterInlineMenu />

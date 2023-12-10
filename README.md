@@ -73,6 +73,8 @@ Your app is ready to be deployed!
  - https://www.npmjs.com/package/react-moment
  - https://www.youtube.com/watch?v=xP3cxbDUtrc
  - https://stackedit.io/app
+ - https://www.manypixels.co/gallery (Licence of used SVG images)
+
 
 
 

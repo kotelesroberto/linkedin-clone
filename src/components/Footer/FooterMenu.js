@@ -15,6 +15,10 @@ const FooterMenu = () => {
       category: "General",
       items: [
         {
+          title: "Teamwork Vectors by Vecteezy",
+          link: "https://www.vecteezy.com/free-vector/teamwork",
+        },
+        {
           link: "/demo",
           title: "Sign Up",
         },
@@ -166,7 +170,7 @@ const FooterMenu = () => {
       <FooterMenuColumns>
         <FooterMenuColumn>
           <a href="/">
-            <img src="/images/login-logo.svg" alt="Go to RuleX homepage" />
+            <img src="/images/login-logo.svg" alt="Go to LinkedX homepage" />
           </a>
         </FooterMenuColumn>
 
@@ -175,7 +179,9 @@ const FooterMenu = () => {
             <h3>{catItem.category}</h3>
             <ul>
               {catItem.items.map((menuItem, menuIndex) => (
-                <li key={"footer-cat-menu-item-" + menuIndex}></li>
+                <li key={"footer-cat-menu-item-" + menuIndex}>
+                  <a href={menuItem.link}>{menuItem.title}</a>
+                </li>
               ))}
             </ul>
           </FooterMenuColumn>

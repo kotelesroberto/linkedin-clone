@@ -338,7 +338,7 @@ const SignOut = styled.div`
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  box-shadow: ${variables.shadows.boxShadow4};
+  box-shadow: ${variables.colors.boxShadow4};
   max-height: calc(100vh - 64px);
   padding: 0;
   display: none;

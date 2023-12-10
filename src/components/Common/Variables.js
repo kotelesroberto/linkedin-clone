@@ -6,17 +6,30 @@ export const colorDefinitions = {
 export const colors = {
   colorFont: colorDefinitions.black,
   errorFont: "#cb112d",
+
+  // links
   link: "#0a66c2",
   linkHover: "#004182",
   menuLink: colorDefinitions.black,
   menuLinkHover: "#0a66c2",
+
+  // badge
   badgeFont: "#fff",
   badgeBackground: "#cb112d",
+
+  // borders
   border1: "#cb112d",
   border2: "#e8e8e8",
   border3: "#f3f2f0",
   border4: "#d8d8d8",
 
+  // shadows
+  boxShadow: "#e8e8e8 0px 0px 0px 1px",
+  boxShadow2: "#e8e8e8 0px 0px 0px 1px, #b2b2b2 0px 4px 4px 0px",
+  boxShadow3: "#e8e8e8 0px 0px 0px 1px inset",
+  boxShadow4: "0 0 0 1px #d8d8d8, 0 6px 9px #cccccc",
+
+  // Buttons
   buttonPrimaryBorder: "#0a66c2",
   buttonPrimaryHover: "#f4f4f4",
   buttonSecondaryBackground: "#0a66c2",
@@ -53,6 +66,9 @@ export const colors = {
     "#e8e8e8 0px 0px 0px 1px, #b2b2b2 0px 4px 4px 0px",
   socialCountButtonBackground: "transparent",
   socialCountButtonBackgroundHover: "#f2f2f2",
+  iconButtonBackground: "transparent",
+  iconButtonBackgroundHover: "#f4f4f4",
+
   commentBoxBackground: "#f2f2f2",
 
   modalBackground: "rgba(0, 0, 0, 0.5)",
@@ -60,52 +76,19 @@ export const colors = {
   listItemBackground: "transparent",
   listItemBackgroundHover: "#eaeaea",
 
-  iconButtonBackground: "transparent",
-  iconButtonBackgroundHover: "#f4f4f4",
-
+  // Footer
   footerInlineMenuRowBackground: "transparent",
   footerMenuRowBackground: "#f3f2f0",
 
+  // Form input
   inputFont: colorDefinitions.black,
   inputBackground: "#fff",
   inputBackgroundHover: "#f4f4f4",
-  
   headerInputFont: colorDefinitions.black,
   headerInputBackground: "#eef3f8",
 
-
-
-  maincolor1: "#0a66c2",
-  maincolor2: "#004182",
-  maincolor4: "#191919",
-  maincolor5: "#cb112d",
-  maincolor6: "#eef3f8",
-  maincolor7: "#f3f2f0",
-
-  maincolor9: "#004182",
-  maincolor10: "#dadce0",
-
-  maincolor11: "#3f3f3f",
-  maincolor12: "#f4f4f4",
-  maincolor13: "#eaeaea",
-  maincolor14: "#e8e8e8",
-  maincolor15: "#b2b2b2",
-  maincolor16: "#d8d8d8",
-  maincolor17: "#cccccc",
-  maincolor18: "#f7fafe",
-  maincolor19: "#f0f7fe",
-  maincolor20: "#a5a5a5",
-  maincolor21: "#f2f2f2",
-
   white: colorDefinitions.white,
   black: colorDefinitions.black,
-};
-
-export const shadows = {
-  boxShadow: "#e8e8e8 0px 0px 0px 1px",
-  boxShadow2: "#e8e8e8 0px 0px 0px 1px, #b2b2b2 0px 4px 4px 0px",
-  boxShadow3: "#e8e8e8 0px 0px 0px 1px inset",
-  boxShadow4: "0 0 0 1px #d8d8d8, 0 6px 9px #cccccc",
 };
 
 export const borderRadius = "8px";

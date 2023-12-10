@@ -243,7 +243,7 @@ const CommentInput = styled.textarea`
   overflow: auto;
 
   &:hover {
-    box-shadow: ${variables.shadows.boxShadow3};
+    box-shadow: ${variables.colors.boxShadow3};
     outline: none;
     background-color: ${variables.colors.inputBackgroundHover};
   }

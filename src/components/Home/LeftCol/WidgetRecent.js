@@ -93,13 +93,13 @@ const WidgetRecent = () => {
 
       <CardContainer>
         <ListSmallHeader>
-          <a href="#">Events</a>
+          <a href="/demo">Events</a>
           <ListSmallIcon_Plus_After></ListSmallIcon_Plus_After>
         </ListSmallHeader>
       </CardContainer>
       <CardContainer>
         <ListSmallHeader>
-          <a href="#">Followed Hashtags</a>
+          <a href="/demo">Followed Hashtags</a>
         </ListSmallHeader>
       </CardContainer>
       <DiscoverMore

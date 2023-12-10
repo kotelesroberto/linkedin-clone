@@ -4,7 +4,7 @@ import * as variables from "./Variables";
 export const Card = styled.div`
   background-color: ${variables.colors.white};
   border-radius: 8px;
-  box-shadow: ${variables.shadows.boxShadow};
+  box-shadow: ${variables.colors.boxShadow};
   transition-property: box-shadow;
   padding: 12px 0;
   position: relative;

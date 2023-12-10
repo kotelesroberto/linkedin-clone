@@ -52,7 +52,7 @@ const Container = styled.div`
   cursor: pointer;
 
   &:hover {
-    box-shadow: ${variables.shadows.boxShadow};
+    box-shadow: ${variables.colors.boxShadow};
     background-color: ${variables.colors.listItemBackgroundHover};
   }
 

@@ -326,7 +326,7 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
     position: relative;
 
     &:hover {
-      box-shadow: ${variables.shadows.boxShadow2};
+      box-shadow: ${variables.colors.boxShadow2};
 
       span {
         display: block;
@@ -343,7 +343,7 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
       border-radius: 8px;
       padding: 8px;
       display: none;
-      box-shadow: ${variables.shadows.boxShadow2};
+      box-shadow: ${variables.colors.boxShadow2};
       transition-property: box-shadow;
     }
   }

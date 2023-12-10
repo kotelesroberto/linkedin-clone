@@ -286,7 +286,7 @@ const UploadArea = styled.div`
 
 const Footer = styled.div`
   background-color: ${variables.colors.white};
-  border-top: 1px solid ${variables.colors.maincolor14};
+  border-top: 1px solid ${variables.colors.border2};
 `;
 
 const ButtonRow = styled.div`
@@ -326,8 +326,7 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
     position: relative;
 
     &:hover {
-      box-shadow: ${variables.colors.maincolor14} 0px 0px 0px 1px,
-        ${variables.colors.maincolor15} 0px 4px 4px 0px;
+      box-shadow: ${variables.shadows.boxShadow2};
 
       span {
         display: block;
@@ -344,9 +343,7 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
       border-radius: 8px;
       padding: 8px;
       display: none;
-
-      box-shadow: ${variables.colors.maincolor14} 0px 0px 0px 1px,
-        ${variables.colors.maincolor15} 0px 4px 4px 0px;
+      box-shadow: ${variables.shadows.boxShadow2};
       transition-property: box-shadow;
     }
   }

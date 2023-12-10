@@ -107,7 +107,7 @@ const Fieldset = styled.fieldset`
     font-size: 12px;
 
     &.error {
-      color: ${variables.colors.maincolor5};
+      color: ${variables.colors.errorFont};
     }
   }
 `;

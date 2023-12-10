@@ -83,7 +83,7 @@ const LatestNews = () => {
     <Card>
       <CardContainer>
         <ListHeader>
-          RuleX News
+          <a href="/demo">RuleX News</a>
           <LISTICON_INFO_AFTER></LISTICON_INFO_AFTER>
         </ListHeader>
 

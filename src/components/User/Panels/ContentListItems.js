@@ -94,7 +94,7 @@ const ContentListItemTitle = styled.h3`
 
 const ContentListItemTitle2 = styled.h4`
   font-size: 14px;
-  color: ${variables.colors.colorFonter};
+  color: ${variables.colors.colorFont};
   font-weight: 400;
 `;
 

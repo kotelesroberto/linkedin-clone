@@ -15,7 +15,6 @@ import {
   ListSmall,
   ListItemSmall,
   ListSmallIcon_Group,
-  ListSmallIcon_Empty,
   ListSmallIcon_Plus_After,
 } from "../../Common/Menus";
 import DiscoverMore from "../../Widgets/DiscoverMore";
@@ -111,18 +110,5 @@ const WidgetRecent = () => {
     </Card>
   );
 };
-
-const Container = styled.div`
-  padding: 12px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${variables.colors.maincolor13};
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
 
 export default WidgetRecent;

@@ -4,14 +4,18 @@ import * as variables from "./Variables";
 export const ListHeader = styled.h3`
   font-size: 16px;
   line-height: 1;
-  color: ${variables.colors.colorFonter};
+  color: ${variables.colors.colorFont};
   padding: 4px 0;
   margin: 0 0 12px 0;
   padding: 0px 12px;
   position: relative;
 
   a {
-    color: ${variables.colors.maincolor1};
+    color: ${variables.colors.menuLink};
+
+    &:hover {
+      color: ${variables.colors.menuLinkHover};
+    }
   }
 
   span {
@@ -28,7 +32,7 @@ export const ListHeader = styled.h3`
 export const List = styled.ul`
   margin: 0;
   padding: 0;
-  color: ${variables.colors.colorFonter};
+  color: ${variables.colors.colorFont};
 `;
 
 export const ListItem = styled.li`
@@ -45,6 +49,7 @@ export const ListItem = styled.li`
   transition: max-height 0.3s, opacity 0.1s;
   max-height: 50px;
   opacity: 1;
+  background-color: ${variables.colors.listItemBackground};
 
   &.closed {
     max-height: 0;
@@ -59,7 +64,7 @@ export const ListItem = styled.li`
     width: 6px;
     height: 6px;
     margin: 10px 12px 2px 0px;
-    border: 3px solid ${variables.colors.colorFonter};
+    border: 3px solid ${variables.colors.colorFont};
   }
 
   a {
@@ -67,24 +72,27 @@ export const ListItem = styled.li`
     overflow: hidden;
     text-overflow: ellipsis;
     display: flex;
-    color: ${variables.colors.colorFont};
     padding: 4px 0;
     display: block;
 
     &:hover {
       text-decoration: none;
-      color: ${variables.colors.colorFonter};
     }
   }
 
   &:hover {
-    background-color: ${variables.colors.maincolor13};
+    background-color: ${variables.colors.listItemBackgroundHover};
   }
 `;
 
 export const ListItemTitle = styled.h3`
-  color: ${variables.colors.colorFonter};
+  color: ${variables.colors.colorFont};
   margin-bottom: 4px;
+
+  &:hover {
+    text-decoration: none;
+    color: ${variables.colors.colorFont};
+  }
 `;
 
 export const ListItemImpressum = styled.span`

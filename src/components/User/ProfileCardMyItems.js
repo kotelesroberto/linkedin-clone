@@ -26,7 +26,7 @@ const Container = styled.div`
   margin-bottom: -12px;
 
   &:hover {
-    background-color: ${variables.colors.maincolor13};
+    background-color: ${variables.colors.listItemBackgroundHover};
   }
 
   @media (max-width: 768px) {

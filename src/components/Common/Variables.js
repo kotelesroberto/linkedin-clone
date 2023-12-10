@@ -5,6 +5,18 @@ export const colorDefinitions = {
 
 export const colors = {
   colorFont: colorDefinitions.black,
+  errorFont: "#cb112d",
+  link: "#0a66c2",
+  linkHover: "#004182",
+  menuLink: colorDefinitions.black,
+  menuLinkHover: "#0a66c2",
+  badgeFont: "#fff",
+  badgeBackground: "#cb112d",
+  border1: "#cb112d",
+  border2: "#e8e8e8",
+  border3: "#f3f2f0",
+  border4: "#d8d8d8",
+
   buttonPrimaryBorder: "#0a66c2",
   buttonPrimaryHover: "#f4f4f4",
   buttonSecondaryBackground: "#0a66c2",
@@ -36,15 +48,32 @@ export const colors = {
   buttonFollowBorder: "#000",
   buttonFollowBoxShadowHover: "#3f3f3f",
   buttonFollowBackgroundHover: "#f4f4f4",
-  buttonNewPostBackground: "#004182",
-  buttonNewPostFont: "#fff",
   buttonNewPostBoxShadow: "#e8e8e8 0px 0px 0px 1px, #b2b2b2 0px 4px 4px 0px",
   buttonNewPostBoxShadowHover:
     "#e8e8e8 0px 0px 0px 1px, #b2b2b2 0px 4px 4px 0px",
   socialCountButtonBackground: "transparent",
   socialCountButtonBackgroundHover: "#f2f2f2",
+  commentBoxBackground: "#f2f2f2",
 
-  modalBackground: "rgba(0, 0, 0, 0.5)", 
+  modalBackground: "rgba(0, 0, 0, 0.5)",
+
+  listItemBackground: "transparent",
+  listItemBackgroundHover: "#eaeaea",
+
+  iconButtonBackground: "transparent",
+  iconButtonBackgroundHover: "#f4f4f4",
+
+  footerInlineMenuRowBackground: "transparent",
+  footerMenuRowBackground: "#f3f2f0",
+
+  inputFont: colorDefinitions.black,
+  inputBackground: "#fff",
+  inputBackgroundHover: "#f4f4f4",
+  
+  headerInputFont: colorDefinitions.black,
+  headerInputBackground: "#eef3f8",
+
+
 
   maincolor1: "#0a66c2",
   maincolor2: "#004182",
@@ -73,16 +102,10 @@ export const colors = {
 };
 
 export const shadows = {
-  boxShadow: "${variables.colors.maincolor14} 0px 0px 0px 1px",
+  boxShadow: "#e8e8e8 0px 0px 0px 1px",
+  boxShadow2: "#e8e8e8 0px 0px 0px 1px, #b2b2b2 0px 4px 4px 0px",
+  boxShadow3: "#e8e8e8 0px 0px 0px 1px inset",
+  boxShadow4: "0 0 0 1px #d8d8d8, 0 6px 9px #cccccc",
 };
 
 export const borderRadius = "8px";
-
-/*
-EXAMPLE:
-import * as variables from '../Common/Variables';
-
-const Button = styled.button`
-  color: ${variables.colors.maincolor5};
-`;
-*/

@@ -23,8 +23,12 @@ const Container = styled.div`
   }
   a {
     display: inline-block;
-    color: ${variables.colors.maincolor1};
+    color: ${variables.colors.link};
     font-weight: 700;
+
+    &:hover {
+      color: ${variables.colors.linkHover};
+    }
   }
 `;
 

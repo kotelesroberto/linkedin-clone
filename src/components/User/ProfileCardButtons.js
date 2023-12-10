@@ -5,7 +5,6 @@ import * as variables from "../Common/Variables";
 import { Card } from "../Common/Cards";
 
 import {
-  ButtonPrimary,
   ButtonSecondary,
   ButtonTertiary,
   ButtonFourth,
@@ -134,9 +133,10 @@ const Panel = styled(Card)`
 const PanelItem = styled.div`
   padding: 12px;
   cursor: pointer;
+  background-color: ${variables.colors.listItemBackground};
 
   &:hover {
-    background-color: ${variables.colors.maincolor7};
+    background-color: ${variables.colors.listItemBackgroundHover};
   }
 `;
 
@@ -159,9 +159,10 @@ const PanelMenu = styled.ul`
 const PanelMenuItem = styled.li`
   padding: 12px;
   cursor: pointer;
+  background-color: ${variables.colors.listItemBackground};
 
   &:hover {
-    background-color: ${variables.colors.maincolor7};
+    background-color: ${variables.colors.listItemBackgroundHover};
   }
 
   a {

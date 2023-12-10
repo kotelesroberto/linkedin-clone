@@ -53,7 +53,7 @@ const Container = styled.div`
     `};
 
   &:hover {
-    background-color: ${variables.colors.maincolor13};
+    background-color: ${variables.colors.listItemBackgroundHover};
   }
 
   a {

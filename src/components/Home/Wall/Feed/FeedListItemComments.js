@@ -233,9 +233,9 @@ const CommentInput = styled.textarea`
   line-height: 1em;
   font-weight: 700;
   vertical-align: middle;
-  background-color: ${variables.colors.white};
-  color: ${variables.colors.colorFont};
-  border: 1px solid ${variables.colors.maincolor16};
+  background-color: ${variables.colors.inputBackground};
+  color: ${variables.colors.inputFont};
+  border: 1px solid ${variables.colors.border4};
   transition: box-shadow 0.3s;
   cursor: pointer;
   resize: none;
@@ -243,9 +243,9 @@ const CommentInput = styled.textarea`
   overflow: auto;
 
   &:hover {
-    box-shadow: ${variables.colors.maincolor11} 0px 0px 0px 1px inset;
+    box-shadow: ${variables.shadows.boxShadow3};
     outline: none;
-    background-color: ${variables.colors.maincolor12};
+    background-color: ${variables.colors.inputBackgroundHover};
   }
 `;
 /*=====  React-redux related functions  ======*/

@@ -32,10 +32,11 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   margin-bottom: -12px;
-  border-top: 1px solid ${variables.colors.maincolor14};
+  border-top: 1px solid ${variables.colors.border2};
+  background-color: ${variables.colors.listItemBackground};
 
   &:hover {
-    background-color: ${variables.colors.maincolor13};
+    background-color: ${variables.colors.listItemBackgroundHover};
   }
 
   a {

@@ -133,13 +133,13 @@ const Header = (props) => {
 
 const Container = styled.div`
   background-color: ${variables.colors.white};
-  border-bottom: 1px solid ${variables.colors.maincolor13};
+  border-bottom: 1px solid ${variables.colors.border2};
   left: 0;
   padding: 0 24px;
   position: fixed;
   top: 0;
   width: 100vw;
-  z-index: 100;
+  z-index: 1000;
 `;
 
 const Content = styled.div`
@@ -170,16 +170,16 @@ const Search = styled.div`
     input {
       border: none;
       box-shadow: none;
-      background-color: ${variables.colors.maincolor6};
+      background-color: ${variables.colors.headerInputBackground};
       border-radius: 2px;
-      color: ${variables.colors.colorFonter};
+      color: ${variables.colors.headerInputFont};
       width: 218px;
       height: 34px;
       padding: 0 8px 0 40px;
       line-height: 1.75;
       font-weight: 400;
       font-size: 14px;
-      border-color: ${variables.colors.maincolor7Botticelli};
+      border-color: ${variables.colors.border3};
       vertical-align: middle;
       transition: all 0.3s;
 
@@ -238,7 +238,7 @@ const NavList = styled.li`
 
   &.active {
     &:after {
-      border-bottom: 2px solid ${variables.colors.colorFonter};
+      border-bottom: 2px solid ${variables.colors.colorFont};
       content: "";
       bottom: 0;
       left: 0;
@@ -295,7 +295,7 @@ const NavList = styled.li`
         opacity: 1;
       }
       span {
-        color: ${variables.colors.colorFonter};
+        color: ${variables.colors.colorFont};
       }
     }
   }
@@ -313,8 +313,8 @@ const NavListBadge = styled.strong`
   position: absolute;
   top: 2px;
   right: 18px;
-  background-color: ${variables.colors.maincolor5};
-  color: ${variables.colors.white};
+  background-color: ${variables.colors.badgeBackground};
+  color: ${variables.colors.badgeFont};
   white-space: nowrap;
   height: 1.2rem;
   border-radius: 0.8rem;
@@ -338,7 +338,7 @@ const SignOut = styled.div`
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  box-shadow: 0 0 0 1px ${variables.colors.maincolor16}, 0 6px 9px ${variables.colors.maincolor17};
+  box-shadow: ${variables.shadows.boxShadow4};
   max-height: calc(100vh - 64px);
   padding: 0;
   display: none;
@@ -391,7 +391,7 @@ const User = styled(NavList)`
 `;
 
 const ForBusiness = styled(User)`
-  border-left: 1px solid ${variables.colors.maincolor13};
+  border-left: 1px solid ${variables.colors.border2};
 `;
 
 /*=====  React-redux related functions  ======*/

@@ -6,7 +6,6 @@
  * @version 1.0.0
  */
 
-
 import React, { useState } from "react";
 import styled from "styled-components";
 import * as variables from "../../Common/Variables";
@@ -32,7 +31,7 @@ const ProfileCardImpressions = () => {
 };
 
 const Container = styled.div`
-  border-bottom: 1px solid ${variables.colors.maincolor14};
+  border-bottom: 1px solid ${variables.colors.border2};
   padding: 16px 0;
 
   @media (max-width: 768px) {
@@ -53,7 +52,7 @@ const CardImpressionRow = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: ${variables.colors.maincolor13};
+    background-color: ${variables.colors.listItemBackgroundHover};
   }
 `;
 
@@ -61,7 +60,11 @@ const CardImpressionCol = styled.div`
   color: ${variables.colors.colorFont};
 
   &:nth-child(2) {
-    color: ${variables.colors.maincolor1};
+    color: ${variables.colors.link};
+
+    &:hover {
+      color: ${variables.colors.linkHover};
+    }
   }
 `;
 

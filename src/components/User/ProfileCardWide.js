@@ -53,7 +53,7 @@ const Container = styled.div`
 
   &:hover {
     box-shadow: ${variables.shadows.boxShadow};
-    background-color: ${variables.colors.maincolor7};
+    background-color: ${variables.colors.listItemBackgroundHover};
   }
 
   ${UserPhoto} {

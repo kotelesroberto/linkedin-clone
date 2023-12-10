@@ -42,7 +42,7 @@ const PeopleListTeaser = (props) => {
     <Card>
       <CardContainer>
         <ListHeader>
-          {props.title}
+          <a href="/demo">{props.title}</a>
 
           {props.subtitle && <span className="subtitle">{props.subtitle}</span>}
         </ListHeader>

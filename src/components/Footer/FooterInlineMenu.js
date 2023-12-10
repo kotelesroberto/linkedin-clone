@@ -56,10 +56,10 @@ const FooterInlineMenu = (props) => {
   ];
 
   return (
-    <FooterInlineMenuSection>
+    <FooterInlineMenuSection className={props.extraClass}>
       <FooterInlineMenuColumns>
         <FooterInlineMenuColumn>
-          <ul className={props.extraClass}>
+          <ul>
             <li>
               <a href="#">
                 <img
@@ -94,8 +94,14 @@ const FooterInlineMenuSection = styled.section`
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: ${variables.colors.maincolor7};
+    background-color: ${variables.colors.footerInlineMenuRowBackground};
     z-index: -1;
+  }
+  &.logo-last {
+    &:after {
+      width: 100%;
+      background-color: transparent;
+    }
   }
 `;
 
@@ -124,7 +130,7 @@ const FooterInlineMenuColumn = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
 
-    &.logo-last {
+    .logo-last & {
       justify-content: center;
       margin-top: -22px;
       padding: 0 24px;
@@ -164,7 +170,7 @@ const FooterInlineMenuColumn = styled.div`
       }
 
       span {
-        color: ${variables.colors.colorFonter};
+        color: ${variables.colors.colorFont};
         margin-left: 8px;
       }
     }

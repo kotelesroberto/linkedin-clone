@@ -15,10 +15,6 @@ const FooterMenu = () => {
       category: "General",
       items: [
         {
-          title: "Teamwork Vectors by Vecteezy",
-          link: "https://www.vecteezy.com/free-vector/teamwork",
-        },
-        {
           link: "/demo",
           title: "Sign Up",
         },
@@ -201,7 +197,7 @@ const FooterMenuSection = styled.section`
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: ${variables.colors.maincolor7};
+    background-color: ${variables.colors.footerMenuRowBackground};
     z-index: -1;
   }
 `;

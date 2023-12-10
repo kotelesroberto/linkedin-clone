@@ -20,7 +20,7 @@ export const CardContainer = styled.div`
 /* Profile page boxes */
 
 export const BoxContainer = styled(Card)`
-  color: ${variables.colors.colorFonter};
+  color: ${variables.colors.colorFont};
   padding: 24px 0;
 `;
 
@@ -57,12 +57,12 @@ export const ContentList = styled.ul`
 `;
 
 export const ContentListItem = styled.li`
-  color: ${variables.colors.colorFonter};
+  color: ${variables.colors.colorFont};
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-start;
-  border-bottom: 1px solid ${variables.colors.maincolor7};
+  border-bottom: 1px solid ${variables.colors.border3};
   padding: 12px 0;
 
   &:last-child {

@@ -30,7 +30,7 @@ export const IconButtonRow = styled.div`
   button {
     outline: none;
     border: none;
-    background-color: transparent;
+    background-color: ${variables.colors.iconButtonBackground};
     cursor: pointer;
     transition: all 0.3s;
     padding: 12px 8px;
@@ -44,7 +44,7 @@ export const IconButtonRow = styled.div`
 
     &:hover {
       outline: none;
-      background-color: ${variables.colors.maincolor12};
+      background-color: ${variables.colors.iconButtonBackgroundHover};
     }
 
     img {
@@ -72,11 +72,12 @@ export const ButtonAction = styled.button`
   height: 32px;
   border-radius: 16px;
   padding: 0;
-  background-color: ${variables.colors.white};
+  background-color: ${variables.colors.iconButtonBackground};
   transition: background-color 0.3s;
+  background-color: "green";
 
   &:hover {
-    background-color: ${variables.colors.maincolor12};
+    background-color: ${variables.colors.iconButtonBackgroundHover};
   }
 
   img {

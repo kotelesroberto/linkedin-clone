@@ -198,9 +198,9 @@ export const EditButton = styled(ButtonFollow)`
 
 export const ButtonNewPost = styled(ButtonSignIn)`
   min-height: initial;
-  background-color: ${variables.colors.maincolor1};
-  color: ${variables.colors.white};
-  border-color: ${variables.colors.maincolor1};
+  background-color: ${variables.colors.buttonSecondaryBackground};
+  color: ${variables.colors.buttonSecondaryFont};
+  border-color: ${variables.colors.buttonSecondaryBorder};
   margin: 0 auto -24px auto;
   padding-top: 6px;
   padding-bottom: 6px;
@@ -210,8 +210,8 @@ export const ButtonNewPost = styled(ButtonSignIn)`
 
   &:hover {
     box-shadow: ${variables.colors.buttonNewPostBoxShadowHover};
-    background-color: ${variables.colors.buttonNewPostBackground};
-    color: ${variables.colors.buttonNewPostFont};
+    background-color: ${variables.colors.buttonSecondaryBackgroundHover};
+    color: ${variables.colors.buttonSecondaryFont};
     text-decoration: none;
   }
 

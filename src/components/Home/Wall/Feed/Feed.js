@@ -235,7 +235,7 @@ const FeedSortBy = styled.div`
 
   hr {
     flex-grow: 1;
-    border-top: 1px solid ${variables.colors.maincolor16};
+    border-top: 1px solid ${variables.colors.border4};
     margin-right: 8px;
   }
 
@@ -243,7 +243,7 @@ const FeedSortBy = styled.div`
     color: ${variables.colors.colorFont};
     margin-right: 4px;
     &:nth-child(3) {
-      color: ${variables.colors.colorFonter};
+      color: ${variables.colors.colorFont};
       font-weight: 700;
     }
   }

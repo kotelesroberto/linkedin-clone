@@ -100,10 +100,10 @@ const CommentContainer = styled.div`
 
 const CommentContent = styled.div`
   width: 100%;
-  background-color: #f2f2f2;
+  background-color: ${variables.colors.maincolor21};
   padding: 12px;
   font-size: 14px;
-  color: ${variables.colors.maincolor3er};
+  color: ${variables.colors.colorFonter};
   margin-bottom: 40px;
   position: relative;
 

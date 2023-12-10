@@ -67,7 +67,7 @@ const Header = styled.div`
 
   h2 {
     font-size: 20px;
-    color: ${variables.colors.maincolor3er};
+    color: ${variables.colors.colorFonter};
   }
 `;
 

@@ -58,10 +58,10 @@ const CardImpressionRow = styled.div`
 `;
 
 const CardImpressionCol = styled.div`
-  color: ${variables.colors.maincolor3};
+  color: ${variables.colors.colorFont};
 
   &:nth-child(2) {
-    color: ${variables.colors.maincolor8};
+    color: ${variables.colors.maincolor1};
   }
 `;
 

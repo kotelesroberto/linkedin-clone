@@ -7,7 +7,7 @@ export const SocialCounts = styled.ul`
   list-style: none;
   margin: 8px 0;
   padding: 0;
-  color: ${variables.colors.maincolor3};
+  color: ${variables.colors.colorFont};
   font-size: 12px;
   line-height: 1em;
 `;

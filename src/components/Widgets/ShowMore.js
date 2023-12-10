@@ -31,7 +31,7 @@ const Container = styled.div`
   align-items: center;
   font-size: 14px;
   font-weight: 700;
-  color: ${variables.colors.maincolor3};
+  color: ${variables.colors.colorFont};
   margin-top: 8px;
   cursor: pointer;
 

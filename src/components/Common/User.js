@@ -9,7 +9,7 @@ export const UserAvatarBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  color: ${variables.colors.maincolor3er};
+  color: ${variables.colors.colorFonter};
   border-bottom: 1px solid ${variables.colors.maincolor14};
   padding: 12px 0;
   overflow: hidden;
@@ -97,6 +97,6 @@ export const UserName = styled.h4``;
 export const UserPosition = styled.span`
   display: block;
   font-size: 14px;
-  color: ${variables.colors.maincolor3er};
+  color: ${variables.colors.colorFonter};
   margin-bottom: 8px;
 `;

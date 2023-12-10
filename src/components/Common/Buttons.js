@@ -11,7 +11,7 @@ export const ButtonPrimary = styled.button`
   font-size: 16px;
   font-weight: 700;
   line-height: 1.25;
-  border: 1px solid ${variables.colors.maincolor11};
+  border: 1px solid ${variables.colors.buttonPrimaryBorder};
   cursor: pointer;
   vertical-align: middle;
   display: flex;
@@ -22,7 +22,7 @@ export const ButtonPrimary = styled.button`
   &:hover {
     box-shadow: none;
     outline: none;
-    background-color: ${variables.colors.maincolor12};
+    background-color: ${variables.colors.buttonPrimaryHover};
   }
 
   @media (max-width: 768px) {
@@ -31,42 +31,35 @@ export const ButtonPrimary = styled.button`
 `;
 
 export const ButtonSecondary = styled(ButtonPrimary)`
-  background-color: ${variables.colors.maincolor8};
-  border-color: ${variables.colors.maincolor8};
-  color: ${variables.colors.white};
+  background-color: ${variables.colors.buttonSecondaryBackground};
+  border-color: ${variables.colors.buttonSecondaryBorder};
+  color: ${variables.colors.buttonSecondaryFont};
   white-space: nowrap;
 
   &:hover {
-    background-color: ${variables.colors.maincolor9};
-    border-color: ${variables.colors.maincolor9};
+    background-color: ${variables.colors.buttonSecondaryBackgroundHover};
+    border-color: ${variables.colors.buttonSecondaryBorderHover};
   }
 `;
 
 export const ButtonTertiary = styled(ButtonPrimary)`
   width: auto;
-  background-color: ${variables.colors.white};
-  border-color: ${variables.colors.maincolor1};
-  color: ${variables.colors.maincolor1};
-
+  background-color: ${variables.colors.buttonTertiaryBackground};
+  border-color: ${variables.colors.buttonTertiaryBorder};
+  color: ${variables.colors.buttonTertiaryFont};
   white-space: nowrap;
-
-  &:hover {
-  }
 `;
 
 export const ButtonFourth = styled(ButtonPrimary)`
   width: auto;
-  background-color: ${variables.colors.white};
-  color: ${variables.colors.maincolor3};
+  background-color: ${variables.colors.buttonFourthBackground};
+  color: ${variables.colors.buttonFourthFont};
   white-space: nowrap;
-
-  &:hover {
-  }
 `;
 
 export const ButtonWithImage = styled(ButtonPrimary)`
   min-height: 38px;
-  border-color: ${variables.colors.maincolor10};
+  border-color: ${variables.colors.buttonWithImageBorder};
   font-weight: 400;
   padding-top: 6px;
   padding-bottom: 6px;
@@ -74,7 +67,7 @@ export const ButtonWithImage = styled(ButtonPrimary)`
   font-size: 14px;
 
   &:hover {
-    background: ${variables.colors.maincolor18};
+    background: ${variables.colors.buttonWithImageBackgroundHover};
   }
 
   @media (max-width: 768px) {
@@ -94,7 +87,7 @@ export const ButtonJoin = styled.a`
   font-size: 16px;
   padding: 12px 24px;
   text-decoration: none;
-  color: ${variables.colors.maincolor11};
+  color: ${variables.colors.buttonJoinFont};
   cursor: pointer;
   margin-right: 12px;
   border-radius: 24px;
@@ -103,21 +96,21 @@ export const ButtonJoin = styled.a`
 
   &:hover {
     text-decoration: none;
-    color: ${variables.colors.maincolor3er};
-    background-color: ${variables.colors.maincolor12};
+    color: ${variables.colors.buttonJoinFontHover};
+    background-color: ${variables.colors.buttonJoinBackgroundHover};
   }
 `;
 
 export const ButtonSignIn = styled(ButtonSecondary)`
   width: auto;
-  background-color: transparent;
-  color: ${variables.colors.maincolor1};
-  border-color: ${variables.colors.maincolor8};
+  background-color: ${variables.colors.buttonSignInBackground};
+  color: ${variables.colors.buttonSignInFont};
+  border-color: ${variables.colors.buttonSignInBorder};
   margin-bottom: 0;
 
   &:hover {
-    background-color: ${variables.colors.maincolor19};
-    color: ${variables.colors.maincolor1};
+    background-color: ${variables.colors.buttonSignInBackgroundHover};
+    color: ${variables.colors.buttonSignInFontHover};
     text-decoration: none;
   }
 `;
@@ -137,16 +130,17 @@ export const ButtonSharePost = styled.button`
   flex-grow: 1;
   align-items: center;
   justify-content: flex-start;
-  background-color: ${variables.colors.white};
-  color: ${variables.colors.maincolor3};
-  border: 1px solid ${variables.colors.maincolor16};
+  background-color: ${variables.colors.buttonSharePostBackground};
+  color: ${variables.colors.buttonSharePostFont};
+  border: 1px solid ${variables.colors.buttonSharePostBorder};
   transition: box-shadow 0.3s;
   cursor: pointer;
 
   &:hover {
-    box-shadow: ${variables.colors.maincolor11} 0px 0px 0px 1px inset;
+    box-shadow: ${variables.colors.buttonSharePostBoxShadowHover} 0px 0px 0px
+      1px inset;
     outline: none;
-    background-color: ${variables.colors.maincolor12};
+    background-color: ${variables.colors.buttonSharePostBackgroundHover};
   }
 `;
 
@@ -164,15 +158,16 @@ export const ButtonFollow = styled.button`
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  color: ${variables.colors.maincolor3};
-  border: 1px solid ${variables.colors.maincolor3};
+  color: ${variables.colors.buttonFollowFont};
+  border: 1px solid ${variables.colors.buttonFollowBorder};
   transition: box-shadow 0.3s;
   cursor: pointer;
 
   &:hover {
-    box-shadow: ${variables.colors.maincolor11} 0px 0px 0px 1px inset;
+    box-shadow: ${variables.colors.buttonFollowBoxShadowHover} 0px 0px 0px 1px
+      inset;
     outline: none;
-    background-color: ${variables.colors.maincolor12};
+    background-color: ${variables.colors.buttonFollowBackgroundHover};
   }
 
   &:before {
@@ -205,20 +200,18 @@ export const ButtonNewPost = styled(ButtonSignIn)`
   min-height: initial;
   background-color: ${variables.colors.maincolor1};
   color: ${variables.colors.white};
-  border-color: ${variables.colors.maincolor8};
+  border-color: ${variables.colors.maincolor1};
   margin: 0 auto -24px auto;
   padding-top: 6px;
   padding-bottom: 6px;
-  box-shadow: ${variables.colors.maincolor14} 0px 0px 0px 1px,
-    ${variables.colors.maincolor15} 0px 4px 4px 0px;
+  box-shadow: ${variables.colors.buttonNewPostBoxShadow};
   z-index: 5;
   position: relative;
 
   &:hover {
-    box-shadow: ${variables.colors.maincolor14} 0px 0px 0px 1px,
-      ${variables.colors.maincolor15} 0px 4px 4px 0px;
-    background-color: ${variables.colors.maincolor2};
-    color: ${variables.colors.white};
+    box-shadow: ${variables.colors.buttonNewPostBoxShadowHover};
+    background-color: ${variables.colors.buttonNewPostBackground};
+    color: ${variables.colors.buttonNewPostFont};
     text-decoration: none;
   }
 
@@ -238,10 +231,10 @@ export const SocialCountButton = styled.button`
   border: none;
   outline: none;
   cursor: pointer;
-  background-color: transparent;
+  background-color: ${variables.colors.socialCountButtonBackground};
   padding: 4px;
 
   &:hover {
-    background-color: #f2f2f2;
+    background-color: ${variables.colors.socialCountButtonBackgroundHover};
   }
 `;

@@ -147,7 +147,7 @@ const PanelItemLabel = styled.div`
 
 const PanelItemContent = styled.div`
   font-size: 14px;
-  color: ${variables.colors.maincolor3};
+  color: ${variables.colors.colorFont};
 `;
 
 const PanelMenu = styled.ul`

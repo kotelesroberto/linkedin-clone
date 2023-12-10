@@ -20,7 +20,7 @@ export const CardContainer = styled.div`
 /* Profile page boxes */
 
 export const BoxContainer = styled(Card)`
-  color: ${variables.colors.maincolor3er};
+  color: ${variables.colors.colorFonter};
   padding: 24px 0;
 `;
 
@@ -57,7 +57,7 @@ export const ContentList = styled.ul`
 `;
 
 export const ContentListItem = styled.li`
-  color: ${variables.colors.maincolor3er};
+  color: ${variables.colors.colorFonter};
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;

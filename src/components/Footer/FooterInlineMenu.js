@@ -164,7 +164,7 @@ const FooterInlineMenuColumn = styled.div`
       }
 
       span {
-        color: ${variables.colors.maincolor3er};
+        color: ${variables.colors.colorFonter};
         margin-left: 8px;
       }
     }

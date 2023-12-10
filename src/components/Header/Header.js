@@ -172,7 +172,7 @@ const Search = styled.div`
       box-shadow: none;
       background-color: ${variables.colors.maincolor6};
       border-radius: 2px;
-      color: ${variables.colors.maincolor3er};
+      color: ${variables.colors.colorFonter};
       width: 218px;
       height: 34px;
       padding: 0 8px 0 40px;
@@ -238,7 +238,7 @@ const NavList = styled.li`
 
   &.active {
     &:after {
-      border-bottom: 2px solid ${variables.colors.maincolor3er};
+      border-bottom: 2px solid ${variables.colors.colorFonter};
       content: "";
       bottom: 0;
       left: 0;
@@ -276,7 +276,7 @@ const NavList = styled.li`
     }
 
     span {
-      color: ${variables.colors.maincolor3};
+      color: ${variables.colors.colorFont};
 
       @media (max-width: 768px) {
         display: none;
@@ -295,7 +295,7 @@ const NavList = styled.li`
         opacity: 1;
       }
       span {
-        color: ${variables.colors.maincolor3er};
+        color: ${variables.colors.colorFonter};
       }
     }
   }

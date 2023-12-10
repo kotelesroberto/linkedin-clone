@@ -231,7 +231,7 @@ const Container = styled.div`
   right: 0;
   bottom: 0;
   z-index: 9999;
-  background-color: ${variables.colors.maincolor3};
+  background-color: ${variables.colors.modalBackground};
 `;
 
 const Content = styled(Card)`
@@ -340,7 +340,7 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
       display: block;
       white-space: nowrap;
       background-color: ${variables.colors.white};
-      border: 1px solid ${variables.colors.maincolor3};
+      border: 1px solid ${variables.colors.colorFont};
       border-radius: 8px;
       padding: 8px;
       display: none;

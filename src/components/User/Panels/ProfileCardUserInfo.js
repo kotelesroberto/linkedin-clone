@@ -50,7 +50,7 @@ const UserCardIntro = styled.div`
   h3 {
     font-size: 16px;
     line-height: 1.5;
-    color: ${variables.colors.maincolor3er};
+    color: ${variables.colors.colorFonter};
     font-weight: 700;
   }
   span {
@@ -82,14 +82,14 @@ const UserCardName = styled.h3`
 `;
 
 const UserCardDescription = styled.span`
-  color: ${variables.colors.maincolor3};
+  color: ${variables.colors.colorFont};
   font-size: 12px;
   line-height: 16px;
   display: block;
   margin-top: 4px;
 
   &.profile {
-    color: ${variables.colors.maincolor3er};
+    color: ${variables.colors.colorFonter};
     font-size: 16px;
     line-height: 1.3;
     display: flex;

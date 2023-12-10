@@ -208,10 +208,10 @@ const FeedSortBy = styled.div`
   }
 
   span {
-    color: ${variables.colors.maincolor3};
+    color: ${variables.colors.colorFont};
     margin-right: 4px;
     &:nth-child(3) {
-      color: ${variables.colors.maincolor3er};
+      color: ${variables.colors.colorFonter};
       font-weight: 700;
     }
   }
@@ -220,7 +220,7 @@ const FeedSortBy = styled.div`
 const FeedListItemCard = styled(Card)`
   display: flex;
   flex-direction: column;
-  color: ${variables.colors.maincolor3};
+  color: ${variables.colors.colorFont};
   padding: 12px;
 `;
 
@@ -235,7 +235,7 @@ const FeedListItemTop = styled.div`
 `;
 
 const FeedListItemContent = styled.div`
-  color: ${variables.colors.maincolor3er};
+  color: ${variables.colors.colorFonter};
   font-size: 14px;
 
   span {
@@ -299,7 +299,7 @@ const FeedListItemName = styled.a`
   font-weight: 700;
   margin: 0;
   padding: 0;
-  color: ${variables.colors.maincolor3er};
+  color: ${variables.colors.colorFonter};
 `;
 
 const FeedListItemSublabel = styled.span`

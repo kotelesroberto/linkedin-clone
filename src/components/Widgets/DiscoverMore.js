@@ -22,7 +22,7 @@ const DiscoverMore = (props) => {
 const Container = styled.div`
   font-size: 14px;
   font-weight: 700;
-  color: ${variables.colors.maincolor3};
+  color: ${variables.colors.colorFont};
   text-align: center;
   padding: 2px 8px;
   margin-top: 8px;

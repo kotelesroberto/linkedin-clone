@@ -240,10 +240,10 @@ const FeedSortBy = styled.div`
   }
 
   span {
-    color: ${variables.colors.maincolor3};
+    color: ${variables.colors.colorFont};
     margin-right: 4px;
     &:nth-child(3) {
-      color: ${variables.colors.maincolor3er};
+      color: ${variables.colors.colorFonter};
       font-weight: 700;
     }
   }

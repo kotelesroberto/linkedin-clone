@@ -38,7 +38,7 @@ export const IconButtonRow = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: ${variables.colors.maincolor3};
+    color: ${variables.colors.colorFont};
     font-size: 14px;
     font-weight: 700;
 

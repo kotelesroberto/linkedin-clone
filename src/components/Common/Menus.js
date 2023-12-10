@@ -4,7 +4,7 @@ import * as variables from "./Variables";
 export const ListHeader = styled.h3`
   font-size: 16px;
   line-height: 1;
-  color: ${variables.colors.maincolor3er};
+  color: ${variables.colors.colorFonter};
   padding: 4px 0;
   margin: 0 0 12px 0;
   padding: 0px 12px;
@@ -19,7 +19,7 @@ export const ListHeader = styled.h3`
       display: block;
       font-size: 14px;
       font-weight: 400;
-      color: ${variables.colors.maincolor3};
+      color: ${variables.colors.colorFont};
       margin: 4px 0;
     }
   }
@@ -28,7 +28,7 @@ export const ListHeader = styled.h3`
 export const List = styled.ul`
   margin: 0;
   padding: 0;
-  color: ${variables.colors.maincolor3er};
+  color: ${variables.colors.colorFonter};
 `;
 
 export const ListItem = styled.li`
@@ -59,7 +59,7 @@ export const ListItem = styled.li`
     width: 6px;
     height: 6px;
     margin: 10px 12px 2px 0px;
-    border: 3px solid ${variables.colors.maincolor3er};
+    border: 3px solid ${variables.colors.colorFonter};
   }
 
   a {
@@ -67,13 +67,13 @@ export const ListItem = styled.li`
     overflow: hidden;
     text-overflow: ellipsis;
     display: flex;
-    color: ${variables.colors.maincolor3};
+    color: ${variables.colors.colorFont};
     padding: 4px 0;
     display: block;
 
     &:hover {
       text-decoration: none;
-      color: ${variables.colors.maincolor3er};
+      color: ${variables.colors.colorFonter};
     }
   }
 
@@ -83,7 +83,7 @@ export const ListItem = styled.li`
 `;
 
 export const ListItemTitle = styled.h3`
-  color: ${variables.colors.maincolor3er};
+  color: ${variables.colors.colorFonter};
   margin-bottom: 4px;
 `;
 

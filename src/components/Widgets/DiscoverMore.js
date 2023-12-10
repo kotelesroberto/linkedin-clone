@@ -22,7 +22,7 @@ const DiscoverMore = (props) => {
 const Container = styled.div`
   font-size: 14px;
   font-weight: 700;
-  color: ${variables.colors.greyBold};
+  color: ${variables.colors.maincolor3};
   text-align: center;
   padding: 2px 8px;
   margin-top: 8px;
@@ -32,10 +32,10 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   margin-bottom: -12px;
-  border-top: 1px solid rgba(140, 140, 140, 0.2);
+  border-top: 1px solid ${variables.colors.maincolor14};
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: ${variables.colors.maincolor13};
   }
 
   a {

@@ -50,19 +50,19 @@ const UserCardIntro = styled.div`
   h3 {
     font-size: 16px;
     line-height: 1.5;
-    color: ${variables.colors.greyBolder};
+    color: ${variables.colors.maincolor3er};
     font-weight: 700;
   }
   span {
     font-size: 12px;
-    color: ${variables.colors.blue};
+    color: ${variables.colors.maincolor1};
     margin-top: 4px;
   }
 `;
 
 const UserCardInfo = styled.div`
   text-align: center;
-  border-bottom: 1px solid rgba(140, 140, 140, 0.2);
+  border-bottom: 1px solid ${variables.colors.maincolor14};
   padding: 0 12px;
   padding-bottom: 16px;
 
@@ -82,14 +82,14 @@ const UserCardName = styled.h3`
 `;
 
 const UserCardDescription = styled.span`
-  color: ${variables.colors.greyBold};
+  color: ${variables.colors.maincolor3};
   font-size: 12px;
   line-height: 16px;
   display: block;
   margin-top: 4px;
 
   &.profile {
-    color: ${variables.colors.greyBolder};
+    color: ${variables.colors.maincolor3er};
     font-size: 16px;
     line-height: 1.3;
     display: flex;
@@ -110,7 +110,7 @@ const UserCardDescription = styled.span`
 `;
 
 const UserCardConnections = styled.div`
-  color: ${variables.colors.blue};
+  color: ${variables.colors.maincolor1};
   font-weight: 700;
   font-size: 14px;
   margin-top: 8px;

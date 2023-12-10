@@ -235,15 +235,15 @@ const FeedSortBy = styled.div`
 
   hr {
     flex-grow: 1;
-    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    border-top: 1px solid ${variables.colors.maincolor16};
     margin-right: 8px;
   }
 
   span {
-    color: ${variables.colors.greyBold};
+    color: ${variables.colors.maincolor3};
     margin-right: 4px;
     &:nth-child(3) {
-      color: ${variables.colors.greyBolder};
+      color: ${variables.colors.maincolor3er};
       font-weight: 700;
     }
   }

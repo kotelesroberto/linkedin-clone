@@ -7,6 +7,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import * as variables from "../../Common/Variables";
 
 import { Card, CardContainer } from "../../Common/Cards";
 import {
@@ -116,7 +117,7 @@ const Container = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: ${variables.colors.maincolor13};
   }
 
   @media (max-width: 768px) {

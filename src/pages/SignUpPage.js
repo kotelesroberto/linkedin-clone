@@ -130,7 +130,7 @@ const Hero = styled.div`
     font-weight: 400;
     line-height: 70px;
     margin-bottom: 24px;
-    color: ${variables.colors.greyBolder};
+    color: ${variables.colors.maincolor3er};
     text-align: center;
 
     @media (max-width: 768px) {

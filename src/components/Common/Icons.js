@@ -38,13 +38,13 @@ export const IconButtonRow = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: ${variables.colors.greyBold};
+    color: ${variables.colors.maincolor3};
     font-size: 14px;
     font-weight: 700;
 
     &:hover {
       outline: none;
-      background-color: rgba(0, 0, 0, 0.04);
+      background-color: ${variables.colors.maincolor12};
     }
 
     img {
@@ -76,7 +76,7 @@ export const ButtonAction = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: ${variables.colors.maincolor12};
   }
 
   img {

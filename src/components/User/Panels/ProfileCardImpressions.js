@@ -32,7 +32,7 @@ const ProfileCardImpressions = () => {
 };
 
 const Container = styled.div`
-  border-bottom: 1px solid rgba(140, 140, 140, 0.2);
+  border-bottom: 1px solid ${variables.colors.maincolor14};
   padding: 16px 0;
 
   @media (max-width: 768px) {
@@ -53,15 +53,15 @@ const CardImpressionRow = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: ${variables.colors.maincolor13};
   }
 `;
 
 const CardImpressionCol = styled.div`
-  color: ${variables.colors.greyBold};
+  color: ${variables.colors.maincolor3};
 
   &:nth-child(2) {
-    color: rgb(10, 102, 194);
+    color: ${variables.colors.maincolor8};
   }
 `;
 

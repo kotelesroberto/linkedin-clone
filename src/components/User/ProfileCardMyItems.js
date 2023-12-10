@@ -5,6 +5,7 @@ import {
   ListItemSmallNoHover,
   LIST_SMALL_ICON__BOOKMARK,
 } from "../Common/Menus";
+import * as variables from "../Common/Variables";
 
 const ProfileCardMyItems = () => {
   return (
@@ -25,7 +26,7 @@ const Container = styled.div`
   margin-bottom: -12px;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: ${variables.colors.maincolor13};
   }
 
   @media (max-width: 768px) {

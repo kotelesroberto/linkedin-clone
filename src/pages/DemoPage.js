@@ -30,7 +30,7 @@ const DemoPage = () => {
               <ButtonSecondary
                 onClick={() => {
                   window.location =
-                    "https://www.rulex.com./in/robertkoteles/";
+                    "https://www.linkedin.com./in/robertkoteles/";
                 }}
               >
                 Go to my real RuleX profile

@@ -117,12 +117,12 @@ const Fieldset = styled.fieldset`
     font-size: 12px;
 
     &.error {
-      color: ${variables.colors.red};
+      color: ${variables.colors.maincolor5};
     }
   }
   a {
     display: inline-block;
-    color: #0a66c2;
+    color: ${variables.colors.maincolor1};
   }
 `;
 export default RegisterForm;

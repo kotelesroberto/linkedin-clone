@@ -231,13 +231,13 @@ const Container = styled.div`
   right: 0;
   bottom: 0;
   z-index: 9999;
-  background-color: ${variables.colors.greyBold};
+  background-color: ${variables.colors.maincolor3};
 `;
 
 const Content = styled(Card)`
   width: 90%;
   max-width: 1128px;
-  background-color: #fff;
+  background-color: ${variables.colors.white};
   min-height: 90%;
   max-height: 100vh;
   overflow: initial;
@@ -286,7 +286,7 @@ const UploadArea = styled.div`
 
 const Footer = styled.div`
   background-color: ${variables.colors.white};
-  border-top: 1px solid rgba(140, 140, 140, 0.2);
+  border-top: 1px solid ${variables.colors.maincolor14};
 `;
 
 const ButtonRow = styled.div`
@@ -326,8 +326,8 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
     position: relative;
 
     &:hover {
-      box-shadow: rgba(140, 140, 140, 0.2) 0px 0px 0px 1px,
-        rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
+      box-shadow: ${variables.colors.maincolor14} 0px 0px 0px 1px,
+        ${variables.colors.maincolor15} 0px 4px 4px 0px;
 
       span {
         display: block;
@@ -339,14 +339,14 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
       top: -40px;
       display: block;
       white-space: nowrap;
-      background-color: #fff;
-      border: 1px solid ${variables.colors.greyBold};
+      background-color: ${variables.colors.white};
+      border: 1px solid ${variables.colors.maincolor3};
       border-radius: 8px;
       padding: 8px;
       display: none;
 
-      box-shadow: rgba(140, 140, 140, 0.2) 0px 0px 0px 1px,
-        rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
+      box-shadow: ${variables.colors.maincolor14} 0px 0px 0px 1px,
+        ${variables.colors.maincolor15} 0px 4px 4px 0px;
       transition-property: box-shadow;
     }
   }

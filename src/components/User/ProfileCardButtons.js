@@ -136,7 +136,7 @@ const PanelItem = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: ${variables.colors.grey};
+    background-color: ${variables.colors.maincolor7};
   }
 `;
 
@@ -147,7 +147,7 @@ const PanelItemLabel = styled.div`
 
 const PanelItemContent = styled.div`
   font-size: 14px;
-  color: ${variables.colors.greyBold};
+  color: ${variables.colors.maincolor3};
 `;
 
 const PanelMenu = styled.ul`
@@ -161,7 +161,7 @@ const PanelMenuItem = styled.li`
   cursor: pointer;
 
   &:hover {
-    background-color: ${variables.colors.grey};
+    background-color: ${variables.colors.maincolor7};
   }
 
   a {

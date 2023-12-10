@@ -6,7 +6,7 @@ import * as variables from "./Variables";
 export const ShareBoxContainer = styled(Card)`
   display: flex;
   flex-direction: column;
-  color: ${variables.colors.greyBold};
+  color: ${variables.colors.maincolor3};
   padding: 12px;
 `;
 

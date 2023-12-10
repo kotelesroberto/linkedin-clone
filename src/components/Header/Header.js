@@ -133,7 +133,7 @@ const Header = (props) => {
 
 const Container = styled.div`
   background-color: ${variables.colors.white};
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid ${variables.colors.maincolor13};
   left: 0;
   padding: 0 24px;
   position: fixed;
@@ -170,16 +170,16 @@ const Search = styled.div`
     input {
       border: none;
       box-shadow: none;
-      background-color: ${variables.colors.greyLight};
+      background-color: ${variables.colors.maincolor6};
       border-radius: 2px;
-      color: ${variables.colors.greyBolder};
+      color: ${variables.colors.maincolor3er};
       width: 218px;
       height: 34px;
       padding: 0 8px 0 40px;
       line-height: 1.75;
       font-weight: 400;
       font-size: 14px;
-      border-color: ${variables.colors.greyBotticelli};
+      border-color: ${variables.colors.maincolor7Botticelli};
       vertical-align: middle;
       transition: all 0.3s;
 
@@ -238,7 +238,7 @@ const NavList = styled.li`
 
   &.active {
     &:after {
-      border-bottom: 2px solid ${variables.colors.greyBolder};
+      border-bottom: 2px solid ${variables.colors.maincolor3er};
       content: "";
       bottom: 0;
       left: 0;
@@ -276,7 +276,7 @@ const NavList = styled.li`
     }
 
     span {
-      color: ${variables.colors.greyBold};
+      color: ${variables.colors.maincolor3};
 
       @media (max-width: 768px) {
         display: none;
@@ -295,7 +295,7 @@ const NavList = styled.li`
         opacity: 1;
       }
       span {
-        color: ${variables.colors.greyBolder};
+        color: ${variables.colors.maincolor3er};
       }
     }
   }
@@ -313,7 +313,7 @@ const NavListBadge = styled.strong`
   position: absolute;
   top: 2px;
   right: 18px;
-  background-color: ${variables.colors.red};
+  background-color: ${variables.colors.maincolor5};
   color: ${variables.colors.white};
   white-space: nowrap;
   height: 1.2rem;
@@ -338,7 +338,7 @@ const SignOut = styled.div`
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15), 0 6px 9px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 0 1px ${variables.colors.maincolor16}, 0 6px 9px ${variables.colors.maincolor17};
   max-height: calc(100vh - 64px);
   padding: 0;
   display: none;
@@ -391,7 +391,7 @@ const User = styled(NavList)`
 `;
 
 const ForBusiness = styled(User)`
-  border-left: 1px solid rgba(0, 0, 0, 0.08);
+  border-left: 1px solid ${variables.colors.maincolor13};
 `;
 
 /*=====  React-redux related functions  ======*/

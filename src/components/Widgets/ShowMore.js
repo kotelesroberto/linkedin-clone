@@ -31,7 +31,7 @@ const Container = styled.div`
   align-items: center;
   font-size: 14px;
   font-weight: 700;
-  color: ${variables.colors.greyBold};
+  color: ${variables.colors.maincolor3};
   margin-top: 8px;
   cursor: pointer;
 
@@ -53,7 +53,7 @@ const Container = styled.div`
     `};
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: ${variables.colors.maincolor13};
   }
 
   a {

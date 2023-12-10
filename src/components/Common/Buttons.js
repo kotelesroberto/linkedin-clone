@@ -11,7 +11,7 @@ export const ButtonPrimary = styled.button`
   font-size: 16px;
   font-weight: 700;
   line-height: 1.25;
-  border: 1px solid rgba(0, 0, 0, 0.75);
+  border: 1px solid ${variables.colors.maincolor11};
   cursor: pointer;
   vertical-align: middle;
   display: flex;
@@ -22,7 +22,7 @@ export const ButtonPrimary = styled.button`
   &:hover {
     box-shadow: none;
     outline: none;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: ${variables.colors.maincolor12};
   }
 
   @media (max-width: 768px) {
@@ -31,22 +31,22 @@ export const ButtonPrimary = styled.button`
 `;
 
 export const ButtonSecondary = styled(ButtonPrimary)`
-  background-color: rgb(10, 102, 194);
-  border-color: rgb(10, 102, 194);
-  color: #fff;
+  background-color: ${variables.colors.maincolor8};
+  border-color: ${variables.colors.maincolor8};
+  color: ${variables.colors.white};
   white-space: nowrap;
 
   &:hover {
-    background-color: rgb(0, 65, 130);
-    border-color: rgb(0, 65, 130);
+    background-color: ${variables.colors.maincolor9};
+    border-color: ${variables.colors.maincolor9};
   }
 `;
 
 export const ButtonTertiary = styled(ButtonPrimary)`
   width: auto;
   background-color: ${variables.colors.white};
-  border-color: ${variables.colors.blue};
-  color: ${variables.colors.blue};
+  border-color: ${variables.colors.maincolor1};
+  color: ${variables.colors.maincolor1};
 
   white-space: nowrap;
 
@@ -57,7 +57,7 @@ export const ButtonTertiary = styled(ButtonPrimary)`
 export const ButtonFourth = styled(ButtonPrimary)`
   width: auto;
   background-color: ${variables.colors.white};
-  color: ${variables.colors.greyBold};
+  color: ${variables.colors.maincolor3};
   white-space: nowrap;
 
   &:hover {
@@ -66,7 +66,7 @@ export const ButtonFourth = styled(ButtonPrimary)`
 
 export const ButtonWithImage = styled(ButtonPrimary)`
   min-height: 38px;
-  border-color: rgb(218, 220, 224);
+  border-color: ${variables.colors.maincolor10};
   font-weight: 400;
   padding-top: 6px;
   padding-bottom: 6px;
@@ -74,7 +74,7 @@ export const ButtonWithImage = styled(ButtonPrimary)`
   font-size: 14px;
 
   &:hover {
-    background: rgba(66, 133, 244, 0.04);
+    background: ${variables.colors.maincolor18};
   }
 
   @media (max-width: 768px) {
@@ -94,7 +94,7 @@ export const ButtonJoin = styled.a`
   font-size: 16px;
   padding: 12px 24px;
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.75);
+  color: ${variables.colors.maincolor11};
   cursor: pointer;
   margin-right: 12px;
   border-radius: 24px;
@@ -103,21 +103,21 @@ export const ButtonJoin = styled.a`
 
   &:hover {
     text-decoration: none;
-    color: ${variables.colors.greyBolder};
-    background-color: rgba(0, 0, 0, 0.04);
+    color: ${variables.colors.maincolor3er};
+    background-color: ${variables.colors.maincolor12};
   }
 `;
 
 export const ButtonSignIn = styled(ButtonSecondary)`
   width: auto;
-  background-color: rgba(0, 0, 0, 0);
-  color: ${variables.colors.blue};
-  border-color: rgb(10, 102, 194);
+  background-color: transparent;
+  color: ${variables.colors.maincolor1};
+  border-color: ${variables.colors.maincolor8};
   margin-bottom: 0;
 
   &:hover {
-    background-color: rgba(112, 181, 249, 0.1);
-    color: ${variables.colors.blue};
+    background-color: ${variables.colors.maincolor19};
+    color: ${variables.colors.maincolor1};
     text-decoration: none;
   }
 `;
@@ -138,15 +138,15 @@ export const ButtonSharePost = styled.button`
   align-items: center;
   justify-content: flex-start;
   background-color: ${variables.colors.white};
-  color: ${variables.colors.greyBold};
-  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: ${variables.colors.maincolor3};
+  border: 1px solid ${variables.colors.maincolor16};
   transition: box-shadow 0.3s;
   cursor: pointer;
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 0px 1px inset;
+    box-shadow: ${variables.colors.maincolor11} 0px 0px 0px 1px inset;
     outline: none;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: ${variables.colors.maincolor12};
   }
 `;
 
@@ -164,15 +164,15 @@ export const ButtonFollow = styled.button`
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  color: ${variables.colors.greyBold};
-  border: 1px solid ${variables.colors.greyBold};
+  color: ${variables.colors.maincolor3};
+  border: 1px solid ${variables.colors.maincolor3};
   transition: box-shadow 0.3s;
   cursor: pointer;
 
   &:hover {
-    box-shadow: rgba(0, 0, 0, 0.75) 0px 0px 0px 1px inset;
+    box-shadow: ${variables.colors.maincolor11} 0px 0px 0px 1px inset;
     outline: none;
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: ${variables.colors.maincolor12};
   }
 
   &:before {
@@ -203,21 +203,21 @@ export const EditButton = styled(ButtonFollow)`
 
 export const ButtonNewPost = styled(ButtonSignIn)`
   min-height: initial;
-  background-color: ${variables.colors.blue};
+  background-color: ${variables.colors.maincolor1};
   color: ${variables.colors.white};
-  border-color: rgb(10, 102, 194);
+  border-color: ${variables.colors.maincolor8};
   margin: 0 auto -24px auto;
   padding-top: 6px;
   padding-bottom: 6px;
-  box-shadow: rgba(140, 140, 140, 0.2) 0px 0px 0px 1px,
-    rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
+  box-shadow: ${variables.colors.maincolor14} 0px 0px 0px 1px,
+    ${variables.colors.maincolor15} 0px 4px 4px 0px;
   z-index: 5;
   position: relative;
 
   &:hover {
-    box-shadow: rgba(140, 140, 140, 0.2) 0px 0px 0px 1px,
-      rgba(0, 0, 0, 0.3) 0px 4px 4px 0px;
-    background-color: ${variables.colors.darkblue};
+    box-shadow: ${variables.colors.maincolor14} 0px 0px 0px 1px,
+      ${variables.colors.maincolor15} 0px 4px 4px 0px;
+    background-color: ${variables.colors.maincolor2};
     color: ${variables.colors.white};
     text-decoration: none;
   }

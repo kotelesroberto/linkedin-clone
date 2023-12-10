@@ -4,14 +4,14 @@ import * as variables from "./Variables";
 export const ListHeader = styled.h3`
   font-size: 16px;
   line-height: 1;
-  color: ${variables.colors.greyBolder};
+  color: ${variables.colors.maincolor3er};
   padding: 4px 0;
   margin: 0 0 12px 0;
   padding: 0px 12px;
   position: relative;
 
   a {
-    color: ${variables.colors.blue};
+    color: ${variables.colors.maincolor1};
   }
 
   span {
@@ -19,7 +19,7 @@ export const ListHeader = styled.h3`
       display: block;
       font-size: 14px;
       font-weight: 400;
-      color: ${variables.colors.greyBold};
+      color: ${variables.colors.maincolor3};
       margin: 4px 0;
     }
   }
@@ -28,7 +28,7 @@ export const ListHeader = styled.h3`
 export const List = styled.ul`
   margin: 0;
   padding: 0;
-  color: ${variables.colors.greyBolder};
+  color: ${variables.colors.maincolor3er};
 `;
 
 export const ListItem = styled.li`
@@ -59,7 +59,7 @@ export const ListItem = styled.li`
     width: 6px;
     height: 6px;
     margin: 10px 12px 2px 0px;
-    border: 3px solid ${variables.colors.greyBolder};
+    border: 3px solid ${variables.colors.maincolor3er};
   }
 
   a {
@@ -67,23 +67,23 @@ export const ListItem = styled.li`
     overflow: hidden;
     text-overflow: ellipsis;
     display: flex;
-    color: ${variables.colors.greyBold};
+    color: ${variables.colors.maincolor3};
     padding: 4px 0;
     display: block;
 
     &:hover {
       text-decoration: none;
-      color: ${variables.colors.greyBolder};
+      color: ${variables.colors.maincolor3er};
     }
   }
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.08);
+    background-color: ${variables.colors.maincolor13};
   }
 `;
 
 export const ListItemTitle = styled.h3`
-  color: ${variables.colors.greyBolder};
+  color: ${variables.colors.maincolor3er};
   margin-bottom: 4px;
 `;
 

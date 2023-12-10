@@ -195,7 +195,7 @@ const FooterMenuSection = styled.section`
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: ${variables.colors.grey};
+    background-color: ${variables.colors.maincolor7};
     z-index: -1;
   }
 `;

@@ -66,7 +66,7 @@ const FooterInlineMenu = (props) => {
                   src={`/images/footer-logo${variation}.svg`}
                   alt="Go to RuleX homepage"
                 />
-                {props.extraClass && <span>RuleX Corporation © 2023</span>}
+                {props.extraClass && <span>RuleX DEMO © 2023</span>}
                 {!props.extraClass && <span>© 2023</span>}
               </a>
             </li>
@@ -94,7 +94,7 @@ const FooterInlineMenuSection = styled.section`
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: ${variables.colors.grey};
+    background-color: ${variables.colors.maincolor7};
     z-index: -1;
   }
 `;
@@ -164,7 +164,7 @@ const FooterInlineMenuColumn = styled.div`
       }
 
       span {
-        color: ${variables.colors.greyBolder};
+        color: ${variables.colors.maincolor3er};
         margin-left: 8px;
       }
     }

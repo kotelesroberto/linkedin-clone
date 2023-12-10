@@ -63,11 +63,11 @@ const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 16px 24px;
-  border-bottom: 1px solid rgba(140, 140, 140, 0.2);
+  border-bottom: 1px solid ${variables.colors.maincolor14};
 
   h2 {
     font-size: 20px;
-    color: ${variables.colors.greyBolder};
+    color: ${variables.colors.maincolor3er};
   }
 `;
 

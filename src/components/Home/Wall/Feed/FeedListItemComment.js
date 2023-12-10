@@ -103,7 +103,7 @@ const CommentContent = styled.div`
   background-color: #f2f2f2;
   padding: 12px;
   font-size: 14px;
-  color: ${variables.colors.greyBolder};
+  color: ${variables.colors.maincolor3er};
   margin-bottom: 40px;
   position: relative;
 
@@ -151,7 +151,7 @@ const CommentSocialItem = styled(SocialCountItem)`
 const CommentSocialItemButton = styled(SocialCountButton)`
   &.liked {
     font-weight: 700;
-    color: ${variables.colors.blue};
+    color: ${variables.colors.maincolor1};
   }
 `;
 

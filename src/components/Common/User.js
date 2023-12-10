@@ -9,8 +9,8 @@ export const UserAvatarBox = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  color: ${variables.colors.greyBolder};
-  border-bottom: 1px solid rgba(140, 140, 140, 0.2);
+  color: ${variables.colors.maincolor3er};
+  border-bottom: 1px solid ${variables.colors.maincolor14};
   padding: 12px 0;
   overflow: hidden;
   opacity: 1;
@@ -32,8 +32,8 @@ export const UserAvatarPhoto = styled.div`
   width: 48px;
   height: 48px;
   position: relative;
-  background-color: #fff;
-  border: 2px solid #fff;
+  background-color: ${variables.colors.white};
+  border: 2px solid ${variables.colors.white};
   border-radius: 50%;
   overflow: hidden;
   margin-right: 8px;
@@ -97,6 +97,6 @@ export const UserName = styled.h4``;
 export const UserPosition = styled.span`
   display: block;
   font-size: 14px;
-  color: ${variables.colors.greyBolder};
+  color: ${variables.colors.maincolor3er};
   margin-bottom: 8px;
 `;

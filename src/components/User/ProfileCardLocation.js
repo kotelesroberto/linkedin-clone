@@ -11,7 +11,7 @@ const ProfileCardLocation = () => {
 const Container = styled.span`
   font-size: 14px;
   display: block;
-  color: ${variables.colors.greyBold};
+  color: ${variables.colors.maincolor3};
   margin-top: 8px;
 `;
 

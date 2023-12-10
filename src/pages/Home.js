@@ -41,7 +41,7 @@ const Home = (props) => {
   }, [props.user && props.user.checkedByAuth]);
 
   return (
-    <DocumentTitle title={"(6) Feed | LinkedX by Robert Koteles"}>
+    <DocumentTitle title={"(6) Feed | RuleX by Robert Koteles"}>
       <>
         {/* {!props.user && <Navigate to="/" replace />} */}
         {props.user && (

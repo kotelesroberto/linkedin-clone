@@ -27,13 +27,13 @@ const SignUpPage = (props) => {
   };
 
   return (
-    <DocumentTitle title="Log in | LinkedX clone by Robert Koteles">
+    <DocumentTitle title="Log in | RuleX clone by Robert Koteles">
       <>
         {props.user && props.user.email && <Navigate to="/home" replace />}
         <Container>
           <Nav>
             <a href="/">
-              <img src="/images/login-logo.svg" alt="Go to LinkedX homepage" />
+              <img src="/images/login-logo.svg" alt="Go to RuleX homepage" />
             </a>
           </Nav>
           <Section>

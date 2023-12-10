@@ -15,65 +15,65 @@ const FooterMenu = () => {
       category: "General",
       items: [
         {
+          link: "/demo",
           title: "Sign Up",
-          link: "/signup",
         },
         {
+          link: "/demo",
           title: "Help Center",
-          link: "/help/linkedin?lang=en",
         },
         {
+          link: "/demo",
           title: "About",
-          link: "#https://about.linkedin.com",
         },
         {
+          link: "/demo",
           title: "Press",
-          link: "https://press.linkedin.com",
         },
         {
+          link: "/demo",
           title: "Blog",
-          link: "https://blog.linkedin.com",
         },
         {
+          link: "/demo",
           title: "Careers",
-          link: "/company/linkedin/jobs",
         },
         {
+          link: "/demo",
           title: "Developers",
-          link: "https://developer.linkedin.com",
         },
       ],
     },
     {
-      category: "Browse LinkedX",
+      category: "Browse RuleX",
       items: [
         {
+          link: "/demo",
           title: "Learning",
-          link: "/learning",
         },
         {
+          link: "/demo",
           title: "Jobs",
-          link: "/jobs",
         },
         {
+          link: "/demo",
           title: "Salary",
-          link: "/salary",
         },
         {
+          link: "/demo",
           title: "Mobile",
-          link: "https://mobile.linkedin.com",
         },
         {
+          link: "/demo",
           title: "Services",
-          link: "/services",
         },
         {
+          link: "/demo",
           title: "Products",
-          link: "/products",
         },
         {
+          link: "/demo",
           title: "Top Companies Hub",
-          link: "/hubs/top-companies",
         },
       ],
     },
@@ -81,20 +81,20 @@ const FooterMenu = () => {
       category: "Business Solutions",
       items: [
         {
+          link: "/demo",
           title: "Talent",
-          link: "https://business.linkedin.com/talent-solutions",
         },
         {
+          link: "/demo",
           title: "Marketing",
-          link: "https://business.linkedin.com/marketing-solutions",
         },
         {
+          link: "/demo",
           title: "Sales",
-          link: "https://business.linkedin.com/sales-solutions",
         },
         {
+          link: "/demo",
           title: "Learning",
-          link: "https://learning.linkedin.com",
         },
       ],
     },
@@ -102,60 +102,60 @@ const FooterMenu = () => {
       category: "Directories",
       items: [
         {
+          link: "/demo",
           title: "Members",
-          link: "/directory/people",
         },
         {
+          link: "/demo",
           title: "Jobs",
-          link: "/directory/jobs",
         },
         {
+          link: "/demo",
           title: "Companies",
-          link: "/directory/companies",
         },
         {
+          link: "/demo",
           title: "Featured",
-          link: "/directory/featured",
         },
         {
+          link: "/demo",
           title: "Learning",
-          link: "/directory/learning",
         },
         {
+          link: "/demo",
           title: "Posts",
-          link: "/directory/posts",
         },
         {
+          link: "/demo",
           title: "Articles",
-          link: "/directory/articles",
         },
         {
+          link: "/demo",
           title: "Schools",
-          link: "/directory/schools",
         },
         {
+          link: "/demo",
           title: "News",
-          link: "/directory/news",
         },
         {
+          link: "/demo",
           title: "News Letters",
-          link: "/directory/newsletters",
         },
         {
+          link: "/demo",
           title: "Services",
-          link: "/directory/services",
         },
         {
+          link: "/demo",
           title: "Products",
-          link: "/directory/products",
         },
         {
+          link: "/demo",
           title: "Advice",
-          link: "/directory/advice",
         },
         {
+          link: "/demo",
           title: "People Search",
-          link: "/directory/people-search",
         },
       ],
     },
@@ -166,7 +166,7 @@ const FooterMenu = () => {
       <FooterMenuColumns>
         <FooterMenuColumn>
           <a href="/">
-            <img src="/images/login-logo.svg" alt="Go to LinkedX homepage" />
+            <img src="/images/login-logo.svg" alt="Go to RuleX homepage" />
           </a>
         </FooterMenuColumn>
 
@@ -175,9 +175,7 @@ const FooterMenu = () => {
             <h3>{catItem.category}</h3>
             <ul>
               {catItem.items.map((menuItem, menuIndex) => (
-                <li key={"footer-cat-menu-item-" + menuIndex}>
-                  <a href={menuItem.link}>{menuItem.title}</a>
-                </li>
+                <li key={"footer-cat-menu-item-" + menuIndex}></li>
               ))}
             </ul>
           </FooterMenuColumn>

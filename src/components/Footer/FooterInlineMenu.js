@@ -15,43 +15,43 @@ const FooterInlineMenu = (props) => {
   const menuItems = [
     {
       title: "About",
-      link: "#",
+      link: "/demo",
     },
     {
       title: "Accesibility",
-      link: "#",
+      link: "/demo",
     },
     {
       title: "User Agreement",
-      link: "#",
+      link: "/demo",
     },
     {
       title: "Privacy Policy",
-      link: "#",
+      link: "/demo",
     },
     {
       title: "Cookie Policy",
-      link: "#",
+      link: "/demo",
     },
     {
       title: "Copyright Policy",
-      link: "#",
+      link: "/demo",
     },
     {
       title: "Brand Policy",
-      link: "#",
+      link: "/demo",
     },
     {
       title: "Guest Controls",
-      link: "#",
+      link: "/demo",
     },
     {
       title: "Community Guidelines",
-      link: "#",
+      link: "/demo",
     },
     {
       title: "Language",
-      link: "#",
+      link: "/demo",
     },
   ];
 
@@ -64,9 +64,9 @@ const FooterInlineMenu = (props) => {
               <a href="#">
                 <img
                   src={`/images/footer-logo${variation}.svg`}
-                  alt="Go to LinkedX homepage"
+                  alt="Go to RuleX homepage"
                 />
-                {props.extraClass && <span>LinkedX Corporation © 2023</span>}
+                {props.extraClass && <span>RuleX Corporation © 2023</span>}
                 {!props.extraClass && <span>© 2023</span>}
               </a>
             </li>

@@ -42,7 +42,7 @@ function App(props) {
   }, [props.user && props.user.email]);
 
   return (
-    <DocumentTitle title="LinkedX clone by Robert Koteles">
+    <DocumentTitle title="RuleX clone by Robert Koteles">
       <Router>
         <Routes>
           <Route

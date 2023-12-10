@@ -32,7 +32,7 @@ const LoginPage = (props) => {
   }, [props.user]);
 
   return (
-    <DocumentTitle title="Log in | LinkedX clone by Robert Koteles">
+    <DocumentTitle title="Log in | RuleX clone by Robert Koteles">
       <>
         {(!props.user || (props.user && !props.user.email)) && (
           <Container>
@@ -40,7 +40,7 @@ const LoginPage = (props) => {
               <a href="/">
                 <img
                   src="/images/login-logo.svg"
-                  alt="Go to LinkedX homepage"
+                  alt="Go to RuleX homepage"
                 />
               </a>
               <NavLoginButtons>
@@ -53,8 +53,8 @@ const LoginPage = (props) => {
             <Section>
               <Hero>
                 <h1>
-                  This is LinkedX: <br />
-                  Robert's clone in React.
+                  This is RuleX: <br />
+                  Robert's DEMO in React.
                 </h1>
               </Hero>
               <SignInForm>
@@ -63,7 +63,7 @@ const LoginPage = (props) => {
                 <LoginJoin gotoSignUpPage={gotoSignUpPage} />
               </SignInForm>
 
-              <img src="./images/login-hero.svg" alt="Login to LinkedX" />
+              <img src="./images/login-hero.svg" alt="Login to RuleX" />
             </Section>
             <FooterMenu />
             <FooterInlineMenu />

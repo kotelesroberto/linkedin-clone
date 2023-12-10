@@ -7,12 +7,12 @@ import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 
 const DemoPage = () => {
   return (
-    <DocumentTitle title="Error | LinkedX clone by Robert Koteles">
+    <DocumentTitle title="Error | RuleX clone by Robert Koteles">
       <>
         <Container>
           <Nav>
             <a href="/">
-              <img src="/images/login-logo.svg" alt="Go to LinkedX homepage" />
+              <img src="/images/login-logo.svg" alt="Go to RuleX homepage" />
             </a>
           </Nav>
           <Section>
@@ -30,10 +30,10 @@ const DemoPage = () => {
               <ButtonSecondary
                 onClick={() => {
                   window.location =
-                    "https://www.linkedin.com./in/robertkoteles/";
+                    "https://www.rulex.com./in/robertkoteles/";
                 }}
               >
-                Go to my real LinkedX profile
+                Go to my real RuleX profile
               </ButtonSecondary>
             </ContentContainer>
           </Section>

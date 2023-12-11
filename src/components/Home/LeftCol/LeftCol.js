@@ -6,13 +6,13 @@
 
 import styled from "styled-components";
 import React from "react";
-import ProfileCard from "../../User/ProfileCard";
+import ProfileCardMini from "../../User/ProfileCardMini";
 import WidgetRecent from "./WidgetRecent";
 
 const LeftCol = (props) => {
   return (
     <Container>
-      <ProfileCard iseditmode={false} isprofilepage={false}  />
+      <ProfileCardMini iseditmode={false} isprofilepage={false} />
       <WidgetRecent />
     </Container>
   );

@@ -34,7 +34,7 @@ import { safeFileName } from "./filename";
 export const CreateUserEntry = (data) => {
   let newUser = {
     uid: data.uid ? data.uid : "",
-    about: "",
+    shortDescription: "",
     birthday: "",
     displayName: data.displayName ? data.displayName : "",
     email: data.email ? data.email : "",
@@ -79,4 +79,35 @@ export const doReadUserEntry = async (data) => {
   console.log({ options });
 
   return ReadContentFromFirebase("users", options);
+};
+
+/**
+ *
+ * Get profile page's user ID
+ * @return {string} ID os the user that belongs to the profile page
+ */
+
+export const getUserProfileID = () => {
+  // get user id of this profile. This is an uid, that belongs to this profile page
+  const profileUid = window.location.pathname.replace("/in/", "");
+  return profileUid;
+};
+
+/**
+ * Get all information that we need for displaying this user profile page
+ * @param {String} puid - Profile User ID
+ * @return {Object} All information of this profile page, as an object
+ */
+export const getUserProfile = async (puid) => {
+  let profilePageData = {};
+
+  console.log("call: getUserProfile");
+
+  let options = {
+    where: ["uid", "==", puid],
+  };
+
+  profilePageData = ReadContentFromFirebase("users", options);
+
+  return profilePageData;
 };

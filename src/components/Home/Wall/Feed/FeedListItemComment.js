@@ -49,8 +49,8 @@ const FeedListItemComment = (props) => {
     <Comment>
       <CommentContainer>
         <CommentAuthorPhoto>
-          {item.avatar ? (
-            <img src={item.avatar} alt={item.displayName} />
+          {item.photoURL ? (
+            <img src={item.photoURL} alt={item.displayName} />
           ) : (
             <img src="/images/avatar.svg" alt="User avatar" />
           )}

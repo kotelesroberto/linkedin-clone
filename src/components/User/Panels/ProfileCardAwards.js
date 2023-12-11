@@ -33,11 +33,6 @@ const ProfileCardAwards = (props) => {
     navigate("/demo");
   };
 
-  const onClickEdit = (e) => {
-    e.preventDefault();
-    console.log("onClickEdit");
-  };
-
   const contentToShow = [
     {
       title: "24th Annual Webby Awards",
@@ -72,7 +67,7 @@ const ProfileCardAwards = (props) => {
   return (
     <ProfileCardBox
       title="Honors & awards"
-      onclickedit={onClickEdit}
+      panel="Awards"
       iseditmode={isEditMode}
       extrabutton={extraButton}
     >

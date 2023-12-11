@@ -18,11 +18,6 @@ const ProfileCardLanguages = (props) => {
 
   const navigate = useNavigate();
 
-  const onClickEdit = (e) => {
-    e.preventDefault();
-    console.log("onClickEdit");
-  };
-
   const contentToShow = [
     {
       title: "English",
@@ -50,7 +45,7 @@ const ProfileCardLanguages = (props) => {
   return (
     <ProfileCardBox
       title="Languages"
-      onclickedit={onClickEdit}
+      panel="languages"
       iseditmode={isEditMode}
       extrabutton={extraButton}
     >

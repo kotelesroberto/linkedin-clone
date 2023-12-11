@@ -39,6 +39,8 @@ const FeedListItem = (props) => {
       props.content.interactions.likes.indexOf(props.user.uid) !== -1
     );
     setCountComments(props.content.interactions.numComments);
+
+    console.log('props.content.user', props.content.user);
   }, []);
 
   const [isPostLiked, setIsPostLiked] = useState(false);

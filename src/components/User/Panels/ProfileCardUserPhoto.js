@@ -1,15 +1,14 @@
 import React from "react";
 import { UserPhoto } from "../../Common/User";
-import { connect } from "react-redux";
 
 const ProfileCardUserPhoto = (props) => {
+  const user = props.user;
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
-  const profileUid = props.profileuid;
 
   const onClickEdit = (e) => {
     e.preventDefault();
-    console.log('onClickEdit');
+    console.log("onClickEdit");
 
     if (isEditMode) {
     }
@@ -21,8 +20,8 @@ const ProfileCardUserPhoto = (props) => {
       className={isProfilePage ? "big" : ""}
       onClick={onClickEdit}
     >
-      {props.user && props.user.photoURL ? (
-        <img src={props.user.photoURL} alt={props.user.displayName} />
+      {user && user.photoURL ? (
+        <img src={user.photoURL} alt={user.displayName} />
       ) : (
         <img src="/images/avatar.svg" alt="User avatar" />
       )}
@@ -30,13 +29,4 @@ const ProfileCardUserPhoto = (props) => {
   );
 };
 
-/*=====  React-redux related functions  ======*/
-
-// any time the store is updated, mapStateToProps will be called. Expected to return an object
-const mapStateToProps = (state) => {
-  return {
-    user: state.userState.user,
-  };
-};
-
-export default connect(mapStateToProps)(ProfileCardUserPhoto);
+export default ProfileCardUserPhoto;

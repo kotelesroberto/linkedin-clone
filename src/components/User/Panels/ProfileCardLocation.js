@@ -1,11 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import * as variables from "../Common/Variables";
+import * as variables from "../../Common/Variables";
 
-const ProfileCardLocation = () => {
-  const location = "London, England, United Kingdom";
-
-  return <Container>{location}</Container>;
+const ProfileCardLocation = (props) => {
+  return (
+    <Container>
+      {props.user && props.user.location && props.user.location}
+    </Container>
+  );
 };
 
 const Container = styled.span`

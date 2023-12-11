@@ -14,15 +14,10 @@ import DiscoverMore from "../../Widgets/DiscoverMore";
 import styled from "styled-components";
 
 const ProfileCardSkills = (props) => {
-  const isEditMode = props.iseditmode ? props.iseditmode : false;
   const profileUid = props.profileuid;
+  const isEditMode = props.iseditmode ? props.iseditmode : false;
 
   const navigate = useNavigate();
-
-  const onClickEdit = (e) => {
-    e.preventDefault();
-    console.log("onClickEdit");
-  };
 
   const createAssociated = (item) => {
     return (
@@ -89,7 +84,7 @@ const ProfileCardSkills = (props) => {
       title="Skills"
       subtitle="You've added the maximum number of skills"
       subtitleicon="/images/icon-info.svg"
-      onclickedit={onClickEdit}
+      panel="skills"
       iseditmode={isEditMode}
       extrabutton={extraButton}
     >

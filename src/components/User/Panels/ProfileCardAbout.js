@@ -10,8 +10,8 @@ import React from "react";
 import ProfileCardBox from "./ProfileCardBox";
 
 const ProfileCardAbout = (props) => {
-  const isEditMode = props.iseditmode ? props.iseditmode : false;
   const profileUid = props.profileuid;
+  const isEditMode = props.iseditmode ? props.iseditmode : false;
 
   const content = `
     <p>
@@ -34,16 +34,12 @@ const ProfileCardAbout = (props) => {
     </p>
     `;
 
-  const onClickEdit = (e) => {
-    e.preventDefault();
-    console.log("onClickEdit");
-  };
 
   return (
     <ProfileCardBox
       title="About"
+      panel="about"
       content={content}
-      onclickedit={onClickEdit}
       iseditmode={isEditMode}
     ></ProfileCardBox>
   );

@@ -13,15 +13,10 @@ import ContentListItems from "./ContentListItems";
 import DiscoverMore from "../../Widgets/DiscoverMore";
 
 const ProfileCardExperience = (props) => {
-  const isEditMode = props.iseditmode ? props.iseditmode : false;
   const profileUid = props.profileuid;
+  const isEditMode = props.iseditmode ? props.iseditmode : false;
 
   const navigate = useNavigate();
-
-  const onClickEdit = (e) => {
-    e.preventDefault();
-    console.log("onClickEdit");
-  };
 
   const contentToShow = [
     {
@@ -96,7 +91,7 @@ const ProfileCardExperience = (props) => {
   return (
     <ProfileCardBox
       title="Experience"
-      onclickedit={onClickEdit}
+      panel="experience"
       iseditmode={isEditMode}
       extrabutton={extraButton}
     >

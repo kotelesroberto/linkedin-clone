@@ -37,9 +37,7 @@ import {
 import { db, auth, storage } from "../../../../firebase/firebase";
 import { doLike } from "../../../../utils/manageLikes";
 
-
 const FeedListItemComments = (props) => {
-  console.log({ props });
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
   const [countcomments, setCountcomments] = useState(props.countcomments);
@@ -87,7 +85,7 @@ const FeedListItemComments = (props) => {
     const data = {
       postid: originalPostID, // this is the connecting key to the post
       uid: props.user.uid,
-      avatar: props.user.photoURL,
+      photoURL: props.user.photoURL, // in this DEMO the photo url is stored here. In a real webapp it should be read out of the "user" collection
       displayName: props.user.displayName,
       userlink: props.user.link ? props.user.link : "",
       timestamp: Date.now(),
@@ -138,7 +136,7 @@ const FeedListItemComments = (props) => {
             id: doc.id,
             postid: docData.postid, // this is the connecting key to the post
             uid: docData.uid,
-            avatar: docData.photoURL,
+            photoURL: docData.photoURL,
             displayName: docData.displayName,
             userlink: docData.userlink,
             timestamp: docData.timestamp,
@@ -190,7 +188,7 @@ const FeedListItemComments = (props) => {
               <FeedListItemComment
                 item={item}
                 key={`comment-${originalPostID}-${index}`}
-                dolike={ doLike }
+                dolike={doLike}
               />
             ))}
         </Comments>

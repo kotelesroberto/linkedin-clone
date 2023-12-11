@@ -1,6 +1,8 @@
 export const colorDefinitions = {
   white: "#fff",
   black: "#000",
+  primaryColor: "#0a66c2",
+  secondaryColor: "",
 };
 
 export const colors = {
@@ -8,10 +10,10 @@ export const colors = {
   errorFont: "#cb112d",
 
   // links
-  link: "#0a66c2",
+  link: colorDefinitions.primaryColor,
   linkHover: "#004182",
   menuLink: colorDefinitions.black,
-  menuLinkHover: "#0a66c2",
+  menuLinkHover: colorDefinitions.primaryColor,
 
   // badge
   badgeFont: "#fff",
@@ -30,16 +32,16 @@ export const colors = {
   boxShadow4: "0 0 0 1px #d8d8d8, 0 6px 9px #cccccc",
 
   // Buttons
-  buttonPrimaryBorder: "#0a66c2",
+  buttonPrimaryBorder: colorDefinitions.primaryColor,
   buttonPrimaryHover: "#f4f4f4",
-  buttonSecondaryBackground: "#0a66c2",
+  buttonSecondaryBackground: colorDefinitions.primaryColor,
   buttonSecondaryBackgroundHover: "#004182",
-  buttonSecondaryBorder: "#0a66c2",
+  buttonSecondaryBorder: colorDefinitions.primaryColor,
   buttonSecondaryBorderHover: "#004182",
   buttonSecondaryFont: "#fff",
   buttonTertiaryBackground: "#fff",
-  buttonTertiaryBorder: "#0a66c2",
-  buttonTertiaryFont: "#0a66c2",
+  buttonTertiaryBorder: colorDefinitions.primaryColor,
+  buttonTertiaryFont: colorDefinitions.primaryColor,
   buttonFourthBackground: "#fff",
   buttonFourthFont: "#000",
   buttonWithImageBorder: "#dadce0",
@@ -49,9 +51,9 @@ export const colors = {
   buttonJoinBackgroundHover: "#f4f4f4",
   buttonSignInBackground: "transparent",
   buttonSignInBackgroundHover: "#f0f7fe",
-  buttonSignInFont: "#0a66c2",
-  buttonSignInFontHover: "#0a66c2",
-  buttonSignInBorder: "#0a66c2",
+  buttonSignInFont: colorDefinitions.primaryColor,
+  buttonSignInFontHover: colorDefinitions.primaryColor,
+  buttonSignInBorder: colorDefinitions.primaryColor,
   buttonSharePostBackground: "#fff",
   buttonSharePostBackgroundHover: "#f4f4f4",
   buttonSharePostFont: "#000",

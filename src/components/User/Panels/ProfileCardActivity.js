@@ -10,19 +10,14 @@ import React from "react";
 import ProfileCardBox from "./ProfileCardBox";
 
 const ProfileCardActivity = (props) => {
-  const isEditMode = props.iseditmode ? props.iseditmode : false;
   const profileUid = props.profileuid;
-
-  const onClickEdit = (e) => {
-    e.preventDefault();
-    console.log("onClickEdit");
-  };
+  const isEditMode = props.iseditmode ? props.iseditmode : false;
 
   return (
     <ProfileCardBox
       title="Activity"
       content={"TODO: add content information here"}
-      onclickedit={onClickEdit}
+      panel="activity"
       iseditmode={isEditMode}
     ></ProfileCardBox>
   );

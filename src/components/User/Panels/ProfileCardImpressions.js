@@ -10,7 +10,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import * as variables from "../../Common/Variables";
 
-const ProfileCardImpressions = () => {
+const ProfileCardImpressions = (props) => {
+  const profileuid = props.profileuid;
   const [numProfileViewers, setNumProfileViewers] = useState(150);
   const [numPostImpressions, setNumPostImpressions] = useState(259);
 

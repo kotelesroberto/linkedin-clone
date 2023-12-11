@@ -1,16 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import * as variables from "../Common/Variables";
-import { Card } from "../Common/Cards";
+import * as variables from "../../Common/Variables";
+import { Card } from "../../Common/Cards";
 
 import {
   ButtonSecondary,
   ButtonTertiary,
   ButtonFourth,
-} from "../Common/Buttons";
+} from "../../Common/Buttons";
 
-const ProfileCardButtons = () => {
+const ProfileCardButtons = (props) => {
+  const user = props.user;
+  
   const navigate = useNavigate();
 
   const doDemo = (e) => {

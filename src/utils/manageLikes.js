@@ -15,8 +15,6 @@ export const doLike = (e, dataObj, callback = () => {}) => {
   e.preventDefault();
   e.target.setAttribute("disabled", "disabled");
 
-  console.log({ dataObj });
-
   let isPostLiked = true;
   const index = dataObj.likes.indexOf(dataObj.user.uid);
   let data;

@@ -13,7 +13,7 @@ import ContentListItems from "./ContentListItems";
 import DiscoverMore from "../../Widgets/DiscoverMore";
 
 const ProfileCardRecommendations = (props) => {
-  const isEditMode = props.iseditmode ? props.iseditmode : false;
+  const isEditMode = false;
   const profileUid = props.profileuid;
 
   const navigate = useNavigate();

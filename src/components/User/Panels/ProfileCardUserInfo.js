@@ -1,44 +1,48 @@
 import React from "react";
 import styled from "styled-components";
 import * as variables from "../../Common/Variables";
-import { connect } from "react-redux";
-import ProfileCardEducationBox from "../ProfileCardEducationBox";
-import ProfileCardLocation from "../ProfileCardLocation";
+import ProfileCardEducationBox from "./ProfileCardEducationBox";
+import ProfileCardLocation from "./ProfileCardLocation";
 
 const ProfileCardUserInfo = (props) => {
+  const user = props.user;
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
-  const profileUid = props.profileuid;
 
   return (
     <UserCardInfo className={isProfilePage ? "profile" : ""}>
-      {!props.user && (
+      {!user && (
         <UserCardIntro>
           <h3>Welcome, there!</h3>
           <span>Add a photo</span>
         </UserCardIntro>
       )}
 
-      {props.user && (
+      {user && (
         <>
           <UserCardName className={isProfilePage ? "profile" : ""}>
-            <a href={`in/${props.user.shorturl}`}>
-              {props.user && props.user.displayName
-                ? props.user.displayName
+            <a href={`in/${user.shorturl}`}>
+              {user && user.displayName
+                ? user.displayName
                 : "Me"}
             </a>
           </UserCardName>
           <UserCardDescription className={isProfilePage ? "profile" : ""}>
             <span>
-              Professional Senior Web Developer | Tech leader | Certified Scrum
-              Developer | Musician | Human being (SC Cleared)
+              {user &&
+                user.shortDescription &&
+                user.shortDescription}
             </span>
-            {isProfilePage && <ProfileCardEducationBox />}
+            {isProfilePage && <ProfileCardEducationBox user={user} />}
           </UserCardDescription>
 
-          {isProfilePage && <ProfileCardLocation />}
+          {isProfilePage && <ProfileCardLocation user={user} />}
           {isProfilePage && (
-            <UserCardConnections>391 connections</UserCardConnections>
+            <UserCardConnections
+              userid={user && user.uid ? user.uid : ""}
+            >
+              391 connections
+            </UserCardConnections>
           )}
         </>
       )}
@@ -116,13 +120,4 @@ const UserCardConnections = styled.div`
   margin-top: 8px;
 `;
 
-/*=====  React-redux related functions  ======*/
-
-// any time the store is updated, mapStateToProps will be called. Expected to return an object
-const mapStateToProps = (state) => {
-  return {
-    user: state.userState.user,
-  };
-};
-
-export default connect(mapStateToProps)(ProfileCardUserInfo);
+export default ProfileCardUserInfo;

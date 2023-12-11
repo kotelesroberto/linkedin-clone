@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import DocumentTitle from "react-document-title";
 
 import styled from "styled-components";
-import { connect } from "react-redux";
 
 import { useNavigate } from "react-router-dom";
 
@@ -10,7 +9,10 @@ import Header from "../components/Header/Header";
 import LeftCol from "../components/Profile/LeftCol/LeftCol";
 import RightCol from "../components/Profile/RightCol/RightCol";
 
+import { connect } from "react-redux";
 import { actionSetShowModal, setCurrentURLAPI } from "../redux/actions/actions";
+
+import PostModal from "../components/Home/Wall/PostModal";
 
 const ProfilePage = (props) => {
   const showModal = props.showModal;
@@ -23,7 +25,7 @@ const ProfilePage = (props) => {
       if (!props.user.email) {
         const windowLocation = window.location.pathname;
         props.setCurrentURL(windowLocation);
-        navigate('/');
+        navigate("/");
       }
     }
   }, [props.user && props.user.checkedByAuth]);
@@ -31,16 +33,14 @@ const ProfilePage = (props) => {
   return (
     <DocumentTitle title={"(6) Feed | RuleX by Robert Koteles"}>
       <>
-        {/* {!props.user && <Navigate to="/" replace />} */}
-        {props.user && (
-          <Container>
-            <Header />
-            <Section>
-              <LeftCol />
-              <RightCol />
-            </Section>
-          </Container>
-        )}
+        <Container>
+          <Header />
+          <Section>
+            <LeftCol />
+            <RightCol />
+          </Section>
+        </Container>
+        {props.user && <PostModal />}
       </>
     </DocumentTitle>
   );

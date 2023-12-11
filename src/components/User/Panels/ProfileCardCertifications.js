@@ -14,15 +14,10 @@ import DiscoverMore from "../../Widgets/DiscoverMore";
 import { ButtonFourth } from "../../Common/Buttons";
 
 const ProfileCardCertifications = (props) => {
-  const isEditMode = props.iseditmode ? props.iseditmode : false;
   const profileUid = props.profileuid;
+  const isEditMode = props.iseditmode ? props.iseditmode : false;
 
   const navigate = useNavigate();
-
-  const onClickEdit = (e) => {
-    e.preventDefault();
-    console.log("onClickEdit");
-  };
 
   const clickShowCertification = (e) => {
     console.log("clickShowCertification");
@@ -72,7 +67,7 @@ const ProfileCardCertifications = (props) => {
   return (
     <ProfileCardBox
       title="Licenses & certifications"
-      onclickedit={onClickEdit}
+      panel="certifications"
       iseditmode={isEditMode}
       extrabutton={extraButton}
     >

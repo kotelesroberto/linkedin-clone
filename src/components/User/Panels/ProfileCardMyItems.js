@@ -4,10 +4,12 @@ import {
   ListSmall,
   ListItemSmallNoHover,
   LIST_SMALL_ICON__BOOKMARK,
-} from "../Common/Menus";
-import * as variables from "../Common/Variables";
+} from "../../Common/Menus";
+import * as variables from "../../Common/Variables";
 
-const ProfileCardMyItems = () => {
+const ProfileCardMyItems = (props) => {
+  const profileuid = props.profileuid;
+
   return (
     <Container>
       <ListSmall>

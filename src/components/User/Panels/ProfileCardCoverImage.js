@@ -3,9 +3,9 @@ import styled from "styled-components";
 import { EditButton } from "../../Common/Buttons";
 
 const ProfileCardCoverImage = (props) => {
+  const user = props.user;
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
-  const profileUid = props.profileuid;
 
   const onClickEdit = (e) => {
     e.preventDefault();
@@ -14,8 +14,11 @@ const ProfileCardCoverImage = (props) => {
 
   return (
     <CoverImage className={isProfilePage ? "big" : ""}>
-      {props.user && props.user.teaserImage ? (
-        <img src={props.user.teaserImage} alt="Cover image" />
+      {user && user.teaserImage ? (
+        <img
+          src={user.teaserImage}
+          alt={`Cover image of ${user.displayName}`}
+        />
       ) : (
         <img src="/images/card-bg.svg" alt="Cover image" />
       )}

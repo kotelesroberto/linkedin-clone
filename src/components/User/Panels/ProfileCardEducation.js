@@ -12,15 +12,10 @@ import ProfileCardBox from "./ProfileCardBox";
 import ContentListItems from "./ContentListItems";
 
 const ProfileCardEducation = (props) => {
-  const isEditMode = props.iseditmode ? props.iseditmode : false;
   const profileUid = props.profileuid;
+  const isEditMode = props.iseditmode ? props.iseditmode : false;
 
   const navigate = useNavigate();
-
-  const onClickEdit = (e) => {
-    e.preventDefault();
-    console.log("onClickEdit");
-  };
 
   const contentToShow = [
     {
@@ -40,11 +35,7 @@ const ProfileCardEducation = (props) => {
   };
 
   return (
-    <ProfileCardBox
-      title="Education"
-      onclickedit={onClickEdit}
-      iseditmode={isEditMode}
-    >
+    <ProfileCardBox title="Education" panel="education" iseditmode={isEditMode}>
       <ContentListItems items={contentToShow} />
     </ProfileCardBox>
   );

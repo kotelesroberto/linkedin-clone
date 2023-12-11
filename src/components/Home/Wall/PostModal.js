@@ -8,6 +8,7 @@ import { IconButtonRow } from "../../Common/Icons";
 import PostModalHeader from "./PostModalHeader";
 import AddEventForm from "./AddEventForm";
 import UploadInProgress from "./UploadInProgress";
+import EditProfileData from "../../Profile/EditProfileData";
 
 import DropZone from "./DropZone";
 import {
@@ -191,6 +192,9 @@ const PostModal = (props) => {
 
               {showModal === "addEvent" && <AddEventForm />}
               {showModal === "is-posting" && <UploadInProgress />}
+              {showModal.includes("edit-profile--") && (
+                <EditProfileData panel={showModal} />
+              )}
             </UploadArea>
 
             <Footer>

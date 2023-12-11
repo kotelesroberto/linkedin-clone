@@ -22,11 +22,19 @@ import * as variables from "../../Common/Variables";
 
 const ContentListItems = (props) => {
   const items = props.items;
+  const maxItemsToShow = props.maxItemsToShow;
+  const parentRef = props.parentRef ? props.parentRef : null;
+
   return (
-    <ContentList>
+    <ContentList ref={parentRef}>
       {!!items.length &&
         items.map((item, index) => (
-          <ContentListItem key={`${item.title.toLowerCase()}-${index}`}>
+          <ContentListItem
+            key={`${item.title.toLowerCase()}-${index}`}
+            className={
+              maxItemsToShow && index >= maxItemsToShow ? "closed" : ""
+            }
+          >
             {!!item.image && (
               <ContentListItemImage>
                 <img src={item.image} alt={item.title} />

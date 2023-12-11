@@ -6,8 +6,7 @@
  * @version 1.0.0
  */
 
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useRef } from "react";
 import ProfileCardBox from "./ProfileCardBox";
 import ContentListItems from "./ContentListItems";
 import DiscoverMore from "../../Widgets/DiscoverMore";
@@ -15,9 +14,12 @@ import styled from "styled-components";
 
 const ProfileCardAwards = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
-  const profileUid = props.profileuid;
+  const [openedStatus, setOpenedStatus] = useState("closed");
+  const thisListRef = useRef();
+  const maxItemsToShow = 1;
 
-  const navigate = useNavigate();
+  const user = props.user;
+  let awards = user && user.extra && user.extra.awards ? user.extra.awards : [];
 
   const createAssociated = (item) => {
     return (
@@ -28,41 +30,48 @@ const ProfileCardAwards = (props) => {
     );
   };
 
-  const doDemo = (e) => {
-    e.preventDefault();
-    navigate("/demo");
+  // As we use data with different keys in Friebase from what we need for <ContentListItems /> Component={, we need to transform keys by using a map transformation
+  const keyMap = {
+    title: "title", // NAme of the award
+    content4: "info", // Description
   };
 
-  const contentToShow = [
-    {
-      title: "24th Annual Webby Awards",
-      title2: "Issued by The Webby Awards, New York · Aug 2020",
-      content: createAssociated({
-        name: "Company 1 name comes here",
-        icon: "/images/home-logo.svg",
-      }),
-      content4:
-        "The International Academy of Digital Arts and Sciences recognised our team work as a selection in the 24h Annual Webby Awards.",
-    },
-    {
-      title: "23th Annual Webby Awards",
-      title2: "Issued by The Webby Awards, New York · Aug 2019",
-      content: createAssociated({
-        name: "Company 2 name comes here",
-        icon: "/images/home-logo.svg",
-      }),
-      content4:
-        "The International Academy of Digital Arts and Sciences recognised our team work as a selection in the 24h Annual Webby Awards.",
-    },
-  ];
+  let userAwards = [];
+
+  awards.map((awardItem) => {
+    let userAwardItem = {};
+
+    for (const key in keyMap) {
+      userAwardItem[key] = awardItem[keyMap[key]];
+    }
+
+    // date when user worked here
+    userAwardItem.title2 = `Issued by ${awardItem.issueBy} · ${awardItem.issueDate}`;
+    userAwardItem.content = createAssociated({
+      name: "Company 1 name comes here",
+      icon: "/images/home-logo.svg",
+    });
+    userAwards.push(userAwardItem);
+  });
 
   const extraButton = (
     <DiscoverMore
-      title={["Show all honors & awards", "Show all honors & awards"]}
+      title={["Show all honors & awards", "Hide honors & awards"]}
       link="#"
-      onclick={(e) => doDemo(e)}
+      onclick={(e) => toggleView(e)}
     />
   );
+
+  const toggleView = (e) => {
+    e.preventDefault();
+
+    setOpenedStatus(openedStatus === "closed" ? "open" : "closed");
+    thisListRef.current.querySelectorAll("& > li").forEach((item, index) => {
+      if (index >= maxItemsToShow) {
+        item.classList.toggle("closed");
+      }
+    });
+  };
 
   return (
     <ProfileCardBox
@@ -71,7 +80,13 @@ const ProfileCardAwards = (props) => {
       iseditmode={isEditMode}
       extrabutton={extraButton}
     >
-      <ContentListItems items={contentToShow} />
+      {userAwards.length && (
+        <ContentListItems
+          items={userAwards}
+          parentRef={thisListRef}
+          maxItemsToShow={maxItemsToShow}
+        />
+      )}
     </ProfileCardBox>
   );
 };
@@ -79,7 +94,7 @@ const ProfileCardAwards = (props) => {
 const Associated = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin: 8px 0;
 
   img {
     width: 24px;

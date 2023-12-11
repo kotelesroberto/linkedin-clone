@@ -105,25 +105,48 @@ const ProfileCard = (props) => {
         <ProfileCardExperience
           iseditmode={isEditMode}
           profileuid={profileUid}
+          user={profileUser}
         />
       }
-      <ProfileCardEducation iseditmode={isEditMode} profileuid={profileUid} />
+      <ProfileCardEducation
+        iseditmode={isEditMode}
+        profileuid={profileUid}
+        user={profileUser}
+      />
 
       <ProfileCardCertifications
         iseditmode={isEditMode}
         profileuid={profileUid}
+        user={profileUser}
       />
 
-      <ProfileCardSkills iseditmode={isEditMode} profileuid={profileUid} />
+      <ProfileCardSkills
+        iseditmode={isEditMode}
+        profileuid={profileUid}
+        user={profileUser}
+      />
 
       <ProfileCardRecommendations
         iseditmode={isEditMode}
         profileuid={profileUid}
+        user={profileUser}
       />
 
-      <ProfileCardAwards iseditmode={isEditMode} profileuid={profileUid} />
-      <ProfileCardLanguages iseditmode={isEditMode} profileuid={profileUid} />
-      <ProfileCardInterests iseditmode={isEditMode} profileuid={profileUid} />
+      <ProfileCardAwards
+        iseditmode={isEditMode}
+        profileuid={profileUid}
+        user={profileUser}
+      />
+      <ProfileCardLanguages
+        iseditmode={isEditMode}
+        profileuid={profileUid}
+        user={profileUser}
+      />
+      <ProfileCardInterests
+        iseditmode={isEditMode}
+        profileuid={profileUid}
+        user={profileUser}
+      />
 
       {!isEditMode && <ShowMore showon="mobile" onclickevent={toggleView} />}
     </>

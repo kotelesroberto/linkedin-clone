@@ -6,18 +6,24 @@
  * @version 1.0.0
  */
 
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
 import ProfileCardBox from "./ProfileCardBox";
 import ContentListItems from "./ContentListItems";
 import DiscoverMore from "../../Widgets/DiscoverMore";
 import styled from "styled-components";
 
-const ProfileCardSkills = (props) => {
-  const profileUid = props.profileuid;
-  const isEditMode = props.iseditmode ? props.iseditmode : false;
+import { companies as demoCompanies } from "../../../utils/demoData";
 
-  const navigate = useNavigate();
+const ProfileCardSkills = (props) => {
+  const isEditMode = props.iseditmode ? props.iseditmode : false;
+  const [openedStatus, setOpenedStatus] = useState("closed");
+  const [userSkills, setUserSkills] = useState([]);
+
+  const thisListRef = useRef();
+  const maxItemsToShow = 5;
+
+  const user = props.user;
+  let skills = user && user.extra && user.extra.skills ? user.extra.skills : [];
 
   const createAssociated = (item) => {
     return (
@@ -28,54 +34,48 @@ const ProfileCardSkills = (props) => {
     );
   };
 
-  const contentToShow = [
-    {
-      title: "Accessibility",
-      content: createAssociated({
-        name: "12 experiences across Apple and 4 other companies",
-        icon: "/upload/logo-apple.svg",
-      }),
-    },
-    {
-      title: "CSS3 / SASS / LESS",
-      content: createAssociated({
-        name: "5 experiences across Google and 4 other companies",
-        icon: "/upload/logo-google.svg",
-      }),
-    },
-    {
-      title: "Webpack",
-      content: createAssociated({
-        name: "8 experiences across BMW and 4 other companies",
-        icon: "/upload/logo-bmw.svg",
-      }),
-    },
-    {
-      title: "React",
-      content: createAssociated({
-        name: "7 experiences across Forbes and 2 other companies",
-        icon: "/upload/logo-forbes.svg",
-      }),
-    },
-    {
-      title: "JavaScript",
-      content: createAssociated({
-        name: "15 experiences across Google and 3 other companies",
-        icon: "/upload/logo-google.svg",
-      }),
-    },
-  ];
+  const selectRandomAssociate = () => {
+    const randomCompany =
+      demoCompanies[Math.floor(Math.random() * demoCompanies.length)];
+    const randomCount = Math.floor(Math.random() * 30);
 
-  const doDemo = (e) => {
+    return {
+      name: `12 experiences across ${randomCompany.name} and ${randomCount} other companies`,
+      icon: randomCompany.icon,
+    };
+  };
+
+  useEffect(() => {
+    let tempUserSkills = [];
+    skills.map((skillItem) => {
+      let temp = {};
+
+      temp.title = skillItem;
+      temp.content = createAssociated(selectRandomAssociate());
+
+      tempUserSkills.push(temp);
+    });
+
+    setUserSkills((prevState) => tempUserSkills);
+  }, [props.user]);
+
+  const toggleView = (e) => {
     e.preventDefault();
-    navigate("/demo");
+
+    setOpenedStatus(openedStatus === "closed" ? "open" : "closed");
+
+    thisListRef.current.querySelectorAll("& > li").forEach((item, index) => {
+      if (index >= maxItemsToShow) {
+        item.classList.toggle("closed");
+      }
+    });
   };
 
   const extraButton = (
     <DiscoverMore
-      title={["Show all skills", "Show all skills"]}
+      title={["Show all skills", "Hide skills"]}
       link="#"
-      onclick={(e) => doDemo(e)}
+      onclick={(e) => toggleView(e)}
     />
   );
 
@@ -88,7 +88,11 @@ const ProfileCardSkills = (props) => {
       iseditmode={isEditMode}
       extrabutton={extraButton}
     >
-      <ContentListItems items={contentToShow} />
+      <ContentListItems
+        items={userSkills}
+        parentRef={thisListRef}
+        maxItemsToShow={maxItemsToShow}
+      />
     </ProfileCardBox>
   );
 };

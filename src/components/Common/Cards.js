@@ -64,6 +64,8 @@ export const ContentListItem = styled.li`
   align-items: flex-start;
   border-bottom: 1px solid ${variables.colors.border3};
   padding: 12px 0;
+  opacity: 1;
+  transition: max-height 0.3s, opacity 0.1s, padding 0.1s;
 
   &:last-child {
     border: none;
@@ -85,5 +87,12 @@ export const ContentListItem = styled.li`
     width: 24px;
     height: 24px;
     margin-right: 12px;
+  }
+
+  &.closed {
+    max-height: 0;
+    opacity: 0;
+    padding: 0;
+    border-bottom: none;
   }
 `;

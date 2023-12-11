@@ -64,7 +64,6 @@ const EditProfileData = (props) => {
 
   return (
     <>
-      ID: {profileUser.extra && profileUser.extra.id}
       <ContainerAside>
         {panelToEdit == "about" && (
           <textarea

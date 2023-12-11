@@ -6,17 +6,38 @@
  * @version 1.0.0
  */
 
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useRef, useState } from "react";
 import ProfileCardBox from "./ProfileCardBox";
 import ContentListItems from "./ContentListItems";
 import DiscoverMore from "../../Widgets/DiscoverMore";
 
 const ProfileCardLanguages = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
-  const profileUid = props.profileuid;
+  const [openedStatus, setOpenedStatus] = useState("closed");
+  const thisListRef = useRef();
+  const maxItemsToShow = 2;
 
-  const navigate = useNavigate();
+  const user = props.user;
+  let languages =
+    user && user.extra && user.extra.languages ? user.extra.languages : [];
+
+  // As we use data with different keys in Friebase from what we need for <ContentListItems /> Component={, we need to transform keys by using a map transformation
+  const keyMap = {
+    title: "title", // Language
+    title2: "level", // Description
+  };
+
+  let userLanguages = [];
+
+  languages.map((awardItem) => {
+    let userLanguageItem = {};
+
+    for (const key in keyMap) {
+      userLanguageItem[key] = awardItem[keyMap[key]];
+    }
+
+    userLanguages.push(userLanguageItem);
+  });
 
   const contentToShow = [
     {
@@ -29,16 +50,22 @@ const ProfileCardLanguages = (props) => {
     },
   ];
 
-  const doDemo = (e) => {
+  const toggleView = (e) => {
     e.preventDefault();
-    navigate("/demo");
+
+    setOpenedStatus(openedStatus === "closed" ? "open" : "closed");
+    thisListRef.current.querySelectorAll("& > li").forEach((item, index) => {
+      if (index >= maxItemsToShow) {
+        item.classList.toggle("closed");
+      }
+    });
   };
 
   const extraButton = (
     <DiscoverMore
       title={["Show all languages", "Show all languages"]}
       link="#"
-      onclick={(e) => doDemo(e)}
+      onclick={(e) => toggleView(e)}
     />
   );
 
@@ -49,7 +76,11 @@ const ProfileCardLanguages = (props) => {
       iseditmode={isEditMode}
       extrabutton={extraButton}
     >
-      <ContentListItems items={contentToShow} />
+      <ContentListItems
+        items={userLanguages}
+        parentRef={thisListRef}
+        maxItemsToShow={maxItemsToShow}
+      />
     </ProfileCardBox>
   );
 };

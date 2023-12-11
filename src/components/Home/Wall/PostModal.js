@@ -153,7 +153,13 @@ const PostModal = (props) => {
     <>
       {!!showModal && (
         <Container>
-          <Content className={showModal.toLowerCase()}>
+          <Content
+            className={
+              showModal.includes("edit-profile")
+                ? showModal.split("--")[0].toLowerCase()
+                : showModal.toLowerCase()
+            }
+          >
             <PostModalHeader showModal={showModal} closeModal={closeModal} />
             <UploadArea>
               {["addPost", "addMedia"].includes(showModal) && (
@@ -280,6 +286,10 @@ const Content = styled(Card)`
   }
   &.is-posting {
     max-width: 744px;
+    min-height: 40%;
+  }
+
+  &.edit-profile {
     min-height: 40%;
   }
 

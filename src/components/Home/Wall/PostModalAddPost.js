@@ -133,7 +133,6 @@ const ThumbImage = (props) => {
 const ThumbContainer = styled.ul`
   list-style: none;
   margin: 0;
-  /* padding: 16px 24px; */
   padding: 0;
   padding-top: 12px;
   display: flex;

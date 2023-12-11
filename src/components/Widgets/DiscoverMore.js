@@ -34,6 +34,8 @@ const Container = styled.div`
   margin-bottom: -12px;
   border-top: 1px solid ${variables.colors.border2};
   background-color: ${variables.colors.listItemBackground};
+  position: relative;
+  z-index: 100;
 
   &:hover {
     background-color: ${variables.colors.listItemBackgroundHover};

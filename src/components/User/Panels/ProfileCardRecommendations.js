@@ -6,7 +6,7 @@
  * @version 1.0.0
  */
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ProfileCardBox from "./ProfileCardBox";
 import ContentListItems from "./ContentListItems";
 import DiscoverMore from "../../Widgets/DiscoverMore";
@@ -18,6 +18,24 @@ const ProfileCardRecommendations = (props) => {
   const [openedStatus, setOpenedStatus] = useState("closed");
   const thisListRef = useRef();
   const maxItemsToShow = 3;
+
+  const [user, setUser] = useState(props.user);
+  const [recommendationsToShow, setRecommendationsToShow] = useState([]);
+
+  useEffect(() => {
+    setUser((prevState) => props.user);
+
+    if (user.email) {
+      demoRecommendations.map((item) => {
+        item.content2 = item.content2.replace(
+          "[username]",
+          `<strong>${props.user.displayName}</strong>`
+        );
+      });
+
+      setRecommendationsToShow((prev) => [...demoRecommendations]);
+    }
+  }, [props.user]);
 
   const onClickEdit = (e) => {
     e.preventDefault();
@@ -51,7 +69,7 @@ const ProfileCardRecommendations = (props) => {
       extrabutton={extraButton}
     >
       <ContentListItems
-        items={demoRecommendations}
+        items={recommendationsToShow}
         parentRef={thisListRef}
         maxItemsToShow={maxItemsToShow}
       />

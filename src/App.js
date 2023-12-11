@@ -19,7 +19,11 @@ import {
   actionSetUserDataIntoStore,
 } from "./redux/actions/actions";
 import { connect } from "react-redux";
-import { doReadUserEntry, createUserEntry } from "./utils/userManagement";
+import {
+  doReadUserEntry,
+  createUserEntry,
+  createUserExtraEntry,
+} from "./utils/userManagement";
 
 function App(props) {
   useEffect(() => {
@@ -36,6 +40,7 @@ function App(props) {
         } else {
           // need to create a new entry for this user (usually after Sign up by email/password OR Sign in by google account for the very first time)
           createUserEntry(props.user);
+          createUserExtraEntry(props.user.uid, true);
         }
       });
     }

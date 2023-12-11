@@ -29,9 +29,9 @@ const EditProfileData = (props) => {
           console.log("getUSerProfile EDIT result", result);
           setProfileUser({ ...result });
 
-          if (user && user.uid && !!result.extra && !result.extra.id) {
-            createUserExtraEntry(user.uid, true);
-          }
+          // if (user && user.uid && !!result.extra && !result.extra.id) {
+          //   createUserExtraEntry(user.uid, true);
+          // }
         })
         .catch((error) => {
           console.error(error.message);

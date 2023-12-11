@@ -12,3 +12,18 @@ export const getFirstYoutubeLink = (text, callback) => {
 
   return matches;
 };
+
+const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+// get extracted url addresses from content
+export const getFirstMediaLink = (text) => {
+  const matches = text.match(urlRegex);
+  return matches;
+};
+
+// make url srings anchored in the content
+export const doUrlify = (text) => {
+  return text.replace(urlRegex, function (url) {
+    return '<a href="' + url + '">' + url + "</a>";
+  });
+};

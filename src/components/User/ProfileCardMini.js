@@ -20,11 +20,13 @@ const ProfileCardMini = (props) => {
   // get user id of this profile. This is an uid, that belongs to this profile page
   const isEditMode = false;
   const isProfilePage = false;
+  const profileUid = props.user.uid;
 
   useEffect(() => {
-    getUserProfile(props.user.uid, false)
+    getUserProfile(profileUid, true)
       .then((result) => {
-        setProfileUser({ ...result[0] });
+        console.log("getUserProfile ProfileCardMini RESULT", result);
+        setProfileUser((prevState) => result);
       })
       .catch((error) => {
         console.error(error.message);
@@ -50,9 +52,19 @@ const ProfileCardMini = (props) => {
           user={profileUser}
         />
         <ProfileCardImpressions
-          userid={profileUser.uid ? profileUser.uid : ""}
+          userid={
+            profileUser && profileUser.uid
+              ? profileUser.uid
+              : ""
+          }
         />
-        <ProfileCardMyItems userid={profileUser.uid ? profileUser.uid : ""} />
+        <ProfileCardMyItems
+          userid={
+            profileUser && profileUser.uid
+              ? profileUser.uid
+              : ""
+          }
+        />
       </ProfileCardContainer>
     </>
   );

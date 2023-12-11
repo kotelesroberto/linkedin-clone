@@ -31,21 +31,6 @@ const PostModalAddPost = (props) => {
     getFirstYoutubeLink(editorText, (result) => setExternalMediaUrl(result));
   };
 
-  const urlRegex = /(https?:\/\/[^\s]+)/g;
-
-  // make url srings anchored in the content
-  const doUrlify = (text) => {
-    return text.replace(urlRegex, function (url) {
-      return '<a href="' + url + '">' + url + "</a>";
-    });
-  };
-
-  // get extracted url addresses from content
-  const getFirstMediaLink = (text) => {
-    const matches = text.match(urlRegex);
-    return matches;
-  };
-
   /*=============================================
   =            Emoji            =
   =============================================*/

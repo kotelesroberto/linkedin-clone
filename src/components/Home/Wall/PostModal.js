@@ -147,6 +147,8 @@ const PostModal = (props) => {
     erasePostData(e);
   };
 
+  const clickSaveChanges = (e) => {};
+
   return (
     <>
       {!!showModal && (
@@ -193,11 +195,17 @@ const PostModal = (props) => {
               {showModal === "addEvent" && <AddEventForm />}
               {showModal === "is-posting" && <UploadInProgress />}
               {showModal.includes("edit-profile--") && (
-                <EditProfileData panel={showModal} />
+                <EditProfileData
+                  panel={showModal}
+                  showModal={showModal}
+                  closeModal={closeModal}
+                />
               )}
             </UploadArea>
 
-            <Footer>
+            <Footer
+              className={showModal.includes("edit-profile--") ? "hidden" : ""}
+            >
               <ButtonRow>
                 {previousShowModal && (
                   <ButtonPrimary onClick={gotoBack}>Back</ButtonPrimary>
@@ -220,10 +228,14 @@ const PostModal = (props) => {
                   </ButtonSecondary>
                 )}
 
-                {showModal.includes("edit-profile--") && (
+                {showModal.includes("edit-profile--") && false && (
                   <>
-                    <ButtonPrimary>Cancel</ButtonPrimary>
-                    <ButtonSecondary>Save</ButtonSecondary>
+                    <ButtonPrimary onClick={(e) => closeModal(e)}>
+                      Cancel
+                    </ButtonPrimary>
+                    <ButtonSecondary onClick={(e) => clickSaveChanges(e)}>
+                      Save
+                    </ButtonSecondary>
                   </>
                 )}
               </ButtonRow>
@@ -298,6 +310,10 @@ const UploadArea = styled.div`
 const Footer = styled.div`
   background-color: ${variables.colors.white};
   border-top: 1px solid ${variables.colors.border2};
+
+  &.hidden {
+    display: none;
+  }
 `;
 
 const ButtonRow = styled.div`

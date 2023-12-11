@@ -1,23 +1,30 @@
 import React from "react";
 import styled from "styled-components";
 
-const ProfileCardEducationBox = () => {
+const ProfileCardEducationBox = (props) => {
+  const user = props.user;
+  const education = user.extra ? user.extra.education : '';
+
   // TODO: read it from Firebase as an API JSON object
-  const edication = {
-    title: "University of Debrecen Official",
-    image: {
-      src: "/upload/university_of_debrecen.jpg",
-    },
-  };
+  // const edication = {
+  //   title: "University of Debrecen Official",
+  //   image: {
+  //     src: "/upload/university_of_debrecen.jpg",
+  //   },
+  // };
 
   return (
     <Container>
-      <img
-        src={edication.image.src}
-        alt={edication.title}
-        aria-label={edication.title}
-      />
-      <div>{edication.title}</div>
+      {education && (
+        <>
+          <img
+            src={education[0].logo}
+            alt={education[0].name}
+            aria-label={education[0].name}
+          />
+          <div>{education[0].degree}</div>
+        </>
+      )}
     </Container>
   );
 };

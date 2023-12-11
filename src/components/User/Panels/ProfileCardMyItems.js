@@ -8,7 +8,7 @@ import {
 import * as variables from "../../Common/Variables";
 
 const ProfileCardMyItems = (props) => {
-  const profileuid = props.profileuid;
+  const profileuid = props.userid;
 
   return (
     <Container>

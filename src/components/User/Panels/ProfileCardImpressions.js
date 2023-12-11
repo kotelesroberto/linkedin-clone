@@ -11,7 +11,7 @@ import styled from "styled-components";
 import * as variables from "../../Common/Variables";
 
 const ProfileCardImpressions = (props) => {
-  const profileuid = props.profileuid;
+  const profileuid = props.userid;
   const [numProfileViewers, setNumProfileViewers] = useState(150);
   const [numPostImpressions, setNumPostImpressions] = useState(259);
 

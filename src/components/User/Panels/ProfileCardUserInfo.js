@@ -18,20 +18,16 @@ const ProfileCardUserInfo = (props) => {
         </UserCardIntro>
       )}
 
-      {user && (
+      {user && user && (
         <>
           <UserCardName className={isProfilePage ? "profile" : ""}>
             <a href={`in/${user.shorturl}`}>
-              {user && user.displayName
-                ? user.displayName
-                : "Me"}
+              {user && user && user.displayName ? user.displayName : "Me"}
             </a>
           </UserCardName>
           <UserCardDescription className={isProfilePage ? "profile" : ""}>
             <span>
-              {user &&
-                user.shortDescription &&
-                user.shortDescription}
+              {user && user && user.shortDescription && user.shortDescription}
             </span>
             {isProfilePage && <ProfileCardEducationBox user={user} />}
           </UserCardDescription>
@@ -39,7 +35,7 @@ const ProfileCardUserInfo = (props) => {
           {isProfilePage && <ProfileCardLocation user={user} />}
           {isProfilePage && (
             <UserCardConnections
-              userid={user && user.uid ? user.uid : ""}
+              userid={user && user && user.uid ? user.uid : ""}
             >
               391 connections
             </UserCardConnections>

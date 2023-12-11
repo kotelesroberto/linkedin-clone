@@ -3,11 +3,9 @@ import styled from "styled-components";
 import * as variables from "../../Common/Variables";
 
 const ProfileCardLocation = (props) => {
-  return (
-    <Container>
-      {props.user && props.user.location && props.user.location}
-    </Container>
-  );
+  const user = props.user;
+
+  return <Container>{user && user && user.location}</Container>;
 };
 
 const Container = styled.span`

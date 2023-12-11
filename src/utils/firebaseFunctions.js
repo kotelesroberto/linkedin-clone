@@ -244,7 +244,7 @@ export const ReadContentFromFirebase = async (collectionName, options = {}) => {
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
     // doc.id
-    result.push(doc.data());
+    result.push({ id: doc.id, ...doc.data() });
   });
 
   return result;

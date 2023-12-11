@@ -54,7 +54,7 @@ const ProfileCard = (props) => {
     getUserProfile(profileUid, true)
       .then((result) => {
         console.log("getUserProfile RESULT", result);
-        setProfileUser({ ...result[0] });
+        setProfileUser((prevState) => result);
       })
       .catch((error) => {
         console.error(error.message);
@@ -85,60 +85,45 @@ const ProfileCard = (props) => {
           user={profileUser}
         />
 
-        {isProfilePage && isEditMode && (
+        {isEditMode && (
           <LocalEditButton className="big" onClick={(e) => onClickEdit(e)} />
         )}
-        {isProfilePage && <ProfileCardButtons user={profileUser} />}
-
-        {!isProfilePage && <ProfileCardImpressions profileuid={profileUid} />}
-        {!isProfilePage && <ProfileCardMyItems profileuid={profileUid} />}
+        <ProfileCardButtons user={profileUser} />
       </ProfileCardContainer>
 
-      {isProfilePage && isEditMode && profileUid == props.user.uid && (
+      {isEditMode && profileUid == props.user.uid && (
         <ProfileCardResources iseditmode={isEditMode} profileuid={profileUid} />
       )}
-      {isProfilePage && (
-        <ProfileCardAbout iseditmode={isEditMode} profileuid={profileUid} />
-      )}
-      {isProfilePage && (
-        <ProfileCardFeatured iseditmode={isEditMode} profileuid={profileUid} />
-      )}
-      {isProfilePage && (
-        <ProfileCardActivity iseditmode={isEditMode} profileuid={profileUid} />
-      )}
-      {isProfilePage && (
+      <ProfileCardAbout
+        iseditmode={isEditMode}
+        profileuid={profileUid}
+        user={profileUser}
+      />
+      <ProfileCardFeatured iseditmode={isEditMode} profileuid={profileUid} />
+      <ProfileCardActivity iseditmode={isEditMode} profileuid={profileUid} />
+      {
         <ProfileCardExperience
           iseditmode={isEditMode}
           profileuid={profileUid}
         />
-      )}
-      {isProfilePage && (
-        <ProfileCardEducation iseditmode={isEditMode} profileuid={profileUid} />
-      )}
-      {isProfilePage && (
-        <ProfileCardCertifications
-          iseditmode={isEditMode}
-          profileuid={profileUid}
-        />
-      )}
-      {isProfilePage && (
-        <ProfileCardSkills iseditmode={isEditMode} profileuid={profileUid} />
-      )}
-      {isProfilePage && (
-        <ProfileCardRecommendations
-          iseditmode={isEditMode}
-          profileuid={profileUid}
-        />
-      )}
-      {isProfilePage && (
-        <ProfileCardAwards iseditmode={isEditMode} profileuid={profileUid} />
-      )}
-      {isProfilePage && (
-        <ProfileCardLanguages iseditmode={isEditMode} profileuid={profileUid} />
-      )}
-      {isProfilePage && (
-        <ProfileCardInterests iseditmode={isEditMode} profileuid={profileUid} />
-      )}
+      }
+      <ProfileCardEducation iseditmode={isEditMode} profileuid={profileUid} />
+
+      <ProfileCardCertifications
+        iseditmode={isEditMode}
+        profileuid={profileUid}
+      />
+
+      <ProfileCardSkills iseditmode={isEditMode} profileuid={profileUid} />
+
+      <ProfileCardRecommendations
+        iseditmode={isEditMode}
+        profileuid={profileUid}
+      />
+
+      <ProfileCardAwards iseditmode={isEditMode} profileuid={profileUid} />
+      <ProfileCardLanguages iseditmode={isEditMode} profileuid={profileUid} />
+      <ProfileCardInterests iseditmode={isEditMode} profileuid={profileUid} />
 
       {!isEditMode && <ShowMore showon="mobile" onclickevent={toggleView} />}
     </>

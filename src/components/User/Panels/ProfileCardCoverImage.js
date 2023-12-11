@@ -14,7 +14,7 @@ const ProfileCardCoverImage = (props) => {
 
   return (
     <CoverImage className={isProfilePage ? "big" : ""}>
-      {user && user.teaserImage ? (
+      {user && user && user.teaserImage ? (
         <img
           src={user.teaserImage}
           alt={`Cover image of ${user.displayName}`}

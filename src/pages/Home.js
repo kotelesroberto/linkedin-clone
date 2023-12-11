@@ -10,7 +10,6 @@ import Header from "../components/Header/Header";
 import Wall from "../components/Home/Wall/Wall";
 import LeftCol from "../components/Home/LeftCol/LeftCol";
 import RightCol from "../components/Home/RightCol/RightCol";
-import PostModal from "../components/Home/Wall/PostModal";
 
 import { actionSetShowModal, setCurrentURLAPI } from "../redux/actions/actions";
 
@@ -42,20 +41,16 @@ const Home = (props) => {
 
   return (
     <DocumentTitle title={"(6) Feed | RuleX by Robert Koteles"}>
-      <>
-        {/* {!props.user && <Navigate to="/" replace />} */}
-        {props.user && (
-          <Container>
-            <Header />
-            <Section>
-              <LeftCol />
-              <Wall />
-              <RightCol />
-            </Section>
-            <PostModal />
-          </Container>
-        )}
-      </>
+      {props.user && (
+        <Container>
+          <Header />
+          <Section>
+            <LeftCol />
+            <Wall />
+            <RightCol />
+          </Section>
+        </Container>
+      )}
     </DocumentTitle>
   );
 };

@@ -12,8 +12,6 @@ import RightCol from "../components/Profile/RightCol/RightCol";
 import { connect } from "react-redux";
 import { actionSetShowModal, setCurrentURLAPI } from "../redux/actions/actions";
 
-import PostModal from "../components/Home/Wall/PostModal";
-
 const ProfilePage = (props) => {
   const showModal = props.showModal;
   const setShowModal = props.setShowModal;
@@ -32,16 +30,13 @@ const ProfilePage = (props) => {
 
   return (
     <DocumentTitle title={"(6) Feed | RuleX by Robert Koteles"}>
-      <>
-        <Container>
-          <Header />
-          <Section>
-            <LeftCol />
-            <RightCol />
-          </Section>
-        </Container>
-        {props.user && <PostModal />}
-      </>
+      <Container>
+        <Header />
+        <Section>
+          <LeftCol />
+          <RightCol />
+        </Section>
+      </Container>
     </DocumentTitle>
   );
 };

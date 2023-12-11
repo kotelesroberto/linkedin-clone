@@ -52,18 +52,10 @@ const ProfileCardMini = (props) => {
           user={profileUser}
         />
         <ProfileCardImpressions
-          userid={
-            profileUser && profileUser.uid
-              ? profileUser.uid
-              : ""
-          }
+          userid={profileUser && profileUser.uid ? profileUser.uid : ""}
         />
         <ProfileCardMyItems
-          userid={
-            profileUser && profileUser.uid
-              ? profileUser.uid
-              : ""
-          }
+          userid={profileUser && profileUser.uid ? profileUser.uid : ""}
         />
       </ProfileCardContainer>
     </>
@@ -73,20 +65,6 @@ const ProfileCardMini = (props) => {
 const ProfileCardContainer = styled(Card)`
   overflow: visible;
   position: relative;
-`;
-
-const LocalEditButton = styled(EditButton)`
-  z-index: 100;
-  position: absolute;
-  right: 12px;
-  border: none;
-
-  &.big {
-    &:before {
-      width: 20px;
-      height: 20px;
-    }
-  }
 `;
 
 /*=====  React-redux related functions  ======*/

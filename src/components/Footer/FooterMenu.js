@@ -15,6 +15,10 @@ const FooterMenu = () => {
       category: "General",
       items: [
         {
+          link: "https://www.manypixels.co/gallery",
+          title: "SVG: ManyPixels.co",
+        },
+        {
           link: "/demo",
           title: "Sign Up",
         },

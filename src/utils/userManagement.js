@@ -209,14 +209,24 @@ export const saveUserProfileChanges = async (
   userData,
   callback = () => {}
 ) => {
-  const documentID = userData.extra.id;
+  const documentID = userData.id;
+  const extraDocumentID = userData.extra.id;
+  const extraInformation = { ...userData.extra };
+  extraInformation.extra = {}; // reset
   console.log("saveUserProfileChanges userData: ", userData);
 
   // save post content into Firestore
+  ModifyContentInFirebase("users", documentID, userData, (response) => {
+    // run any callbak function
+    if (typeof callback === "function") {
+      callback.call(this);
+    }
+  });
+
   ModifyContentInFirebase(
     "users-extra-data",
-    documentID,
-    userData.extra,
+    extraDocumentID,
+    extraInformation,
     (response) => {
       // run any callbak function
       if (typeof callback === "function") {

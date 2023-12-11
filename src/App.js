@@ -14,6 +14,8 @@ import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import DemoPage from "./pages/DemoPage";
 import ProfilePage from "./pages/ProfilePage";
+import PostModal from "./components/Home/Wall/PostModal";
+
 import {
   actionGetUserAuth,
   actionSetUserDataIntoStore,
@@ -48,26 +50,34 @@ function App(props) {
 
   return (
     <DocumentTitle title="RuleX clone by Robert Koteles">
-      <Router>
-        <Routes>
-          <Route
-            path="/"
-            element={<LoginPage />}
-            errorElement={<ErrorPage />}
-          />
-          <Route
-            path="/signup"
-            element={<SignUpPage />}
-            errorElement={<ErrorPage />}
-          />
-          <Route path="/home" element={<Home />} errorElement={<ErrorPage />} />
-          <Route path="/demo" element={<DemoPage />} />
-          <Route path="/edit-profile" element={<ProfilePage />} />
-          <Route path="/show-profile" element={<ProfilePage />} />
-          <Route path="/in/*" element={<ProfilePage />} />
-          <Route path="*" element={<Navigate to="/demo" replace />} />
-        </Routes>
-      </Router>
+      <>
+        <Router>
+          <Routes>
+            <Route
+              path="/"
+              element={<LoginPage />}
+              errorElement={<ErrorPage />}
+            />
+            <Route
+              path="/signup"
+              element={<SignUpPage />}
+              errorElement={<ErrorPage />}
+            />
+            <Route
+              path="/home"
+              element={<Home />}
+              errorElement={<ErrorPage />}
+            />
+            <Route path="/demo" element={<DemoPage />} />
+            <Route path="/edit-profile" element={<ProfilePage />} />
+            <Route path="/show-profile" element={<ProfilePage />} />
+            <Route path="/in/*" element={<ProfilePage />} />
+            <Route path="*" element={<Navigate to="/demo" replace />} />
+          </Routes>
+        </Router>
+
+        {props.user && <PostModal />}
+      </>
     </DocumentTitle>
   );
 }

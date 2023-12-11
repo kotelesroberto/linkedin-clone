@@ -11,6 +11,10 @@ import {
   saveUserProfileChanges,
 } from "../../utils/userManagement";
 
+// Editorial panels
+import ProfileCardInfo from "../User/EditPanels/ProfileCardInfo";
+import ProfileCardAbout from "../User/EditPanels/ProfileCardAbout";
+
 import { actionSetUserDataIntoStore } from "../././../redux/actions/actions";
 
 const EditProfileData = (props) => {
@@ -23,15 +27,16 @@ const EditProfileData = (props) => {
   const [profileUser, setProfileUser] = useState(props.user);
 
   useEffect(() => {
+    console.log({ profileUser });
+  }, [profileUser]);
+
+  // Get user
+  useEffect(() => {
     if (user && user.uid) {
       getUserProfile(user.uid, true)
         .then((result) => {
           console.log("getUSerProfile EDIT result", result);
           setProfileUser({ ...result });
-
-          // if (user && user.uid && !!result.extra && !result.extra.id) {
-          //   createUserExtraEntry(user.uid, true);
-          // }
         })
         .catch((error) => {
           console.error(error.message);
@@ -48,16 +53,19 @@ const EditProfileData = (props) => {
     } else {
       profileUserCopy[field] = e.target.value;
     }
+
     setProfileUser((prevStatus) => profileUserCopy);
   };
 
+  // Click events
   const clickSaveChanges = (e) => {
     // save changes into Firebase
     saveUserProfileChanges(profileUser.uid, profileUser).then((res) => {
       // need to update the user object in the main Redux store
-      // TODO
+      console.log('Redux profileUser', profileUser);
       props.setUserDataIntoStore(profileUser);
 
+      // close modal popup
       closeModal(e);
     });
   };
@@ -65,16 +73,11 @@ const EditProfileData = (props) => {
   return (
     <>
       <ContainerAside>
+        {panelToEdit == "info" && (
+          <ProfileCardInfo user={profileUser} onchange={onChangeFormelement} />
+        )}
         {panelToEdit == "about" && (
-          <textarea
-            name=""
-            id="postMessage"
-            cols="30"
-            rows="12"
-            onChange={(e) => onChangeFormelement(e, true, "about")}
-            value={profileUser.extra && profileUser.extra.about}
-            autoFocus={true}
-          ></textarea>
+          <ProfileCardAbout user={profileUser} onchange={onChangeFormelement} />
         )}
       </ContainerAside>
       <Footer>
@@ -108,6 +111,21 @@ const ContainerAside = styled.div`
     resize: none;
     /* height: auto; */
     padding: 10px;
+    margin-bottom: 12px;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+  }
+
+  label {
+    width: 100%;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 4px;
   }
 `;
 

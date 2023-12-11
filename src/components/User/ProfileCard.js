@@ -51,7 +51,7 @@ const ProfileCard = (props) => {
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
 
   useEffect(() => {
-    getUserProfile(profileUid)
+    getUserProfile(profileUid, true)
       .then((result) => {
         console.log("getUserProfile RESULT", result);
         setProfileUser({ ...result[0] });

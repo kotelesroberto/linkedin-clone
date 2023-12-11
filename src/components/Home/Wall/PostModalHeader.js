@@ -16,7 +16,17 @@ const PostModalHeader = (props) => {
   const closeModal = props.closeModal;
 
   const headerToShow = useCallback((showModal) => {
-    // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
+    // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting', 'edit-profile--XXX'
+
+    if (showModal.includes("edit-profile--")) {
+      const panelEditText = showModal.replace("edit-profile--", "");
+      return (
+        <h2>
+          Edit: {panelEditText.charAt(0).toUpperCase() + panelEditText.slice(1)}
+        </h2>
+      );
+    }
+
     switch (showModal) {
       case "addPost":
         return <ProfileCardWide />;

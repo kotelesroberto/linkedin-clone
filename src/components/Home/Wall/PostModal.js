@@ -219,6 +219,13 @@ const PostModal = (props) => {
                     Next
                   </ButtonSecondary>
                 )}
+
+                {showModal.includes("edit-profile--") && (
+                  <>
+                    <ButtonPrimary>Cancel</ButtonPrimary>
+                    <ButtonSecondary>Save</ButtonSecondary>
+                  </>
+                )}
               </ButtonRow>
             </Footer>
           </Content>

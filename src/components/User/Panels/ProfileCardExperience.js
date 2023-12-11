@@ -21,9 +21,9 @@ const ProfileCardExperience = (props) => {
   const contentToShow = [
     {
       image: "/upload/logo-williamslea.jpeg",
-      title: "Williams Lea",
-      title2: "May 2021 - Oct 2023 · 2 yrs 6 mos",
-      title3: "London, England, United Kingdom",
+      title: "Senior Frontend Developer",
+      title2: "Williams Lea · Full-time",
+      title3: "May 2021 - Oct 2023 · 2 yrs 6 mos",
       title4: "London, Greater London, United Kingdom",
       content2:
         "My current main projects are the site of https://www.thegazette.co.uk/ (UK's official governmental public record) and British Pharmacopoeia (www.pharmacopoeia.com).My current main projects are the site of https://www.thegazette.co.uk/ (UK's official governmental public record) and British Pharmacopoeia (www.pharmacopoeia.com).",

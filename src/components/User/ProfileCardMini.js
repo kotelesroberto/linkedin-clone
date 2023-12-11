@@ -22,7 +22,7 @@ const ProfileCardMini = (props) => {
   const isProfilePage = false;
 
   useEffect(() => {
-    getUserProfile(props.user.uid)
+    getUserProfile(props.user.uid, false)
       .then((result) => {
         setProfileUser({ ...result[0] });
       })

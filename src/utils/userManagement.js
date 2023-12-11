@@ -29,9 +29,9 @@ import { safeFileName } from "./filename";
  *   email: "koteles.roberto@gmail.com",
  * };
  *
- * CreateUserEntry(user);
+ * createUserEntry(user);
  */
-export const CreateUserEntry = (data) => {
+export const createUserEntry = (data) => {
   let newUser = {
     uid: data.uid ? data.uid : "",
     shortDescription: "",
@@ -50,6 +50,92 @@ export const CreateUserEntry = (data) => {
   return SaveContentIntoFirebase("users", newUser).then((result) => {
     console.log("Creating user is DONE");
   });
+};
+
+/**
+ *
+ * Create exra user document in the 'users-extra-data' collection
+ *
+ * @param {Object} data - Data object
+ *
+ * Usage
+ * ------
+ * const user = {
+ *   email: "koteles.roberto@gmail.com",
+ * };
+ *
+ * createUserEntry(user);
+ */
+export const createUserExtraEntry = (uid) => {
+  // An empty user object is;
+  const userProfileData = {
+    uid: uid ? uid : "",
+    about: "",
+    experience: [
+      {
+        logo: "",
+        name: "",
+        from: "",
+        to: "",
+        location: "",
+        info: "",
+        skills: "",
+      },
+    ],
+    education: [
+      {
+        logo: "",
+        name: "",
+        degree: "",
+        field: "",
+        from: "",
+        to: "",
+        grade: "",
+        info: "",
+      },
+    ],
+    certifications: [
+      {
+        logo: "",
+        name: "",
+        organisation: "",
+        issued: "",
+        info: "",
+        url: "",
+      },
+    ],
+    skills: [],
+    awards: [
+      {
+        title: "",
+        issueBy: "",
+        logo: "",
+        issueDate: "",
+        info: "",
+      },
+    ],
+    languages: [
+      {
+        title: "",
+        level: "",
+      },
+    ],
+    interests: [
+      {
+        name: "",
+        subname: "",
+        logo: "",
+        url: "",
+        info: "",
+      },
+    ],
+  };
+
+  return SaveContentIntoFirebase("users-extra-data", userProfileData).then(
+    (result) => {
+      console.log("Creating user extra data is DONE");
+    }
+  );
 };
 
 /**
@@ -98,8 +184,9 @@ export const getUserProfileID = () => {
  * @param {String} puid - Profile User ID
  * @return {Object} All information of this profile page, as an object
  */
-export const getUserProfile = async (puid) => {
+export const getUserProfile = async (puid, fullProfile) => {
   let profilePageData = {};
+  let profilePageExtraData = {};
 
   console.log("call: getUserProfile");
 
@@ -107,7 +194,27 @@ export const getUserProfile = async (puid) => {
     where: ["uid", "==", puid],
   };
 
-  profilePageData = ReadContentFromFirebase("users", options);
+  if (fullProfile) {
+    profilePageData = ReadContentFromFirebase("users", options);
+    return profilePageData;
+  }
 
-  return profilePageData;
+  if (fullProfile) {
+    return Promise.all([
+      ReadContentFromFirebase("users", options),
+      ReadContentFromFirebase("users-extra-data", options),
+    ]).then(function (valArray) {
+      // valArray[0] is result of promise0
+      // valArray[1] is result of promise1
+
+      return { ...valArray[0], ...valArray[(1, { hasExtra: true })] };
+    });
+
+    // profilePageExtraData.extra = ReadContentFromFirebase(
+    //   "users-extra-data",
+    //   options
+    // );
+  }
+
+  // return { ...profilePageData, ...profilePageExtraData };
 };

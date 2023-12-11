@@ -12,6 +12,8 @@ import {
 } from "../../utils/userManagement";
 
 // Editorial panels
+import ProfileCardAvatar from "../User/EditPanels/ProfileCardAvatar";
+import ProfileCardCoverImage from "../User/EditPanels/ProfileCardCoverImage";
 import ProfileCardInfo from "../User/EditPanels/ProfileCardInfo";
 import ProfileCardAbout from "../User/EditPanels/ProfileCardAbout";
 
@@ -62,7 +64,6 @@ const EditProfileData = (props) => {
     // save changes into Firebase
     saveUserProfileChanges(profileUser.uid, profileUser).then((res) => {
       // need to update the user object in the main Redux store
-      console.log('Redux profileUser', profileUser);
       props.setUserDataIntoStore(profileUser);
 
       // close modal popup
@@ -70,9 +71,36 @@ const EditProfileData = (props) => {
     });
   };
 
+  let saveButtonLabel = "Save";
+  let cancelButtonLabel = "Cancel";
+
+  switch (panelToEdit) {
+    case "coverimage":
+      saveButtonLabel = "Change image";
+      break;
+    case "avatar":
+      saveButtonLabel = "Change user avatar";
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <>
       <ContainerAside>
+        {panelToEdit == "avatar" && (
+          <ProfileCardAvatar
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
+        )}
+        {panelToEdit == "coverimage" && (
+          <ProfileCardCoverImage
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
+        )}
         {panelToEdit == "info" && (
           <ProfileCardInfo user={profileUser} onchange={onChangeFormelement} />
         )}
@@ -82,9 +110,11 @@ const EditProfileData = (props) => {
       </ContainerAside>
       <Footer>
         <ButtonRow>
-          <ButtonPrimary onClick={(e) => closeModal(e)}>Cancel</ButtonPrimary>
+          <ButtonPrimary onClick={(e) => closeModal(e)}>
+            {cancelButtonLabel}
+          </ButtonPrimary>
           <ButtonSecondary onClick={(e) => clickSaveChanges(e)}>
-            Save
+            {saveButtonLabel}
           </ButtonSecondary>
         </ButtonRow>
       </Footer>

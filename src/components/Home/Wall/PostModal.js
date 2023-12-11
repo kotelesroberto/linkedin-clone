@@ -9,6 +9,7 @@ import PostModalHeader from "./PostModalHeader";
 import AddEventForm from "./AddEventForm";
 import UploadInProgress from "./UploadInProgress";
 import EditProfileData from "../../Profile/EditProfileData";
+import ShowImage from "../../User/ShowPanel/ShowImage";
 
 import DropZone from "./DropZone";
 import {
@@ -148,18 +149,21 @@ const PostModal = (props) => {
   };
 
   const clickSaveChanges = (e) => {};
+  let classes = "";
+
+  if (showModal.includes("view-image")) {
+    classes = "view-image";
+  } else if (showModal.includes("edit-profile")) {
+    classes = showModal.split("--")[0].toLowerCase();
+  } else {
+    classes = showModal.toLowerCase();
+  }
 
   return (
     <>
       {!!showModal && (
         <Container>
-          <Content
-            className={
-              showModal.includes("edit-profile")
-                ? showModal.split("--")[0].toLowerCase()
-                : showModal.toLowerCase()
-            }
-          >
+          <Content className={classes}>
             <PostModalHeader showModal={showModal} closeModal={closeModal} />
             <UploadArea>
               {["addPost", "addMedia"].includes(showModal) && (
@@ -206,6 +210,9 @@ const PostModal = (props) => {
                   showModal={showModal}
                   closeModal={closeModal}
                 />
+              )}
+              {showModal.includes("view-image") && (
+                <ShowImage showModal={showModal} closeModal={closeModal} />
               )}
             </UploadArea>
 
@@ -291,6 +298,10 @@ const Content = styled(Card)`
 
   &.edit-profile {
     min-height: 40%;
+  }
+
+  &.view-image {
+    min-height: initial;
   }
 
   @media (max-width: 1024px) {

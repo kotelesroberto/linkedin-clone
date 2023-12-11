@@ -212,7 +212,8 @@ export const saveUserProfileChanges = async (
   const documentID = userData.id;
   const extraDocumentID = userData.extra.id;
   const extraInformation = { ...userData.extra };
-  extraInformation.extra = {}; // reset
+  
+  delete userData.extra; // reset
   console.log("saveUserProfileChanges userData: ", userData);
 
   // save post content into Firestore

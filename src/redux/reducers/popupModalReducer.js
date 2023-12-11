@@ -10,6 +10,7 @@ const popupModalReducer = createSlice({
     popupModal: {
       showModal: "",
       previousShowModal: "",
+      payloadData: {},
     },
   },
   reducers: {
@@ -21,6 +22,8 @@ const popupModalReducer = createSlice({
         popupModal: {
           ...state.popupModal,
           showModal: action.popupModal.showModal,
+          previousShowModal: action.popupModal.showModal,
+          payloadData: action.popupModal.payloadData,
         },
       };
     },

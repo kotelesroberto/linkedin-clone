@@ -175,23 +175,25 @@ export const setPostVisibilityAPI = (e, newVisibility) => {
 
 // Set popup modal visibility
 // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
-export const actionSetShowModal = (newState) => {
+export const actionSetShowModal = (newState, payloadData = {}) => {
   console.log("actionSetShowModal newState", newState);
   return (dispatch) => {
     dispatch({
       type: "popupModalState/setShowModal",
       popupModal: {
         showModal: newState,
+        payloadData,
       },
     });
   };
 };
-export const actionSetPreviousShowModal = (newState) => {
+export const actionSetPreviousShowModal = (newState, payloadData = {}) => {
   return (dispatch) => {
     dispatch({
       type: "popupModalState/setPreviousShowModal",
       popupModal: {
         previousShowModal: newState,
+        payloadData,
       },
     });
   };

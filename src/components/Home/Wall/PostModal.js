@@ -220,7 +220,7 @@ const PostModal = (props) => {
               className={showModal.includes("edit-profile--") ? "hidden" : ""}
             >
               <ButtonRow>
-                {previousShowModal && (
+                {previousShowModal && showModal !== "view-image" && (
                   <ButtonPrimary onClick={gotoBack}>Back</ButtonPrimary>
                 )}
                 {["addPost", "addMedia"].includes(showModal) &&
@@ -241,7 +241,7 @@ const PostModal = (props) => {
                   </ButtonSecondary>
                 )}
 
-                {showModal.includes("edit-profile--") && false && (
+                {showModal.includes("edit-profile--") && (
                   <>
                     <ButtonPrimary onClick={(e) => closeModal(e)}>
                       Cancel
@@ -249,6 +249,14 @@ const PostModal = (props) => {
                     <ButtonSecondary onClick={(e) => clickSaveChanges(e)}>
                       Save
                     </ButtonSecondary>
+                  </>
+                )}
+
+                {showModal === "view-image" && (
+                  <>
+                    <ButtonPrimary onClick={(e) => closeModal(e)}>
+                      Close
+                    </ButtonPrimary>
                   </>
                 )}
               </ButtonRow>

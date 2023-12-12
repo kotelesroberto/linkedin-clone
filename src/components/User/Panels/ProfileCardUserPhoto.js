@@ -18,6 +18,7 @@ const ProfileCardUserPhoto = (props) => {
     url: "/images/avatar.svg",
     alt: "Gneral avatar",
   };
+
   if (user && user && user.photoURL) {
     imageToShow.url = user.photoURL;
     imageToShow.alt = `Photo of ${user.displayName}`;
@@ -40,7 +41,6 @@ const ProfileCardUserPhoto = (props) => {
       <UserPhoto
         status="opentowork"
         className={isProfilePage ? "big" : ""}
-        // onClick={onClickEdit}
         onClick={onClickView}
       >
         <img src={imageToShow.url} alt={imageToShow.alt} />
@@ -59,11 +59,12 @@ const LocalEditButton = styled(EditButton)`
   background-color: ${variables.colors.white};
 `;
 
-/*=====  React-redux related functions  ======*/
-
 const UserPhotoContainer = styled.div`
   position: relative;
 `;
+
+/*=====  React-redux related functions  ======*/
+
 
 // any time the store is updated, mapStateToProps will be called. Expected to return an object
 const mapStateToProps = (state) => {

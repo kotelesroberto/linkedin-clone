@@ -24,4 +24,24 @@ const safeFileName = (length) => {
   return result;
 };
 
-export { getFileExtension, getFileName, safeFileName };
+const handleImageUpload = (e, referencedObj, callback = () => {}) => {
+  const [file] = e.target.files;
+
+  if (file) {
+    const { current } = referencedObj;
+    const reader = new FileReader();
+
+    current.file = file;
+
+    reader.onload = (e) => {
+      current.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+
+    if (typeof callback === "function") {
+      callback.call(this, true);
+    }
+  }
+};
+
+export { getFileExtension, getFileName, safeFileName, handleImageUpload };

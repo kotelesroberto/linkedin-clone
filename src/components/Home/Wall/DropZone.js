@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
 
-import { ButtonSecondary } from "../../Common/Buttons";
+import { ButtonSecondary } from "../../_library/Buttons";
 import PostModalAddPost from "./PostModalAddPost";
 
 const DropZone = (props) => {

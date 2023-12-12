@@ -16,8 +16,8 @@ import React from "react";
 import styled from "styled-components";
 import parse from "html-react-parser";
 
-import { BoxContainer, BoxCardTop, BoxCardContent } from "../../Common/Cards";
-import { EditButton } from "../../Common/Buttons";
+import { BoxContainer, BoxCardTop, BoxCardContent } from "../../_library/Cards";
+import { EditButton } from "../../_library/Buttons";
 
 import { connect } from "react-redux";
 import {

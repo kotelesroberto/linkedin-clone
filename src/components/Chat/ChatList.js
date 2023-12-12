@@ -7,18 +7,30 @@ import { getSafeString } from "../../utils/filename";
 
 const ChatList = (props) => {
   const tab = props.tab;
+  const group = props.group; // 'focused', 'other'
+  const setChatsToOpen = props.setchatstoopen;
+
+  let messagesToShow = messages;
+
+  if (group === "other") {
+    messagesToShow = messages.slice(2).reverse();
+  }
 
   return (
     <Container key={`chat-list=${tab}`}>
-      {messages.map((item) => (
+      {messagesToShow.map((item) => (
         <ChatListItem
           message={item}
-          key={`chat-item-${item.timestamp}-${getSafeString(item.name)}`}
+          key={`chat-item-${item.msgchain[0].timestamp}-${getSafeString(
+            item.name
+          )}`}
+          setchatstoopen={setChatsToOpen}
         />
       ))}
     </Container>
   );
 };
+
 const Container = styled.ul`
   margin: 0;
   padding: 0;

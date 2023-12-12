@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { EditButton } from "../../Common/Buttons";
+import { EditButton } from "../../_library/Buttons";
 import { connect } from "react-redux";
 
 import {

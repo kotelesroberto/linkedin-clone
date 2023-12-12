@@ -4,8 +4,8 @@ import {
   ListSmall,
   ListItemSmallNoHover,
   LIST_SMALL_ICON__BOOKMARK,
-} from "../../Common/Menus";
-import * as variables from "../../Common/Variables";
+} from "../../_library/Menus";
+import * as variables from "../../_library/Variables";
 
 const ProfileCardMyItems = (props) => {
   const profileuid = props.userid;

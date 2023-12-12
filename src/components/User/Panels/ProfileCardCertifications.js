@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 import ProfileCardBox from "./ProfileCardBox";
 import ContentListItems from "./ContentListItems";
 import DiscoverMore from "../../Widgets/DiscoverMore";
-import { ButtonFourth } from "../../Common/Buttons";
+import { ButtonFourth } from "../../_library/Buttons";
 
 const ProfileCardCertifications = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;

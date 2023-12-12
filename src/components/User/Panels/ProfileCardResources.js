@@ -10,7 +10,7 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { ContentList, ContentListItem } from "../../Common/Cards";
+import { ContentList, ContentListItem } from "../../_library/Cards";
 import ProfileCardBox from "./ProfileCardBox";
 import DiscoverMore from "../../Widgets/DiscoverMore";
 

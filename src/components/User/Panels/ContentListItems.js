@@ -15,10 +15,10 @@
  */
 
 import React from "react";
-import { ContentList, ContentListItem } from "../../Common/Cards";
+import { ContentList, ContentListItem } from "../../_library/Cards";
 import styled from "styled-components";
 import parse from "html-react-parser";
-import * as variables from "../../Common/Variables";
+import * as variables from "../../_library/Variables";
 
 const ContentListItems = (props) => {
   const items = props.items;

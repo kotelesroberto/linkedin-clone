@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import Moment from "react-moment";
-import { Card, CardContainer } from "../Common/Cards";
+import { Card, CardContainer } from "../_library/Cards";
 import {
   ListHeader,
   List,
@@ -8,7 +8,7 @@ import {
   ListItemImpressum,
   ListItem,
   LISTICON_INFO_AFTER,
-} from "../Common/Menus";
+} from "../_library/Menus";
 import ShowMore from "./ShowMore";
 
 const LatestNews = () => {

@@ -7,16 +7,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import * as variables from "../../Common/Variables";
+import * as variables from "../../_library/Variables";
 
-import { Card, CardContainer } from "../../Common/Cards";
+import { Card, CardContainer } from "../../_library/Cards";
 import {
   ListSmallHeader,
   ListSmall,
   ListItemSmall,
   ListSmallIcon_Group,
   ListSmallIcon_Plus_After,
-} from "../../Common/Menus";
+} from "../../_library/Menus";
 import DiscoverMore from "../../Widgets/DiscoverMore";
 
 const WidgetRecent = () => {

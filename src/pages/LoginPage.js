@@ -8,7 +8,7 @@ import LoginGoogle from "../components/Login/LoginGoogle";
 import LoginJoin from "../components/Login/LoginJoin";
 import FooterMenu from "../components/Footer/FooterMenu";
 import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
-import { ButtonJoin, ButtonSignIn } from "../components/Common/Buttons";
+import { ButtonJoin, ButtonSignIn } from "../components/_library/Buttons";
 
 import {
   actionSignInGoogleAPI,

@@ -1,6 +1,6 @@
 import React from "react";
 import DocumentTitle from "react-document-title";
-import { ButtonSecondary } from "../components/Common/Buttons";
+import { ButtonSecondary } from "../components/_library/Buttons";
 import styled from "styled-components";
 
 import FooterInlineMenu from "../components/Footer/FooterInlineMenu";

@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { UserPhoto } from "../Common/User";
-import * as variables from "../Common/Variables";
+import { UserPhoto } from "../_library/User";
+import * as variables from "../_library/Variables";
 import { getSafeString } from "../../utils/filename";
 import Moment from "react-moment";
 
 const ChatListItem = (props) => {
   const message = props.message;
+  const setChatsToOpen = props.setchatstoopen;
 
   useEffect(() => {
     // Start the pooled timer which runs every 60 seconds
@@ -16,11 +17,13 @@ const ChatListItem = (props) => {
 
   return (
     <Container>
-      <MessageWrapper>
+      <MessageWrapper
+        onClick={(e) => setChatsToOpen((prevState) => [...prevState, message.id])}
+      >
         <MessagePhoto
           status=""
           isavailable={"true"}
-          key={`chat-item-photo-${message.timestamp}-${getSafeString(
+          key={`chat-item-photo-${message.msgchain[0].timestamp}-${getSafeString(
             message.name
           )}`}
         >
@@ -28,11 +31,11 @@ const ChatListItem = (props) => {
         </MessagePhoto>
         <MessageContent>
           <h5>{message.name}</h5>
-          <span>{message.message}</span>
+          <span>{message.msgchain[0].message}</span>
         </MessageContent>
         <MessageDate>
           <Moment fromNow ago>
-            {new Date(message.timestamp)}
+            {new Date(message.msgchain[0].timestamp)}
           </Moment>
         </MessageDate>
       </MessageWrapper>

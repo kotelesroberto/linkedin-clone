@@ -8,7 +8,7 @@
 
 import React, { useState } from "react";
 import styled from "styled-components";
-import * as variables from "../../Common/Variables";
+import * as variables from "../../_library/Variables";
 
 const ProfileCardImpressions = (props) => {
   const profileuid = props.userid;

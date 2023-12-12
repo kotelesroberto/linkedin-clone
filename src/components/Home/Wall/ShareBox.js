@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import React from "react";
 
-import { UserAvatarPhoto } from "../../Common/User";
-import { ButtonSharePost } from "../../Common/Buttons";
+import { UserAvatarPhoto } from "../../_library/User";
+import { ButtonSharePost } from "../../_library/Buttons";
 import {
   ShareBoxContainer,
   ShareBoxWrapper,
   ShareBoxTop,
   ShareBoxButtons,
-} from "../../Common/ShareBox";
+} from "../../_library/ShareBox";
 import { connect } from "react-redux";
 
 import {

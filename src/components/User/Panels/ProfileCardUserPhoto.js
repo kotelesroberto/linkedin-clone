@@ -1,11 +1,11 @@
 import React from "react";
-import { UserPhoto } from "../../Common/User";
+import { UserPhoto } from "../../_library/User";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import { EditButton } from "../../Common/Buttons";
+import { EditButton } from "../../_library/Buttons";
 
 import { actionSetShowModal } from "../../../redux/actions/actions";
-import * as variables from "../../Common/Variables";
+import * as variables from "../../_library/Variables";
 
 const ProfileCardUserPhoto = (props) => {
   const user = props.user;
@@ -16,8 +16,10 @@ const ProfileCardUserPhoto = (props) => {
 
   let imageToShow = {
     url: "/images/avatar.svg",
-    alt: "Gneral avatar",
+    alt: "General avatar",
   };
+
+  console.log('ProfileCardUserPhotoimageToShow', user);
 
   if (user && user && user.photoURL) {
     imageToShow.url = user.photoURL;

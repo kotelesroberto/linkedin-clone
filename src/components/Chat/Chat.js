@@ -1,27 +1,57 @@
-import React, { useState } from "react";
+/**
+ *
+ * Chat component
+ * @desc This chat component includes two main parts: main panel including the list of chats AND any opened chat message
+ * 2023, Robert Koteles
+ */
+
+import React, { useEffect, useState } from "react";
 import ChatHeader from "./ChatHeader";
 import ChatSearchBox from "./ChatSearchBox";
 import ChatContent from "./ChatContent";
-import DemoChat from "./DemoChat";
+import ChatWindow from "./ChatWindow";
 import styled from "styled-components";
 
-import * as variables from "../Common/Variables";
+import * as variables from "../_library/Variables";
 
 const Chat = () => {
-  const [chatOpen, setChatOpen] = useState(true);
+  const [chatOpen, setChatOpen] = useState(false);
+  const [chatsToOpen, setChatsToOpen] = useState([]);
 
+  // set status of chat window. It can be opened or closed (just header is visible)
   const clickContainer = (e) => {
     setChatOpen(!chatOpen);
   };
 
+  // function of closing chat window
+  const closeChatMessage = (e, messageID) => {
+    e.preventDefault();
+
+    let tempChatsToOpen = chatsToOpen.filter((item) => item !== messageID);
+    setChatsToOpen([...tempChatsToOpen]);
+  };
+
+  const maxChatWindows = 3;
+
   return (
     <Container>
-      <DemoChat />
+      {!!chatsToOpen.length &&
+        chatsToOpen.map((item, index) => {
+          if (index < maxChatWindows) {
+            return (
+              <ChatWindow
+                messageID={item}
+                closeevent={closeChatMessage}
+                key={`chat-window-${item}`}
+              />
+            );
+          }
+        })}
 
-      <ChatPanel className={chatOpen ? "open" : "closed"}>
+      <ChatPanel className={chatOpen ? "main-chat open" : "main-chat closed"} >
         <ChatHeader type="panel" onclick={(e) => clickContainer(e)} />
         <ChatSearchBox />
-        <ChatContent />
+        <ChatContent setchatstoopen={setChatsToOpen} />
       </ChatPanel>
     </Container>
   );
@@ -37,6 +67,7 @@ const Container = styled.div`
   justify-content: flex-end;
   align-items: flex-end;
   z-index: 100;
+  height: 0px;
 `;
 
 const ChatPanel = styled.div`
@@ -47,9 +78,19 @@ const ChatPanel = styled.div`
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;
   margin-right: 12px;
+  z-index: 4;
+
+  @media (max-width: 768px) {
+    width: calc(100% - 24px);
+  }
 
   & > * {
     overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    position: absolute;
+    right: 0;
   }
 `;
 

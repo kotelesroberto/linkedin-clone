@@ -5,7 +5,9 @@ import styled from "styled-components";
 
 import ChatList from "./ChatList";
 
-const ChatContent = () => {
+const ChatContent = (props) => {
+  const setChatsToOpen = props.setchatstoopen;
+
   return (
     <Container>
       <Tabs>
@@ -15,10 +17,14 @@ const ChatContent = () => {
         </TabList>
 
         <TabPanel>
-          <ChatList group="focused" tab="focused" />
+          <ChatList
+            group="focused"
+            tab="focused"
+            setchatstoopen={setChatsToOpen}
+          />
         </TabPanel>
         <TabPanel>
-          <ChatList group="other" tab="other" />
+          <ChatList group="other" tab="other" setchatstoopen={setChatsToOpen} />
         </TabPanel>
       </Tabs>
     </Container>

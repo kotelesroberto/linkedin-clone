@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 
-import { Card } from "../Common/Cards";
+import { Card } from "../_library/Cards";
 
 import ProfileCardCoverImage from "./Panels/ProfileCardCoverImage";
 import ProfileCardUserPhoto from "./Panels/ProfileCardUserPhoto";
@@ -10,7 +10,7 @@ import ProfileCardImpressions from "./Panels/ProfileCardImpressions";
 import ProfileCardMyItems from "./Panels/ProfileCardMyItems";
 
 import styled from "styled-components";
-import { EditButton } from "../Common/Buttons";
+import { EditButton } from "../_library/Buttons";
 
 import { getUserProfile } from "../../utils/userManagement";
 

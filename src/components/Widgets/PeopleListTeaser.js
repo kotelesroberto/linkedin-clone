@@ -9,11 +9,11 @@
  */
 
 import React, { useEffect, useRef, useState } from "react";
-import { Card, CardContainer } from "../Common/Cards";
-import { ListHeader } from "../Common/Menus";
+import { Card, CardContainer } from "../_library/Cards";
+import { ListHeader } from "../_library/Menus";
 import DiscoverMore from "../Widgets/DiscoverMore";
 import Avatar from "../User/Avatar";
-import { UserAvatarList } from "../Common/User";
+import { UserAvatarList } from "../_library/User";
 import ShowMore from "./ShowMore";
 
 const PeopleListTeaser = (props) => {

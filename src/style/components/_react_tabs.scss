@@ -1,0 +1,14 @@
+body {
+  .react-tabs__tab {
+    border-color: #e8e8e8;
+    font-size: 14px;
+
+    &--selected {
+      font-weight: bold;
+    }
+
+    &-list {
+      border-color: #e8e8e8;
+    }
+  }
+}

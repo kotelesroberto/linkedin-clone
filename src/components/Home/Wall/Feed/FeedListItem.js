@@ -11,21 +11,21 @@ import Moment from "react-moment";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
-import { Card, CardContainer } from "../../../Common/Cards";
-import { UserAvatarPhoto } from "../../../Common/User";
-import { SocialCounts, SocialCountItem } from "../../../Common/FeedItems";
+import { Card, CardContainer } from "../../../_library/Cards";
+import { UserAvatarPhoto } from "../../../_library/User";
+import { SocialCounts, SocialCountItem } from "../../../_library/FeedItems";
 import {
   IconButtonRow,
   IconGlobe,
   ButtonActionContainer,
   ButtonAction,
-} from "../../../Common/Icons";
+} from "../../../_library/Icons";
 
 import FeedListItemImage from "./FeedListItemImage";
 import FeedListItemVideo from "./FeedListItemVideo";
 import FeedListItemComments from "./FeedListItemComments";
 import { doLike } from "../../../../utils/manageLikes";
-import * as variables from "../../../Common/Variables";
+import * as variables from "../../../_library/Variables";
 
 const FeedListItem = (props) => {
   const parentKey = props.parentkey;

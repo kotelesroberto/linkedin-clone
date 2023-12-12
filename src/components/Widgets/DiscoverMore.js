@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import * as variables from "../Common/Variables";
+import * as variables from "../_library/Variables";
 
 const DiscoverMore = (props) => {
   const [firsTitle, setFirsTitle] = useState(true);

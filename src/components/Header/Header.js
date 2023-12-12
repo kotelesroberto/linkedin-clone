@@ -6,7 +6,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import * as variables from "../Common/Variables";
+import * as variables from "../_library/Variables";
 import { connect } from "react-redux";
 import { actionSignOutAPI } from "../../redux/actions/actions";
 

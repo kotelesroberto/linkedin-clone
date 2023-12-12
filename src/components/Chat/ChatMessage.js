@@ -1,18 +1,47 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import ChatWriteMessage from "./ChatWriteMessage";
 import ChatPartner from "./ChatPartner";
 
 const ChatMessage = (props) => {
   const message = props.message;
+  const [chatFlow, setChatFlow] = useState([]);
+  const msgWrapperRef = useRef();
+
+  // load message
+  useEffect(() => {
+    setChatFlow(message.msgchain);
+  }, [message.id]);
+
+  // always scroll to the latest message
+  useEffect(() => {
+    msgWrapperRef.current.scrollTop = msgWrapperRef.current.scrollHeight;
+  }, [chatFlow]);
 
   return (
     <Container>
-      <ChatMessageWrapper>
-        <ChatPartner>{message.message}</ChatPartner>
-        <ChatPartner part="me">{message.message}</ChatPartner>
+      <ChatMessageWrapper ref={msgWrapperRef}>
+        <ChatPartner
+          part={"me"}
+          key={`chat-${message.id}-partner-demo-message`}
+        >
+          <span style={{ color: "red" }}>
+            Any conversation added here <strong>won't be saved</strong> in this DEMO!
+          </span>
+        </ChatPartner>
+
+        {!!chatFlow &&
+          chatFlow.map((item, index) => (
+            <ChatPartner
+              author={{ photo: message.photo, name: message.name }}
+              part={!!item.part && item.part}
+              key={`chat-${message.id}-partner-${index}`}
+            >
+              {item && item.message}
+            </ChatPartner>
+          ))}
       </ChatMessageWrapper>
-      <ChatWriteMessage />
+      <ChatWriteMessage chatflow={chatFlow} setchatflow={setChatFlow} />
     </Container>
   );
 };

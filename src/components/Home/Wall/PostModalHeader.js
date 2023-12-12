@@ -1,9 +1,9 @@
 import React, { useCallback } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import * as variables from "../../Common/Variables";
+import * as variables from "../../_library/Variables";
 
-import { ButtonActionContainer, ButtonAction } from "../../Common/Icons";
+import { ButtonActionContainer, ButtonAction } from "../../_library/Icons";
 import ProfileCardWide from "../../User/ProfileCardWide";
 
 import {

@@ -9,11 +9,11 @@ import React, { useEffect, useRef, useState, useMemo } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
-import { ButtonNewPost } from "../../../Common/Buttons";
+import { ButtonNewPost } from "../../../_library/Buttons";
 import FeedListItem from "./FeedListItem";
 
 import { actionIsImagesUploadDone } from "../../../../redux/actions/actions";
-import * as variables from "../../../Common/Variables";
+import * as variables from "../../../_library/Variables";
 
 // firebase related
 import {

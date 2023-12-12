@@ -4,33 +4,35 @@ import ChatMessage from "./ChatMessage";
 import styled from "styled-components";
 import { messages } from "../../utils/demoData";
 
-import * as variables from "../Common/Variables";
+import * as variables from "../_library/Variables";
 
-const DemoChat = () => {
+const ChatWindow = (props) => {
+  const messageID = props.messageID;
+  const closeEvent = props.closeevent;
   const [chatOpen, setChatOpen] = useState(true);
+  const [message, setMessage] = useState("");
 
-  let demoUser = {
-    name: "John",
-    photoUrl: "images/demo/avatar-girl.svg",
-  };
+  // after loading this component the proper message should be selected
+  useEffect(() => {
+    const selectedMessage = messages.filter((item) => item.id === messageID);
+    setMessage((prev) => selectedMessage[0]);
+  }, []);
 
+  // when clicking on the header of the chat window, it should toggle the window
   const clickContainer = (e) => {
     setChatOpen(!chatOpen);
   };
 
-  const [message, setMessage] = useState("");
-
-  useEffect(() => {
-    const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-    setMessage((prev) => randomMessage);
-  }, []);
-
   return (
-    <ChatPanel className={chatOpen ? "open" : "closed"}>
+    <ChatPanel
+      className={chatOpen ? "open" : "closed"}
+      key={`chat-message-${messageID}`}
+    >
       <ChatHeader
         message={message}
         type="message"
         onclick={(e) => clickContainer(e)}
+        closeevent={closeEvent}
       />
       <ChatMessage message={message} />
     </ChatPanel>
@@ -46,10 +48,21 @@ const ChatPanel = styled.div`
   border-top-left-radius: 12px;
   transition: max-height 0.3s;
   margin-right: 12px;
+  z-index: 50;
+
+  @media (max-width: 768px) {
+    width: calc(100% - 24px);
+  }
 
   & > * {
     overflow: hidden;
   }
+
+  & + .main-chat {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
 `;
 
-export default DemoChat;
+export default ChatWindow;

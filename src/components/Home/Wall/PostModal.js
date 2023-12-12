@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import * as variables from "../../Common/Variables";
-import { Card } from "../../Common/Cards";
-import { ButtonPrimary, ButtonSecondary } from "../../Common/Buttons";
-import { IconButtonRow } from "../../Common/Icons";
+import * as variables from "../../_library/Variables";
+import { Card } from "../../_library/Cards";
+import { ButtonPrimary, ButtonSecondary } from "../../_library/Buttons";
+import { IconButtonRow } from "../../_library/Icons";
 import PostModalHeader from "./PostModalHeader";
 import AddEventForm from "./AddEventForm";
 import UploadInProgress from "./UploadInProgress";
-import EditProfileData from "../../Profile/EditProfileData";
+import EditProfileData from "../../User/EditPanels/EditProfileData";
 import ShowImage from "../../User/ShowPanel/ShowImage";
 
 import DropZone from "./DropZone";

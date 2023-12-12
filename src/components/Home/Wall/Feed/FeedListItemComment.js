@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import Moment from "react-moment";
 import { useNavigate } from "react-router-dom";
-import * as variables from "../../../Common/Variables";
+import * as variables from "../../../_library/Variables";
 
-import { SocialCountButton } from "../../../Common/Buttons";
-import { SocialCounts, SocialCountItem } from "../../../Common/FeedItems";
-import { UserAvatarPhoto } from "../../../Common/User";
+import { SocialCountButton } from "../../../_library/Buttons";
+import { SocialCounts, SocialCountItem } from "../../../_library/FeedItems";
+import { UserAvatarPhoto } from "../../../_library/User";
 
 const FeedListItemComment = (props) => {
   const item = props.item;

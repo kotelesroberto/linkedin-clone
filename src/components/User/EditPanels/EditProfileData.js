@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import * as variables from "../Common/Variables";
+import * as variables from "../../_library/Variables";
 
-import { ButtonPrimary, ButtonSecondary } from "../Common/Buttons";
+
+import { ButtonPrimary, ButtonSecondary } from "../../_library/Buttons";
 
 import {
   getUserProfile,
   saveUserProfileChanges,
-} from "../../utils/userManagement";
+} from "../../../utils/userManagement";
 
-import { UploadFile } from "../../utils/firebaseFunctions";
+import { UploadFile } from "../../../utils/firebaseFunctions";
 
 // Editorial panels
-import ProfileCardAvatar from "../User/EditPanels/ProfileCardAvatar";
-import ProfileCardCoverImage from "../User/EditPanels/ProfileCardCoverImage";
-import ProfileCardInfo from "../User/EditPanels/ProfileCardInfo";
-import ProfileCardAbout from "../User/EditPanels/ProfileCardAbout";
-import ProfileCardFeatured from "../User/EditPanels/ProfileCardFeatured";
-import ProfileCardActivity from "../User/EditPanels/ProfileCardActivity";
-import ProfileCardEducation from "../User/EditPanels/ProfileCardEducation";
-import ProfileCardCertifications from "../User/EditPanels/ProfileCardCertifications";
-import ProfileCardSkills from "../User/EditPanels/ProfileCardSkills";
-import ProfileCardAwards from "../User/EditPanels/ProfileCardAwards";
-import ProfileCardLanguages from "../User/EditPanels/ProfileCardLanguages";
-import ProfileCardInterests from "../User/EditPanels/ProfileCardInterests";
+import ProfileCardAvatar from "../../User/EditPanels/ProfileCardAvatar";
+import ProfileCardCoverImage from "../../User/EditPanels/ProfileCardCoverImage";
+import ProfileCardInfo from "../../User/EditPanels/ProfileCardInfo";
+import ProfileCardAbout from "../../User/EditPanels/ProfileCardAbout";
+import ProfileCardFeatured from "../../User/EditPanels/ProfileCardFeatured";
+import ProfileCardActivity from "../../User/EditPanels/ProfileCardActivity";
+import ProfileCardEducation from "../../User/EditPanels/ProfileCardEducation";
+import ProfileCardCertifications from "../../User/EditPanels/ProfileCardCertifications";
+import ProfileCardSkills from "../../User/EditPanels/ProfileCardSkills";
+import ProfileCardAwards from "../../User/EditPanels/ProfileCardAwards";
+import ProfileCardLanguages from "../../User/EditPanels/ProfileCardLanguages";
+import ProfileCardInterests from "../../User/EditPanels/ProfileCardInterests";
 
-import { actionSetUserDataIntoStore } from "../././../redux/actions/actions";
+import { actionSetUserDataIntoStore } from "../../././../redux/actions/actions";
 
 const EditProfileData = (props) => {
   const showModal = props.showModal;

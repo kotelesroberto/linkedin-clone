@@ -2,7 +2,7 @@ import React from "react";
 import DocumentTitle from "react-document-title";
 import { connect } from "react-redux";
 import styled from "styled-components";
-import * as variables from "../components/Common/Variables";
+import * as variables from "../components/_library/Variables";
 
 import RegisterForm from "../components/Login/RegisterForm";
 import LoginGoogle from "../components/Login/LoginGoogle";
@@ -16,7 +16,7 @@ import {
 
 import { Navigate, useNavigate } from "react-router-dom";
 
-import { Card } from "../components/Common/Cards";
+import { Card } from "../components/_library/Cards";
 
 const SignUpPage = (props) => {
   const navigate = useNavigate();

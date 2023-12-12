@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./Login.scss";
 import styled from "styled-components";
 
-import { ButtonSecondary } from "../Common/Buttons";
-import * as variables from "../Common/Variables";
+import { ButtonSecondary } from "../_library/Buttons";
+import * as variables from "../_library/Variables";
 
 const RegisterForm = (props) => {
   const [signupEmail, setSignupEmail] = useState("");

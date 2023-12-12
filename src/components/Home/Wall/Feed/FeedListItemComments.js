@@ -9,15 +9,15 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 import Moment from "react-moment";
-import * as variables from "../../../Common/Variables";
+import * as variables from "../../../_library/Variables";
 
 import {
   ShareBoxContainer,
   ShareBoxWrapper,
   ShareBoxTop,
-} from "../../../Common/ShareBox";
-import { UserAvatarPhoto } from "../../../Common/User";
-import { ButtonSecondary } from "../../../Common/Buttons";
+} from "../../../_library/ShareBox";
+import { UserAvatarPhoto } from "../../../_library/User";
+import { ButtonSecondary } from "../../../_library/Buttons";
 import FeedListItemComment from "./FeedListItemComment";
 import {
   SaveContentIntoFirebase,

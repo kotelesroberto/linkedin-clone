@@ -1,28 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import { UserPhoto } from "../Common/User";
-import * as variables from "../Common/Variables";
+import { UserPhoto } from "../_library/User";
+import * as variables from "../_library/Variables";
 import { connect } from "react-redux";
-import {
-  IconButtonRow,
-  IconGlobe,
-  ButtonActionContainer,
-  ButtonAction,
-} from "../Common/Icons";
+import { ButtonActionContainer, ButtonAction } from "../_library/Icons";
 
 const ChatHeader = (props) => {
+  const closeEvent = props.closeevent;
   const onClick = props.onclick;
-  const sender = props.sender;
   const message = props.message;
   const type = props.type;
 
-  console.log({ sender });
   let displayName = "";
   let photoUrl = "/images/avatar.svg";
   let userStatus = "opentowork";
 
   if (message) {
-    // opening a message
+    // opening a valid message
     displayName = message.name;
     photoUrl = message.photo;
   } else {
@@ -32,13 +26,13 @@ const ChatHeader = (props) => {
   }
 
   return (
-    <Container onClick={(e) => onClick(e)}>
+    <Container>
       <UserPhoto status={userStatus}>
         <img src={photoUrl} alt={displayName} />
         <UserIsOnline />
       </UserPhoto>
       <RightCol>
-        <span>Messaging</span>
+        <span onClick={(e) => onClick(e)}>Messaging</span>
 
         {type == "panel" && (
           <FeedItemActions>
@@ -47,6 +41,7 @@ const ChatHeader = (props) => {
                 src="/images/ellipsis.svg"
                 alt="Open dropdown"
                 className="icon-arrow"
+                title="DEMO"
               />
             </FeedItemAction>
             <FeedItemAction>
@@ -54,9 +49,10 @@ const ChatHeader = (props) => {
                 src="/images/edit-icon.svg"
                 alt="New message"
                 className="icon-edit"
+                title="DEMO"
               />
             </FeedItemAction>
-            <FeedItemAction>
+            <FeedItemAction onClick={(e) => onClick(e)}>
               <img
                 src="/images/arrow-down-small.svg"
                 alt="Show/Hide Chat"
@@ -70,18 +66,20 @@ const ChatHeader = (props) => {
             <FeedItemAction>
               <img
                 src="/images/ellipsis.svg"
-                alt="Open dropdown"
+                alt="Message options"
                 className="icon-arrow"
+                title="DEMO"
               />
             </FeedItemAction>
             <FeedItemAction>
               <img
                 src="/images/icon-maximize.svg"
-                alt="New message"
+                alt="Maximize"
                 className="icon-maximize"
+                title="DEMO"
               />
             </FeedItemAction>
-            <FeedItemAction>
+            <FeedItemAction onClick={(e) => closeEvent(e, message.id)}>
               <img
                 src="/images/icon-close.svg"
                 alt="Close Chat"
@@ -135,7 +133,9 @@ const RightCol = styled.div`
   width: 100%;
 
   span {
-    padding-left: 8px;
+    display: block;
+    width: 100%;
+    padding: 12px 8px 12px 8px;
     font-weight: 700;
   }
 `;
@@ -166,8 +166,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {};
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(ChatHeader);
+export default connect(mapStateToProps)(ChatHeader);

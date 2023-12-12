@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { UserPhoto } from "../Common/User";
-import * as variables from "../Common/Variables";
+import { UserPhoto } from "../_library/User";
+import * as variables from "../_library/Variables";
 import { connect } from "react-redux";
 import { setPostVisibilityAPI } from "../../redux/actions/actions";
 

@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import * as variables from "../Common/Variables";
+import * as variables from "../_library/Variables";
 
-const ChatWriteMessage = () => {
+const ChatWriteMessage = (props) => {
+  const chatFlow = props.chatflow;
+  const setChatFlow = props.setchatflow;
+  const [newMessage, setNewMessage] = useState("");
+
+  // if user hits the Enter key, message shoud be sent
+  const onKeyDown = (e) => {
+    if (e.key === "Enter") {
+      const updatedChatFlow = [...chatFlow];
+      updatedChatFlow.push({
+        message: newMessage,
+        timestamp: Date.now(),
+        part: "me",
+      });
+
+      // add new message to the message chain/flow
+      setChatFlow((chatFlow) => updatedChatFlow);
+
+      // reset new message in the input field
+      setNewMessage("");
+    }
+  };
+
   return (
     <Container>
       <Search>
         <div>
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Write message..."
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
+            onKeyDown={onKeyDown}
+          />
         </div>
         <SearchIcon>
           <img src="/images/search-icon.svg" alt="Start search" />
@@ -54,10 +82,6 @@ const Search = styled.div`
       border-color: ${variables.colors.border3};
       vertical-align: middle;
       transition: all 0.3s;
-
-      @media (max-width: 1024px) {
-        display: none;
-      }
     }
   }
 `;
@@ -72,10 +96,6 @@ const SearchIcon = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
-  @media (max-width: 1024px) {
-    display: none;
-  }
 `;
 
 const FilterIcon = styled(SearchIcon)`

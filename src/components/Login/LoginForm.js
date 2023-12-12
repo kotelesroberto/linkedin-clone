@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./Login.scss";
 import styled from "styled-components";
 
-import * as variables from "../Common/Variables";
-import { ButtonSecondary } from "../Common/Buttons";
+import * as variables from "../_library/Variables";
+import { ButtonSecondary } from "../_library/Buttons";
 
 const LoginForm = (props) => {
   const [loginEmail, setLoginEmail] = useState("test@gmail.com");

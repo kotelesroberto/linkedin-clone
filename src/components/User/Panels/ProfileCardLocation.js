@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import * as variables from "../../Common/Variables";
+import * as variables from "../../_library/Variables";
 
 const ProfileCardLocation = (props) => {
   const user = props.user;

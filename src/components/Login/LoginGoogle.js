@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { ButtonWithImage } from "../Common/Buttons";
+import { ButtonWithImage } from "../_library/Buttons";
 
 const LoginGoogle = (props) => {
   const signInGoogle = () => props.parentProps.signInGoogle();

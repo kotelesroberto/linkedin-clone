@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from "react";
 import styled from "styled-components";
 
-import { ButtonSecondary, ButtonEmoji } from "../../Common/Buttons";
+import { ButtonSecondary, ButtonEmoji } from "../../_library/Buttons";
 
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";

@@ -5,9 +5,9 @@ import {
   UserAvatarDetails,
   UserName,
   UserPosition,
-} from "../Common/User";
+} from "../_library/User";
 
-import { ButtonFollow } from "../Common/Buttons";
+import { ButtonFollow } from "../_library/Buttons";
 
 const Avatar = (props) => {
   return (

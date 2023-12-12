@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 import { renderUploadedImageLocaly } from "../../../utils/filename";
-import * as variables from "../../Common/Variables";
+import * as variables from "../../_library/Variables";
 
 const ProfileCardCoverImage = (props) => {
   const user = props.user;

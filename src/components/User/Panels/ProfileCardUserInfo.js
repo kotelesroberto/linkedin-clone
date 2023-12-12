@@ -88,6 +88,10 @@ const UserCardDescription = styled.span`
   display: block;
   margin-top: 4px;
 
+  span {
+    color: ${variables.colors.userCardDescription};
+  }
+
   &.profile {
     color: ${variables.colors.colorFont};
     font-size: 16px;

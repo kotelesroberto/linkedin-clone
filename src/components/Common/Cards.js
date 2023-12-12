@@ -67,6 +67,10 @@ export const ContentListItem = styled.li`
   opacity: 1;
   transition: max-height 0.3s, opacity 0.1s, padding 0.1s;
 
+  &:has(+ .closed) {
+    border: none;
+  }
+
   &:last-child {
     border: none;
   }

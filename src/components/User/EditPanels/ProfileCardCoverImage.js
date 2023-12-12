@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
-import { handleImageUpload } from "../../../utils/filename";
+import { renderUploadedImageLocaly } from "../../../utils/filename";
 import * as variables from "../../Common/Variables";
 
 const ProfileCardCoverImage = (props) => {
   const user = props.user;
-  const [newImage, setNewImage] = useState("");
+  const setUploadedFiles = props.setuploadedfiles;
 
   // referencing to image DOM element and to thumbnail
   const uploadedImage = useRef(null);
@@ -21,6 +21,12 @@ const ProfileCardCoverImage = (props) => {
     imageToShow.alt = `Cover image of ${user.displayName}`;
   }
 
+  const onChange = (e) => {
+    renderUploadedImageLocaly(e, uploadedImage, (resp) => {
+      setUploadedFiles([e.target.files[0]]);
+    });
+  };
+
   return (
     <CoverImage htmlFor="newImageFile">
       <img src={imageToShow.url} alt={imageToShow.alt} ref={uploadedImage} />
@@ -28,9 +34,7 @@ const ProfileCardCoverImage = (props) => {
       <input
         type="file"
         id="newImageFile"
-        onChange={(e) =>
-          handleImageUpload(e, uploadedImage, (resp) => setNewImage(resp))
-        }
+        onChange={(e) => onChange(e)}
         accept="image/*"
         multiple={false}
         ref={imageUploader}
@@ -79,6 +83,10 @@ const CoverImage = styled.label`
   input {
     opacity: 0;
     position: absolute;
+    left: -9999px;
+    top: 0;
+    width: 0;
+    height: 0;
   }
 `;
 

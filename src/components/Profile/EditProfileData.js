@@ -7,9 +7,10 @@ import { ButtonPrimary, ButtonSecondary } from "../Common/Buttons";
 
 import {
   getUserProfile,
-  createUserExtraEntry,
   saveUserProfileChanges,
 } from "../../utils/userManagement";
+
+import { UploadFile } from "../../utils/firebaseFunctions";
 
 // Editorial panels
 import ProfileCardAvatar from "../User/EditPanels/ProfileCardAvatar";
@@ -30,22 +31,22 @@ import { actionSetUserDataIntoStore } from "../././../redux/actions/actions";
 const EditProfileData = (props) => {
   const showModal = props.showModal;
   const closeModal = props.closeModal;
-
   const panelToEdit = props.panel.replace("edit-profile--", "");
   const user = props.user;
 
+  // for storing user data
   const [profileUser, setProfileUser] = useState(props.user);
 
-  useEffect(() => {
-    console.log({ profileUser });
-  }, [profileUser]);
+  // for storing upoaded file for avatar or cover image
+  const [uploadedFiles, setUploadedFiles] = useState([]);
+  const [uploadedImagesOnServer, setUploadedImagesOnServer] = useState([]);
 
   // Get user
   useEffect(() => {
     if (user && user.uid) {
       getUserProfile(user.uid, true)
         .then((result) => {
-          console.log("getUSerProfile EDIT result", result);
+          console.log("EditProfileData getUSerProfile result", result);
           setProfileUser({ ...result });
         })
         .catch((error) => {
@@ -57,7 +58,7 @@ const EditProfileData = (props) => {
   // General editorial function
   const onChangeFormelement = (e, isExtraInfo = false, field) => {
     e.preventDefault();
-    const profileUserCopy = { ...profileUser };
+    let profileUserCopy = { ...profileUser };
     if (isExtraInfo) {
       profileUserCopy.extra[field] = e.target.value;
     } else {
@@ -69,16 +70,74 @@ const EditProfileData = (props) => {
 
   // Click events
   const clickSaveChanges = (e) => {
-    // save changes into Firebase
-    saveUserProfileChanges(profileUser.uid, profileUser).then((res) => {
-      // need to update the user object in the main Redux store
-      props.setUserDataIntoStore(profileUser);
+    e.preventDefault();
 
-      // close modal popup
-      closeModal(e);
-    });
+    if (panelToEdit === "avatar") {
+      upoadNewUserImage(e, "photoURL");
+    } else if (panelToEdit === "coverimage") {
+      upoadNewUserImage(e, "teaserImage");
+    } else {
+      // save changes into Firebase
+      saveUserProfileChanges(profileUser, true).then((res) => {
+        // need to update the user object in the main Redux store
+        props.setUserDataIntoStore(profileUser);
+
+        // close modal popup
+        closeModal(e);
+      });
+    }
   };
 
+  /**
+   *
+   * Physically upoad the new file to firease
+   * @param {Event} e - Event
+   * @param {string} fieldName - The name of the field of the document from the 'user' collection, such as "photoURL"
+   *
+   */
+  const upoadNewUserImage = (e, fieldName) => {
+    // Upload files and save into Firestore
+    if (uploadedFiles.length) {
+      uploadedFiles.map((item) => {
+        // upload image
+        UploadFile({
+          folder: "images/user",
+          imageAsFile: item,
+          setUrl: (resp) => {
+            // upload the image is successfull
+            // add image to component state
+            let temp = uploadedImagesOnServer.push({ imgUrl: resp });
+            setUploadedImagesOnServer(temp);
+
+            if (uploadedImagesOnServer.length === uploadedFiles.length) {
+              // save the new filename into the user object
+              let profileUserCopy = { ...profileUser };
+              profileUserCopy[fieldName] = resp;
+              setProfileUser(profileUserCopy);
+
+              // save changes into Firebase
+              saveUserProfileChanges(profileUserCopy, false).then((res) => {
+                // need to update the user object in the main Redux store
+                props.setUserDataIntoStore(profileUserCopy);
+
+                // emptying component state
+                setUploadedImagesOnServer([]);
+
+                // close modal popup
+                closeModal(e);
+              });
+            }
+          },
+        });
+      });
+    }
+  };
+
+  /**
+   *
+   * Manage button labels
+   *
+   */
   let saveButtonLabel = "Save";
   let cancelButtonLabel = "Cancel";
 
@@ -100,13 +159,13 @@ const EditProfileData = (props) => {
         {panelToEdit == "avatar" && (
           <ProfileCardAvatar
             user={profileUser}
-            onchange={onChangeFormelement}
+            setuploadedfiles={setUploadedFiles}
           />
         )}
         {panelToEdit == "coverimage" && (
           <ProfileCardCoverImage
             user={profileUser}
-            onchange={onChangeFormelement}
+            setuploadedfiles={setUploadedFiles}
           />
         )}
         {panelToEdit == "info" && (
@@ -245,7 +304,6 @@ const ButtonRow = styled.div`
 
 // any time the store is updated, mapStateToProps will be called. Expected to return an object
 const mapStateToProps = (state) => {
-  console.log({ state });
   return {
     user: state.userState.user,
   };

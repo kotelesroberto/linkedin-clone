@@ -24,7 +24,16 @@ const safeFileName = (length) => {
   return result;
 };
 
-const handleImageUpload = (e, referencedObj, callback = () => {}) => {
+/**
+ *
+ * File upload manager
+ * This function manages the file uplpoad, when user uploads a new file. It will generate a BLOB file and load it as SRC into the refrenced image object
+ * @param {Event} e - Event
+ * @param {RefObject} referencedObj - React referenced image object
+ * @param {Function} callback - Function that runs after all done
+ *
+ */
+const renderUploadedImageLocaly = (e, referencedObj, callback = () => {}) => {
   const [file] = e.target.files;
 
   if (file) {
@@ -44,4 +53,9 @@ const handleImageUpload = (e, referencedObj, callback = () => {}) => {
   }
 };
 
-export { getFileExtension, getFileName, safeFileName, handleImageUpload };
+export {
+  getFileExtension,
+  getFileName,
+  safeFileName,
+  renderUploadedImageLocaly,
+};

@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const ProfileCardEducationBox = (props) => {
   const user = props.user;
-  const education = user.extra ? user.extra.education : '';
+  const education = user.extra ? user.extra.education : "";
 
   // TODO: read it from Firebase as an API JSON object
   // const edication = {
@@ -22,7 +22,10 @@ const ProfileCardEducationBox = (props) => {
             alt={education[0].name}
             aria-label={education[0].name}
           />
-          <div>{education[0].degree}</div>
+          <div>
+            <span>{education[0].name}</span>
+            <span>{education[0].degree}</span>
+          </div>
         </>
       )}
     </Container>
@@ -48,7 +51,14 @@ const Container = styled.div`
   }
   div {
     font-size: 14px;
-    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+
+    span {
+      &:first-child {
+        font-weight: 700;
+      }
+    }
   }
 `;
 

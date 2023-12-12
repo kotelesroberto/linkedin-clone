@@ -78,6 +78,8 @@ export const colors = {
   listItemBackground: "transparent",
   listItemBackgroundHover: "#eaeaea",
 
+  userCardDescription: "#666666",
+
   // Footer
   footerInlineMenuRowBackground: "transparent",
   footerMenuRowBackground: "#f3f2f0",

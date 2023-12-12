@@ -105,9 +105,6 @@ const PostModal = (props) => {
             // add image to component state
             let temp = uploadedImagesOnServer.push({ imgUrl: resp });
             setUploadedImagesOnServer(temp);
-            // const newState = uploadedImagesOnServer;
-            // newState.push({ imgUrl: resp }); // add element as first
-            // setUploadedImagesOnServer((previousState) => [...newState]);
 
             SaveContentIntoFirebase(
               "post-images",
@@ -148,7 +145,6 @@ const PostModal = (props) => {
     erasePostData(e);
   };
 
-  const clickSaveChanges = (e) => {};
   let classes = "";
 
   if (showModal.includes("view-image")) {
@@ -239,17 +235,6 @@ const PostModal = (props) => {
                   >
                     Next
                   </ButtonSecondary>
-                )}
-
-                {showModal.includes("edit-profile--") && (
-                  <>
-                    <ButtonPrimary onClick={(e) => closeModal(e)}>
-                      Cancel
-                    </ButtonPrimary>
-                    <ButtonSecondary onClick={(e) => clickSaveChanges(e)}>
-                      Save
-                    </ButtonSecondary>
-                  </>
                 )}
 
                 {showModal === "view-image" && (

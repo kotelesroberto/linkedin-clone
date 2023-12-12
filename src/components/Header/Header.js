@@ -21,25 +21,25 @@ const Header = (props) => {
     {
       image: "/images/nav-network.svg",
       title: "My Network",
-      url: "#",
+      url: "/demo",
       notification: "0",
     },
     {
       image: "/images/nav-jobs.svg",
       title: "Jobs",
-      url: "#",
+      url: "/demo",
       notification: "0",
     },
     {
       image: "/images/nav-messaging.svg",
       title: "Messaging",
-      url: "#",
+      url: "/demo",
       notification: "0",
     },
     {
       image: "/images/nav-notifications.svg",
       title: "Notifications",
-      url: "#",
+      url: "/demo",
       notification: "6",
     },
   ];

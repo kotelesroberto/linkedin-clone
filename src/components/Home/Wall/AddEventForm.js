@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const AddEventForm = () => {
   return (
     <div>
-      Add an event form here
+      DEMO! TODO: add an event form here
     </div>
   );
 }

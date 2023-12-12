@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
-import { handleImageUpload } from "../../../utils/filename";
+import { renderUploadedImageLocaly } from "../../../utils/filename";
 import * as variables from "../../Common/Variables";
 
 const ProfileCardAvatar = (props) => {
   const user = props.user;
-  const [newImage, setNewImage] = useState(false);
+  const setUploadedFiles = props.setuploadedfiles;
 
   // referencing to image DOM element and to thumbnail
   const uploadedImage = useRef(null);
@@ -14,12 +14,18 @@ const ProfileCardAvatar = (props) => {
 
   let imageToShow = {
     url: "/images/avatar.svg",
-    alt: "Gneral avatar",
+    alt: "General avatar",
   };
   if (user && user && user.photoURL) {
     imageToShow.url = user.photoURL;
     imageToShow.alt = `Photo of ${user.displayName}`;
   }
+
+  const onChange = (e) => {
+    renderUploadedImageLocaly(e, uploadedImage, (resp) => {
+      setUploadedFiles([e.target.files[0]]);
+    });
+  };
 
   return (
     <CoverImage htmlFor="newImageFile">
@@ -41,9 +47,7 @@ const ProfileCardAvatar = (props) => {
       <input
         type="file"
         id="newImageFile"
-        onChange={(e) =>
-          handleImageUpload(e, uploadedImage, (resp) => setNewImage(resp))
-        }
+        onChange={(e) => onChange(e)}
         accept="image/*"
         multiple={false}
         ref={imageUploader}
@@ -87,6 +91,10 @@ const CoverImage = styled.label`
   input {
     opacity: 0;
     position: absolute;
+    left: -9999px;
+    top: 0;
+    width: 0;
+    height: 0;
   }
 `;
 

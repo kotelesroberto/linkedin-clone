@@ -164,6 +164,7 @@ export const getUserProfileID = () => {
  * @return {Object} All information of this profile page, as an object
  */
 export const getUserProfile = async (puid, fullProfile) => {
+  console.log("call: getUserProfile");
   let profilePageData;
   let profilePageExtraData;
 
@@ -205,14 +206,14 @@ export const getUserProfile = async (puid, fullProfile) => {
  * @return {Boolean} Success flag
  */
 export const saveUserProfileChanges = async (
-  puid,
   userData,
+  withExtra = false,
   callback = () => {}
 ) => {
   const documentID = userData.id;
   const extraDocumentID = userData.extra.id;
   const extraInformation = { ...userData.extra };
-  
+
   delete userData.extra; // reset
   console.log("saveUserProfileChanges userData: ", userData);
 
@@ -224,15 +225,17 @@ export const saveUserProfileChanges = async (
     }
   });
 
-  ModifyContentInFirebase(
-    "users-extra-data",
-    extraDocumentID,
-    extraInformation,
-    (response) => {
-      // run any callbak function
-      if (typeof callback === "function") {
-        callback.call(this);
+  if (withExtra) {
+    ModifyContentInFirebase(
+      "users-extra-data",
+      extraDocumentID,
+      extraInformation,
+      (response) => {
+        // run any callbak function
+        if (typeof callback === "function") {
+          callback.call(this);
+        }
       }
-    }
-  );
+    );
+  }
 };

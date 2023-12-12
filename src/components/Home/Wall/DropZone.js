@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import styled from "styled-components";
 
@@ -51,30 +51,25 @@ const DropZone = (props) => {
     closeModal(new Event("click"));
   }, []);
 
-  const {
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragAccept,
-    isDragReject,
-  } = useDropzone({
-    noDragEventsBubbling: false,
-    onDrop: onDrop,
-    onError: onError,
-    autoFocus: true,
-    accept: {
-      "image/*": [],
-      "video/mov": [".mov"],
-      "video/avi": [".avi"],
-      "video/mpeg": [".mpeg"],
-      "video/mpg": [".mpg"],
-    },
-    maxFiles: 3,
-    maxSize: 5000000, // 5 MB
-    multiple: true,
-    autoFocus: true,
-    validator: fileSizeValidator,
-  });
+  const { getRootProps, getInputProps, isDragActive, isDragReject } =
+    useDropzone({
+      noDragEventsBubbling: false,
+      onDrop: onDrop,
+      onError: onError,
+      autoFocus: true,
+      accept: {
+        "image/*": [],
+        "video/mov": [".mov"],
+        "video/avi": [".avi"],
+        "video/mpeg": [".mpeg"],
+        "video/mpg": [".mpg"],
+      },
+      maxFiles: 3,
+      maxSize: 5000000, // 5 MB
+      multiple: true,
+      autoFocus: true,
+      validator: fileSizeValidator,
+    });
 
   return (
     <>

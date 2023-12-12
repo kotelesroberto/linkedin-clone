@@ -16,6 +16,14 @@ import ProfileCardAvatar from "../User/EditPanels/ProfileCardAvatar";
 import ProfileCardCoverImage from "../User/EditPanels/ProfileCardCoverImage";
 import ProfileCardInfo from "../User/EditPanels/ProfileCardInfo";
 import ProfileCardAbout from "../User/EditPanels/ProfileCardAbout";
+import ProfileCardFeatured from "../User/EditPanels/ProfileCardFeatured";
+import ProfileCardActivity from "../User/EditPanels/ProfileCardActivity";
+import ProfileCardEducation from "../User/EditPanels/ProfileCardEducation";
+import ProfileCardCertifications from "../User/EditPanels/ProfileCardCertifications";
+import ProfileCardSkills from "../User/EditPanels/ProfileCardSkills";
+import ProfileCardAwards from "../User/EditPanels/ProfileCardAwards";
+import ProfileCardLanguages from "../User/EditPanels/ProfileCardLanguages";
+import ProfileCardInterests from "../User/EditPanels/ProfileCardInterests";
 
 import { actionSetUserDataIntoStore } from "../././../redux/actions/actions";
 
@@ -106,6 +114,55 @@ const EditProfileData = (props) => {
         )}
         {panelToEdit == "about" && (
           <ProfileCardAbout user={profileUser} onchange={onChangeFormelement} />
+        )}
+
+        {panelToEdit == "featured" && (
+          <ProfileCardFeatured
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
+        )}
+        {panelToEdit == "activity" && (
+          <ProfileCardActivity
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
+        )}
+        {panelToEdit == "education" && (
+          <ProfileCardEducation
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
+        )}
+        {panelToEdit == "certifications" && (
+          <ProfileCardCertifications
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
+        )}
+        {panelToEdit == "skills" && (
+          <ProfileCardSkills
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
+        )}
+        {panelToEdit == "awards" && (
+          <ProfileCardAwards
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
+        )}
+        {panelToEdit == "languages" && (
+          <ProfileCardLanguages
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
+        )}
+        {panelToEdit == "interests" && (
+          <ProfileCardInterests
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
         )}
       </ContainerAside>
       <Footer>

@@ -76,7 +76,7 @@ const ProfileCardAwards = (props) => {
   return (
     <ProfileCardBox
       title="Honors & awards"
-      panel="Awards"
+      panel="awards"
       iseditmode={isEditMode}
       extrabutton={extraButton}
     >

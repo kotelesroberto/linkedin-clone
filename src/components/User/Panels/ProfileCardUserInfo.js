@@ -9,6 +9,8 @@ const ProfileCardUserInfo = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
 
+  const name = user && user && user.displayName ? user.displayName : "Me";
+
   return (
     <UserCardInfo className={isProfilePage ? "profile" : ""}>
       {!user && (
@@ -21,9 +23,7 @@ const ProfileCardUserInfo = (props) => {
       {user && user && (
         <>
           <UserCardName className={isProfilePage ? "profile" : ""}>
-            <a href={`in/${user.shorturl}`}>
-              {user && user && user.displayName ? user.displayName : "Me"}
-            </a>
+            {isProfilePage ? name : <a href={`in/${user.shorturl}`}>{name}</a>}
           </UserCardName>
           <UserCardDescription className={isProfilePage ? "profile" : ""}>
             <span>

@@ -306,6 +306,11 @@ const Content = styled(Card)`
 
   &.edit-profile {
     min-height: 40%;
+    width: 60%;
+
+    @media (max-width: 768px) {
+      width: 90%;
+    }
   }
 
   &.view-image {

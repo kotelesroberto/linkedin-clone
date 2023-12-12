@@ -278,3 +278,61 @@ export const testUserData = (uid) => ({
     },
   ],
 });
+
+export const messages = [
+  {
+    id: 1,
+    photo: "/images/demo/avatar-support-girl.svg",
+    name: "Alice Smith",
+    message:
+      "Competitive salary and benefits package. As a Frontend Developer at the company, you will play a crucial role in designing and implementing user interfaces for our cutting-edge [products/services]. You will work closely with our cross-functional team of designers and backend developers to ensure a smooth and responsive user experience.",
+    timestamp: 1702331640000,
+  },
+  {
+    id: 2,
+    photo: "/images/demo/avatar-man.svg",
+    name: "John Doe",
+    message:
+      "Hey there! I hope this message finds you well. We are currently looking for a talented and motivated Frontend Developer to join our dynamic team at the company. With your exceptional skills and passion for creating seamless user experiences, we believe you would be a great fit for this role.",
+    timestamp: 1702126440000,
+  },
+  {
+    id: 3,
+    photo: "/images/demo/avatar-man-2.svg",
+    name: "Bob Johnson",
+    message: "Just checking in and saying hi. Hope you're doing well! ",
+    timestamp: 1701899640000,
+  },
+  {
+    id: 4,
+    photo: "/images/demo/avatar-girl.svg",
+    name: "Angelina Smith",
+    message:
+      "This role needs strong proficiency in HTML, CSS, and JavaScript. Opportunities for professional growth and development. Exciting projects and the chance to make a real impact.",
+    timestamp: 1702328032774,
+  },
+  {
+    id: 5,
+    photo: "/images/demo/avatar-man.svg",
+    name: "Tom Jones",
+    message:
+      "Hi mate! If you wanna play on my next gig, call me. You know my number, I am waiting for your call. Playing together again will be hillarious!",
+    timestamp: 1702328052774,
+  },
+  {
+    id: 6,
+    photo: "/images/demo/avatar-man.svg",
+    name: "Recrui Terry",
+    message:
+      "I hope you're having a fantastic week. I stumbled upon your profile and was genuinely impressed by your extensive experience in software development. I'd like to introduce you to some exciting opportunities we have available for Frontend Developers at us.",
+    timestamp: 1702328052774,
+  },
+  {
+    id: 7,
+    photo: "/images/demo/avatar-man.svg",
+    name: "Bastar Daniel",
+    message:
+      "We present you with more than 50 diverse Frontend Developer roles that span across the UK, and we also offer remote options. Our esteemed partners include well-known organizations like PlayStation, BBC, Discovery, and many others. What sets hackajob apart is our ability to directly connect you with these industry leaders, as well as various other companies, utilizing our cutting-edge online recruitment platform.",
+    timestamp: 1702328052774,
+  },
+];

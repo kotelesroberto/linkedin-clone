@@ -162,3 +162,8 @@ C -- User is not exist in Firebase--> E{Create an user entry}
 D --> F[Set user information into Redux store]
 E --> F
 ```
+
+## Source of SVG icons
+- https://www.iconninja.com/
+- https://www.svgrepo.com/
+- https://www.manypixels.co/gallery

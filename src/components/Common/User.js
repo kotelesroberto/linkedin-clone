@@ -34,8 +34,7 @@ export const UserAvatarPhoto = styled.div`
   position: relative;
   background-color: ${variables.colors.white};
   border: 2px solid ${variables.colors.white};
-  border-radius: 50%;
-  overflow: hidden;
+
   margin-right: 8px;
   flex-shrink: 0;
 
@@ -44,6 +43,8 @@ export const UserAvatarPhoto = styled.div`
     height: auto;
     position: relative;
     z-index: 2;
+    border-radius: 50%;
+    overflow: hidden;
   }
 
   &:before {
@@ -89,7 +90,7 @@ export const UserPhoto = styled(UserAvatarPhoto)`
         left: 0;
         top: 0;
         z-index: 3;
- `};
+      `};
   }
 `;
 

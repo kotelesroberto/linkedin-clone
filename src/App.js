@@ -15,6 +15,7 @@ import ErrorPage from "./pages/ErrorPage";
 import DemoPage from "./pages/DemoPage";
 import ProfilePage from "./pages/ProfilePage";
 import PostModal from "./components/Home/Wall/PostModal";
+import Chat from "./components/Chat/Chat";
 
 import {
   actionGetUserAuth,
@@ -77,6 +78,7 @@ function App(props) {
         </Router>
 
         {props.user && <PostModal />}
+        {props.user && <Chat />}
       </>
     </DocumentTitle>
   );

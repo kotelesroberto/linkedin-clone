@@ -2,11 +2,12 @@ export const colorDefinitions = {
   white: "#fff",
   black: "#000",
   primaryColor: "#0a66c2",
-  secondaryColor: "",
+  green: "#15e17c",
 };
 
 export const colors = {
   colorFont: colorDefinitions.black,
+  colorFontSoft: "rgba(0, 0, 0, 0.6)",
   errorFont: "#cb112d",
 
   // links

@@ -2,18 +2,18 @@
 =            Filename magic             =
 =============================================*/
 
-const getFileExtension = (filename) => {
+export const getFileExtension = (filename) => {
   let exploded = filename.split(".");
   return exploded[exploded.length - 1];
 };
 
-const getFileName = (filename) => {
+export const getFileName = (filename) => {
   let exploded = filename.split(".");
   exploded.pop();
   return exploded.join(".");
 };
 
-const safeFileName = (length) => {
+export const safeFileName = (length) => {
   var result = "";
   var characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -22,6 +22,11 @@ const safeFileName = (length) => {
     result += characters.charAt(Math.floor(Math.random() * charactersLength));
   }
   return result;
+};
+
+// remove illegal characters from a string
+export const getSafeString = (content) => {
+  return content.replace(/[|&;$%@" <>()+,]/g, "");
 };
 
 /**
@@ -33,7 +38,11 @@ const safeFileName = (length) => {
  * @param {Function} callback - Function that runs after all done
  *
  */
-const renderUploadedImageLocaly = (e, referencedObj, callback = () => {}) => {
+export const renderUploadedImageLocaly = (
+  e,
+  referencedObj,
+  callback = () => {}
+) => {
   const [file] = e.target.files;
 
   if (file) {
@@ -51,11 +60,4 @@ const renderUploadedImageLocaly = (e, referencedObj, callback = () => {}) => {
       callback.call(this, true);
     }
   }
-};
-
-export {
-  getFileExtension,
-  getFileName,
-  safeFileName,
-  renderUploadedImageLocaly,
 };

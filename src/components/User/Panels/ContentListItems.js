@@ -30,14 +30,14 @@ const ContentListItems = (props) => {
       {!!items.length &&
         items.map((item, index) => (
           <ContentListItem
-            key={`${item.title.toLowerCase()}-${index}`}
+            key={`${item.title && item.title.toLowerCase()}-${index}`}
             className={
               maxItemsToShow && index >= maxItemsToShow ? "closed" : ""
             }
           >
             {!!item.image && (
               <ContentListItemImage>
-                <img src={item.image} alt={item.title} />
+                <img src={item.image} alt={item.title && item.title} />
               </ContentListItemImage>
             )}
             <ContentListItemContainer>
@@ -52,6 +52,9 @@ const ContentListItems = (props) => {
               )}
               {!!item.title4 && (
                 <ContentListItemTitle4>{item.title4}</ContentListItemTitle4>
+              )}
+              {!!item.title5 && (
+                <ContentListItemTitle5>{item.title5}</ContentListItemTitle5>
               )}
 
               {!!item.content && (
@@ -113,6 +116,10 @@ const ContentListItemTitle3 = styled.h5`
 `;
 
 const ContentListItemTitle4 = styled(ContentListItemTitle3)``;
+const ContentListItemTitle5 = styled(ContentListItemTitle3)`
+  font-size: 12px;
+  font-style: italic;
+`;
 
 const ContentListItemContent1 = styled.div`
   button {

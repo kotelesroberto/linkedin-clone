@@ -35,17 +35,16 @@ export const peopleMayYouKnow = [
 export const companiesMayYouKnow = [
   {
     name: "Google",
-    position: 'Tech giant',
+    position: "Tech giant",
     avatar: "/upload/logo-google.svg",
     link: "/demo",
   },
   {
     name: "IBM",
-    position: 'Tech giant',
+    position: "Tech giant",
     avatar: "/upload/ibm-logo.svg",
     link: "/demo",
   },
-  
 ];
 
 export const cities = [
@@ -407,5 +406,47 @@ export const messages = [
         timestamp: 1702328052774,
       },
     ],
+  },
+];
+
+export const activity = [
+  {
+    id: 1,
+    type: "posted this",
+    content:
+      "Lorem ipsum dolor sit amet. Et incidunt obcaecati eos dicta deserunt ut nobis sint. Ad optio impedit cum quia galisum est facilis pariatur sed maiores eligendi qui voluptatem blanditiis ea sunt nostrum. A distinctio neque est voluptatem velit qui dolore optio?",
+    image: "/upload/friends-logo.svg",
+    imagetext:
+      "Friends is an American television sitcom created by David Crane and Marta Kauffman, which aired on NBC from September 22, 1994, to May 6, 2004, lasting ten seasons.",
+    timestamp: 1702331640000,
+  },
+  {
+    id: 2,
+    type: "posted this",
+    content: "A distinctio neque est voluptatem velit qui dolore optio?",
+    image: "/upload/amazon-logo.svg",
+    imagetext: "Simply Amazon",
+    timestamp: 1702331640000,
+  },
+
+  {
+    id: 3,
+    type: "educated here",
+    content: "A distinctio neque est voluptatem velit qui dolore optio?",
+    image: "/upload/certified.svg",
+    imagetext:
+      "Achieve your career ambitions in a world-renowned city and supportive learning environment.",
+    timestamp: 1702331640000,
+  },
+
+  {
+    id: 4,
+    type: "earned this award",
+    content:
+      "As head of the bank's US credit business, he got an award of £2.18m.",
+    image: "/upload/icon-award.svg",
+    imagetext:
+      "A new digital innovation award is aimed at media that uses the latest technology to make an improvement in delivery of news services",
+    timestamp: 1702331640000,
   },
 ];

@@ -32,7 +32,7 @@ const ProfileCardAwards = (props) => {
 
   // As we use data with different keys in Friebase from what we need for <ContentListItems /> Component={, we need to transform keys by using a map transformation
   const keyMap = {
-    title: "title", // NAme of the award
+    title: "title", // Name of the award
     content4: "info", // Description
   };
 

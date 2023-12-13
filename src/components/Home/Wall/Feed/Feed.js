@@ -1,6 +1,6 @@
 /**
  * Component
- * Feed
+ * Feed: Posts
  * Feed container
  * 2023, Robert Koteles
  */
@@ -34,7 +34,7 @@ const Feed = (props) => {
 
   useEffect(() => {
     const unsubscribe = getPosts();
-    console.log({feedItems});
+    console.log({ feedItems });
     return () => {
       // cleanup
       if (typeof unsubscribe === "function") {
@@ -201,23 +201,11 @@ const Feed = (props) => {
       <FeedList key="feed-list">
         {feedItems.map((item, index) => (
           <FeedListItem
-            content={{...item}}
+            content={{ ...item }}
             key={`feed-list-item-${item.id}-index`}
             parentkey={`feed-list-item-${item.id}-index`}
             className={`feed-list-item-${item.id}-index`}
           />
-
-          // <p
-          //   content={item}
-          //   key={`feed-list-item-${item.id}-index`}
-          //   parentkey={`feed-list-item-${item.id}-index`}
-          //   className={`feed-list-item-${item.id}-index`}
-          // >
-          //   {item.id}
-          //   {!!item.images.length && (
-          //     <img style={{ width: "200px" }} src={item.images[0].url} />
-          //   )}
-          // </p>
         ))}
       </FeedList>
     </>

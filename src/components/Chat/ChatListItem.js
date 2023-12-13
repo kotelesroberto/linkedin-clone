@@ -73,7 +73,7 @@ const MessagePhoto = styled(UserPhoto)`
   }
 
   &:hover {
-    &:after {
+    &:before {
       content: "";
       display: block;
       position: absolute;
@@ -84,6 +84,18 @@ const MessagePhoto = styled(UserPhoto)`
       background-color: ${variables.colorDefinitions.green};
       z-index: 12;
       border-radius: 50%;
+    }
+    &:after {
+      content: '';
+      width: 20px;
+      height: 20px;
+      border: 1px solid ${variables.colorDefinitions.border4};
+      border-radius: 4px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
+      z-index: 13;
     }
   }
 `;

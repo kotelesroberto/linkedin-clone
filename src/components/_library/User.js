@@ -64,7 +64,7 @@ export const UserAvatarPhoto = styled.div`
     overflow: hidden;
   }
 
-  &:before {
+  /* &:before {
     content: "";
     display: block;
     background: url("./images/photo.svg") center no-repeat;
@@ -75,7 +75,7 @@ export const UserAvatarPhoto = styled.div`
     left: 0;
     top: 0;
     z-index: 1;
-  }
+  } */
 `;
 
 export const UserAvatarDetails = styled.div``;

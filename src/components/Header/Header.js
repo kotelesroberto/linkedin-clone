@@ -27,7 +27,7 @@ const Header = (props) => {
     {
       image: "/images/nav-jobs.svg",
       title: "Jobs",
-      url: "/demo",
+      url: "/jobs",
       notification: "0",
     },
     {

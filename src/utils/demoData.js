@@ -206,6 +206,7 @@ export const testUserDataBlank = (uid) => ({
     },
   ],
 });
+
 export const testUserData = (uid) => ({
   uid: uid ? uid : "",
   about:
@@ -447,6 +448,57 @@ export const activity = [
     image: "/upload/icon-award.svg",
     imagetext:
       "A new digital innovation award is aimed at media that uses the latest technology to make an improvement in delivery of news services",
+    timestamp: 1702331640000,
+  },
+];
+
+export const peopleAlsoViewed = [
+  {
+    name: "Eric Clapton",
+    position: "Guitarist",
+    avatar: "/images/avatar.svg",
+    link: "./in/demo",
+  },
+];
+
+export const jobs = [
+  {
+    image: "/upload/samsung-logo.svg",
+    title: "Senior Frontend Developer",
+    link: "/demo",
+    company: "Samsung",
+    location: "London, England, United Kingdom (Hybrid)",
+    salary: "£70,000/yr - £100,000/yr",
+    active: true,
+    easyapply: true,
+    timestamp: 1702331640000,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  },
+  {
+    image: "/images/demo/logo-tesco.svg",
+    title: "Senior Shelf Filler",
+    link: "/demo",
+    company: "Tesco",
+    location: "London, England, United Kingdom (Hybrid)",
+    salary: "£16,200/yr",
+    active: true,
+    easyapply: true,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    timestamp: 1702331640000,
+  },
+  {
+    image: "/images/demo/london-underground.svg",
+    title: "Gate Operator",
+    link: "/demo",
+    company: "Transport of London",
+    location: "London, England, United Kingdom (Hybrid)",
+    salary: "£21,300/yr",
+    active: true,
+    easyapply: true,
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     timestamp: 1702331640000,
   },
 ];

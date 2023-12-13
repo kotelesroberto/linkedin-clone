@@ -26,7 +26,7 @@ const ChatMessage = (props) => {
           key={`chat-${message.id}-partner-demo-message`}
         >
           <span style={{ color: "red" }}>
-            Any conversation added here <strong>won't be saved</strong> in this DEMO!
+            Any conversation added here <strong>won't be saved</strong> in this DEMO! Oh, and the agent won't answer... ;)
           </span>
         </ChatPartner>
 

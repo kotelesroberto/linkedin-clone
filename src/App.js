@@ -14,6 +14,7 @@ import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
 import DemoPage from "./pages/DemoPage";
 import ProfilePage from "./pages/ProfilePage";
+import JobsPage from "./pages/JobsPage";
 import PostModal from "./components/Home/Wall/PostModal";
 import Chat from "./components/Chat/Chat";
 
@@ -70,6 +71,7 @@ function App(props) {
               errorElement={<ErrorPage />}
             />
             <Route path="/demo" element={<DemoPage />} />
+            <Route path="/jobs" element={<JobsPage />} />
             <Route path="/edit-profile" element={<ProfilePage />} />
             <Route path="/show-profile" element={<ProfilePage />} />
             <Route path="/in/*" element={<ProfilePage />} />

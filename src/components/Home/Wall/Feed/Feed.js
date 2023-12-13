@@ -223,7 +223,7 @@ const FeedSortBy = styled.div`
 
   hr {
     flex-grow: 1;
-    border-top: 1px solid ${variables.colors.border4};
+    border-top: 1px solid ${variables.colors.border};
     margin-right: 8px;
   }
 

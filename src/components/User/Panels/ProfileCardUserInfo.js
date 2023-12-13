@@ -62,7 +62,7 @@ const UserCardIntro = styled.div`
 
 const UserCardInfo = styled.div`
   text-align: center;
-  border-bottom: 1px solid ${variables.colors.border2};
+  border-bottom: 1px solid ${variables.colors.border};
   padding: 0 12px;
   padding-bottom: 16px;
 

@@ -32,7 +32,7 @@ const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   margin-bottom: -12px;
-  border-top: 1px solid ${variables.colors.border2};
+  border-top: 1px solid ${variables.colors.border};
   background-color: ${variables.colors.listItemBackground};
   position: relative;
   z-index: 100;

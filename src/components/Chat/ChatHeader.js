@@ -108,6 +108,7 @@ const Container = styled.div`
     margin: 0 4px 0 0;
     width: 32px;
     height: 32px;
+    align-self: center;
   }
 `;
 

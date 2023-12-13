@@ -77,7 +77,7 @@ const Container = styled.div`
 const ChatPanel = styled.div`
   position: relative;
   width: 300px;
-  background-color: ${variables.colors.white};
+  background-color: ${variables.colorDefinitions.white};
   box-shadow: ${variables.colors.boxShadow4};
   border-top-right-radius: 12px;
   border-top-left-radius: 12px;

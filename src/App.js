@@ -105,8 +105,8 @@ function App(props) {
           </Routes>
         </Router>
 
-        {props.user && <PostModal />}
-        {props.user && <Chat />}
+        {props.user && props.user.email && <PostModal />}
+        {props.user && props.user.email && <Chat />}
         {demoWarning == "show" && (
           <DemoWarningPopup
             demowarning={demoWarning}

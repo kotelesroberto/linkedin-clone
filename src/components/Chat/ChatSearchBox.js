@@ -67,7 +67,7 @@ const Search = styled.div`
       line-height: 1.75;
       font-weight: 400;
       font-size: 14px;
-      border-color: ${variables.colors.border3};
+      border-color: ${variables.colors.border};
       vertical-align: middle;
       transition: all 0.3s;
 

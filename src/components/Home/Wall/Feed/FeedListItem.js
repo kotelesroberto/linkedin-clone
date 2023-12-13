@@ -205,7 +205,7 @@ const FeedSortBy = styled.div`
 
   hr {
     flex-grow: 1;
-    border-top: 1px solid ${variables.colors.border4};
+    border-top: 1px solid ${variables.colors.border};
     margin-right: 8px;
   }
 
@@ -272,7 +272,7 @@ const FeedListItemImages = styled.div`
 
 const FeedListItemButtons = styled(IconButtonRow)`
   justify-content: space-between;
-  border-top: 1px solid ${variables.colors.border4};
+  border-top: 1px solid ${variables.colors.border};
   margin-top: 12px;
   padding-top: 8px;
 

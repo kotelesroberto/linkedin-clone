@@ -2,7 +2,7 @@ import styled from "styled-components";
 import * as variables from "./Variables";
 
 export const Card = styled.div`
-  background-color: ${variables.colors.white};
+  background-color: ${variables.colorDefinitions.white};
   border-radius: 8px;
   box-shadow: ${variables.colors.boxShadow};
   transition-property: box-shadow;
@@ -69,7 +69,7 @@ export const ContentListItem = styled.li`
   flex-direction: row;
   flex-wrap: nowrap;
   align-items: flex-start;
-  border-bottom: 1px solid ${variables.colors.border3};
+  border-bottom: 1px solid ${variables.colors.border};
   padding: 12px 0;
   opacity: 1;
   transition: max-height 0.3s, opacity 0.1s, padding 0.1s;

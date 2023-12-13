@@ -126,7 +126,7 @@ const Hero = styled.div`
     padding-bottom: 0;
     width: 100%;
     font-size: 32px;
-    color: #b24020;
+    color: ${variables.colors.header1};
     font-weight: 400;
     line-height: 70px;
     margin-bottom: 24px;

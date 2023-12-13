@@ -80,7 +80,7 @@ const CoverImage = styled.label`
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px;
     border-radius: 12px;
-    border: 1px solid ${variables.colors.white};
+    border: 1px solid ${variables.colorDefinitions.white};
     opacity: 0.6;
 
     &:hover {

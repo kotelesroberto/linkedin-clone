@@ -89,7 +89,7 @@ const MessagePhoto = styled(UserPhoto)`
       content: '';
       width: 20px;
       height: 20px;
-      border: 1px solid ${variables.colorDefinitions.border4};
+      border: 1px solid ${variables.colorDefinitions.border};
       border-radius: 4px;
       position: absolute;
       left: 50%;
@@ -101,7 +101,7 @@ const MessagePhoto = styled(UserPhoto)`
 `;
 const MessageContent = styled.div`
   padding-bottom: 12px;
-  border-bottom: 1px solid ${variables.colors.border4};
+  border-bottom: 1px solid ${variables.colors.border};
 
   span {
     display: -webkit-box;
@@ -117,7 +117,7 @@ const MessageDate = styled.div`
   font-size: 12px;
   text-align: right;
   color: ${variables.colors.colorFontSoft};
-  border-bottom: 1px solid ${variables.colors.border4};
+  border-bottom: 1px solid ${variables.colors.border};
   flex-shrink: 0;
 `;
 

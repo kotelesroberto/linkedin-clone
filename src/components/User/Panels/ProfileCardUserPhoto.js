@@ -58,7 +58,7 @@ const LocalEditButton = styled(EditButton)`
   top: 40px;
   left: 170px;
   border: none;
-  background-color: ${variables.colors.white};
+  background-color: ${variables.colorDefinitions.white};
 `;
 
 const UserPhotoContainer = styled.div`

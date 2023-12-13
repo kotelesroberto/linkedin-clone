@@ -266,7 +266,7 @@ const Container = styled.div`
 const Content = styled(Card)`
   width: 90%;
   max-width: 1128px;
-  background-color: ${variables.colors.white};
+  background-color: ${variables.colorDefinitions.white};
   min-height: 90%;
   max-height: 100vh;
   overflow: initial;
@@ -327,8 +327,8 @@ const UploadArea = styled.div`
 `;
 
 const Footer = styled.div`
-  background-color: ${variables.colors.white};
-  border-top: 1px solid ${variables.colors.border2};
+  background-color: ${variables.colorDefinitions.white};
+  border-top: 1px solid ${variables.colors.border};
 
   &.hidden {
     display: none;
@@ -384,7 +384,7 @@ const PostModalIconButtonRow = styled(IconButtonRow)`
       top: -40px;
       display: block;
       white-space: nowrap;
-      background-color: ${variables.colors.white};
+      background-color: ${variables.colorDefinitions.white};
       border: 1px solid ${variables.colors.colorFont};
       border-radius: 8px;
       padding: 8px;

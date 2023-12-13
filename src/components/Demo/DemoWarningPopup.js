@@ -132,7 +132,7 @@ const WarningBG = styled.div`
   top: 0;
   right: 0;
   bottom: 0;
-  background-color: ${variables.colors.black};
+  background-color: ${variables.colorDefinitions.black};
   opacity: 0.6;
 `;
 const WarningContent = styled(Card)`

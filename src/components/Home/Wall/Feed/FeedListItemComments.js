@@ -233,7 +233,7 @@ const CommentInput = styled.textarea`
   vertical-align: middle;
   background-color: ${variables.colors.inputBackground};
   color: ${variables.colors.inputFont};
-  border: 1px solid ${variables.colors.border4};
+  border: 1px solid ${variables.colors.border};
   transition: box-shadow 0.3s;
   cursor: pointer;
   resize: none;

@@ -18,11 +18,13 @@ export const ButtonPrimary = styled.button`
   align-items: center;
   justify-content: center;
   margin-bottom: 16px;
+  background-color: ${variables.colors.buttonPrimaryBackground};
 
   &:hover {
     box-shadow: none;
     outline: none;
-    background-color: ${variables.colors.buttonPrimaryHover};
+    background-color: ${variables.colors.buttonPrimaryBackgroundHover};
+    color: ${variables.colors.buttonPrimaryHover};
   }
 
   @media (max-width: 768px) {
@@ -67,6 +69,7 @@ export const ButtonWithImage = styled(ButtonPrimary)`
   font-size: 14px;
 
   &:hover {
+    color: ${variables.colors.colorFontHover};
     background: ${variables.colors.buttonWithImageBackgroundHover};
   }
 

@@ -2,7 +2,7 @@
 <svg width="45" height="14" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" class="lazy-loaded" preserveAspectRatio="xMinYMin meet" version="1.1">
  <g class="layer">
   <title>Layer 1</title>
-  <rect height="13.61" id="svg_11" rx="2" ry="2" stroke="#0866C2" stroke-width="0" width="13.61" x="31.27" y="0.29"/>
+  <rect height="13.61" id="svg_11" rx="2" ry="2" fill="#1ac0c6" stroke="#0866C2" stroke-width="0" width="13.61" x="31.27" y="0.29"/>
   <text fill="#ffffff" font-family="Fantasy" font-size="21" id="svg_12" stroke="#0866C2" stroke-width="0" text-anchor="middle" x="38.29" xml:space="preserve" y="11.4">x</text>
   <text fill="#000000" font-family="Monospace" font-size="13" font-weight="bold" id="svg_1" stroke-width="0" text-anchor="middle" x="14.89" xml:space="preserve" y="11.42">Rule</text>
  </g>

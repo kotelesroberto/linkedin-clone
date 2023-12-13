@@ -31,7 +31,7 @@ const Container = styled.div`
   flex-direction: row;
   align-items: flex-start;
   padding: 12px;
-  border-bottom: 1px solid ${variables.colors.border4};
+  border-bottom: 1px solid ${variables.colors.border};
 
   &:last-child {
     border: : none;

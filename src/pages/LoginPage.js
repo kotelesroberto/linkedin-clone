@@ -9,6 +9,7 @@ import LoginJoin from "../components/Login/LoginJoin";
 import FooterMenu from "../components/Footer/FooterMenu";
 import FooterInlineMenu from "../components/Footer/FooterInlineMenu";
 import { ButtonJoin, ButtonSignIn } from "../components/_library/Buttons";
+import * as variables from "../components/_library/Variables";
 
 import {
   actionSignInGoogleAPI,
@@ -166,7 +167,7 @@ const Hero = styled.div`
     padding-bottom: 0;
     width: 55%;
     font-size: 56px;
-    color: #b24020;
+    color: ${variables.colors.header1};
     font-weight: 200;
     line-height: 70px;
     margin-bottom: 24px;

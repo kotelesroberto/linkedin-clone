@@ -16,7 +16,7 @@
 
 html,
 body {
-  color: $black;
+  color: $col_font;
   font-size: 100%;
   line-height: 1.2;
   overscroll-behavior: none;
@@ -26,7 +26,7 @@ body {
 body {
   overflow: hidden;
   overflow-y: auto;
-  background: $col-page-bg;
+  background: $col_pageBg;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -40,6 +40,6 @@ a {
 
   &:hover {
     text-decoration: underline;
-    color: $maincolor2;
+    color: $col_linkHover;
   }
 }

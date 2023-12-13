@@ -73,7 +73,7 @@ const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 16px 24px;
-  border-bottom: 1px solid ${variables.colors.border2};
+  border-bottom: 1px solid ${variables.colors.border};
 
   h2 {
     font-size: 20px;

@@ -32,7 +32,7 @@ const ProfileCardImpressions = (props) => {
 };
 
 const Container = styled.div`
-  border-bottom: 1px solid ${variables.colors.border2};
+  border-bottom: 1px solid ${variables.colors.border};
   padding: 16px 0;
 
   @media (max-width: 768px) {

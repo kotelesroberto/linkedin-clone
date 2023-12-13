@@ -78,24 +78,14 @@ const RegisterForm = (props) => {
       <Fieldset>
         <p>
           By clicking Agree &amp; Join, you agree to the RuleX
-          <a
-            href="https://www.rulex.com/legal/user-agreement?trk=registration-frontend_join-form-user-agreement"
-            target="_blank"
-          >
+          <a href="/demo">
             User Agreement
           </a>{" "}
           ,{" "}
-          <a
-            href="https://www.rulex.com/legal/privacy-policy?trk=registration-frontend_join-form-privacy-policy"
-            target="_blank"
-          >
+          <a href="/demo">
             Privacy Policy
           </a>{" "}
-          , and
-          <a href="https://www.rulex.com/legal/cookie-policy?trk=registration-frontend_join-form-cookie-policy">
-            Cookie Policy
-          </a>
-          .
+          , and <a href="/demo">Cookie Policy</a>.
         </p>
       </Fieldset>
       <Fieldset>

@@ -4,24 +4,15 @@
 
 $black: #000;
 $white: #fff;
-$grey: gray;
-$red: #e0245e;
 
-$col-page-bg: #f5f5f5;
+$col_input: #191919;
+$col_inputBorder: #3f3f3f;
+$col_inputBackgroundHover: #eaeaea;
+$col_border: #a5a5a5;
 
-$maincolor1: #0a66c2;
-$maincolor2: #004182;
-$maincolor3: #fff;
-
-$maincolor4: #191919;
-
-$maincolor5: #fff;
-$maincolor6: #fff;
-$maincolor7: #fff;
-$maincolor8: #0a66c2;
-$maincolor11: #3f3f3f;
-$maincolor13: #eaeaea;
-$maincolor20: #a5a5a5;
-
-$link-color: #0a66c2;
-$link-color-hover: #004182;
+/*=====  NEW COLOURS  ======*/
+$primaryColor: #1ac0c6;
+$col_font: $black;
+$col_link: $primaryColor;
+$col_linkHover: #0c585a;
+$col_pageBg: #f3f3f3;

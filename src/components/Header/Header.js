@@ -132,8 +132,8 @@ const Header = (props) => {
 };
 
 const Container = styled.div`
-  background-color: ${variables.colors.white};
-  border-bottom: 1px solid ${variables.colors.border2};
+  background-color: ${variables.colorDefinitions.white};
+  border-bottom: 1px solid ${variables.colors.border};
   left: 0;
   padding: 0 24px;
   position: fixed;
@@ -179,7 +179,7 @@ const Search = styled.div`
       line-height: 1.75;
       font-weight: 400;
       font-size: 14px;
-      border-color: ${variables.colors.border3};
+      border-color: ${variables.colors.border};
       vertical-align: middle;
       transition: all 0.3s;
 
@@ -331,7 +331,7 @@ const SignOut = styled.div`
   top: 60px;
   left: auto;
   right: 0;
-  background: ${variables.colors.white};
+  background: ${variables.colorDefinitions.white};
   border-radius: 0 0 5px 5px;
   transition-duration: 167ms;
   text-align: left;
@@ -391,7 +391,7 @@ const User = styled(NavList)`
 `;
 
 const ForBusiness = styled(User)`
-  border-left: 1px solid ${variables.colors.border2};
+  border-left: 1px solid ${variables.colors.border};
 `;
 
 /*=====  React-redux related functions  ======*/

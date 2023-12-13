@@ -19,7 +19,7 @@ export const UserAvatarBox = styled.div`
   flex-direction: row;
   flex-wrap: nowrap;
   color: ${variables.colors.colorFont};
-  border-bottom: 1px solid ${variables.colors.border2};
+  border-bottom: 1px solid ${variables.colors.border};
   padding: 12px 0;
   overflow: hidden;
   opacity: 1;
@@ -49,8 +49,8 @@ export const UserAvatarPhoto = styled.div`
   width: 48px;
   height: 48px;
   position: relative;
-  background-color: ${variables.colors.white};
-  border: 2px solid ${variables.colors.white};
+  background-color: ${variables.colorDefinitions.white};
+  border: 2px solid ${variables.colorDefinitions.white};
 
   margin-right: 8px;
   flex-shrink: 0;

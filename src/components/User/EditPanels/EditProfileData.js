@@ -257,7 +257,7 @@ const ContainerAside = styled.div`
 
   textarea {
     width: 100%;
-    border: 1px solid ${variables.colors.border4};
+    border: 1px solid ${variables.colors.border};
     outline: none;
     font-size: 20px;
     max-height: 400px;
@@ -285,8 +285,8 @@ const ContainerAside = styled.div`
 
 const Footer = styled.div`
   width: 100%;
-  background-color: ${variables.colors.white};
-  border-top: 1px solid ${variables.colors.border2};
+  background-color: ${variables.colorDefinitions.white};
+  border-top: 1px solid ${variables.colors.border};
 `;
 
 const ButtonRow = styled.div`

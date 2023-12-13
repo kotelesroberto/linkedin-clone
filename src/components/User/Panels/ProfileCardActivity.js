@@ -7,7 +7,6 @@
  */
 
 import React, { useState, useRef } from "react";
-import { connect } from "react-redux";
 import ProfileCardBox from "./ProfileCardBox";
 import ContentListItems from "../Panels/ContentListItems";
 import { activity } from "../../../utils/demoData";
@@ -131,13 +130,4 @@ const Associated = styled.div`
   }
 `;
 
-/*=====  React-redux related functions  ======*/
-
-// any time the store is updated, mapStateToProps will be called. Expected to return an object
-const mapStateToProps = (state) => {
-  return {
-    user: state.userState.user,
-  };
-};
-
-export default connect(mapStateToProps)(ProfileCardActivity);
+export default ProfileCardActivity;

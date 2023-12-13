@@ -96,8 +96,16 @@ const ProfileCard = (props) => {
         profileuid={profileUid}
         user={profileUser}
       />
-      <ProfileCardFeatured iseditmode={isEditMode} profileuid={profileUid} />
-      <ProfileCardActivity iseditmode={isEditMode} profileuid={profileUid} />
+      <ProfileCardFeatured
+        iseditmode={isEditMode}
+        profileuid={profileUid}
+        user={profileUser}
+      />
+      <ProfileCardActivity
+        iseditmode={isEditMode}
+        profileuid={profileUid}
+        user={profileUser}
+      />
       {
         <ProfileCardExperience
           iseditmode={isEditMode}

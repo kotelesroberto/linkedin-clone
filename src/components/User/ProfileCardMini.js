@@ -23,14 +23,16 @@ const ProfileCardMini = (props) => {
   const profileUid = props.user.uid;
 
   useEffect(() => {
-    getUserProfile(profileUid, true)
-      .then((result) => {
-        console.log("getUserProfile ProfileCardMini RESULT", result);
-        setProfileUser((prevState) => result);
-      })
-      .catch((error) => {
-        console.error(error.message);
-      });
+    if (profileUid) {
+      getUserProfile(profileUid, true)
+        .then((result) => {
+          console.log("getUserProfile ProfileCardMini RESULT", result);
+          setProfileUser((prevState) => result);
+        })
+        .catch((error) => {
+          console.error(error.message);
+        });
+    }
   }, [props.user]);
 
   return (

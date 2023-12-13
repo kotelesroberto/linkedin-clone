@@ -13,7 +13,6 @@ const ProfileCardCoverImage = (props) => {
   const setShowModal = props.setShowModal;
   const imgRef = useRef();
 
-
   let imageToShow = {
     url: "/images/card-bg.svg",
     alt: "Gneral cover image",
@@ -25,14 +24,19 @@ const ProfileCardCoverImage = (props) => {
   }
 
   useEffect(() => {
-    if (user && user.teaserImage) {
+    if (user && user.teaserImage && imgRef && imgRef.current) {
       imgRef.current.onload = () => {
-        imgRef.current.classList.add("loaded");
+        imgRef.current && imgRef.current.classList.add("loaded");
       };
 
       imageLazyLoader(imgRef, imageToShow.url).then((res) => {
         imgRef.current.src = imageToShow.url;
       });
+    } else {
+      if (imgRef && imgRef.current) {
+        imgRef.current.src = imageToShow.url;
+        imgRef.current && imgRef.current.classList.add("loaded");
+      }
     }
   }, [user]);
 

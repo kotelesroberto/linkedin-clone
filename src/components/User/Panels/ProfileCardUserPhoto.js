@@ -29,14 +29,19 @@ const ProfileCardUserPhoto = (props) => {
   useEffect(() => {
     if (user && user.teaserImage) {
       imgRef.current.onload = () => {
-        imgRef.current.classList.add("loaded");
+        imgRef.current && imgRef.current.classList.add("loaded");
       };
 
       imageLazyLoader(imgRef, imageToShow.url).then((res) => {
         imgRef.current.src = imageToShow.url;
       });
+    } else {
+      if (imgRef && imgRef.current) {
+        imgRef.current.src = imageToShow.url;
+        imgRef.current && imgRef.current.classList.add("loaded");
+      }
     }
-  }, [user]);
+  }, [user && user.teaserImage]);
 
   const onClickEdit = (e) => {
     e.preventDefault();

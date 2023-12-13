@@ -21,6 +21,7 @@ import ProfileCardAbout from "../../User/EditPanels/ProfileCardAbout";
 import ProfileCardFeatured from "../../User/EditPanels/ProfileCardFeatured";
 import ProfileCardActivity from "../../User/EditPanels/ProfileCardActivity";
 import ProfileCardEducation from "../../User/EditPanels/ProfileCardEducation";
+import ProfileCardExperience from "../../User/EditPanels/ProfileCardExperience";
 import ProfileCardCertifications from "../../User/EditPanels/ProfileCardCertifications";
 import ProfileCardSkills from "../../User/EditPanels/ProfileCardSkills";
 import ProfileCardAwards from "../../User/EditPanels/ProfileCardAwards";
@@ -184,6 +185,12 @@ const EditProfileData = (props) => {
         )}
         {panelToEdit == "activity" && (
           <ProfileCardActivity
+            user={profileUser}
+            onchange={onChangeFormelement}
+          />
+        )}
+        {panelToEdit == "experience" && (
+          <ProfileCardExperience
             user={profileUser}
             onchange={onChangeFormelement}
           />

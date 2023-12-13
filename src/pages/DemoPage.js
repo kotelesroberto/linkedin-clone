@@ -18,12 +18,10 @@ const DemoPage = () => {
           <Section>
             <ContentContainer>
               <img src="./images/howto.svg" alt="Something went wrong" />
-              <h2>Hi, it's Robert Koteles, Senior Web Developer here.</h2>
-              <h3>
+              <h2>Hi, it's Robert Koteles, Senior Web Developer.</h2>
+              <p>
                 If you want to see more features, feel free to <span>hire</span>{" "}
                 me.
-              </h3>
-              <p>
                 Well, this is my recent demo webapp, a personal project of mine, that
                 has been built just for fun.
               </p>
@@ -55,16 +53,22 @@ const ContentContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  flex-grow: 1;
+  width: 80%;
+  max-width: 600px;
+  text-align: center;
+
+  flex-grow: 0;
+  margin:  0 auto;
 
   h2 {
-    margin-bottom: 12px;
+    margin-bottom: 0px;
   }
+  
+  p {
+    margin-bottom: 36px;
 
-  h3 {
     span {
-      font-size: 1.6em;
+      font-weight: bold;
       text-transform: uppercase;
     }
   }

@@ -70,7 +70,8 @@ const DemoWarningPopup = (props) => {
             </li>
             <li>
               use the Chat feature (hide and show message items, filter to
-              sender, open a message, do chat)
+              sender, open a message, do chat). The entire Chat feature is done
+              without using any bootstrap or plugin.
             </li>
             <li>visit the Jobs page</li>
             <li>
@@ -140,6 +141,11 @@ const WarningContent = styled(Card)`
 const WarningContentInner = styled.div`
   height: 100%;
   overflow-y: auto;
+  line-height: 1.5;
+
+  h2 {
+    margin-bottom: 12px;
+  }
 
   ul {
     margin: 0;

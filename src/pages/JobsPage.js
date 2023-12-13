@@ -19,7 +19,7 @@ const JobsPage = (props) => {
     if (props.user && props.user.checkedByAuth) {
       if (!props.user.email) {
         const windowLocation = window.location.pathname;
-        props.setCurrentURL(windowLocation);
+        props.setCurrentURL && props.setCurrentURL(windowLocation);
         navigate("/");
       }
     }

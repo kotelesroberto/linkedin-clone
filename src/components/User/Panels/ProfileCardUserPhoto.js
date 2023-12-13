@@ -11,6 +11,7 @@ import * as variables from "../../_library/Variables";
 
 const ProfileCardUserPhoto = (props) => {
   const user = props.user;
+  const profileuser = props.profileuser;
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
   const setShowModal = props.setShowModal;
@@ -21,13 +22,13 @@ const ProfileCardUserPhoto = (props) => {
     alt: "General avatar",
   };
 
-  if (user && user && user.photoURL) {
-    imageToShow.url = user.photoURL;
-    imageToShow.alt = `Photo of ${user.displayName}`;
+  if (profileuser && profileuser && profileuser.photoURL) {
+    imageToShow.url = profileuser.photoURL;
+    imageToShow.alt = `Photo of ${profileuser.displayName}`;
   }
 
   useEffect(() => {
-    if (user && user.teaserImage) {
+    if (profileuser && profileuser.teaserImage) {
       imgRef.current.onload = () => {
         imgRef.current && imgRef.current.classList.add("loaded");
       };
@@ -41,7 +42,7 @@ const ProfileCardUserPhoto = (props) => {
         imgRef.current && imgRef.current.classList.add("loaded");
       }
     }
-  }, [user && user.teaserImage]);
+  }, [profileuser && profileuser.teaserImage]);
 
   const onClickEdit = (e) => {
     e.preventDefault();

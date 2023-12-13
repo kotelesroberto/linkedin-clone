@@ -71,12 +71,12 @@ const ProfileCard = (props) => {
         <ProfileCardCoverImage
           iseditmode={isEditMode}
           isprofilepage={isProfilePage}
-          user={profileUser}
+          profileuser={profileUser}
         />
         <ProfileCardUserPhoto
           iseditmode={isEditMode}
           isprofilepage={isProfilePage}
-          user={profileUser}
+          profileuser={profileUser}
         />
         <ProfileCardUserInfo
           iseditmode={isEditMode}

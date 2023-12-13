@@ -26,7 +26,6 @@ const ProfileCardMini = (props) => {
     if (profileUid) {
       getUserProfile(profileUid, true)
         .then((result) => {
-          console.log("getUserProfile ProfileCardMini RESULT", result);
           setProfileUser((prevState) => result);
         })
         .catch((error) => {
@@ -41,12 +40,12 @@ const ProfileCardMini = (props) => {
         <ProfileCardCoverImage
           iseditmode={isEditMode}
           isprofilepage={isProfilePage}
-          user={profileUser}
+          profileuser={profileUser}
         />
         <ProfileCardUserPhoto
           iseditmode={isEditMode}
           isprofilepage={isProfilePage}
-          user={profileUser}
+          profileuser={profileUser}
         />
         <ProfileCardUserInfo
           iseditmode={isEditMode}

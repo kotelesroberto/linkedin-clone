@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import * as variables from "../../_library/Variables";
 
-
 import { ButtonPrimary, ButtonSecondary } from "../../_library/Buttons";
 
 import {

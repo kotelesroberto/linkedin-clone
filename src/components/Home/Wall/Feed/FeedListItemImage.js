@@ -23,7 +23,7 @@ const FeedListItemImage = (props) => {
   useEffect(() => {
     imageLazyLoader(imgRef, imageToShow.url).then((res) => {
       imgRef.current.onload = () => {
-        imgRef.current.classList.add("loaded");
+        imgRef.current && imgRef.current.classList.add("loaded");
       };
       imgRef.current.src = imageToShow.url;
     });

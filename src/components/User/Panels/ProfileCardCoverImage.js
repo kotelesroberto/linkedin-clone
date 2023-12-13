@@ -8,6 +8,7 @@ import { imageLazyLoader } from "../../../utils/filename";
 
 const ProfileCardCoverImage = (props) => {
   const user = props.user;
+  const profileuser = props.profileuser;
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
   const setShowModal = props.setShowModal;
@@ -18,13 +19,13 @@ const ProfileCardCoverImage = (props) => {
     alt: "Gneral cover image",
   };
 
-  if (user && user.teaserImage) {
-    imageToShow.url = user.teaserImage;
-    imageToShow.alt = `Cover image of ${user.displayName}`;
+  if (profileuser && profileuser.teaserImage) {
+    imageToShow.url = profileuser.teaserImage;
+    imageToShow.alt = `Cover image of ${profileuser.displayName}`;
   }
 
   useEffect(() => {
-    if (user && user.teaserImage && imgRef && imgRef.current) {
+    if (profileuser && profileuser.teaserImage && imgRef && imgRef.current) {
       imgRef.current.onload = () => {
         imgRef.current && imgRef.current.classList.add("loaded");
       };
@@ -38,7 +39,7 @@ const ProfileCardCoverImage = (props) => {
         imgRef.current && imgRef.current.classList.add("loaded");
       }
     }
-  }, [user]);
+  }, [profileuser]);
 
   const onClickEdit = (e) => {
     e.preventDefault();

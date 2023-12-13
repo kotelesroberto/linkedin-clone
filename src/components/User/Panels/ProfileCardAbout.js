@@ -17,7 +17,7 @@ const ProfileCardAbout = (props) => {
     <ProfileCardBox
       title="About"
       panel="about"
-      content={ user.extra && user.extra.about}
+      content={user.extra && user.extra.about}
       iseditmode={isEditMode}
     ></ProfileCardBox>
   );

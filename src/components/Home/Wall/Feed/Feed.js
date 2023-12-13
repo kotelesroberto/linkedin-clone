@@ -21,6 +21,7 @@ import {
   query,
   where,
   orderBy,
+  limit,
   getDocs,
   onSnapshot,
 } from "firebase/firestore";
@@ -52,7 +53,8 @@ const Feed = (props) => {
     const q = query(
       collection(db, "posts"),
       // where("uid", "in", [props.user.uid]),
-      orderBy("timestamp", "asc")
+      orderBy("timestamp", "asc"),
+      limit(15) // max. 15 posts to show in this demo
     );
 
     const unsubscribe = onSnapshot(q, (querySnapshot) => {

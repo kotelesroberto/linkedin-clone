@@ -14,11 +14,13 @@ const ChatHeader = (props) => {
   let displayName = "";
   let photoUrl = "/images/avatar.svg";
   let userStatus = "opentowork";
+  let chatTitle = 'Messaging';
 
   if (message) {
     // opening a valid message
     displayName = message.name;
     photoUrl = message.photo;
+    chatTitle = message.name;
   } else {
     // main chat panel
     displayName = props.user && props.user.displayName;
@@ -32,7 +34,7 @@ const ChatHeader = (props) => {
         <UserIsOnline />
       </UserPhoto>
       <RightCol>
-        <span onClick={(e) => onClick(e)}>Messaging</span>
+        <span onClick={(e) => onClick(e)}>{ chatTitle }</span>
 
         {type == "panel" && (
           <FeedItemActions>

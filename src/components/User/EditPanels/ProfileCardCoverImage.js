@@ -65,6 +65,9 @@ const CoverImage = styled.label`
   img {
     max-width: 100% !important;
     height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
   }
 
   .replace-icon {
@@ -78,6 +81,11 @@ const CoverImage = styled.label`
     padding: 10px;
     border-radius: 12px;
     border: 1px solid ${variables.colors.white};
+    opacity: 0.6;
+
+    &:hover {
+      opacity: 0.9;
+    }
   }
 
   input {

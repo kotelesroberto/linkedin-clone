@@ -7,19 +7,41 @@
  */
 
 import React from "react";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import ProfileCardBox from "./ProfileCardBox";
+import "react-tabs/style/react-tabs.css";
+import PeopleListTeaser from "../../Widgets/PeopleListTeaser";
+import { peopleMayYouKnow, companiesMayYouKnow } from "../../../utils/demoData";
 
 const ProfileCardInterests = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
-  const profileUid = props.profileuid;
 
   return (
-    <ProfileCardBox
-      title="Interests"
-      content={"TODO: add content information here"}
-      panel="interests"
-      iseditmode={isEditMode}
-    ></ProfileCardBox>
+    <ProfileCardBox title="Interests" panel="interests" iseditmode={isEditMode}>
+      <Tabs className="modern">
+        <TabList>
+          <Tab>Top voices</Tab>
+          <Tab>Companies</Tab>
+          <Tab>Groups</Tab>
+          <Tab>Schools</Tab>
+        </TabList>
+
+        <TabPanel>
+          <PeopleListTeaser
+            items={peopleMayYouKnow}
+            columns="2"
+          />
+        </TabPanel>
+        <TabPanel>
+        <PeopleListTeaser
+            items={companiesMayYouKnow}
+            columns="2"
+          />
+        </TabPanel>
+        <TabPanel>DEMO3</TabPanel>
+        <TabPanel>DEMO4</TabPanel>
+      </Tabs>
+    </ProfileCardBox>
   );
 };
 

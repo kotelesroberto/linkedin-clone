@@ -3,7 +3,7 @@
  * Usually a teaser on the right hand side with list of people
  * 2023, Robert Koteles
  *
- * @param {Object} props.people - JSON object of people to show
+ * @param {Object} props.items - JSON object of people to show
  * @param {String} props.title - Title of the box
  * @param {String} props.subtitle - Subtitle of the box
  */
@@ -19,7 +19,8 @@ import ShowMore from "./ShowMore";
 const PeopleListTeaser = (props) => {
   const [openedStatus, setOpenedStatus] = useState("closed");
 
-  const people = props.people;
+  const itemsToShow = props.items;
+  const columns = props.columns ? props.columns : 1;
   const thisListRef = useRef();
   const maxItemsToShow = 2;
 
@@ -41,25 +42,29 @@ const PeopleListTeaser = (props) => {
   return (
     <Card>
       <CardContainer>
-        <ListHeader>
-          <a href="/demo">{props.title}</a>
+        {props.title && (
+          <ListHeader>
+            <a href="/demo">{props.title}</a>
 
-          {props.subtitle && <span className="subtitle">{props.subtitle}</span>}
-        </ListHeader>
+            {props.subtitle && (
+              <span className="subtitle">{props.subtitle}</span>
+            )}
+          </ListHeader>
+        )}
 
-        {!!people.length && (
+        {!!itemsToShow.length && (
           <>
-            <UserAvatarList ref={thisListRef}>
-              {people.map((item, index) => (
+            <UserAvatarList ref={thisListRef} className={`col-${columns}`}>
+              {itemsToShow.map((item, index) => (
                 <Avatar
                   user={item}
-                  key={"widget-peoplemayknow-" + index}
+                  key={"widget-peoplelist-" + index}
                   classname={index >= maxItemsToShow ? "closed" : ""}
                 />
               ))}
             </UserAvatarList>
 
-            {people.length > maxItemsToShow && (
+            {itemsToShow.length > maxItemsToShow && (
               <DiscoverMore
                 title={["Show all", "Hide"]}
                 link="#"

@@ -17,6 +17,13 @@ export const CardContainer = styled.div`
   padding: 0;
 `;
 
+export const CardWrapper = styled.div`
+  background-color: green;
+  &.col-2 {
+    width: 50%;
+  }
+`;
+
 /* Profile page boxes */
 
 export const BoxContainer = styled(Card)`

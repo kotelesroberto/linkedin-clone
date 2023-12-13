@@ -12,3 +12,32 @@ body {
     }
   }
 }
+
+.modern {
+  .react-tabs__tab {
+    border-color: transparent;
+    font-size: 14px;
+    padding: 20px;
+    // bottom: 0;
+
+    &:focus {
+      &:after {
+        display: none;
+      }
+    }
+
+    &--selected {
+      font-weight: bold;
+      border-bottom: 2px solid #000;
+      // bottom: 0;
+
+      &:focus {
+      }
+    }
+
+    &-list {
+      overflow: visible;
+      border-bottom: 1px solid #e8e8e8;
+    }
+  }
+}

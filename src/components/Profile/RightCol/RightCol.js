@@ -50,12 +50,12 @@ const RightCol = () => {
   return (
     <Container>
       <PeopleListTeaser
-        people={peopleAlsoViewed}
+        items={peopleAlsoViewed}
         title="People also viewed"
         subtitle=""
       />
       <PeopleListTeaser
-        people={peopleMayYouKnow}
+        items={peopleMayYouKnow}
         title="People you may know"
         subtitle="From your company"
       />

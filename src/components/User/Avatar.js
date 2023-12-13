@@ -17,10 +17,19 @@ const Avatar = (props) => {
       </UserAvatarPhoto>
       <UserAvatarDetails>
         <UserName>
-          <a href={props.user.link}>{props.user.name}</a>
+          {props.user.link ? (
+            <a href={props.user.link}>{props.user.name}</a>
+          ) : (
+            props.user.name
+          )}
         </UserName>
-        <UserPosition>{props.user.position}</UserPosition>
-        <ButtonFollow data-link={props.user.link}>Connect</ButtonFollow>
+        {props.user.position && (
+          <UserPosition>{props.user.position}</UserPosition>
+        )}
+
+        {props.user.link && (
+          <ButtonFollow data-link={props.user.link}>Connect</ButtonFollow>
+        )}
       </UserAvatarDetails>
     </UserAvatarBox>
   );

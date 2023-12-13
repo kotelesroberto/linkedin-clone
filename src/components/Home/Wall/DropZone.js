@@ -30,9 +30,9 @@ const DropZone = (props) => {
   }, []);
 
   const fileSizeValidator = useCallback((file) => {
-    if (file.size > 5000000) {
+    if (file.size > 1000000) {
       setError(
-        "One of the files was bigger than 5MB, please select smaller one!"
+        "One of the files was bigger than 1MB, please select smaller one!"
       );
       return {
         code: "size-too-large",

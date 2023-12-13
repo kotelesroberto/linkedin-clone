@@ -12,7 +12,8 @@ import {
 
 const ProfileCardButtons = (props) => {
   const user = props.user;
-  
+  const panel = props.panel; // it's used on lfoating profile strip too
+
   const navigate = useNavigate();
 
   const doDemo = (e) => {
@@ -20,8 +21,13 @@ const ProfileCardButtons = (props) => {
     navigate("/demo");
   };
 
+  let classes = "";
+  if (panel) {
+    classes = "panel";
+  }
+
   return (
-    <Container>
+    <Container className={classes}>
       <Item
         onClick={(e) => {
           e.target.classList.toggle("open");
@@ -96,6 +102,14 @@ const Container = styled.ul`
   list-style: none;
   position: relative;
 
+  &.panel {
+    padding: 12px 0 0 12px;
+
+    button {
+      margin-bottom: 0;
+    }
+  }
+
   button {
     padding: 6px 16px;
     min-height: initial;
@@ -129,6 +143,12 @@ const Panel = styled(Card)`
   padding: 0;
   margin: 0;
   z-index: 1000;
+
+  .panel & {
+    top: calc(100% + 12px);
+    left: initial;
+    right: 0;
+  }
 
   @media (max-width: 580px) {
     width: 100%;

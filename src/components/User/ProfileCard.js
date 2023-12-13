@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 
 import { Card } from "../_library/Cards";
 
+import ProfileCardSummaryFloating from "./Panels/ProfileCardSummaryFloating";
 import ProfileCardCoverImage from "./Panels/ProfileCardCoverImage";
 import ProfileCardUserPhoto from "./Panels/ProfileCardUserPhoto";
 import ProfileCardUserInfo from "./Panels/ProfileCardUserInfo";
@@ -65,6 +66,7 @@ const ProfileCard = (props) => {
 
   return (
     <>
+      <ProfileCardSummaryFloating profileuser={profileUser} />
       <ProfileCardContainer>
         <ProfileCardCoverImage
           iseditmode={isEditMode}

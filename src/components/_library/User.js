@@ -98,6 +98,11 @@ export const UserPhoto = styled(UserAvatarPhoto)`
     margin-left: 2.4rem;
     cursor: pointer;
   }
+  &.panel {
+    width: 36px;
+    height: 36px;
+    margin: 0;
+  }
 
   &:after {
     ${(props) =>

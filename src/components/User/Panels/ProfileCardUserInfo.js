@@ -8,11 +8,19 @@ const ProfileCardUserInfo = (props) => {
   const user = props.user;
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
+  const panel = props.panel; // it's used on lfoating profile strip too
 
   const name = user && user && user.displayName ? user.displayName : "Me";
 
+  let classes = "";
+  if (panel) {
+    classes = "panel";
+  } else {
+    classes = isProfilePage ? "profile" : "";
+  }
+
   return (
-    <UserCardInfo className={isProfilePage ? "profile" : ""}>
+    <UserCardInfo className={classes}>
       {!user && (
         <UserCardIntro>
           <h3>Welcome, there!</h3>
@@ -22,10 +30,10 @@ const ProfileCardUserInfo = (props) => {
 
       {user && user && (
         <>
-          <UserCardName className={isProfilePage ? "profile" : ""}>
+          <UserCardName>
             {isProfilePage ? name : <a href={`in/${user.shorturl}`}>{name}</a>}
           </UserCardName>
-          <UserCardDescription className={isProfilePage ? "profile" : ""}>
+          <UserCardDescription>
             <span>
               {user && user && user.shortDescription && user.shortDescription}
             </span>
@@ -71,13 +79,24 @@ const UserCardInfo = styled.div`
     border: none;
     text-align: left;
   }
+
+  &.panel {
+    text-align: left;
+    font-size: 14px;
+    border: none;
+    padding-bottom: 0;
+    overflow: hidden;
+  }
 `;
 
 const UserCardName = styled.h3`
   font-size: 16px;
 
-  &.profile {
+  .profile & {
     font-size: 24px;
+  }
+  .panel & {
+    font-size: 14px;
   }
 `;
 
@@ -92,7 +111,7 @@ const UserCardDescription = styled.span`
     color: ${variables.colors.userCardDescription};
   }
 
-  &.profile {
+  .profile & {
     color: ${variables.colors.colorFont};
     font-size: 16px;
     line-height: 1.3;
@@ -109,6 +128,17 @@ const UserCardDescription = styled.span`
       @media (max-width: 580px) {
         width: 100%;
       }
+    }
+  }
+
+  .panel & {
+    margin-top: 0;
+
+    span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
     }
   }
 `;

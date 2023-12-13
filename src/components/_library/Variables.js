@@ -56,7 +56,7 @@ export const colors = {
 
   // Buttons
   buttonPrimaryBorder: colorDefinitions.primaryColor, // new color palette
-  buttonPrimaryBackground: "trasparent", // new color palette
+  buttonPrimaryBackground: "transparent", // new color palette
   buttonPrimaryBackgroundHover: colorDefinitions.primaryColor, // new color palette
   buttonPrimaryHover: colorDefinitions.white, // new color palette
   buttonSecondaryBackground: colorDefinitions.primaryColor, // new color palette

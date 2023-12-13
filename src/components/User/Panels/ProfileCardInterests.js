@@ -8,8 +8,8 @@
 
 import React from "react";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import ProfileCardBox from "./ProfileCardBox";
 import "react-tabs/style/react-tabs.css";
+import ProfileCardBox from "./ProfileCardBox";
 import PeopleListTeaser from "../../Widgets/PeopleListTeaser";
 import { peopleMayYouKnow, companiesMayYouKnow } from "../../../utils/demoData";
 

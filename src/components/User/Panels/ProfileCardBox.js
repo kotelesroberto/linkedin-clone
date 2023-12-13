@@ -38,8 +38,9 @@ const ProfileCardBox = (props) => {
   };
 
   // Content to show. It could be some HTML content or Component as children
-  const content = props.content ? parse(props.content) : props.children;
-
+  // const content = props.content ? parse(props.content) : props.children;
+  const content = props.content ? props.content : props.children;
+  
   return (
     <BoxContainer>
       <BoxCardTop>

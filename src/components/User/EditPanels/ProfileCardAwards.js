@@ -3,7 +3,13 @@ import React from "react";
 const ProfileCardAwards = () => {
   return (
     <div>
-      <p>This is just a DEMO. If you need this feature, contact me <a href="/demo">here</a>.</p>
+      <h2>
+        This is just a DEMO. If you need this feature, contact me{" "}
+        <a href="/demo" style={{ display: "inline-block" }}>
+          here
+        </a>
+        .
+      </h2>
     </div>
   );
 };

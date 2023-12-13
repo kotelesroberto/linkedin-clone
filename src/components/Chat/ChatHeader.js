@@ -117,6 +117,7 @@ const UserIsOnline = styled.div`
   height: 12px;
   background: ${variables.colorDefinitions.green};
   border-radius: 50%;
+  border: 1px solid ${variables.colorDefinitions.black};
   position: absolute;
   right: -10px;
   bottom: 0;

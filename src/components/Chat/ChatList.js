@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ChatListItem from "./ChatListItem";
 import styled from "styled-components";
 
@@ -6,27 +6,52 @@ import { messages } from "../../utils/demoData";
 import { getSafeString } from "../../utils/filename";
 
 const ChatList = (props) => {
+  const searchText = props.searchtext;
   const tab = props.tab;
   const group = props.group; // 'focused', 'other'
   const setChatsToOpen = props.setchatstoopen;
 
-  let messagesToShow = messages;
+  const [messagesToShow, setMessagesToShow] = useState("");
 
-  if (group === "other") {
-    messagesToShow = messages.slice(2).reverse();
-  }
+  const addMessagesToState = () => {
+    if (group === "other") {
+      setMessagesToShow(messages.slice(2).reverse());
+    } else {
+      setMessagesToShow(messages);
+    }
+  };
+
+  useEffect(() => {
+    addMessagesToState();
+  }, []);
+
+  // searcing for specific name for
+  useEffect(() => {
+    if (!searchText) {
+      // restore originally loaded messages
+      addMessagesToState();
+    } else {
+      // filter messages and set into state
+      let newMessagesToShow = [...messagesToShow];
+      newMessagesToShow = newMessagesToShow.filter((item) =>
+        item.name.toLowerCase().includes(searchText.toLowerCase())
+      );
+      setMessagesToShow(newMessagesToShow);
+    }
+  }, [searchText]);
 
   return (
     <Container key={`chat-list=${tab}`}>
-      {messagesToShow.map((item) => (
-        <ChatListItem
-          message={item}
-          key={`chat-item-${item.msgchain[0].timestamp}-${getSafeString(
-            item.name
-          )}`}
-          setchatstoopen={setChatsToOpen}
-        />
-      ))}
+      {messagesToShow &&
+        messagesToShow.map((item) => (
+          <ChatListItem
+            message={item}
+            key={`chat-item-${item.msgchain[0].timestamp}-${getSafeString(
+              item.name
+            )}`}
+            setchatstoopen={setChatsToOpen}
+          />
+        ))}
     </Container>
   );
 };

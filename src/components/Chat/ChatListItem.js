@@ -18,16 +18,20 @@ const ChatListItem = (props) => {
   return (
     <Container>
       <MessageWrapper
-        onClick={(e) => setChatsToOpen((prevState) => [...prevState, message.id])}
+        onClick={(e) =>
+          setChatsToOpen((prevState) => [...prevState, message.id])
+        }
       >
         <MessagePhoto
           status=""
           isavailable={"true"}
-          key={`chat-item-photo-${message.msgchain[0].timestamp}-${getSafeString(
-            message.name
-          )}`}
+          key={`chat-item-photo-${
+            message.msgchain[0].timestamp
+          }-${getSafeString(message.name)}`}
         >
           <img src={message.photo} alt={message.name} />
+
+          {!!Math.round(Math.random()) && <UserIsOnline />}
         </MessagePhoto>
         <MessageContent>
           <h5>{message.name}</h5>
@@ -61,12 +65,26 @@ const MessagePhoto = styled(UserPhoto)`
   width: 48px;
   height: 48px;
   margin: 0 12px 0 0;
-  overflow: hidden;
   background-color: transparent;
   border: none;
 
   img {
     border-radius: 50%;
+  }
+
+  &:hover {
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: ${variables.colorDefinitions.green};
+      z-index: 12;
+      border-radius: 50%;
+    }
   }
 `;
 const MessageContent = styled.div`
@@ -89,6 +107,19 @@ const MessageDate = styled.div`
   color: ${variables.colors.colorFontSoft};
   border-bottom: 1px solid ${variables.colors.border4};
   flex-shrink: 0;
+`;
+
+const UserIsOnline = styled.div`
+  display: block;
+  width: 12px;
+  height: 12px;
+  background: ${variables.colorDefinitions.green};
+  border-radius: 50%;
+  border: 1px solid ${variables.colorDefinitions.black};
+  position: absolute;
+  right: -10px;
+  bottom: 0;
+  z-index: 10;
 `;
 
 export default ChatListItem;

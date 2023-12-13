@@ -7,6 +7,7 @@ import ChatList from "./ChatList";
 
 const ChatContent = (props) => {
   const setChatsToOpen = props.setchatstoopen;
+  const searchText = props.searchtext;
 
   return (
     <Container>
@@ -21,10 +22,16 @@ const ChatContent = (props) => {
             group="focused"
             tab="focused"
             setchatstoopen={setChatsToOpen}
+            searchtext={searchText}
           />
         </TabPanel>
         <TabPanel>
-          <ChatList group="other" tab="other" setchatstoopen={setChatsToOpen} />
+          <ChatList
+            group="other"
+            tab="other"
+            setchatstoopen={setChatsToOpen}
+            searchtext={searchText}
+          />
         </TabPanel>
       </Tabs>
     </Container>

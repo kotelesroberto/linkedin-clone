@@ -1,13 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import * as variables from "../_library/Variables";
 
-const ChatSearchBox = () => {
+const ChatSearchBox = (props) => {
+  const searchText = props.searchtext;
+  const setSearchText = props.setsearchtext;
+  const [searchtext, setSearchtext] = useState("");
+
+  const onchange = (e) => {
+    // this state
+    setSearchtext(e.target.value);
+
+    // parent
+    setSearchText(e.target.value);
+  };
+
   return (
     <Container>
       <Search>
         <div>
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchtext}
+            onChange={(e) => onchange(e)}
+          />
         </div>
         <SearchIcon>
           <img src="/images/search-icon.svg" alt="Start search" />

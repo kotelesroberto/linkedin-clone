@@ -17,6 +17,7 @@ import * as variables from "../_library/Variables";
 const Chat = () => {
   const [chatOpen, setChatOpen] = useState(false);
   const [chatsToOpen, setChatsToOpen] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   // set status of chat window. It can be opened or closed (just header is visible)
   const clickContainer = (e) => {
@@ -48,10 +49,13 @@ const Chat = () => {
           }
         })}
 
-      <ChatPanel className={chatOpen ? "main-chat open" : "main-chat closed"} >
+      <ChatPanel className={chatOpen ? "main-chat open" : "main-chat closed"}>
         <ChatHeader type="panel" onclick={(e) => clickContainer(e)} />
-        <ChatSearchBox />
-        <ChatContent setchatstoopen={setChatsToOpen} />
+        <ChatSearchBox searchtext={searchText} setsearchtext={setSearchText} />
+        <ChatContent
+          setchatstoopen={setChatsToOpen}
+          searchtext={searchText}
+        />
       </ChatPanel>
     </Container>
   );

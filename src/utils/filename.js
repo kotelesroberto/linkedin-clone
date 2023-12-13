@@ -1,7 +1,15 @@
+/**
+ *
+ * File related funcitons
+ * 2023, Robert Koteles
+ *
+ */
+
+import Resizer from "react-image-file-resizer";
+
 /*=============================================
 =            Filename magic             =
 =============================================*/
-
 export const getFileExtension = (filename) => {
   let exploded = filename.split(".");
   return exploded[exploded.length - 1];
@@ -60,4 +68,53 @@ export const renderUploadedImageLocaly = (
       callback.call(this, true);
     }
   }
+};
+
+/*=============================================
+=    Resize file on-the-fly during upload     =
+=    ------------------------------------
+=    Usage: 
+=      const onChange = async (event) => {
+=        try {
+=          const file = event.target.files[0];
+=          const image = await resizeFile(file);
+=          console.log(image);
+=        } catch (err) {
+=          console.log(err);
+=        }
+=      };
+
+=    Resizer.imageFileResizer(
+=      file, // Is the file of the image which will resized.
+=      maxWidth, // Is the maxWidth of the resized new image.
+=      maxHeight, // Is the maxHeight of the resized new image.
+=      compressFormat, // Is the compressFormat of the resized new image.
+=      quality, // Is the quality of the resized new image.
+=      rotation, // Is the degree of clockwise rotation to apply to uploaded image.
+=      responseUriFunc, // Is the callBack function of the resized new image URI.
+=      outputType, // Is the output type of the resized new image.
+=      minWidth, // Is the minWidth of the resized new image.
+=      minHeight // Is the minHeight of the resized new image.
+=    
+=    resizeFile([
+=      e.target.files[0],
+=      300,
+=      300,
+=      "JPEG",
+=      100,
+=      0,
+=      (uri) => {
+=      console.log(uri);
+=      },
+=      "base64",
+=      200,
+=      200,
+=    ])
+);
+=============================================*/
+export const resizeFile = (data = []) => {
+  console.log("data", data);
+  return new Promise((resolve) => {
+    Resizer.imageFileResizer(...data);
+  });
 };

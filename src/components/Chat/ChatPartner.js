@@ -52,6 +52,7 @@ const PartnerAvatar = styled.div`
     width: 100%;
     height: auto;
     display: block;
+    border-radius: 50%;
   }
 
   .odd & {

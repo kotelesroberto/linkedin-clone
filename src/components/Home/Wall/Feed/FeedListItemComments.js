@@ -228,7 +228,7 @@ const CommentInput = styled.textarea`
   border-radius: 22px;
   padding: 10px 14px;
   font-size: 14px;
-  line-height: 1em;
+  line-height: 1.2em;
   font-weight: 700;
   vertical-align: middle;
   background-color: ${variables.colors.inputBackground};

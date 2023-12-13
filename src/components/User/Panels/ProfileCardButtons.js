@@ -114,6 +114,9 @@ const Item = styled.li`
 
   @media (max-width: 580px) {
     position: initial;
+    &:nth-child(3) {
+      display: none;
+    }
   }
 `;
 

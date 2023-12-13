@@ -7,6 +7,10 @@ export const UserAvatarList = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+
+    @media (max-width: 580px) {
+      flex-direction: column;
+    }
   }
 `;
 
@@ -23,6 +27,10 @@ export const UserAvatarBox = styled.div`
 
   .col-2 & {
     width: 50%;
+
+    @media (max-width: 580px) {
+      width: 100%;
+    }
   }
 
   &:last-child {

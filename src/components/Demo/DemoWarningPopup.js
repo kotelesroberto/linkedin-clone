@@ -29,12 +29,17 @@ const DemoWarningPopup = (props) => {
             .
           </p>
           <p>
-            To check the source files please{" "}
+            The webapp uses a Cookie (<i>demoWarningPopup</i>, stored for 7
+            days) that is only a flag for showing/hiding the DEMO welcome
+            message after each pageload.
+          </p>
+          <p>
+            To check the source files please visit my{" "}
             <a
               href="https://github.com/kotelesroberto/linkedin-clone"
               target="_blank"
             >
-              visit my GitHub project
+              GitHub project
             </a>
             .
           </p>
@@ -97,7 +102,7 @@ const DemoWarningPopup = (props) => {
           </p>
         </WarningContentInner>
 
-        <WarningClose onClick={(e) => setDemoWarning(false)}>
+        <WarningClose onClick={(e) => setDemoWarning("hide")}>
           <img
             src="/images/icon-close.svg"
             alt="Close Chat"

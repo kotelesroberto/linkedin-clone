@@ -18,6 +18,7 @@ import JobsPage from "./pages/JobsPage";
 import PostModal from "./components/Home/Wall/PostModal";
 import Chat from "./components/Chat/Chat";
 import DemoWarningPopup from "./components/Demo/DemoWarningPopup";
+import { setCookie, getCookie, removeCookie } from "./utils/CookieManager";
 
 import {
   actionGetUserAuth,
@@ -31,7 +32,7 @@ import {
 } from "./utils/userManagement";
 
 function App(props) {
-  const [demoWarning, setDemoWarning] = useState(true);
+  const [demoWarning, setDemoWarning] = useState("");
 
   useEffect(() => {
     props.getUserAuth();
@@ -52,6 +53,28 @@ function App(props) {
       });
     }
   }, [props.user && props.user.email]);
+
+  // manage Cookie (that is only for showing/hiding the Demo warning popup message)
+  const setDemoWarningInCookie = (value) => {
+    console.log("call: setDemoWarningInCookie", value);
+    setCookie("demoWarningPopup", value, 7);
+    setDemoWarning(value);
+  };
+
+  // check Cookie for demo warning popup
+  useEffect(() => {
+    const warningCookie = getCookie("demoWarningPopup");
+    console.log("warningCookie", warningCookie);
+    if (!warningCookie) {
+      setCookie("demoWarningPopup", "show", 7);
+      setDemoWarning("show");
+    } else {
+      setDemoWarning(warningCookie);
+    }
+
+    console.log({ warningCookie });
+    console.log({ demoWarning });
+  }, []);
 
   return (
     <DocumentTitle title="RuleX clone by Robert Koteles">
@@ -84,10 +107,10 @@ function App(props) {
 
         {props.user && <PostModal />}
         {props.user && <Chat />}
-        {demoWarning && (
+        {demoWarning == "show" && (
           <DemoWarningPopup
             demowarning={demoWarning}
-            setdemowarning={setDemoWarning}
+            setdemowarning={setDemoWarningInCookie}
           />
         )}
       </>

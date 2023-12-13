@@ -36,7 +36,7 @@ const DemoWarningPopup = (props) => {
           <p>
             To check the source files please visit my{" "}
             <a
-              href="https://github.com/kotelesroberto/linkedin-clone"
+              href="https://github.com/kotelesroberto/rulex"
               target="_blank"
             >
               GitHub project

@@ -1,11 +1,10 @@
-# LinkedIn clone (React, Firebase, Node JS)
+# Rulex (React, Firebase, Node JS)
 
   
+ ![enter image description here](https://files.readme.io/320345b-React_Logo_256x256.png) 
 
-![LinkedIn](https://icons.iconarchive.com/icons/danleech/simple/256/linkedin-icon.png) ![enter image description here](https://files.readme.io/320345b-React_Logo_256x256.png) 
 
-
-This nice **React / Redux** application is a clone of basic LinkedIn webapp, but it's independent from that. The webapp doesn't collect any sensitive information and uses no Cookies.
+This nice **React / Redux** application has been built by using React. The webapp doesn't collect any sensitive information and uses no Cookies.
 The information that is stored are:
  - Login information: 
 	 - After login by Google authentication:
@@ -22,7 +21,7 @@ The information that is stored are:
 
 ## Demo
 
-Click [here](https://linkedin-clone-app-2516d.web.app) to view the demo webapp. Don't worry if Firebase shows it's a dangerous site, it's not! I am still working on to eliminate this message, probably this is a Google Chrome security block. But I can declare that the app doesn't gather sensitive information, it's a simple portfolio item on my own.
+Click [here](https://rulex-app-2516d.web.app) to view the demo webapp. Don't worry if Firebase shows it's a dangerous site, it's not! I am still working on to eliminate this message, probably this is a Google Chrome security block. But I can declare that the app doesn't gather sensitive information, it's a simple portfolio item on my own.
 
 
 # About the solution
@@ -37,7 +36,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 To initialize the project the following commands should run:
 
-    npx create-react-app linkedin-clone
+    npx create-react-app rulex
     npm install
     firebase login
     firebase init

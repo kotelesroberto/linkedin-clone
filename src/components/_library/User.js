@@ -3,6 +3,8 @@ import * as variables from "./Variables";
 
 export const UserAvatarList = styled.div`
   padding: 0 12px;
+
+  
   &.col-2 {
     display: flex;
     flex-direction: row;
@@ -24,6 +26,11 @@ export const UserAvatarBox = styled.div`
   overflow: hidden;
   opacity: 1;
   transition: max-height 0.3s, opacity 0.1s, padding 0.1s;
+
+  &:has(+ .closed) {
+    border: none;
+  }
+  
 
   .col-2 & {
     width: 50%;

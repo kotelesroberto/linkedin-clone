@@ -14,7 +14,6 @@ import { ListHeader } from "../_library/Menus";
 import DiscoverMore from "../Widgets/DiscoverMore";
 import Avatar from "../User/Avatar";
 import { UserAvatarList } from "../_library/User";
-import ShowMore from "./ShowMore";
 
 const PeopleListTeaser = (props) => {
   const [openedStatus, setOpenedStatus] = useState("closed");

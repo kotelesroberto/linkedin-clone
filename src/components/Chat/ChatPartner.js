@@ -34,7 +34,7 @@ const Container = styled.div`
   border-bottom: 1px solid ${variables.colors.border};
 
   &:last-child {
-    border: : none;
+    border: none;
   }
 
   &.odd {

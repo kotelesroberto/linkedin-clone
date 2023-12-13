@@ -80,7 +80,6 @@ export const renderUploadedImageLocaly = (
  */
 
 export const imageLazyLoader = async (imageRef, src) => {
-  console.log("call: imageLazyLoader", src);
   return new Promise((resolve, reject) => {
     let img = new Image();
     img.onload = () => resolve(img);

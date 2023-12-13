@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,6 +17,7 @@ import ProfilePage from "./pages/ProfilePage";
 import JobsPage from "./pages/JobsPage";
 import PostModal from "./components/Home/Wall/PostModal";
 import Chat from "./components/Chat/Chat";
+import DemoWarningPopup from "./components/Demo/DemoWarningPopup";
 
 import {
   actionGetUserAuth,
@@ -30,6 +31,8 @@ import {
 } from "./utils/userManagement";
 
 function App(props) {
+  const [demoWarning, setDemoWarning] = useState(true);
+
   useEffect(() => {
     props.getUserAuth();
   }, []);
@@ -81,6 +84,12 @@ function App(props) {
 
         {props.user && <PostModal />}
         {props.user && <Chat />}
+        {demoWarning && (
+          <DemoWarningPopup
+            demowarning={demoWarning}
+            setdemowarning={setDemoWarning}
+          />
+        )}
       </>
     </DocumentTitle>
   );

@@ -15,7 +15,7 @@ const ProfileCardMyItems = (props) => {
       <ListSmall>
         <ListItemSmallNoHover>
           <LIST_SMALL_ICON__BOOKMARK></LIST_SMALL_ICON__BOOKMARK>
-          My items
+          <a href="/demo">My items</a>
         </ListItemSmallNoHover>
       </ListSmall>
     </Container>

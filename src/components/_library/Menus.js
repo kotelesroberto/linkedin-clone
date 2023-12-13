@@ -140,6 +140,7 @@ export const ListSmallIcon = styled.span`
   height: 16px;
   margin-right: 0.8rem;
   flex-shrink: 0;
+  align-self: center;
 `;
 
 export const LIST_SMALL_ICON__BOOKMARK = styled(ListSmallIcon)`

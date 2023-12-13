@@ -64,7 +64,7 @@ Your app is ready to be deployed!
 ## Important links:
 
  - https://styled-components.com/
- -  https://redux.js.org/introduction/getting-started
+ - https://redux.js.org/introduction/getting-started
  - https://www.npmjs.com/package/firebase-tools
  - https://react-redux.js.org/
  - https://redux-toolkit.js.org/
@@ -73,7 +73,11 @@ Your app is ready to be deployed!
  - https://www.npmjs.com/package/react-moment
  - https://www.youtube.com/watch?v=xP3cxbDUtrc
  - https://stackedit.io/app
- - https://www.manypixels.co/gallery (Licence of used SVG images)
+
+ ## Source of SVG icons, as copyright
+- https://www.iconninja.com/
+- https://www.svgrepo.com/
+- https://www.manypixels.co/gallery
 
 
 
@@ -163,7 +167,3 @@ D --> F[Set user information into Redux store]
 E --> F
 ```
 
-## Source of SVG icons
-- https://www.iconninja.com/
-- https://www.svgrepo.com/
-- https://www.manypixels.co/gallery

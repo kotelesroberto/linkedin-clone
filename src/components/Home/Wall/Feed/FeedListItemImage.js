@@ -20,14 +20,12 @@ const FeedListItemImage = (props) => {
     alt: image.title,
   };
 
-  console.log("aaaaaadasdasad imgRef", imgRef);
-
   useEffect(() => {
     imageLazyLoader(imgRef, imageToShow.url).then((res) => {
-      imgRef.current.src = imageToShow.url;
-      setTimeout(() => {
+      imgRef.current.onload = () => {
         imgRef.current.classList.add("loaded");
-      }, 500);
+      };
+      imgRef.current.src = imageToShow.url;
     });
   }, []);
 

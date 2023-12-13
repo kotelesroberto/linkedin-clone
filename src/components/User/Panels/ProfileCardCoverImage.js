@@ -1,27 +1,40 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { EditButton } from "../../_library/Buttons";
 import { connect } from "react-redux";
 
-import {
-  actionSetShowModal,
-} from "../../../redux/actions/actions";
+import { actionSetShowModal } from "../../../redux/actions/actions";
+import { imageLazyLoader } from "../../../utils/filename";
 
 const ProfileCardCoverImage = (props) => {
   const user = props.user;
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
-
   const setShowModal = props.setShowModal;
+  const imgRef = useRef();
+
 
   let imageToShow = {
     url: "/images/card-bg.svg",
     alt: "Gneral cover image",
   };
-  if (user && user && user.teaserImage) {
+
+  if (user && user.teaserImage) {
     imageToShow.url = user.teaserImage;
     imageToShow.alt = `Cover image of ${user.displayName}`;
   }
+
+  useEffect(() => {
+    if (user && user.teaserImage) {
+      imgRef.current.onload = () => {
+        imgRef.current.classList.add("loaded");
+      };
+
+      imageLazyLoader(imgRef, imageToShow.url).then((res) => {
+        imgRef.current.src = imageToShow.url;
+      });
+    }
+  }, [user]);
 
   const onClickEdit = (e) => {
     e.preventDefault();
@@ -38,7 +51,13 @@ const ProfileCardCoverImage = (props) => {
   return (
     <CoverImage className={isProfilePage ? "big" : ""}>
       <CoverImageWrapper onClick={(e) => onClickView(e)}>
-        <img src={imageToShow.url} alt={imageToShow.alt} />
+        <img
+          src=""
+          data-src={imageToShow.url}
+          alt={imageToShow.alt}
+          ref={imgRef}
+          className="lazy"
+        />
       </CoverImageWrapper>
       {isEditMode && <LocalEditButton onClick={(e) => onClickEdit(e)} />}
     </CoverImage>

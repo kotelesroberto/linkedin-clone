@@ -1,18 +1,34 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import { imageLazyLoader } from "../../../utils/filename";
 
 const ShowImage = (props) => {
   const showModal = props.showModal;
   const closeModal = props.closeModal;
   const modalData = props.showModalData;
+  const imgRef = useRef();
 
-  console.log("ShowImage showModal", showModal);
-  console.log("ShowImage modalData", modalData);
+  useEffect(() => {
+      imgRef.current.onload = () => {
+        imgRef.current.classList.add("loaded");
+      };
+
+      imageLazyLoader(imgRef, modalData.url).then((res) => {
+        imgRef.current.src = modalData.url;
+      });
+    
+  }, []);
 
   return (
     <ImageContainer>
-      <img src={modalData.url} alt={modalData.alt} />
+      <img
+        src=""
+        data-src={modalData.url}
+        alt={modalData.alt}
+        ref={imgRef}
+        className="lazy"
+      />
     </ImageContainer>
   );
 };

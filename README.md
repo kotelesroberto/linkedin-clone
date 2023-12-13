@@ -4,7 +4,8 @@
  ![enter image description here](https://files.readme.io/320345b-React_Logo_256x256.png) 
 
 
-This nice **React / Redux** application has been built by using React. The webapp doesn't collect any sensitive information and uses no Cookies.
+This nice **React / Redux** application has been built by using React. The webapp doesn't collect any sensitive information and uses a Cookie (demoWarningPopup, stored for 7 days) that is only a flag for showing/hiding the DEMO welcome message after each pageload.
+
 The information that is stored are:
  - Login information: 
 	 - After login by Google authentication:

@@ -1,0 +1,12 @@
+img {
+    &.lazy {
+        opacity: 0;
+        transition: opacity .5s;
+        height: 200px;
+
+        &.loaded {
+            opacity: 1;
+            height: auto;
+        }
+    }
+}

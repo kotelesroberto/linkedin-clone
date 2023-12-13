@@ -5,18 +5,31 @@
  * 2023, Robert Koteles
  */
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { connect } from "react-redux";
 import { actionSetShowModal } from "../../../../redux/actions/actions";
+import { imageLazyLoader } from "../../../../utils/filename";
 
 const FeedListItemImage = (props) => {
   const image = props.image;
   const setShowModal = props.setShowModal;
 
-  let imageToShow = {
+  const imgRef = useRef();
+  const imageToShow = {
     url: image.url,
     alt: image.title,
   };
+
+  console.log("aaaaaadasdasad imgRef", imgRef);
+
+  useEffect(() => {
+    imageLazyLoader(imgRef, imageToShow.url).then((res) => {
+      imgRef.current.src = imageToShow.url;
+      setTimeout(() => {
+        imgRef.current.classList.add("loaded");
+      }, 500);
+    });
+  }, []);
 
   const onClickView = (e) => {
     e.preventDefault();
@@ -25,8 +38,15 @@ const FeedListItemImage = (props) => {
   };
 
   return (
-    <a href={image.url} target="_blank">
-      <img src={image.url} alt={image.title} onClick={onClickView} />
+    <a href={imageToShow.url} target="_blank">
+      <img
+        src=""
+        data-src={imageToShow.url}
+        alt={imageToShow.alt}
+        onClick={onClickView}
+        ref={imgRef}
+        className="lazy"
+      />
     </a>
   );
 };

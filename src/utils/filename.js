@@ -61,6 +61,7 @@ export const renderUploadedImageLocaly = (
 
     reader.onload = (e) => {
       current.src = e.target.result;
+      current.classList.add("loaded");
     };
     reader.readAsDataURL(file);
 
@@ -68,6 +69,24 @@ export const renderUploadedImageLocaly = (
       callback.call(this, true);
     }
   }
+};
+
+/**
+ *
+ * To lazyloadng an image here an Image object is used for.
+ * When image is laoded into the Image object, t's ready to set as src for the real image in teh DOM
+ * @param {string} src - source of the image to load
+ * @param {referencedObj} imageRef - the image waiting to be lazyloaded
+ */
+
+export const imageLazyLoader = async (imageRef, src) => {
+  console.log("call: imageLazyLoader", src);
+  return new Promise((resolve, reject) => {
+    let img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
 };
 
 /*=============================================

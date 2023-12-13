@@ -33,26 +33,26 @@ export const peopleMayYouKnow = [
     name: "Janis Joplin",
     position: "Singer and story teller",
     avatar: "/images/avatar.svg",
-    link: "./in/demo",
+    link: "/demo",
   },
   {
     name: "Jimi Hendrix",
     position:
       "American guitarist, songwriter and singer. Although his mainstream career spanned only four years, he is widely regarded as the greatest and one of the most influential electric guitarists in the history of popular music",
     avatar: "/images/avatar.svg",
-    link: "./in/demo",
+    link: "/demo",
   },
   {
     name: "Eric Clapton",
     position: "Guitarist",
     avatar: "/images/avatar.svg",
-    link: "./in/demo",
+    link: "/demo",
   },
   {
     name: "Superman",
     position: "(Clark Kent in incognito)",
     avatar: "/images/avatar.svg",
-    link: "./in/demo",
+    link: "/demo",
   },
 ];
 
@@ -481,7 +481,7 @@ export const peopleAlsoViewed = [
     name: "Eric Clapton",
     position: "Guitarist",
     avatar: "/images/avatar.svg",
-    link: "./in/demo",
+    link: "/demo",
   },
 ];
 

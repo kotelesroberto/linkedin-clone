@@ -75,8 +75,6 @@ const ProfileCardActivity = (props) => {
     activityItems.push(userActivityItem);
   });
 
-  console.log({ activityItems });
-
   const content = (
     <>
       <Tabs className="modern">
@@ -137,7 +135,6 @@ const Associated = styled.div`
 
 // any time the store is updated, mapStateToProps will be called. Expected to return an object
 const mapStateToProps = (state) => {
-  console.log({ state });
   return {
     user: state.userState.user,
   };

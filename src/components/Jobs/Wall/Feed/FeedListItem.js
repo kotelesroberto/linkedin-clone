@@ -28,8 +28,6 @@ const Job = (props) => {
     // Start the pooled timer which runs every 60 seconds
     // (60000 milliseconds) by default.
     Moment.startPooledTimer();
-
-    console.log("content.user", content.user);
   }, []);
 
   return (
@@ -74,11 +72,9 @@ const JobCard = styled(Card)`
   flex-direction: column;
   color: ${variables.colors.colorFont};
   padding: 12px;
-  
 `;
 
-const JobContainer = styled(CardContainer)`
-`;
+const JobContainer = styled(CardContainer)``;
 
 const JobTop = styled.div`
   display: flex;

@@ -26,12 +26,9 @@ const PeopleListTeaser = (props) => {
   const toggleView = (e) => {
     e.preventDefault();
 
-    console.log("toggleView");
-
     setOpenedStatus(openedStatus === "closed" ? "open" : "closed");
 
     thisListRef.current.querySelectorAll("& > div").forEach((item, index) => {
-      console.log(item);
       if (index >= maxItemsToShow) {
         item.classList.toggle("closed");
       }

@@ -56,7 +56,6 @@ function App(props) {
 
   // manage Cookie (that is only for showing/hiding the Demo warning popup message)
   const setDemoWarningInCookie = (value) => {
-    console.log("call: setDemoWarningInCookie", value);
     setCookie("demoWarningPopup", value, 7);
     setDemoWarning(value);
   };
@@ -64,16 +63,13 @@ function App(props) {
   // check Cookie for demo warning popup
   useEffect(() => {
     const warningCookie = getCookie("demoWarningPopup");
-    console.log("warningCookie", warningCookie);
+
     if (!warningCookie) {
       setCookie("demoWarningPopup", "show", 7);
       setDemoWarning("show");
     } else {
       setDemoWarning(warningCookie);
     }
-
-    console.log({ warningCookie });
-    console.log({ demoWarning });
   }, []);
 
   return (

@@ -134,7 +134,6 @@ const onChange = async (event) => {
 } 
 =============================================*/
 export const resizeFile = (data = []) => {
-  console.log("data", data);
   return new Promise((resolve) => {
     Resizer.imageFileResizer(...data);
   });

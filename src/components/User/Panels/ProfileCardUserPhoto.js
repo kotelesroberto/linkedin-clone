@@ -46,13 +46,11 @@ const ProfileCardUserPhoto = (props) => {
 
   const onClickEdit = (e) => {
     e.preventDefault();
-    console.log("clicked: onClickEdit");
     setShowModal(`edit-profile--avatar`, imageToShow);
   };
 
   const onClickView = (e) => {
     e.preventDefault();
-    console.log("clicked: onClickView");
     setShowModal(`view-image`, imageToShow);
   };
 

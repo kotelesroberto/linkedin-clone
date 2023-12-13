@@ -39,7 +39,6 @@ const ProfileCardRecommendations = (props) => {
 
   const onClickEdit = (e) => {
     e.preventDefault();
-    console.log("onClickEdit");
   };
 
   const extraButton = (

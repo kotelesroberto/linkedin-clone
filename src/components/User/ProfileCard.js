@@ -51,7 +51,6 @@ const ProfileCard = (props) => {
   useEffect(() => {
     getUserProfile(profileUid, true)
       .then((result) => {
-        console.log("getUserProfile RESULT", result);
         setProfileUser((prevState) => result);
       })
       .catch((error) => {
@@ -61,7 +60,6 @@ const ProfileCard = (props) => {
 
   const onClickEdit = (e) => {
     e.preventDefault();
-    console.log("onClickEdit");
     setShowModal(`edit-profile--info`);
   };
 
@@ -175,7 +173,6 @@ const LocalEditButton = styled(EditButton)`
 
 // any time the store is updated, mapStateToProps will be called. Expected to return an object
 const mapStateToProps = (state) => {
-  console.log({ state });
   return {
     user: state.userState.user,
     showModal: state.popupModalState.popupModal.showModal,
@@ -189,7 +186,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(actionSetShowModal(newPopupState));
     },
     setPreviousShowModal: (prevPopupState) => {
-      console.log("d setPreviousShowModal", prevPopupState);
       dispatch(actionSetPreviousShowModal(prevPopupState));
     },
   };

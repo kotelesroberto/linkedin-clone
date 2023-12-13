@@ -34,7 +34,7 @@ const Feed = (props) => {
 
   useEffect(() => {
     const unsubscribe = getPosts();
-    console.log({ feedItems });
+
     return () => {
       // cleanup
       if (typeof unsubscribe === "function") {
@@ -130,18 +130,14 @@ const Feed = (props) => {
 
   /* get newly added post data */
   const getNewPostData = async (newPostReference) => {
-    console.log("call: new getNewPostData", newPostReference);
     // in case of having a new post from the <ShareBox> component, upliading image is async process -> after getting the Redux notification we need to get the new post item with the belonging images
     if (newPostReference) {
-      // console.log("step 1");
       // add image infomration to the new post that is already in the component state, thanks to the onSnapshot API
 
       if (feedItems.some((arrItem) => arrItem.id === newPostReference)) {
         let imgArray = [];
-        // console.log("step 1 MORE", newPostReference);
 
         return getRelatedImages(newPostReference).then((images) => {
-          console.log("getRelatedImages images", images);
           images.map((item) => {
             imgArray.push({
               url: item,
@@ -151,13 +147,11 @@ const Feed = (props) => {
 
           // add the new image information to the belonging post item in the component's state
           const newState = [...feedItems];
-          console.log("newState", newState);
 
           newState.map((item) => {
             if (item.id === newPostReference) {
               item.images = imgArray;
               item.isNewPost = true;
-              console.log("foundthis", item.id);
             }
           });
 
@@ -166,7 +160,7 @@ const Feed = (props) => {
               console.log("UPDATING NOW");
               return [...newState];
             });
-          }, 2000);
+          }, 1000);
 
           // erase reference to the new post from Redux store
           props.setImagesUploadDone("");

@@ -43,13 +43,11 @@ const ProfileCardCoverImage = (props) => {
 
   const onClickEdit = (e) => {
     e.preventDefault();
-    console.log("clicked: onClickEdit");
     setShowModal(`edit-profile--coverimage`, imageToShow);
   };
 
   const onClickView = (e) => {
     e.preventDefault();
-    console.log("clicked: onClickView");
     setShowModal(`view-image`, imageToShow);
   };
 

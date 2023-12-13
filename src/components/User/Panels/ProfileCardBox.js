@@ -33,7 +33,6 @@ const ProfileCardBox = (props) => {
 
   const onClickEdit = (e) => {
     e.preventDefault();
-    console.log("onClickEdit");
     setShowModal(`edit-profile--${panel}`);
   };
 

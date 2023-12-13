@@ -26,7 +26,6 @@ const LoginPage = (props) => {
   };
 
   useEffect(() => {
-    console.log("props.loadedURL ", props.loadedURL);
     if (props.user && props.user.email) {
       navigate(props.loadedURL === "/" ? "/home" : props.loadedURL);
     }

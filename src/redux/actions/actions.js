@@ -48,7 +48,6 @@ export const actionRegisterByEmailAndPassAPI = (email, pass, callback) => {
 
 /* Login by email and password */
 export const actionSignInEmailAndPassAPI = (email, pass, callback = null) => {
-  console.log("call : actionSignInEmailAndPassAPI");
   return (dispatch) => {
     signInWithEmailAndPassword(auth, email, pass)
       .then((UserCredential) => {
@@ -77,7 +76,6 @@ export const actionSignInEmailAndPassAPI = (email, pass, callback = null) => {
 // https://firebase.google.com/docs/reference/js/v8/firebase.auth.Auth#signinwithpopup
 // Firebase Google Sign In
 export const actionSignInGoogleAPI = () => {
-  console.log("call : actionSignInGoogleAPI");
   return (dispatch) => {
     signInWithPopup(auth, providerGoogle)
       .then((result) => {
@@ -120,7 +118,6 @@ export const actionGetUserAuth = () => {
           },
         });
 
-        console.log("auth.currentUser.uid", auth.currentUser.uid);
       } else {
         // User is signed out
         dispatch({
@@ -176,7 +173,6 @@ export const setPostVisibilityAPI = (e, newVisibility) => {
 // Set popup modal visibility
 // 'addPost', 'addMedia', 'addEvent', 'addArticle', 'is-posting'
 export const actionSetShowModal = (newState, payloadData = {}) => {
-  console.log("actionSetShowModal newState", newState);
   return (dispatch) => {
     dispatch({
       type: "popupModalState/setShowModal",

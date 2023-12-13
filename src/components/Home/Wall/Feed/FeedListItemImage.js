@@ -31,7 +31,6 @@ const FeedListItemImage = (props) => {
 
   const onClickView = (e) => {
     e.preventDefault();
-    console.log("clicked: onClickView");
     setShowModal(`view-image`, imageToShow);
   };
 

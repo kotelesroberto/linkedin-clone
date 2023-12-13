@@ -47,7 +47,6 @@ const EditProfileData = (props) => {
     if (user && user.uid) {
       getUserProfile(user.uid, true)
         .then((result) => {
-          console.log("EditProfileData getUSerProfile result", result);
           setProfileUser({ ...result });
         })
         .catch((error) => {

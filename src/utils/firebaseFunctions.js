@@ -79,10 +79,9 @@ export const UploadFile = async ({
       console.log(error);
     },
     () => {
-      // Handle successful uploads on complete
+      // Handle successful uploads on complete. fireBaseUrl is the url of the new image
       // For instance, get the download URL: https://firebasestorage.googleapis.com/...
       getDownloadURL(uploadImage.snapshot.ref).then((fireBaseUrl) => {
-        console.log("File available at", fireBaseUrl);
         setUrl(fireBaseUrl);
       });
     }

@@ -47,9 +47,7 @@ export const createUserEntry = (data) => {
     shorturl: data.uid ? data.uid : "",
   };
 
-  return SaveContentIntoFirebase("users", newUser).then((result) => {
-    console.log("Creating user is DONE");
-  });
+  return SaveContentIntoFirebase("users", newUser).then((result) => {});
 };
 
 /**
@@ -73,9 +71,7 @@ export const createUserExtraEntry = (uid, isDemo = true) => {
   userProfileData = generateUserExtraData(uid, isDemo);
 
   return SaveContentIntoFirebase("users-extra-data", userProfileData)
-    .then((result) => {
-      console.log("Creating user extra data is DONE");
-    })
+    .then((result) => {})
     .catch((error) => {
       console.error(error.message);
     });
@@ -113,7 +109,6 @@ export const generateUserExtraData = (uid, isDemo) => {
     newData = userDataBlank;
   }
 
-  console.log({ newData });
   return newData;
 };
 
@@ -141,8 +136,6 @@ export const doReadUserEntry = async (data) => {
     options.where.push([key, "==", data[key]]);
   }
 
-  console.log({ options });
-
   return ReadContentFromFirebase("users", options);
 };
 
@@ -164,7 +157,6 @@ export const getUserProfileID = () => {
  * @return {Object} All information of this profile page, as an object
  */
 export const getUserProfile = async (puid, fullProfile) => {
-  console.log("call: getUserProfile");
   let profilePageData;
   let profilePageExtraData;
 
@@ -183,7 +175,6 @@ export const getUserProfile = async (puid, fullProfile) => {
     return Promise.all([profilePageData, profilePageExtraData]).then(function (
       resultsArray
     ) {
-      console.log({ resultsArray });
       // resultsArray[0] is result of profilePageData
       // resultsArray[1] is result of profilePageExtraData
 
@@ -215,7 +206,6 @@ export const saveUserProfileChanges = async (
   const extraInformation = { ...userData.extra };
 
   delete userData.extra; // reset
-  console.log("saveUserProfileChanges userData: ", userData);
 
   // save post content into Firestore
   ModifyContentInFirebase("users", documentID, userData, (response) => {

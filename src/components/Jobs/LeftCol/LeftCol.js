@@ -6,12 +6,12 @@
 
 import styled from "styled-components";
 import React from "react";
-import WidgetRecent from "./WidgetRecent";
+import WidgetJobMenu from "./WidgetJobMenu";
 
 const LeftCol = (props) => {
   return (
     <Container>
-      <WidgetRecent />
+      <WidgetJobMenu />
     </Container>
   );
 };

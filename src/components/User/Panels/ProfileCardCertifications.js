@@ -81,8 +81,8 @@ const ProfileCardCertifications = (props) => {
         "Show all licences & certifications",
         "Show all licences & certifications",
       ]}
-      link="#"
-      onclick={(e) => doDemo(e)}
+      link="/demo"
+      onclick={(e) => { }}
     />
   );
 

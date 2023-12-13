@@ -4,6 +4,30 @@
  * 2023, Robert Koteles
  */
 
+export const groupRecent = [
+  {
+    title:
+      "Developers - Android, iOS developer , Blockchain, Ethereum, Java, Ruby, .net, php, django, etc",
+    link: "/groups/12345",
+  },
+  {
+    title: "Senior Frontend Web Developer",
+    link: "/groups/12345",
+  },
+  {
+    title: "IT Jobs Group",
+    link: "/groups/12345",
+  },
+  {
+    title: "Parasol Employees' Network",
+    link: "/groups/12345",
+  },
+  {
+    title: "Front End Developer Group",
+    link: "/groups/12345",
+  },
+];
+
 export const peopleMayYouKnow = [
   {
     name: "Janis Joplin",

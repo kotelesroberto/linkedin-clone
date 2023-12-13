@@ -7,6 +7,7 @@
  */
 
 import React, { useState, useRef } from "react";
+import { connect } from "react-redux";
 import ProfileCardBox from "./ProfileCardBox";
 import ContentListItems from "../Panels/ContentListItems";
 import { activity } from "../../../utils/demoData";
@@ -18,6 +19,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
 const ProfileCardActivity = (props) => {
+  const user = props.user;
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const [openedStatus, setOpenedStatus] = useState("closed");
   const thisListRef = useRef();
@@ -56,15 +58,15 @@ const ProfileCardActivity = (props) => {
   activity.map((activityItem) => {
     let userActivityItem = {};
 
-    const timeinfo = (
-      <Moment fromNow ago>
-        {new Date(activityItem.timestamp)}
-      </Moment>
-    );
-    console.log(timeinfo);
+    let timeinfo = new Date(activityItem.timestamp);
+    timeinfo = `${timeinfo.getDate()}/${
+      timeinfo.getMonth() - 1
+    }/${timeinfo.getFullYear()}`;
 
     // date when user worked here
-    userActivityItem.title5 = `XXX ${activityItem.type} · ${timeinfo}`;
+    userActivityItem.title5 = `${props.user && props.user.displayName} ${
+      activityItem.type
+    } · ${timeinfo}`;
     userActivityItem.content = createAssociated({
       name: activityItem.imagetext,
       icon: activityItem.image,
@@ -131,4 +133,14 @@ const Associated = styled.div`
   }
 `;
 
-export default ProfileCardActivity;
+/*=====  React-redux related functions  ======*/
+
+// any time the store is updated, mapStateToProps will be called. Expected to return an object
+const mapStateToProps = (state) => {
+  console.log({ state });
+  return {
+    user: state.userState.user,
+  };
+};
+
+export default connect(mapStateToProps)(ProfileCardActivity);

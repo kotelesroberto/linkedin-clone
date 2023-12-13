@@ -28,13 +28,13 @@ const Header = (props) => {
       image: "/images/nav-jobs.svg",
       title: "Jobs",
       url: "/jobs",
-      notification: "0",
+      notification: "1",
     },
     {
       image: "/images/nav-messaging.svg",
       title: "Messaging",
       url: "/demo",
-      notification: "0",
+      notification: "3",
     },
     {
       image: "/images/nav-notifications.svg",

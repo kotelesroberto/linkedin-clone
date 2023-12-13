@@ -9,7 +9,6 @@
  */
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { ContentList, ContentListItem } from "../../_library/Cards";
 import ProfileCardBox from "./ProfileCardBox";
 import DiscoverMore from "../../Widgets/DiscoverMore";
@@ -19,18 +18,11 @@ const ProfileCardResources = (props) => {
   const isEditMode = props.iseditmode ? props.iseditmode : false;
   const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
 
-  const navigate = useNavigate();
-
-  const doDemo = (e) => {
-    e.preventDefault();
-    navigate("/demo");
-  };
-
   const extraButton = (
     <DiscoverMore
       title={["Show all resources", "Show all resources"]}
-      link="#"
-      onclick={(e) => doDemo(e)}
+      link="/demm"
+      onclick={(e) => {}}
     />
   );
 

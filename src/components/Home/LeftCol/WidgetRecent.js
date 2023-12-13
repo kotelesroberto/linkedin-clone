@@ -5,9 +5,6 @@
  */
 
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
-import * as variables from "../../_library/Variables";
 
 import { Card, CardContainer } from "../../_library/Cards";
 import {
@@ -18,40 +15,9 @@ import {
   ListSmallIcon_Plus_After,
 } from "../../_library/Menus";
 import DiscoverMore from "../../Widgets/DiscoverMore";
+import { groupRecent } from "../../../utils/demoData";
 
 const WidgetRecent = () => {
-  const navigate = useNavigate();
-
-  const doDemo = (e) => {
-    e.preventDefault();
-    navigate("/demo");
-  };
-
-  // TODO: fetch from API later, as JSON object
-  const groupRecent = [
-    {
-      title:
-        "Developers - Android, iOS developer , Blockchain, Ethereum, Java, Ruby, .net, php, django, etc",
-      link: "/groups/12345",
-    },
-    {
-      title: "Senior Frontend Web Developer",
-      link: "/groups/12345",
-    },
-    {
-      title: "IT Jobs Group",
-      link: "/groups/12345",
-    },
-    {
-      title: "Parasol Employees' Network",
-      link: "/groups/12345",
-    },
-    {
-      title: "Front End Developer Group",
-      link: "/groups/12345",
-    },
-  ];
-
   const groupGroups = groupRecent;
 
   return (
@@ -104,8 +70,8 @@ const WidgetRecent = () => {
       </CardContainer>
       <DiscoverMore
         title={["Discover more", "Hide"]}
-        link="#"
-        onclick={(e) => doDemo(e)}
+        link="/demo"
+        onclick={(e) => {}}
       />
     </Card>
   );

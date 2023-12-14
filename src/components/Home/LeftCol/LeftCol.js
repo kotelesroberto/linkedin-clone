@@ -31,6 +31,7 @@ const Container = styled.div`
   @media (max-width: 768px) {
     min-width: initial;
     width: 100%;
+    display: none;
   }
 `;
 

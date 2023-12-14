@@ -177,8 +177,8 @@ export const actionSetShowModal = (newState, payloadData = {}) => {
     dispatch({
       type: "popupModalState/setShowModal",
       popupModal: {
-        showModal: newState,
         payloadData,
+        showModal: newState,
       },
     });
   };
@@ -188,8 +188,8 @@ export const actionSetPreviousShowModal = (newState, payloadData = {}) => {
     dispatch({
       type: "popupModalState/setPreviousShowModal",
       popupModal: {
-        previousShowModal: newState,
         payloadData,
+        previousShowModal: newState,
       },
     });
   };

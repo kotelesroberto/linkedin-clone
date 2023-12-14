@@ -48,7 +48,6 @@ const PostModal = (props) => {
   const gotoBack = (e) => {
     e.preventDefault();
     setShowModal(previousShowModal);
-
     setPreviousShowModal("");
     setUploadedFiles([]);
   };
@@ -215,6 +214,7 @@ const PostModal = (props) => {
                 {previousShowModal && showModal !== "view-image" && (
                   <ButtonPrimary onClick={gotoBack}>Back</ButtonPrimary>
                 )}
+
                 {["addPost", "addMedia"].includes(showModal) &&
                   (!!uploadedFiles.length ? (
                     <ButtonSecondary onClick={clickPost}>Post</ButtonSecondary>

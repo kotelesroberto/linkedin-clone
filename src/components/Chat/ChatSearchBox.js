@@ -20,6 +20,7 @@ const ChatSearchBox = (props) => {
       <Search>
         <div>
           <input
+            id="chatSearch"
             type="text"
             placeholder="Search"
             value={searchtext}

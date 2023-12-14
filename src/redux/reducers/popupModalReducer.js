@@ -22,7 +22,6 @@ const popupModalReducer = createSlice({
         popupModal: {
           ...state.popupModal,
           showModal: action.popupModal.showModal,
-          previousShowModal: action.popupModal.showModal,
           payloadData: action.popupModal.payloadData,
         },
       };

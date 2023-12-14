@@ -34,11 +34,7 @@ import { getUserProfileID, getUserProfile } from "../../utils/userManagement";
 
 const ProfileCard = (props) => {
   const [profileUser, setProfileUser] = useState({});
-
-  const showModal = props.showModal;
-  const previousShowModal = props.previousShowModal;
   const setShowModal = props.setShowModal;
-  const setPreviousShowModal = props.setPreviousShowModal;
 
   const toggleView = () => {};
 
@@ -75,7 +71,7 @@ const ProfileCard = (props) => {
         />
         <ProfileCardUserPhoto
           iseditmode={isEditMode}
-          isprofilepage={isProfilePage}
+          classes={isProfilePage ? "big" : ""}
           profileuser={profileUser}
         />
         <ProfileCardUserInfo
@@ -185,8 +181,6 @@ const LocalEditButton = styled(EditButton)`
 const mapStateToProps = (state) => {
   return {
     user: state.userState.user,
-    showModal: state.popupModalState.popupModal.showModal,
-    previousShowModal: state.popupModalState.popupModal.previousShowModal,
   };
 };
 
@@ -194,9 +188,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setShowModal: (newPopupState) => {
       dispatch(actionSetShowModal(newPopupState));
-    },
-    setPreviousShowModal: (prevPopupState) => {
-      dispatch(actionSetPreviousShowModal(prevPopupState));
     },
   };
 };

@@ -19,6 +19,7 @@ import { useNavigate } from "react-router-dom";
 
 const ShareBox = (props) => {
   const showModal = props.showModal;
+  const previousShowModal = props.previousShowModal;
   const setShowModal = props.setShowModal;
 
   const navigate = useNavigate();
@@ -40,7 +41,7 @@ const ShareBox = (props) => {
             )}
           </UserAvatarPhoto>
           <ButtonSharePost onClick={(e) => setShowModal("addPost")}>
-            Start a post
+            Start a post p: {previousShowModal} s: {showModal}
           </ButtonSharePost>
         </ShareBoxTop>
         <ShareBoxButtons>
@@ -77,9 +78,6 @@ const mapDispatchToProps = (dispatch) => {
   return {
     setShowModal: (newPopupState) => {
       dispatch(actionSetShowModal(newPopupState));
-    },
-    setPreviousShowModal: (prevPopupState) => {
-      dispatch(actionSetPreviousShowModal(prevPopupState));
     },
   };
 };

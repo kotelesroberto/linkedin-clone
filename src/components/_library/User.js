@@ -4,7 +4,6 @@ import * as variables from "./Variables";
 export const UserAvatarList = styled.div`
   padding: 0 12px;
 
-  
   &.col-2 {
     display: flex;
     flex-direction: row;
@@ -30,7 +29,6 @@ export const UserAvatarBox = styled.div`
   &:has(+ .closed) {
     border: none;
   }
-  
 
   .col-2 & {
     width: 50%;
@@ -98,6 +96,8 @@ export const UserPhoto = styled(UserAvatarPhoto)`
     margin-left: 2.4rem;
     cursor: pointer;
   }
+
+  &.header,
   &.panel {
     width: 36px;
     height: 36px;

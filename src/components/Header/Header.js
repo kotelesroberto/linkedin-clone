@@ -4,14 +4,63 @@
  * 2023, Robert Koteles
  */
 
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import * as variables from "../_library/Variables";
 import { connect } from "react-redux";
 import { actionSignOutAPI } from "../../redux/actions/actions";
 
+import ProfileCardUserPhoto from "../User/Panels/ProfileCardUserPhoto";
+
 const Header = (props) => {
-  const menuItems = [
+  const user = props.user;
+
+  const [userMenuStatus, setUserMenuStatus] = useState(false);
+
+  const onClickUserMenu = (e) => {
+    e.preventDefault();
+    setUserMenuStatus(!userMenuStatus);
+  };
+
+  const menuItemsHeader = [
+    {
+      image: "/images/nav-home.svg",
+      title: "Home",
+      url: "/home",
+      notification: "0",
+      class: "",
+    },
+    {
+      image: "/images/nav-network.svg",
+      title: "My Network",
+      url: "/demo",
+      notification: "0",
+      class: "",
+    },
+    {
+      image: "/images/nav-jobs.svg",
+      title: "Jobs",
+      url: "/jobs",
+      notification: "1",
+      class: "",
+    },
+    {
+      image: "/images/nav-messaging.svg",
+      title: "Messaging",
+      url: "/demo",
+      notification: "3",
+      class: "mobile",
+    },
+    {
+      image: "/images/nav-notifications.svg",
+      title: "Notifications",
+      url: "/demo",
+      notification: "6",
+      class: "",
+    },
+  ];
+
+  const menuItemsFooter = [
     {
       image: "/images/nav-home.svg",
       title: "Home",
@@ -25,16 +74,10 @@ const Header = (props) => {
       notification: "0",
     },
     {
-      image: "/images/nav-jobs.svg",
-      title: "Jobs",
-      url: "/jobs",
-      notification: "1",
-    },
-    {
-      image: "/images/nav-messaging.svg",
-      title: "Messaging",
+      image: "/images/icon-plus.svg",
+      title: "Post",
       url: "/demo",
-      notification: "3",
+      notification: "0",
     },
     {
       image: "/images/nav-notifications.svg",
@@ -42,96 +85,138 @@ const Header = (props) => {
       url: "/demo",
       notification: "6",
     },
+    {
+      image: "/images/nav-jobs.svg",
+      title: "Jobs",
+      url: "/jobs",
+      notification: "1",
+    },
   ];
+
   const currentWindowLocationPath = window.location.pathname;
 
   return (
     <Container>
-      <Content>
-        <Logo>
-          <a href="/home">
-            <img src="/images/home-logo.svg" alt="" />
-          </a>
-        </Logo>
-        <Search>
-          <div>
-            <input type="text" placeholder="Search" />
-          </div>
-          <SearchIcon>
-            <img src="/images/search-icon.svg" alt="Start search" />
-          </SearchIcon>
-        </Search>
-        <Nav>
-          <NavListWrap>
-            <NavListSearch>
-              <a>
-                <img src="/images/search-icon.svg" alt="" />
-                <span>Search</span>
-              </a>
-            </NavListSearch>
+      <HeaderContainer>
+        <Content>
+          <Logo>
+            <a href="/home">
+              <img src="/images/home-logo.svg" alt="" />
+            </a>
+          </Logo>
 
-            {!!menuItems.length &&
-              menuItems.map((item, index) => (
-                <NavList
-                  className={
-                    item.url == currentWindowLocationPath ? "active" : ""
-                  }
-                  key={`header-menu-item-${index}`}
-                >
-                  <a href={item.url}>
-                    <img src={item.image} alt={item.title} />
-                    <span>{item.title}</span>
-                    {item.notification > 0 && (
-                      <NavListBadge>{item.notification}</NavListBadge>
-                    )}
-                  </a>
-                </NavList>
-              ))}
-
-            <User>
-              <a href="">
-                {props.user && props.user.photoURL ? (
-                  <img src={props.user.photoURL} alt={props.user.displayName} />
-                ) : (
-                  <img src="/images/avatar.svg" alt="User avatar" />
-                )}
-                <span>
-                  Me
-                  <img
-                    src="/images/down-icon.svg"
-                    alt="Open dropdown"
-                    className="icon-arrow"
-                  />
-                </span>
-              </a>
-
-              <SignOut>
-                <a href="#" onClick={props.signOut}>
-                  Sign out
+          <Search>
+            <div>
+              <input type="text" placeholder="Search" id="pageSearch" />
+            </div>
+            <SearchIcon>
+              <img src="/images/search-icon.svg" alt="Start search" />
+            </SearchIcon>
+          </Search>
+          <Nav>
+            <NavListWrap>
+              <NavListSearch>
+                <a>
+                  <img src="/images/search-icon.svg" alt="" />
+                  <span>Search</span>
                 </a>
-              </SignOut>
-            </User>
-            <ForBusiness>
-              <a>
-                <img src="/images/nav-work.svg" alt="" />
-                <span>
-                  Business
-                  <img
-                    src="/images/down-icon.svg"
-                    alt=""
-                    className="icon-arrow"
-                  />
-                </span>
-              </a>
-            </ForBusiness>
-          </NavListWrap>
-        </Nav>
-      </Content>
+              </NavListSearch>
+
+              {!!menuItemsHeader.length &&
+                menuItemsHeader.map((item, index) => (
+                  <NavList
+                    className={`desktop ${item.class} ${
+                      item.url == currentWindowLocationPath ? "active" : ""
+                    }`}
+                    key={`header-menu-item-${index}`}
+                  >
+                    <a href={item.url}>
+                      <img src={item.image} alt={item.title} />
+                      <span>{item.title}</span>
+                      {item.notification > 0 && (
+                        <NavListBadge>{item.notification}</NavListBadge>
+                      )}
+                    </a>
+                  </NavList>
+                ))}
+
+              <User>
+                <a href="#" onClick={(e) => onClickUserMenu(e)}>
+                  {props.user && props.user.photoURL ? (
+                    <img
+                      src={props.user.photoURL}
+                      alt={props.user.displayName}
+                    />
+                  ) : (
+                    <img src="/images/avatar.svg" alt="User avatar" />
+                  )}
+                  <span>
+                    Me
+                    <img
+                      src="/images/down-icon.svg"
+                      alt="Open dropdown"
+                      className="icon-arrow"
+                    />
+                  </span>
+                </a>
+
+                {userMenuStatus && (
+                  <SignOut>
+                    <a href="#" onClick={props.signOut}>
+                      Sign out
+                    </a>
+                  </SignOut>
+                )}
+              </User>
+              <ForBusiness>
+                <a>
+                  <img src="/images/nav-work.svg" alt="" />
+                  <span>
+                    Business
+                    <img
+                      src="/images/down-icon.svg"
+                      alt=""
+                      className="icon-arrow"
+                    />
+                  </span>
+                </a>
+              </ForBusiness>
+            </NavListWrap>
+          </Nav>
+        </Content>
+      </HeaderContainer>
+      <FooterContainer>
+        <Content>
+          <Nav className="footerNav">
+            <NavListWrap>
+              {!!menuItemsFooter.length &&
+                menuItemsFooter.map((item, index) => (
+                  <NavList
+                    className={
+                      item.url == currentWindowLocationPath ? "active" : ""
+                    }
+                    key={`header-menu-item-${index}`}
+                  >
+                    <a href={item.url}>
+                      <img src={item.image} alt={item.title} />
+                      <span>{item.title}</span>
+                      {item.notification > 0 && (
+                        <NavListBadge>{item.notification}</NavListBadge>
+                      )}
+                    </a>
+                  </NavList>
+                ))}
+            </NavListWrap>
+          </Nav>
+        </Content>
+      </FooterContainer>
     </Container>
   );
 };
 
-const Container = styled.div`
+const Container = styled.div``;
+
+const HeaderContainer = styled.div`
   background-color: ${variables.colorDefinitions.white};
   border-bottom: 1px solid ${variables.colors.border};
   left: 0;
@@ -140,6 +225,18 @@ const Container = styled.div`
   top: 0;
   width: 100vw;
   z-index: 1000;
+`;
+
+const FooterContainer = styled(HeaderContainer)`
+  border-bottom: none;
+  border-top: 1px solid ${variables.colors.border};
+  top: initial;
+  bottom: 0;
+  display: none;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 const Content = styled.div`
@@ -153,6 +250,11 @@ const Content = styled.div`
 const Logo = styled.span`
   margin-right: 8px;
   font-size: 0px;
+
+  @media (max-width: 768px) {
+    max-width: 576px;
+    display: none;
+  }
 `;
 
 const Search = styled.div`
@@ -160,11 +262,19 @@ const Search = styled.div`
   flex-grow: 1;
   position: relative;
 
+  @media (max-width: 768px) {
+    margin-left: 50px;
+  }
+
   & > div {
     max-width: 280px;
 
     @media (max-width: 1024px) {
       max-width: 42px;
+    }
+
+    @media (max-width: 768px) {
+      max-width: 100%;
     }
 
     input {
@@ -185,6 +295,11 @@ const Search = styled.div`
 
       @media (max-width: 1024px) {
         display: none;
+      }
+
+      @media (max-width: 768px) {
+        display: block;
+        width: 100%;
       }
 
       &:focus {
@@ -210,11 +325,19 @@ const SearchIcon = styled.div`
   @media (max-width: 1024px) {
     display: none;
   }
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 
 const Nav = styled.nav`
   margin-left: auto;
   display: block;
+
+  &.footerNav {
+    width: 100%;
+  }
 `;
 
 const NavListWrap = styled.ul`
@@ -223,6 +346,11 @@ const NavListWrap = styled.ul`
   list-style-type: none;
   margin: 0;
   padding: 0;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: space-between;
+  }
 `;
 
 const NavList = styled.li`
@@ -234,6 +362,18 @@ const NavList = styled.li`
     content: "";
     display: block;
     transform: scaleX(0);
+  }
+
+  &.desktop {
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+  &.mobile {
+    display: none;
+    @media (max-width: 768px) {
+      display: flex;
+    }
   }
 
   &.active {
@@ -306,6 +446,9 @@ const NavListSearch = styled(NavList)`
   @media (max-width: 1024px) {
     display: block;
   }
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const NavListBadge = styled.strong`
@@ -341,8 +484,12 @@ const SignOut = styled.div`
   box-shadow: ${variables.colors.boxShadow4};
   max-height: calc(100vh - 64px);
   padding: 0;
-  display: none;
   z-index: 10000;
+
+  @media (max-width: 768px) {
+    left: 0;
+  right: initial;
+  }
 
   &:before {
     content: "";
@@ -366,6 +513,11 @@ const SignOut = styled.div`
 `;
 
 const User = styled(NavList)`
+  @media (max-width: 768px) {
+    position: absolute;
+    left: 12px;
+  }
+
   a > svg,
   a > img {
     width: 24px;
@@ -382,16 +534,14 @@ const User = styled(NavList)`
     display: flex;
     align-items: center;
   }
-
-  &:hover {
-    ${SignOut} {
-      display: block;
-    }
-  }
 `;
 
 const ForBusiness = styled(User)`
   border-left: 1px solid ${variables.colors.border};
+
+  @media (max-width: 768px) {
+    display: none;
+  }
 `;
 
 /*=====  React-redux related functions  ======*/

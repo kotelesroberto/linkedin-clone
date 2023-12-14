@@ -12,10 +12,10 @@ import * as variables from "../../_library/Variables";
 const ProfileCardUserPhoto = (props) => {
   const profileuser = props.profileuser;
   const isEditMode = props.iseditmode ? props.iseditmode : false;
-  const isProfilePage = props.isprofilepage ? props.isprofilepage : false;
   const setShowModal = props.setShowModal;
   const imgRef = useRef();
-  const panel = props.panel; // it's used on lfoating profile strip too
+
+  const classes = props.classes ? props.classes : "";
 
   let imageToShow = {
     url: "/images/avatar.svg",
@@ -25,13 +25,6 @@ const ProfileCardUserPhoto = (props) => {
   if (profileuser && profileuser && profileuser.photoURL) {
     imageToShow.url = profileuser.photoURL;
     imageToShow.alt = `Photo of ${profileuser.displayName}`;
-  }
-
-  let classes = "";
-  if (panel) {
-    classes = "panel";
-  } else {
-    classes = isProfilePage ? "big" : "";
   }
 
   useEffect(() => {

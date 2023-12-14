@@ -25,9 +25,8 @@ const ProfileCardSummaryFloating = (props) => {
       <ContainerInner>
         <ProfileCardUserPhoto
           iseditmode={false}
-          isprofilepage={true}
+          classes={"panel"}
           profileuser={profileUser}
-          panel={true}
         />
         <ProfileCardUserInfo
           iseditmode={false}

@@ -52,10 +52,7 @@ const Chat = () => {
       <ChatPanel className={chatOpen ? "main-chat open" : "main-chat closed"}>
         <ChatHeader type="panel" onclick={(e) => clickContainer(e)} />
         <ChatSearchBox searchtext={searchText} setsearchtext={setSearchText} />
-        <ChatContent
-          setchatstoopen={setChatsToOpen}
-          searchtext={searchText}
-        />
+        <ChatContent setchatstoopen={setChatsToOpen} searchtext={searchText} />
       </ChatPanel>
     </Container>
   );
@@ -72,6 +69,10 @@ const Container = styled.div`
   align-items: flex-end;
   z-index: 100;
   height: 0px;
+
+  @media (max-width: 768px) {
+    bottom: 52px;
+  }
 `;
 
 const ChatPanel = styled.div`
@@ -83,10 +84,7 @@ const ChatPanel = styled.div`
   border-top-left-radius: 12px;
   margin-right: 12px;
   z-index: 4;
-
-  @media (max-width: 768px) {
-    width: calc(100% - 24px);
-  }
+  transition: width 0.3s;
 
   & > * {
     overflow: hidden;
@@ -95,6 +93,14 @@ const ChatPanel = styled.div`
   @media (max-width: 768px) {
     position: absolute;
     right: 0;
+    width: 200px;
+  }
+
+  &.open {
+    @media (max-width: 768px) {
+      width: calc(100% - 24px);
+      max-width: 80%;
+    }
   }
 `;
 

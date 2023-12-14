@@ -14,7 +14,7 @@ const ChatHeader = (props) => {
   let displayName = "";
   let photoUrl = "/images/avatar.svg";
   let userStatus = "opentowork";
-  let chatTitle = 'Messaging';
+  let chatTitle = "Messaging";
 
   if (message) {
     // opening a valid message
@@ -34,59 +34,46 @@ const ChatHeader = (props) => {
         <UserIsOnline />
       </UserPhoto>
       <RightCol>
-        <span onClick={(e) => onClick(e)}>{ chatTitle }</span>
+        <span onClick={(e) => onClick(e)}>{chatTitle}</span>
 
         {type == "panel" && (
-          <FeedItemActions>
-            <FeedItemAction>
+          <FeedItemActions className={type}>
+            <FeedItemAction className="icon-arrow">
               <img
                 src="/images/ellipsis.svg"
                 alt="Open dropdown"
-                className="icon-arrow"
                 title="DEMO"
               />
             </FeedItemAction>
-            <FeedItemAction>
-              <img
-                src="/images/edit-icon.svg"
-                alt="New message"
-                className="icon-edit"
-                title="DEMO"
-              />
+            <FeedItemAction className="icon-edit">
+              <img src="/images/edit-icon.svg" alt="New message" title="DEMO" />
             </FeedItemAction>
-            <FeedItemAction onClick={(e) => onClick(e)}>
-              <img
-                src="/images/arrow-down-small.svg"
-                alt="Show/Hide Chat"
-                className="hide-icon"
-              />
+            <FeedItemAction className="hide-icon" onClick={(e) => onClick(e)}>
+              <img src="/images/arrow-down-small.svg" alt="Show/Hide Chat" />
             </FeedItemAction>
           </FeedItemActions>
         )}
         {type == "message" && (
-          <FeedItemActions>
-            <FeedItemAction>
+          <FeedItemActions className={type}>
+            <FeedItemAction className="icon-arrow">
               <img
                 src="/images/ellipsis.svg"
                 alt="Message options"
-                className="icon-arrow"
                 title="DEMO"
               />
             </FeedItemAction>
-            <FeedItemAction>
+            <FeedItemAction className="icon-maximize">
               <img
                 src="/images/icon-maximize.svg"
                 alt="Maximize"
-                className="icon-maximize"
                 title="DEMO"
               />
             </FeedItemAction>
-            <FeedItemAction onClick={(e) => closeEvent(e, message.id)}>
-              <img
-                src="/images/icon-close.svg"
-                alt="Close Chat"
-                className="icon-close"
-              />
+            <FeedItemAction
+              className="icon-close"
+              onClick={(e) => closeEvent(e, message.id)}
+            >
+              <img src="/images/icon-close.svg" alt="Close Chat" />
             </FeedItemAction>
           </FeedItemActions>
         )}
@@ -146,9 +133,39 @@ const RightCol = styled.div`
 
 const FeedItemActions = styled(ButtonActionContainer)`
   margin-left: auto;
+
+  &.panel {
+    @media (max-width: 768px) {
+    }
+  }
+  &.message {
+    @media (max-width: 768px) {
+    }
+  }
 `;
 
 const FeedItemAction = styled(ButtonAction)`
+  transition: transform 0.3s;
+  
+  .panel & {
+    @media (max-width: 768px) {
+      display: none;
+    }
+    &.hide-icon {
+      @media (max-width: 768px) {
+        display: block;
+      }
+    }
+  }
+  .message & {
+    @media (max-width: 768px) {
+    }
+  }
+
+  .open & {
+    transform: rotate(180deg);
+  }
+
   img {
     width: 16px;
     height: 16px;

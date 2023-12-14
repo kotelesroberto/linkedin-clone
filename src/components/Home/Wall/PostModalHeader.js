@@ -105,15 +105,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setShowModal: (newPopupState) => {
-      dispatch(actionSetShowModal(newPopupState));
-    },
-    setPreviousShowModal: (prevPopupState) => {
-      dispatch(actionSetPreviousShowModal(prevPopupState));
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(PostModalHeader);
+export default connect(mapStateToProps)(PostModalHeader);

@@ -162,6 +162,7 @@ const Header = (props) => {
 
                 {userMenuStatus && (
                   <SignOut>
+                    <a href={`in/${user.shorturl}`}>Edit my profile</a>
                     <a href="#" onClick={props.signOut}>
                       Sign out
                     </a>
@@ -485,10 +486,11 @@ const SignOut = styled.div`
   max-height: calc(100vh - 64px);
   padding: 0;
   z-index: 10000;
+  padding: 12px;
 
   @media (max-width: 768px) {
     left: 0;
-  right: initial;
+    right: initial;
   }
 
   &:before {
@@ -503,8 +505,11 @@ const SignOut = styled.div`
 
   a {
     font-size: 14px;
+    line-height: 1em;
     align-items: flex-start;
-    padding: 0 12px;
+    padding: 10px 0;
+    margin: 0;
+    min-height: initial;
 
     &:hover {
       text-decoration: underline;

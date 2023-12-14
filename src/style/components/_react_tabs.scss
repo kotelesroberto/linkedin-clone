@@ -9,6 +9,9 @@ body {
 
     &-list {
       border-color: #e8e8e8;
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto !important;
     }
   }
 }

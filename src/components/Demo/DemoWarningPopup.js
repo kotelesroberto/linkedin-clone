@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import * as variables from "../_library/Variables";
 import { Card } from "../_library/Cards";
+import { ButtonPrimary } from "../_library/Buttons";
 
 const DemoWarningPopup = (props) => {
   const demoWarning = props.demowarning;
@@ -35,10 +36,7 @@ const DemoWarningPopup = (props) => {
           </p>
           <p>
             To check the source files please visit my{" "}
-            <a
-              href="https://github.com/kotelesroberto/rulex"
-              target="_blank"
-            >
+            <a href="https://github.com/kotelesroberto/rulex" target="_blank">
               GitHub project
             </a>
             .
@@ -109,6 +107,11 @@ const DemoWarningPopup = (props) => {
             className="icon-close"
           />
         </WarningClose>
+        <WarningButtonRow>
+          <ButtonPrimary onClick={(e) => setDemoWarning("hide")}>
+            Close
+          </ButtonPrimary>
+        </WarningButtonRow>
       </WarningContent>
     </WarningContainer>
   );
@@ -144,7 +147,7 @@ const WarningContent = styled(Card)`
 `;
 
 const WarningContentInner = styled.div`
-  height: 100%;
+  height: calc(100% - 60px);
   overflow-y: auto;
   line-height: 1.5;
 
@@ -180,4 +183,9 @@ const WarningClose = styled.div`
   padding: 20px;
 `;
 
+const WarningButtonRow = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 0;
+`;
 export default DemoWarningPopup;

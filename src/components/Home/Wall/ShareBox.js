@@ -41,7 +41,7 @@ const ShareBox = (props) => {
             )}
           </UserAvatarPhoto>
           <ButtonSharePost onClick={(e) => setShowModal("addPost")}>
-            Start a post p: {previousShowModal} s: {showModal}
+            Start a post
           </ButtonSharePost>
         </ShareBoxTop>
         <ShareBoxButtons>

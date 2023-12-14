@@ -24,6 +24,8 @@ const Job = (props) => {
   const parentKey = props.parentkey;
   const content = props.content;
 
+  console.log({ content });
+
   useEffect(() => {
     // Start the pooled timer which runs every 60 seconds
     // (60000 milliseconds) by default.
@@ -43,6 +45,15 @@ const Job = (props) => {
             <JobLocation>{content.location}</JobLocation>
             <JobSalary>{content.salary}</JobSalary>
             <JobDescription>{content.description}</JobDescription>
+
+            {content.easyapply && <JobRow>Easy apply</JobRow>}
+            {content.active && (
+              <JobRow>
+                <img src="/images/active-recruiting.svg" alt="Active Job" />
+                Actively Recruiting
+              </JobRow>
+            )}
+
             <JobDate>
               <Moment fromNow>{new Date(content.timestamp)}</Moment> •{" "}
               <IconGlobe />
@@ -92,6 +103,19 @@ const JobContent = styled.div`
     display: block;
     margin-bottom: 4px;
   }
+`;
+
+const JobRow = styled(JobContent)`
+display: flex;
+align-items: center;
+margin: 4px 0;
+color: ${variables.colors.colorFont};
+font-style: italic;
+font-weight: 700;
+
+img {
+  margin-right: 12px;
+}
 `;
 
 const JobImages = styled.div`

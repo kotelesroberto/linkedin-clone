@@ -18,12 +18,12 @@ import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 // Web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyA-kSVqSDag52TV32PsHdTeLAp3_nvhkew",
-  authDomain: "rulex-f553b.firebaseapp.com",
-  projectId: "rulex-f553b",
-  storageBucket: "rulex-f553b.appspot.com",
-  messagingSenderId: "890419328842",
-  appId: "1:890419328842:web:5800404c6b71f9513ff3b3",
+  apiKey: "<add_value_here>",
+  authDomain: "<add_value_here>",
+  projectId: "<add_value_here>",
+  storageBucket: "<add_value_here>",
+  messagingSenderId: "<add_value_here>",
+  appId: "<add_value_here>",
 };
 
 // Initialize Firebase app

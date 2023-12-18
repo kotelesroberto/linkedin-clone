@@ -11,7 +11,6 @@ import {
 } from "../../_library/Buttons";
 
 const ProfileCardButtons = (props) => {
-  const user = props.user;
   const panel = props.panel; // it's used on lfoating profile strip too
 
   const navigate = useNavigate();
@@ -103,7 +102,8 @@ const Container = styled.ul`
   position: relative;
 
   &.panel {
-    padding: 12px 0 0 12px;
+    padding: 0 0 0 12px;
+    margin-left: auto;
 
     button {
       margin-bottom: 0;

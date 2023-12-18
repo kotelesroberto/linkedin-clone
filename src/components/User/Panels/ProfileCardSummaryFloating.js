@@ -64,7 +64,7 @@ const Container = styled.section`
 const ContainerInner = styled.div`
   margin: 0 auto;
   width: 100%;
-  max-width: 1128px;
+  max-width: 1166px;
   padding: 10px 24px;
   display: flex;
   flex-direction: row;

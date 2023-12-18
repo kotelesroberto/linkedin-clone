@@ -24,7 +24,10 @@ const ChatHeader = (props) => {
   } else {
     // main chat panel
     displayName = props.user && props.user.displayName;
-    photoUrl = props.user && props.user.photoURL && props.user.photoURL;
+    photoUrl =
+      props.user && props.user.photoURL
+        ? props.user.photoURL
+        : "/images/avatar.svg";
   }
 
   return (
@@ -36,7 +39,7 @@ const ChatHeader = (props) => {
       <RightCol>
         <span onClick={(e) => onClick(e)}>{chatTitle}</span>
 
-        {type == "panel" && (
+        {type === "panel" && (
           <FeedItemActions className={type}>
             <FeedItemAction className="icon-arrow">
               <img
@@ -53,7 +56,7 @@ const ChatHeader = (props) => {
             </FeedItemAction>
           </FeedItemActions>
         )}
-        {type == "message" && (
+        {type === "message" && (
           <FeedItemActions className={type}>
             <FeedItemAction className="icon-arrow">
               <img
@@ -146,7 +149,7 @@ const FeedItemActions = styled(ButtonActionContainer)`
 
 const FeedItemAction = styled(ButtonAction)`
   transition: transform 0.3s;
-  
+
   .panel & {
     @media (max-width: 768px) {
       display: none;

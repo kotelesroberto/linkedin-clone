@@ -31,7 +31,7 @@ const DemoPage = () => {
                     "https://www.linkedin.com/in/robertkoteles/";
                 }}
               >
-                Go to my real RuleX profile
+                Go to my real LinkedIn profile
               </ButtonSecondary>
             </ContentContainer>
           </Section>

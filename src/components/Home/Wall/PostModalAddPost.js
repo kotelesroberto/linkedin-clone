@@ -168,7 +168,7 @@ const ThumbWrapper = styled.li`
       height: auto;
 
       @media (max-width: 768px) {
-        max-height: initial;
+        max-height: 20vh;
       }
     }
   }

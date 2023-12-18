@@ -18,6 +18,7 @@ const Chat = () => {
   const [chatOpen, setChatOpen] = useState(false);
   const [chatsToOpen, setChatsToOpen] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const windowLocation = window.location.pathname;
 
   // set status of chat window. It can be opened or closed (just header is visible)
   const clickContainer = (e) => {
@@ -35,26 +36,39 @@ const Chat = () => {
   const maxChatWindows = 3;
 
   return (
-    <Container>
-      {!!chatsToOpen.length &&
-        chatsToOpen.map((item, index) => {
-          if (index < maxChatWindows) {
-            return (
-              <ChatWindow
-                messageID={item}
-                closeevent={closeChatMessage}
-                key={`chat-window-${item}`}
-              />
-            );
-          }
-        })}
+    <>
+      {windowLocation === "/demo" && <Container></Container>}
+      {windowLocation !== "/demo" && (
+        <Container>
+          {!!chatsToOpen.length &&
+            chatsToOpen.map((item, index) => {
+              if (index < maxChatWindows) {
+                return (
+                  <ChatWindow
+                    messageID={item}
+                    closeevent={closeChatMessage}
+                    key={`chat-window-${item}`}
+                  />
+                );
+              }
+            })}
 
-      <ChatPanel className={chatOpen ? "main-chat open" : "main-chat closed"}>
-        <ChatHeader type="panel" onclick={(e) => clickContainer(e)} />
-        <ChatSearchBox searchtext={searchText} setsearchtext={setSearchText} />
-        <ChatContent setchatstoopen={setChatsToOpen} searchtext={searchText} />
-      </ChatPanel>
-    </Container>
+          <ChatPanel
+            className={chatOpen ? "main-chat open" : "main-chat closed"}
+          >
+            <ChatHeader type="panel" onclick={(e) => clickContainer(e)} />
+            <ChatSearchBox
+              searchtext={searchText}
+              setsearchtext={setSearchText}
+            />
+            <ChatContent
+              setchatstoopen={setChatsToOpen}
+              searchtext={searchText}
+            />
+          </ChatPanel>
+        </Container>
+      )}
+    </>
   );
 };
 

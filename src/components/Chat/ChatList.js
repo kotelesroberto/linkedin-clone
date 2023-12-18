@@ -26,16 +26,18 @@ const ChatList = (props) => {
 
   // searcing for specific name for
   useEffect(() => {
-    if (!searchText) {
-      // restore originally loaded messages
-      addMessagesToState();
-    } else {
-      // filter messages and set into state
-      let newMessagesToShow = [...messagesToShow];
-      newMessagesToShow = newMessagesToShow.filter((item) =>
-        item.name.toLowerCase().includes(searchText.toLowerCase())
-      );
-      setMessagesToShow(newMessagesToShow);
+    if (messagesToShow) {
+      if (!searchText) {
+        // restore originally loaded messages
+        addMessagesToState();
+      } else {
+        // filter messages and set into state
+        let newMessagesToShow = [...messagesToShow];
+        newMessagesToShow = newMessagesToShow.filter((item) =>
+          item.name.toLowerCase().includes(searchText.toLowerCase())
+        );
+        setMessagesToShow(newMessagesToShow);
+      }
     }
   }, [searchText]);
 

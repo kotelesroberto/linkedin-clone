@@ -78,11 +78,6 @@ function App(props) {
         <Router>
           <Routes>
             <Route
-              path="/"
-              element={<LoginPage />}
-              errorElement={<ErrorPage />}
-            />
-            <Route
               path="/signup"
               element={<SignUpPage />}
               errorElement={<ErrorPage />}
@@ -97,6 +92,11 @@ function App(props) {
             <Route path="/edit-profile" element={<ProfilePage />} />
             <Route path="/show-profile" element={<ProfilePage />} />
             <Route path="/in/*" element={<ProfilePage />} />
+            <Route
+              path="/"
+              element={<LoginPage />}
+              errorElement={<ErrorPage />}
+            />
             <Route path="*" element={<Navigate to="/demo" replace />} />
           </Routes>
         </Router>

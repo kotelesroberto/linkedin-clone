@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import { messages } from "../../utils/demoData";
 import { getSafeString } from "../../utils/filename";
+import ChatNoMessage from "./ChatNoMessage";
 
 const ChatList = (props) => {
   const searchText = props.searchtext;
@@ -14,9 +15,7 @@ const ChatList = (props) => {
   const [messagesToShow, setMessagesToShow] = useState("");
 
   const addMessagesToState = () => {
-    if (group === "other") {
-      setMessagesToShow(messages.slice(2).reverse());
-    } else {
+    if (group === "focused") {
       setMessagesToShow(messages);
     }
   };
@@ -52,6 +51,7 @@ const ChatList = (props) => {
             setchatstoopen={setChatsToOpen}
           />
         ))}
+      {!messagesToShow && <ChatNoMessage />}
     </Container>
   );
 };
